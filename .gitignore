@@ -1,0 +1,5 @@
+.docusaurus/
+_bak/
+build/
+node_modules/
+tmp

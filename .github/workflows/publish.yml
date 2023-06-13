@@ -1,0 +1,51 @@
+name: Publish
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+
+      - name: Install yarn
+        run: sudo npm i -g yarn
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build
+        run: yarn build
+
+      - name: Setup GitHub Pages
+        # if: github.event_name == 'push'
+        uses: actions/configure-pages@v3
+
+      - name: Upload Pages artifact
+        # if: github.event_name == 'push'
+        uses: actions/upload-pages-artifact@v1
+        with:
+            path: build
+
+      - name: Deploy
+        # if: github.event_name == 'push'
+        id: deployment
+        uses: actions/deploy-pages@v2
