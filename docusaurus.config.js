@@ -27,6 +27,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/gear-dapps/academy-mirror/edit/master/',
           showLastUpdateTime: true,
+          editLocalizedFiles: true,
         },
         blog: false,
         theme: {
