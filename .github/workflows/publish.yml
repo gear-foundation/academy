@@ -6,10 +6,6 @@ on:
   pull_request:
     branches: [master]
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 permissions:
   contents: read
   pages: write
