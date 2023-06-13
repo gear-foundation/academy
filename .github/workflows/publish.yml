@@ -36,16 +36,16 @@ jobs:
         run: yarn build
 
       - name: Setup GitHub Pages
-        # if: github.event_name == 'push'
+        if: github.event_name == 'push'
         uses: actions/configure-pages@v3
 
       - name: Upload Pages artifact
-        # if: github.event_name == 'push'
+        if: github.event_name == 'push'
         uses: actions/upload-pages-artifact@v1
         with:
             path: build
 
       - name: Deploy
-        # if: github.event_name == 'push'
+        if: github.event_name == 'push'
         id: deployment
         uses: actions/deploy-pages@v2
