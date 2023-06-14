@@ -11,6 +11,8 @@ One of the ways is to use <a href="https://www.gitpod.io/" target="_new">Gitpod<
 
 1. The first option to use Gitpod:
 
+Hey!
+
 <ul><li>In a browser, navigate to your project in GitHub or GitLab;</li><li>In the browser’s address bar, prefix the entire URL with <code>gitpod.io/#</code> and press <kbd>Enter</kbd>. It will create a cloud development environment and open up a workspace in VS code;</li><li>Install the tools required to build smart contracts in Rust. Gitpod always comes with the latest available Rust toolchain pre-installed using Rust compiler <code>rustup</code>. Let’s install a nightly version of the toolchain with <code>rustup</code>:</li></ul>
 
 <pre><code class="language-bash">rustup toolchain add nightly</code></pre>
