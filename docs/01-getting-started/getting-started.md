@@ -3,6 +3,8 @@ title: Getting started
 sidebar_position: 2
 ---
 
+New <b>text</b>.
+
 Before you start developing a smart contract on Gear, you have to configure the development environment.
 
 One of the ways is to use <a href="https://www.gitpod.io/" target="_new">Gitpod</a>. <b>Gitpod</b> is a tool allowing developers to launch ready-to-code development environments for your GitHub projects with a single click.
