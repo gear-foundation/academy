@@ -12,4 +12,6 @@ For answers to all your questions, you can contact our developers on the followi
 Our Telegram channel: <a href="https://t.me/+OFEvRxCn5-NlOWMy" target="_new">https://t.me/+OFEvRxCn5-NlOWMy</a><br/>
 Our Discord server: <a href="https://discord.gg/EEZeGAzUD9" target="_new">https://discord.gg/EEZeGAzUD9</a>
 
-In the near future we plan to provide new interesting materials. Follow our communities for the latest news!
+In the near, future we plan to provide new interesting materials. Follow our communities for the latest news!
+
+New text.
