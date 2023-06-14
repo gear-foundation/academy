@@ -7,7 +7,7 @@ Before you start developing a smart contract on Gear, you have to configure the 
 
 One of the ways is to use <a href="https://www.gitpod.io/" target="_new">Gitpod</a>. <b>Gitpod</b> is a tool allowing developers to launch ready-to-code development environments for your GitHub projects with a single click.
 
-## Using Gitpod
+<h2>Using Gitpod</h2>
 
 1. The first option to use Gitpod:
 
@@ -29,7 +29,7 @@ Once you have the extension installed, a gitpod button will shop up on any git r
 
 <img class="elimg-bg elimg15-bg" src="https://lwfiles.mycourse.app/gear-academy-public/374a25aed93c167202869acaa8c32288.png?client_id=62728f8299966026c80a4810&amp;width=881&amp;height=62.25" data-unsaved="false" />
 
-## Setting up the local environment
+<h2>Setting up the local environment</h2>
 
 For this course macOS and Linux will be the easiest operating systems to use. Windows may be more challenging, however if you’re ok with that, please feel free to join us using whatever operating system that you have access to and are comfortable with.
 
