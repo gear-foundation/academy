@@ -11,6 +11,6 @@ This is a mirror of the translation to Chinese of the [Gear Academy](https://aca
 
 :::caution
 
-This is for development purposes only. Please visit the official Gear Academy website for the real education.
+This is for development purposes only. Please visit the official Gear Academy website for real education.
 
 :::
