@@ -28,6 +28,19 @@ const config = {
           editUrl: 'https://github.com/gear-dapps/academy-mirror/edit/master/',
           showLastUpdateTime: true,
           editLocalizedFiles: true,
+          lastVersion: 'current',
+          versions: {
+            current: {
+              label: 'Current',
+              badge: false,
+            },
+            next: {
+              path: 'next',
+              label: 'Next 🚧',
+              banner: 'unreleased',
+              badge: true,
+            },
+          },
         },
         blog: false,
         theme: {
@@ -48,6 +61,10 @@ const config = {
           srcDark: "img/logo-inverted.svg"
         },
         items: [
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
+          },
           {
             type: 'localeDropdown',
             position: 'right',

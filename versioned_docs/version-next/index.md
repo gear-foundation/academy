@@ -9,8 +9,8 @@ slug: /
 
 This is a mirror of [Gear Academy](https://academy.gear.foundation) website.
 
-:::caution
+:::warning Disclaimer
 
-This is for development purposes only. Please visit the official Gear Academy website for real education.
+This is the documentation for the **next** version of Gear Academy Mirror. The current version is [here](https://academy.gear.rs/).
 
 :::
