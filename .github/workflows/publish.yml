@@ -11,9 +11,6 @@ permissions:
   pages: write
   id-token: write
 
-env:
-  NODE_OPTIONS: --openssl-legacy-provider
-
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -29,10 +26,15 @@ jobs:
       - name: Install yarn
         run: sudo npm i -g yarn
 
+      - name: Fix audit
+        run: npm_config_yes=true npx yarn-audit-fix
+
       - name: Install dependencies
         run: yarn
 
       - name: Build
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
         run: yarn build
 
       - name: Setup GitHub Pages
