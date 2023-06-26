@@ -1,6 +1,7 @@
 ---
 title: Getting started
 sidebar_position: 2
+hide_table_of_contents: true
 ---
 
 Before you start developing a smart contract on Gear, you have to configure the development environment.

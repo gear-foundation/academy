@@ -1,6 +1,7 @@
 ---
 title: Introduction
 sidebar_position: 1
+hide_table_of_contents: true
 ---
 
 In this section, you will learn how to start developing smart contracts on Gear: what tools can be used to launch coding-ready development environments for Github projects, setup instructions, alternative ways to start working with Gitpod, and other useful information.

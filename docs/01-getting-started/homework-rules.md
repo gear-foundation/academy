@@ -1,6 +1,7 @@
 ---
 title: Homework rules
 sidebar_position: 3
+hide_table_of_contents: true
 ---
 
 We offer various types of homework assignments. Firstly, you will be presented with engaging quizzes. Following that, we will introduce programming tasks.

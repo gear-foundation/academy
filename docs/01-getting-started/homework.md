@@ -1,6 +1,7 @@
 ---
 title: 1. Our first homework
 sidebar_position: 4
+hide_table_of_contents: true
 ---
 
 Please join our Telegram chat at <https://t.me/+OFEvRxCn5-NlOWMy> and specify your username on Telegram as part of your homework assignment.
