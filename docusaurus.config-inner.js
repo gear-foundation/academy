@@ -63,6 +63,14 @@ const config = {
       }
     }
   },
+
+  scripts: [
+    {
+      src:
+        '/js/iframeResizer.contentWindow.min.js',
+      async: false,
+    },
+  ],
 };
 
 module.exports = config;
