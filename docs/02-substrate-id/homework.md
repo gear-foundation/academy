@@ -1,6 +1,7 @@
 ---
 title: 2. Homework Substrate ID
 sidebar_position: 8
+hide_table_of_contents: true
 ---
 
 We hope that you have already created your Substrate ID. Now it's time to use it. Send us your ID to receive the first NFT from our new collection.

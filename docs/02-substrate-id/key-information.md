@@ -1,6 +1,7 @@
 ---
 title: Key information and security
 sidebar_position: 2
+hide_table_of_contents: true
 ---
 
 Account represents an identity - typically a person or an organization, that is capable of making transactions or holding funds. Users can upload smart-contracts and interact with them through transactions in blockchain networks built on top of Gear Protocol. To make this happen, users need to connect a Substrate account. Gear Idea portal can work with Substrate accounts in any connected Gear-powered networks. Moreover this account can be used for holding funds and making transactions in any network of the Dotsama ecosystem and even [more](https://docs.substrate.io/fundamentals/accounts-addresses-keys/).

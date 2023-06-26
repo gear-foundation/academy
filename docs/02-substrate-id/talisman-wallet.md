@@ -1,27 +1,26 @@
 ---
-title: How to create account via Talisman Wallet
+title: How to create an account via Talisman Wallet
 sidebar_position: 3
+hide_table_of_contents: true
 ---
 
-Talisman is a popular and user-friendly wallet for creating and managing Substrate accounts. Being connected to web3 applications across various networks, Talisman browser extension allows to store, send and receive assets.
+Talisman is a popular and user-friendly wallet for creating and managing Substrate accounts. Being connected to web3 applications across various networks, the Talisman browser extension allows one to store, send and receive assets.
 
-1. Install Talisman extension for your browser here:
+1. Install the Talisman extension for your browser here:
 
-<ul>
-    <li><a href="https://chrome.google.com/webstore/detail/talisman-polkadot-wallet/fijngjgcjhjmmpcmkeiomlglpeiijkld" target="_new">Chrome</a></li>
-    <li><a href="https://addons.mozilla.org/en-US/firefox/addon/talisman-wallet-extension/" target="_new">Firefox</a></li>
-</ul>
+    - [Chrome](https://chrome.google.com/webstore/detail/talisman-polkadot-wallet/fijngjgcjhjmmpcmkeiomlglpeiijkld)
+    - [Firefox](https://addons.mozilla.org/en-US/firefox/addon/talisman-wallet-extension/)
 
 2. Open the extension by clicking on the logo in the menu bar.
 
 3. In the opened application, click "New wallet":
 
-<img src="https://lwfiles.mycourse.app/gear-academy-public/eeb045f5374be346bbc334ff0267bf43.png" />
+    ![New Account](/img/02/talisman-new-account.png)
 
 4. Enter a strong password:
 
-<img src="https://lwfiles.mycourse.app/gear-academy-public/7fc32ab6b7efae2a696261ff1de8294e.png" />
+    ![Choose a Passord](/img/02/talisman-choose-password.png)
 
 And that's it. Your wallet has been created:
 
-<img src="https://lwfiles.mycourse.app/gear-academy-public/37cd4ed957c5e0a02e91b2e324bee58c.png" />
+![Dashboard](/img/02/talisman-dashboard.png)

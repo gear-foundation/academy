@@ -1,6 +1,7 @@
 ---
 title: Introduction
 sidebar_position: 1
+hide_table_of_contents: true
 ---
 
 If you want to get started with the Gear platform, on this page you will find a step-by-step guide to creating a background ID. They will help you set a password, enter personal information, and verify your email address. In addition, some nice tips and tricks are included to help protect your account.
