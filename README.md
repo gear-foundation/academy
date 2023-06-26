@@ -1,10 +1,10 @@
-# Gear Academy Mirror
+# Gear Academy
 
-[![Publish Status](https://github.com/gear-dapps/academy-mirror/workflows/Publish/badge.svg)](https://github.com/gear-dapps/academy-mirror/actions/workflows/publish.yml?query=branch%3Amaster)
+[![Publish Status](https://github.com/gear-dapps/academy/workflows/Publish/badge.svg)](https://github.com/gear-dapps/academy/actions/workflows/publish.yml?query=branch%3Amaster)
 
 This is a mirror of [Gear Academy](https://academy.gear.foundation) website.
 
-> This is for development purposes only. Please visit the official Gear Academy website for the real education.
+> This is for development purposes only. Please visit the official Gear Academy website for real education.
 
 ## Local Development
 

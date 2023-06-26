@@ -1,16 +1,14 @@
 ---
-title: Gear Academy Mirror
 sidebar_position: 0
-sidebar_label: Home
 slug: /
 ---
 
-# About
+# Next version
 
-This is a mirror of [Gear Academy](https://academy.gear.foundation) website.
+This is the preliminary version of the [Gear Academy](https://academy.gear.rs) website.
 
 :::warning Disclaimer
 
-This is the documentation for the **next** version of Gear Academy Mirror. The current version is [here](https://academy.gear.rs/).
+Don't use these materials for education. Use the current version: <https://academy.gear.rs>.
 
 :::

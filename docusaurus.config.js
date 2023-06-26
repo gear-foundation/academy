@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Gear Academy Mirror',
+  title: 'Gear Academy',
   tagline: 'A place to learn about Gear and how to use it.',
   url: 'https://academy.gear.rs',
   baseUrl: '/',
@@ -14,7 +14,7 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'gear-dapps',
-  projectName: 'academy-mirror',
+  projectName: 'academy',
 
   presets: [
     [
@@ -25,7 +25,7 @@ const config = {
           path: './docs',
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/gear-dapps/academy-mirror/edit/master/',
+          editUrl: 'https://github.com/gear-dapps/academy/edit/master/',
           showLastUpdateTime: true,
           editLocalizedFiles: true,
           lastVersion: 'current',
@@ -54,7 +54,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Gear Academy Mirror',
+        title: 'Gear Academy',
         logo: {
           alt: 'Logo',
           src: 'img/logo.svg',
@@ -70,7 +70,7 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://github.com/gear-dapps/academy-mirror',
+            href: 'https://github.com/gear-dapps/academy',
             label: 'GitHub',
             position: 'right',
           },
@@ -79,6 +79,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ['rust', 'toml'],
       },
     }),
 
