@@ -32,8 +32,11 @@ jobs:
       - name: Fix audit
         run: npm_config_yes=true npx yarn-audit-fix
 
-      - name: Build
+      - name: Build docs
         run: yarn build
+
+      - name: Build inner HTMLs
+        run: yarn build:inner
 
       - name: Setup GitHub Pages
         if: github.event_name == 'push'
