@@ -1,6 +1,7 @@
 ---
 title: Hello world
 sidebar_position: 1
+hide_table_of_contents: true
 ---
 
 This lesson is about how to create a simple smart contract program on the Gear platform. The program will send a "Hello" message in response to any incoming message. The lesson describes the step-by-step process of creating a new project, adding dependencies, writing code for the program entry point, and building the project. It also explains the purpose and use of the `gstd` messaging module from the `gstd` library. We conclude with instructions for testing the program. In this tutorial, you will learn how to create a basic smart contract program and gain an understanding of the libraries and tools of the Gear platform.
