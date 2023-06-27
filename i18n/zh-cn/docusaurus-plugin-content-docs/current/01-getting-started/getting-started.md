@@ -6,7 +6,7 @@ no_table_of_contents: true
 
 在Gear上开发智能合约之前，您需要配置开发环境。
 
-其中一种方式是使用 <a href="https://www.gitpod.io/" target="_new">Gitpod</a>。**Gitpod**是一个工具，允许开发人员通过单击一次启动为您的GitHub项目准备的可用于编码的开发环境。
+其中一种方式是使用 [Gitpod](https://www.gitpod.io/)。**Gitpod**是一个工具，允许开发人员通过单击一次启动为您的GitHub项目准备的可用于编码的开发环境。
 
 ## 使用Gitpod
 
