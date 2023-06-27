@@ -40,13 +40,13 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-gstd = { git = "https://github.com/gear-tech/gear.git", features = ["debug"], branch = "academy" }
+gstd = { git = "https://github.com/gear-tech/gear.git", features = ["debug"], branch = "testnet" }
 
 [build-dependencies]
-gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", features = ["wasm-opt"], branch = "academy" }
+gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", features = ["wasm-opt"], branch = "testnet" }
 
 [dev-dependencies]
-gtest = { git = "https://github.com/gear-tech/gear.git", branch = "academy" }
+gtest = { git = "https://github.com/gear-tech/gear.git", branch = "testnet" }
 ```
 
 `debug` feature in the `gstd` library allows putting some text messages using the [`debug!`](https://docs.gear.rs/gstd/macro.debug.html) macro that are useful when debugging the program. `wasm-opt` feature in the `gear-wasm-builder` library is for the output Wasm file optimization that decreases the program's binary file size.
