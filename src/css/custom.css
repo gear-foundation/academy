@@ -26,3 +26,14 @@
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+h1 {
+  background-color: #F9F9F9;
+  background-image: url('/img/academy-gear.png');
+  background-position: 50%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding: 20px 33% 20px 20px;
+  margin: 0;
+  word-wrap: break-word;
+}
