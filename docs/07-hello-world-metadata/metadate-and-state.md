@@ -39,12 +39,12 @@ Let's define metadata for our example. We’ll create a crate
 `hello-world-io` in the directory of our `hello-world` program:
 
 ```bash
-cargo new hello-world-io --lib
+cargo new io --lib
 ```
 
 The `Cargo.toml` of this crate:
 
-```toml title="hello-world-io/Cargo.toml"
+```toml title="io/Cargo.toml"
 [package]
 name = "hello-world-io"
 version = "0.1.0"
@@ -126,7 +126,7 @@ edition = "2021"
 
 [build-dependencies]
 gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", features = ["wasm-opt"], branch = "testnet" }
-hello-world-io = { path = "hello-world-io" }
+hello-world-io = { path = "io" }
 ```
 
 We also need to change the `build.rs` file using the following code:
