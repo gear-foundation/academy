@@ -125,7 +125,7 @@ let res = program.send(2, String::from("Hello"));
 
 Here, we should check that the program replied with the expected hello message. To do this, we can use the [`Log`](https://docs.gear.rs/gtest/struct.Log.html) structure from the `gtest` lib and build the log we are expecting to receive. Specifically, we can use the `Log::builder().dest(2).payload(String::from("Hello"))` command to create the expected log.
 
-After creating the expected log, we can then check if the received log contains the expected log. We can do this by using the `assert!(res.contains(&amp;expected_log))` command.
+After creating the expected log, we can then check if the received log contains the expected log. We can do this by using the `assert!(res.contains(&expected_log))` command.
 
 ```rust
 let expected_log = Log::builder()
