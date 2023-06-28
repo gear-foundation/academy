@@ -82,3 +82,10 @@ pub enum TmgEvent {
 So, the Tamagotchi must send a message to itself once in a certain time interval. Define this interval and determine at what levels of fed, slept or entertained the Tamagotchi will start sending messages.
 
 Connect your Tamagotchi to the application and see how it communicates with you!
+
+Please attach a link to the pull request (PR) in your repo with your Tamagotchi contract. Also, please paste your Tamagotchi program address.
+
+Example:
+
+- PR: <https://github.com/mynick/myname-gear-academy/pull/7>
+- Program address: `0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d`
