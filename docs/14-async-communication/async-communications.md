@@ -3,3 +3,23 @@ title: Asynchronous communication between programs
 sidebar_position: 1
 hide_table_of_contents: true
 ---
+
+This lesson focuses on the Actor model for message-passing communications, which is a key and distinguishing feature of the Gear Protocol.
+
+One of the key and distinguished features of the Gear Protocol is the Actor model for message-passing communications. Gear Protocol leverages the Actor model for message-passing communication, allowing parallel computation and asynchronous messaging to ensure faster processing times. The development structure provides developers with immense flexibility when building complex dApps.
+
+If a program sends an asynchronous message to another program, it needs to wait for the reply from that program before it can proceed to the next operation.
+
+To send a message to a Gear program, we use the `send_for_reply(program, payload, value)` function. In this function:
+
+- `program` - the address of the program to send the message for;
+- `payload` - the message to the program;
+- `value` - the funds attached to the message.
+
+```rust
+pub fn send_for_reply_as<E: Encode, D: Decode>(
+    program: ActorId,
+    payload: E,
+    value: u128
+) -> Result<CodecMessageFuture<D>>
+```
