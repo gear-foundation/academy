@@ -1,8 +1,8 @@
 const lightCodeTheme = require('prism-react-renderer').themes.github;
 const darkCodeTheme = require('prism-react-renderer').themes.dracula;
-const math = require('remark-math');
 
 module.exports = async function config() {
+  const math = (await import('remark-math')).default;
   const katex = (await import('rehype-katex')).default;
 
   return {
