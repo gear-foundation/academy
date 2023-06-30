@@ -2,9 +2,7 @@
 
 [![Publish Status](https://github.com/gear-dapps/academy/workflows/Publish/badge.svg)](https://github.com/gear-dapps/academy/actions/workflows/publish.yml?query=branch%3Amaster)
 
-Lessons for the [Gear Academy](https://academy.gear.foundation).
-
-> 🚧 This is for lesson contributors only. Please visit the official Gear Academy website for education: <https://academy.gear.foundation>
+Lessons for the Gear Academy.
 
 ## Local Development
 
