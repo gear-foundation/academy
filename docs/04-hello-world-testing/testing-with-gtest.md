@@ -8,7 +8,7 @@ In this part of our course, you will learn how to test smart contracts in the Ru
 
 Testing smart contracts is an important aspect of developing decentralized applications. We’ll use the Gear [`gtest`](https://docs.gear.rs/gtest/) library for our program’s logic testing.
 
-To get started, let's create a new directory called `tests` at the top level of our project directory, next to the `src` director. In that directory, we’ll create a file `hello_world_test.rs` where we’ll write tests for our contract.
+To get started, let's create a new directory called `tests` at the top level of our project directory, next to the `src` directory. In that directory, we’ll create a file `hello_world_test.rs` where we’ll write tests for our contract.
 
 ```bash
 mkdir tests
@@ -31,7 +31,7 @@ Before testing our smart contract, we need to create an environment for running 
 let sys = System::new();
 ```
 
-Next, we need to create a mockup of our program. We can do this using the [`Program'](https://docs.gear.rs/gtest/struct.Program.html) structure from `gtest`. There are two ways to create a program mockup: from a file by its path or pointing to the program itself (current program).
+Next, we need to create a mockup of our program. We can do this using the [`Program`](https://docs.gear.rs/gtest/struct.Program.html) structure from `gtest`. There are two ways to create a program mockup: from a file by its path or pointing to the program itself (current program).
 
 To create a program mockup from a Wasm file:
 
@@ -46,13 +46,13 @@ To create a program mockup from the program itself:
 let program = Program::current(&sys);
 ```
 
-The uploaded program has its own id. You can specify the program id manually using the [`Program::from_file_with_id`](https://docs.gear.rs/gtest/struct.Program.html#method.from_file_with_id) constructor. If you don't specify the program id, the id of the first initialized program will be `0x010000…00` (32-byte _one_, LSB first), and the next program initialized without an id specification will have an id of `0x020000…00` (32-byte _two_, LSB fist) and so on.
+The uploaded program has its own id. You can specify the program id manually using the [`Program::from_file_with_id`](https://docs.gear.rs/gtest/struct.Program.html#method.from_file_with_id) constructor. If you don't specify the program id, the id of the first initialized program will be `0x010000…00` (32-byte _one_, LSB first), and the next program initialized without an id specification will have an id of `0x020000…00` (32-byte _two_, LSB first) and so on.
 
 In the next step, we’ll send messages to our program.
 
 - To send a message to the program, call one of two `Program` methods: [`send`](https://docs.gear.rs/gtest/struct.Program.html#method.send) or [`send_bytes`](https://docs.gear.rs/gtest/struct.Program.html#method.send_bytes). The difference between them is similar to `gstd` functions [`msg::send`](https://docs.gear.rs/gstd/msg/fn.send.html) and [`msg::send_bytes`](https://docs.gear.rs/gstd/msg/fn.send_bytes.html).
 - The first argument in these functions is a sender id, the second one is a message payload.
-- The sender id can be specified as hex, array (`[u8; 32]`), string or `u64`. However, you can’t send a message from the id already taken by the program!
+- The sender id can be specified as hex, byte array (`[u8; 32]`), string or `u64`. However, you can’t send a message from the id already taken by the program!
 - The first message to the `Program` structure is always the initialization message even if the program does not have the `init` function. In our case, it can be any message. But let’s add the `init` function to our program and monitor if that message reaches the program:
 
 ```rust title="src/lib.rs"
