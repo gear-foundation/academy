@@ -4,7 +4,7 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-This lesson is about how to create a simple smart contract program on the Gear platform. The program will send a "Hello" message in response to any incoming message. The lesson describes the step-by-step process of creating a new project, adding dependencies, writing code for the program entry point, and building the project. It also explains the purpose and use of the `gstd` messaging module from the `gstd` library. We conclude with instructions for testing the program. In this tutorial, you will learn how to create a basic smart contract program and gain an understanding of the libraries and tools of the Gear platform.
+This lesson is about how to create a simple smart contract program on the Gear platform. The program will send a "Hello" message in response to any incoming message. The lesson describes the step-by-step process of creating a new project, adding dependencies, writing code for the program entry point, and building the project. It also explains the purpose and use of the [`msg`](https://docs.gear.rs/gstd/msg/) messaging module from the [`gstd`](https://docs.gear.rs/gstd/) library. We conclude with instructions for testing the program. In this tutorial, you will learn how to create a basic smart contract program and gain an understanding of the libraries and tools of the Gear platform.
 
 Let’s implement the program that’ll send a hello message in response to any received messages.
 
@@ -31,7 +31,7 @@ We'll use:
 - `gtest` — a library for testing smart contracts (it will be added as a dev dependency).
 - `gear-wasm-builder` — a helping module that aids in building programs using Gear (it will be added as a build dependency).
 
-It is important to note that we need to use a particular version of these libraries. The compatible libraries version is located in the `academy` branch of the Gear repository. Therefore we are to point it in the `Cargo.toml` file.
+It is important to note that we need to use a particular version of these libraries. The compatible libraries version is located in the `testnet` branch of the Gear repository. Therefore we are to point it in the `Cargo.toml` file.
 
 ```toml title="Cargo.toml"
 [package]
@@ -40,10 +40,10 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-gstd = { git = "https://github.com/gear-tech/gear.git", features = ["debug"], branch = "testnet" }
+gstd = { git = "https://github.com/gear-tech/gear.git", branch = "testnet", features = ["debug"] }
 
 [build-dependencies]
-gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", features = ["wasm-opt"], branch = "testnet" }
+gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", branch = "testnet", features = ["wasm-opt"] }
 
 [dev-dependencies]
 gtest = { git = "https://github.com/gear-tech/gear.git", branch = "testnet" }
