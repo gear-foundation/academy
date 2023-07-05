@@ -10,7 +10,7 @@ One of the ways is to use [Gitpod](https://www.gitpod.io/). **Gitpod** is a tool
 
 ## Using Gitpod
 
-1. The first option to use Gitpod:
+1. Here's the first option when using Gitpod:
 
 - In a browser, navigate to your project in GitHub or GitLab;
 - In the browser’s address bar, prefix the entire URL with `gitpod.io/#` and press <kbd>Enter</kbd>. It will create a cloud development environment and open up a workspace in VS code;
@@ -28,7 +28,7 @@ One of the ways is to use [Gitpod](https://www.gitpod.io/). **Gitpod** is a tool
 
     Now the Gitpod environment is ready for the development of smart contracts on Gear.
 
-2. Another way to get started with Gitpod is by installing the Gitpod extension which is available on Chrome and Firefox:
+2. Another way to get started with Gitpod is by installing the Gitpod extension available on Chrome and Firefox:
 
     - [Chrome](https://chrome.google.com/webstore/detail/gitpod-always-ready-to-co/dodmmooeoklaejobgleioelladacbeki)
     - [Firefox](https://addons.mozilla.org/en-US/firefox/addon/gitpod/)
@@ -39,7 +39,7 @@ One of the ways is to use [Gitpod](https://www.gitpod.io/). **Gitpod** is a tool
 
 ## Setting up the local environment
 
-For this course, macOS and Linux will be the easiest operating systems to use. Windows may be more challenging, however, if you’re ok with that, please feel free to join us using whatever operating system that you have access to and are comfortable with.
+macOS and Linux are the most user-friendly operating systems for this course. While Windows might pose more difficulties, you're welcome to join us using any operating system you feel comfortable with.
 
 1. Linux users should generally install `GCC` and `Clang`, according to their distribution’s documentation.
 
