@@ -4,13 +4,13 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-In this section, you will learn how to start developing smart contracts on Gear: what tools can be used to launch coding-ready development environments for Github projects, setup instructions, alternative ways to start working with Gitpod, and other useful information.
+This section shows how to develop smart contracts on Gear. We'll guide you through setting up coding-ready environments for your GitHub projects. Additionally, we'll share alternative methods to start working with Gitpod and other valuable information.
 
-You can get acquainted with the terms in our glossary or on the site <https://wiki.gear-tech.io/>
+For explanations of unfamiliar terms, check out our glossary or visit our site at <https://wiki.gear-tech.io/>
 
-For answers to all your questions, you can contact our developers on the following platforms:
+If you have questions, reach out to our developers on these platforms:
 
-- Our Telegram channel: <https://t.me/+OFEvRxCn5-NlOWMy>
-- Our Discord server: <https://discord.gg/EEZeGAzUD9>
+- Telegram channel: <https://t.me/+OFEvRxCn5-NlOWMy>
+- Discord server: <https://discord.gg/EEZeGAzUD9>
 
-In the near future, we plan to provide new interesting materials. Follow our communities for the latest news!
+Exciting materials are coming soon, so follow our communities for the latest updates!
