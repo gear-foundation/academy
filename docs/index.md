@@ -6,18 +6,19 @@ hide_table_of_contents: true
 
 # Gear Smart Contract Developer
 
-Our academy will begin with the simplest hello world example. From the first lesson, you will start writing a Tamagotchi contract, which will be expanded and acquire new functionality as you progress through the academy. In the next lessons, we will explore various popular standards and decentralized applications.
+Our academy lessons begin with a straightforward "Hello, World!" example. Right from the first exercise, you will create a Tamagotchi contract, which will progressively expand and gain new functionalities as you advance through the academy. Subsequent lessons will explore popular standards and decentralized applications.
 
-We will also learn the Gear distinctive features that are not found on any other blockchains. Your Tamagotchi contract will be able to check its status itself and communicate with the owner by sending him various messages.
+During the course, you'll discover Gear's unique features setting it apart from other blockchains. Your Tamagotchi contracts have the remarkable ability to check their status independently and communicate with their owners using a variety of messages.
 
-We will also write a shop contract where you can equip your Tamagotchi with various attributes.
+The course also features a shop contract, allowing you to equip your Tamagotchi with unique traits.
 
-The final contract will be a Tamagotchi battle contract in which your Tamagotchi will fight with each other. The course will be interesting, informative and interactive.
+At the end of the lessons, your Tamagotchi will compete in exciting battles against other participants in the Tamagotchi battle contract. The course guarantees an engaging, informative and interactive experience.
 
 ## What will you learn?
 
-- How blockchain work
-- How to build smart contracts and decentralized applications on Gear
-- How to test smart contract
-- Smart contracts interact with the client side
-- A powerful feature of Gear protocol (delayed messages, system signals, system and gas reservation)
+After completing the course, you'll have understood the following concepts: 
+- Blockchain technology mechanics.
+- How to build smart contracts and decentralized applications on Gear.
+- The art of effective smart contract testing.
+- Seamless interaction between smart contracts and the client side.
+- Gear's powerful features like delayed messages, system signals and system and gas reservations.
