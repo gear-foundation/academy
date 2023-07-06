@@ -13,8 +13,8 @@ In this lesson, our Tamagotchi will be interacting with 2 other contracts: `tama
 gstd = { git = "https://github.com/gear-tech/gear.git", rev = "78dfa07", features = ["debug"] }
 scale-info = { version = "2", default-features = false }
 parity-scale-codec = { version = "3", default-features = false }
-ft-main-io = { git = "https://github.com/gear-dapps/sharded-fungible-token.git", tag = "2.1.2" }
-store-io = { git = "https://github.com/gear-dapps/smart-contract-academy.git"  }
+ft-main-io = { git = "https://github.com/gear-foundation/dapps-sharded-fungible-token.git", tag = "2.1.2" }
+store-io = { git = "https://github.com/gear-foundation/dapps-smart-contract-academy.git"  }
 
 # ...
 ```

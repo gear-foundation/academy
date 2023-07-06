@@ -13,7 +13,7 @@ module.exports = async function config() {
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
-    organizationName: 'gear-dapps',
+    organizationName: 'gear-foundation',
     projectName: 'academy',
 
     presets: [
@@ -24,7 +24,7 @@ module.exports = async function config() {
             path: './docs',
             routeBasePath: '/',
             sidebarPath: require.resolve('./sidebars.js'),
-            editUrl: 'https://github.com/gear-dapps/academy/edit/master/',
+            editUrl: 'https://github.com/gear-foundation/academy/edit/master/',
             showLastUpdateTime: true,
             editLocalizedFiles: true,
             remarkPlugins: [math],
@@ -70,7 +70,7 @@ module.exports = async function config() {
               position: 'right',
             },
             {
-              href: 'https://github.com/gear-dapps/academy',
+              href: 'https://github.com/gear-foundation/academy',
               label: 'GitHub',
               position: 'right',
             },
