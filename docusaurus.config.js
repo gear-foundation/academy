@@ -81,14 +81,14 @@ module.exports = async function config() {
           darkTheme: darkCodeTheme,
           additionalLanguages: ['rust', 'toml'],
         },
-        // algolia: {
-        //   appId: '',
-        //   apiKey: '',
-        //   indexName: 'gear-academy',
-        //   contextualSearch: true,
-        //   searchParameters: {},
-        //   searchPagePath: 'search',
-        // },
+        algolia: {
+          appId: 'G9ZWUC4KDW',
+          apiKey: 'efc8d64eb799f47b90edfc19edd0a1a2',
+          indexName: 'academy-gear',
+          contextualSearch: true,
+          searchParameters: {},
+          searchPagePath: 'search',
+        },
       }),
 
     i18n: {
