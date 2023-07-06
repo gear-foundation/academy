@@ -4,17 +4,17 @@ sidebar_position: 4
 hide_table_of_contents: true
 ---
 
-Subwallet is another advanced wallet for managing Substrate as well as EVM accounts.
+SubWallet is another advanced wallet for managing Substrate as well as EVM accounts.
 
 1. To install Subwallet follow this [link](https://subwallet.app/download.html).
 
-2. Open Subwallet by clicking on its logo in the browser menu bar.
+2. Open SubWallet by clicking its logo in the browser menu bar.
 
 3. Click "Create new account":
 
     ![Create Account](/img/02/subwallet-add-account.png)
 
-4. Select the type of account you want to create (Subwallet allows you to create Substrate-like and Ethereum accounts at once). Copy your seed phrase and keep it in the same place:
+4. Select the type of account you want to create (SubWallet allows you to create Substrate-like and Ethereum accounts simultaneously). Copy your seed phrase and keep it in the same place:
 
     ![Choose Type](/img/02/subwallet-choose-type.png)
 
