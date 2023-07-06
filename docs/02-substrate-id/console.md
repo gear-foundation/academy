@@ -1,5 +1,5 @@
 ---
-title: How to create an account via console
+title: How to create an account via a console
 sidebar_position: 7
 hide_table_of_contents: true
 ---
