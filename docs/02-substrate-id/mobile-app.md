@@ -1,5 +1,5 @@
 ---
-title: How to create an account via mobile app
+title: How to create an account via a mobile app
 sidebar_position: 6
 hide_table_of_contents: true
 ---
