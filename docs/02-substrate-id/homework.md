@@ -4,8 +4,8 @@ sidebar_position: 8
 hide_table_of_contents: true
 ---
 
-We hope that you have already created your Substrate ID. Now it's time to use it. Send us your ID to receive the first NFT from our new collection.
+We hope you've already created your Substrate ID. It is now time to utilize your ID. Kindly send us your ID to receive the first NFT from our latest collection.
 
-**Attention:** Once again, make sure you save the seed phrase in a safe place!
+**Attention:** Once again, ensure you save your seed phrase in a safe place!
 
 Example: `5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY`
