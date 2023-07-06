@@ -4,7 +4,7 @@ sidebar_position: 3
 hide_table_of_contents: true
 ---
 
-Talisman is a popular and user-friendly wallet for creating and managing Substrate accounts. Being connected to web3 applications across various networks, the Talisman browser extension allows one to store, send and receive assets.
+Talisman is a popular and user-friendly wallet for creating and managing Substrate accounts. With its seamless integration with web3 applications across different networks, the Talisman browser extension offers a convenient way to store, send and receive assets.
 
 1. Install the Talisman extension for your browser here:
 

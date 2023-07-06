@@ -1,6 +1,6 @@
 # Gear Academy
 
-[![Publish Status](https://github.com/gear-dapps/academy/workflows/Publish/badge.svg)](https://github.com/gear-dapps/academy/actions/workflows/publish.yml?query=branch%3Amaster)
+[![Publish Status](https://github.com/gear-foundation/academy/workflows/Publish/badge.svg)](https://github.com/gear-foundation/academy/actions/workflows/publish.yml?query=branch%3Amaster)
 
 Lessons for the Gear Academy.
 

@@ -5,10 +5,10 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-In this lesson, we'll create a contract where users can put their Tamagotchi up for auction. We'll implement the English auction model.
+In this lesson, we'll learn how to create a contract for auctioning Tamagotchis. We'll use the English auction model, a popular type of auction.
 
-This type of auction starts with the declaration of the minimum bid, which the Tamagotchi owner sets. After this, the interested bidders start placing their bids in ascending order, i.e., the next bid should be higher than the previous one. This process continues until there is a bid above which any other buyer is not interested in buying Tamagotchi. The highest bid is the selling price of Tamagotchi.
+The English auction starts by setting a minimum bid determined by the Tamagotchi owner. Interested bidders then place their bids in increasing order. Each offer must be higher than the previous one. This process continues until no buyer wants to exceed the leading bid. The highest bid becomes the selling price of the Tamagotchi.
 
-As you might guess, your Tamagotchi contract should be extended with functionality that will make it possible to change ownership (it's exactly your homework from the previous lesson).
+To enhance our Tamagotchi contract, we'll add a feature to enable changing ownership (like your homework from the previous lesson).
 
-During the auction, the auction contract temporarily becomes the owner of Tamagotchi. After the auction ends, the contract appoints the new owner of Tamagotchi - the winner of the auction. If no bids were made, Tamagotchi is returned to the previous owner.
+During the auction, the contract temporarily becomes the owner of the Tamagotchi. Once the auction ends, the contract assigns the new owner of the Tamagotchi—the auction winner. If no bids are made, the Tamagotchi is returned to its previous owner.
