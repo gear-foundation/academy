@@ -4,7 +4,7 @@ sidebar_position: 5
 hide_table_of_contents: true
 ---
 
-The Polkadot.js browser extension is the original application created by Parity Technologies for managing Substate accounts. This method involves installing the Polkadot.js plugin and using it as a "virtual vault" that's separate from your browser to store your private keys and sign transactions.
+The Polkadot.js browser extension is the original application created by Parity Technologies for managing Substate accounts. This method involves installing the Polkadot.js plugin and using it as a "virtual vault" separate from your browser to store your private keys and sign transactions.
 
 1. You can install the extension via the following links:
 
@@ -17,9 +17,9 @@ The Polkadot.js browser extension is the original application created by Parity 
 
     ![Add Account](/img/02/polkadot-add-account.png)
 
-4. Save the seed phrase in a safe place using the security advice at the beginning of this article.
+4. Save the seed phrase in a safe place using the security advice at the beginning of this guide.
 
-    Specify the name of your account and a strong password for making transactions. Click "Add the account with the generated seed".
+    Specify your Polkadot.js account name and provide a password to facilitate secure transaction processing. Click "Add the account with the generated seed".
 
     ![Account Details](/img/02/polkadot-account-details.png)
 
@@ -27,7 +27,7 @@ The Polkadot.js browser extension is the original application created by Parity 
 
 :::note
 
-The password that you choose here will be used to encrypt this account's information. You will need to re-enter it when attempting to process any kind of outgoing transaction, or when using it to cryptographically sign a message. This password is stored locally on the browser extension.
+The password you choose here encrypts your account's information. You must re-enter this password for any outgoing transaction or when cryptographically signing a message. It is stored locally on the browser extension.
 
 :::
 
