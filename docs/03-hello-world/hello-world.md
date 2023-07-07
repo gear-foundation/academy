@@ -4,9 +4,8 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-This lesson is about how to create a simple smart contract program on the Gear platform. The program will send a "Hello" message in response to any incoming message. The lesson describes the step-by-step process of creating a new project, adding dependencies, writing code for the program entry point, and building the project. It also explains the purpose and use of the [`msg`](https://docs.gear.rs/gstd/msg/) messaging module from the [`gstd`](https://docs.gear.rs/gstd/) library. We conclude with instructions for testing the program. In this tutorial, you will learn how to create a basic smart contract program and gain an understanding of the libraries and tools of the Gear platform.
-
-Let’s implement the program that’ll send a hello message in response to any received messages.
+In this lesson, you'll learn how to create a simple smart contract program on the Gear platform. The program will promptly respond with a friendly "Hello" message upon receiving any incoming message. The lesson describes the step-by-step process of creating a new project, adding dependencies, writing code for the program entry point and building the project. It also explains the purpose and use of the [`msg`](https://docs.gear.rs/gstd/msg/) messaging module from the [`gstd`](https://docs.gear.rs/gstd/) library. We'll conclude with instructions for testing the program. 
+By the end of this tutorial, you'll have learnt how to create a basic smart contract program and gained an understanding of the libraries and tools of the Gear platform.
 
 To get started, we'll create a new project using the `cargo new` command:
 
@@ -14,7 +13,7 @@ To get started, we'll create a new project using the `cargo new` command:
 cargo new hello-world --lib
 ```
 
-This will create a directory structure for our project with the following files:
+This creates a directory structure for our project with the following files:
 
 ```
 hello-world
@@ -23,15 +22,15 @@ hello-world
         └── lib.rs
 ```
 
-Next, we need to add the necessary dependencies to our `Cargo.toml` file.
+Next, we'll add the necessary dependencies to our `Cargo.toml` file.
 
 We'll use:
 
 - `gstd` — a standard library for smart contracts on Gear.
 - `gtest` — a library for testing smart contracts (it will be added as a dev dependency).
-- `gear-wasm-builder` — a helping module that aids in building programs using Gear (it will be added as a build dependency).
+- `gear-wasm-builder` — a helping module aiding in building programs using Gear (it will be added as a build dependency).
 
-It is important to note that we need to use a particular version of these libraries. The compatible libraries version is located in the `testnet` branch of the Gear repository. Therefore we are to point it in the `Cargo.toml` file.
+Importantly, we must use a particular version of these libraries. The compatible libraries version is located in the `testnet` branch of the Gear repository. Therefore we are to point it in the `Cargo.toml` file.
 
 ```toml title="Cargo.toml"
 [package]
@@ -48,8 +47,7 @@ gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", branch = "t
 [dev-dependencies]
 gtest = { git = "https://github.com/gear-tech/gear.git", branch = "testnet" }
 ```
-
-`debug` feature in the `gstd` library allows putting some text messages using the [`debug!`](https://docs.gear.rs/gstd/macro.debug.html) macro that are useful when debugging the program. `wasm-opt` feature in the `gear-wasm-builder` library is for the output Wasm file optimization that decreases the program's binary file size.
+The `gstd` library's `debug` feature enables the insertion of helpful text messages during program debugging, utilizing the [`debug!`](https://docs.gear.rs/gstd/macro.debug.html) macro. Similarly, the `gear-wasm-builder` library's wasm-opt feature optimizes the output Wasm file, reducing the program's binary size.
 
 Now, let's write the minimum structure of our Gear program in the `lib.rs` file. The `handle` function is the program's entry point. It will be called every time the program receives an incoming message.
 
@@ -61,7 +59,7 @@ use gstd::{msg, prelude::*};
 extern "C" fn handle() {}
 ```
 
-To build our program, we’ll create a custom build script `build.rs` file with the following code:
+To build our program, we'll create a custom build script `build.rs` file with the following code:
 
 ```rust title="build.rs"
 fn main() {
@@ -71,7 +69,7 @@ fn main() {
 
 This build script uses the `gear-wasm-builder` library to build an output Wasm binary with all required flags and settings.
 
-The last file to be added is the Rust toolchain override as we are using a specific toolchain version. We need to create `rust-toolchain.toml` file with the following lines:
+The last file we'll add is the Rust toolchain override, as we require a specific toolchain version. We need to create `rust-toolchain.toml` file with the following lines:
 
 ```toml title="rust-toolchain.toml"
 [toolchain]
@@ -80,7 +78,7 @@ targets = ["wasm32-unknown-unknown"]
 profile = "default"
 ```
 
-Let's check that our modified directory structure looks like this:
+Let's examine our modified directory structure to ensure it matches the following layout: 
 
 ```
 hello-world
@@ -97,9 +95,9 @@ We can now run the `cargo build` command to build our project:
 cargo build  --release
 ```
 
-`gstd::msg` is the messaging module from the `gstd` library, allowing users to process incoming messages, obtain the necessary information about the sender or the message content, and send replies or new messages to other actors (<https://docs.gear.rs/gstd/msg/>).
+`gstd::msg` is the messaging module from the `gstd` library, allowing users to process incoming messages, obtain the necessary information about the sender or the message content and send replies or new messages to other actors (<https://docs.gear.rs/gstd/msg/>).
 
-We'll use the [`msg::reply`](https://docs.gear.rs/gstd/msg/fn.reply.html) function that sends a new message as a reply to the message currently being processed:
+We'll use the [`msg::reply`](https://docs.gear.rs/gstd/msg/fn.reply.html) function, which sends a new message as a reply to the message currently being processed:
 
 ```rust title="src/lib.rs"
 #![no_std]
@@ -118,7 +116,7 @@ Let's rebuild our project:
 cargo build  --release
 ```
 
-If everything goes well, your working directory should now have a `target` directory that resembles this:
+If everything goes well, your working directory should now have a `target` directory resembling this:
 
 ```
 target
@@ -133,9 +131,9 @@ target
 
 The `target/wasm32-unknown-unknown/release` directory should contain two Wasm binaries:
 
-- `hello_world.wasm` is the output Wasm binary built from source files;
-- `hello_world.opt.wasm` is the optimized Wasm aimed to be uploaded to the blockchain.
+- `hello_world.wasm` - the output Wasm binary built from source files;
+- `hello_world.opt.wasm` - the optimized Wasm aimed to be uploaded to the blockchain.
 
-We've learned how to create a simple smart contract program that responds with a "Hello" message to any incoming message.
+We've learned how to create a simple smart contract program responding with a "Hello" message to any incoming message.
 
 Let's test our program.
