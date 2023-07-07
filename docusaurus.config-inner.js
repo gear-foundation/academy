@@ -13,7 +13,7 @@ module.exports = async function config() {
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
-    organizationName: 'gear-dapps',
+    organizationName: 'gear-foundation',
     projectName: 'academy',
 
     presets: [

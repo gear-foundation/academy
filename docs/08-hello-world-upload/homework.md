@@ -58,7 +58,7 @@ pub struct Tamagotchi {
 }
 ```
 
-Clone the repository: <https://github.com/gear-dapps/smart-contract-academy>
+Clone the repository: <https://github.com/gear-foundation/dapps-smart-contract-academy>
 
 Install [Node.js](https://nodejs.org/en/download/) and [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Make sure you have the latest version of the Node.js installed.
 
@@ -75,7 +75,7 @@ yarn
 yarn dev
 ```
 
-There is the [`.env.example`](https://github.com/gear-dapps/smart-contract-academy/blob/master/frontend/.env.example) file. It contains the following line:
+There is the [`.env.example`](https://github.com/gear-foundation/dapps-smart-contract-academy/blob/master/frontend/.env.example) file. It contains the following line:
 
 ```
 VITE_NODE_ADDRESS=wss://testnet.vara.rs
