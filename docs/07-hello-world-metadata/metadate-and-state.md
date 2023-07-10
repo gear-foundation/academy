@@ -4,12 +4,12 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-The lesson explains how metadata is used as an interface map to help transform data into a structured format, allowing dApp's smart contracts and client-side (JavaScript) to exchange data. The metadata interface is described using the [`gmeta`](https://docs.gear.rs/gmeta/) crate, and it is necessary to describe all the types. The lesson also provides an example of how to define metadata for a program and how to read its state. Finally, we show how to use the `metahash()` function to verify the metadata of a program, and how to generate a metadata file that can be used in UI applications.
+The lesson demonstrates the role of metadata as a guide for converting data into a structured format, enabling data exchange between dApp's smart contracts and client-side (JavaScript). The [`gmeta`](https://docs.gear.rs/gmeta/) crate describes the metadata interface, which requires a description for all types. Moreover, the lesson presents an illustrative example of defining metadata for a program and accessing its state. Lastly, we explain the utilization of the `metahash()` function to verify program metadata and generate a metadata file suitable for UI applications.
 
-Metadata is a kind of interface map that helps transform a set of bytes into an understandable structure. It determines how all incoming and outgoing data will be encoded/decoded.
+Metadata acts like an interface map helping transform a set of bytes into an understandable structure. It determines how all incoming and outgoing data will be encoded/decoded.
 
-Metadata allows dApp’s parts - the smart contract and the client side (JavaScript), to understand each other and exchange data.
-To describe the metadata interface we use [`gmeta`](https://docs.gear.rs/gmeta/) crate:
+Metadata allows dApp's parts - the smart contract and the client side (JavaScript), to understand each other and exchange data.
+To describe the metadata interface, we use [`gmeta`](https://docs.gear.rs/gmeta/) crate:
 
 ```rust
 use gmeta::{InOut, Metadata};
@@ -24,7 +24,7 @@ impl Metadata for ProgramMetadata {
 }
 ```
 
-where:
+Where:
 
 - `Init` describes incoming/outgoing types for `init()` function.
 - `Handle` describes incoming/outgoing types for `handle()` function.
@@ -33,9 +33,9 @@ where:
 - `Signal` describes only the outgoing type from the program while processing the system signal.
 - `State` describes the types for the queried state
 
-It is necessary to describe all the types. If any of the endpoints are missing in your program, you can use `()` instead.
+It is necessary to describe all the types. If any endpoints are missing in your program, you can use `()` instead.
 
-Let's define metadata for our example. We’ll create a crate
+Let's define metadata for our example. We'll create a crate
 `hello-world-io` in the directory of our `hello-world` program:
 
 ```bash
@@ -57,7 +57,7 @@ parity-scale-codec = { version = "3", default-features = false }
 scale-info = { version = "2", default-features = false }
 ```
 
-And in the `lib.rs` file, we’ll define an incoming message for the `init` function and the incoming and outgoing messages for the `handle` function:
+And in the `lib.rs` file, we'll define an incoming message for the `init` function and the incoming and outgoing messages for the `handle` function:
 
 ```rust title="hello-world-io/src/lib.rs"
 #![no_std]
@@ -84,9 +84,9 @@ pub enum InputMessages {
 }
 ```
 
-The input for `init` function is a `String`. The input for the handle function is an enum `InputMessage`, and accordingly, the output is `String`. The program state is also `String` (It is a set greeting).
+The `init` function requires a `String` input, while the handle function expects an `InputMessage` enum as input. The output of the handle function is a `String`. The `String` variable represents the program state, which stores a set greeting.
 
-It is possible to read the program state using the `state` function. Reading state is a free function and does not require any gas fees. Let’s define this function in `lib.rs` file of the `hello-world` program:
+You can read the program state by using the state function. Reading the program state costs zero gas fees. We can define this function in the lib.rs file of the hello-world program:
 
 ```rust title="hello-world/src/lib.rs"
 #[no_mangle]
@@ -100,7 +100,7 @@ extern "C" fn state() {
 }
 ```
 
-To make it possible to verify metadata for a program, we’ll use the `metahash()` function:
+To make it possible to verify metadata for a program, we'll use the `metahash()` function:
 
 ```rust title="hello-world/src/lib.rs"
 #[no_mangle]
@@ -114,7 +114,7 @@ extern "C" fn metahash() {
 }
 ```
 
-It’s necessary to add the `hello-world-io` crate to `build-dependencies` in `Cargo.toml` in the `hello-world` program:
+It's necessary to add the `hello-world-io` crate to `build-dependencies` in `Cargo.toml` in the `hello-world` program:
 
 ```toml title="hello-world/Cargo.toml"
 [package]
@@ -139,4 +139,4 @@ fn main() {
 }
 ```
 
-After building the program, a `hello_world.meta.txt` file will be generated as a result of the smart-contract compilation. This metadata file can be used in UI applications that will interact with this smart contract.
+Once you have constructed the program, it will generate a `hello_world.meta.txt` file upon compiling the smart contract. This metadata file is valuable for UI applications for engagement with the smart contract. 
