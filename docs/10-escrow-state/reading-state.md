@@ -21,8 +21,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-gmeta = { git = "https://github.com/gear-tech/gear.git", branch = "testnet" }
-gstd = { git = "https://github.com/gear-tech/gear.git", branch = "testnet" }
+gmeta = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47" }
+gstd = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47" }
 parity-scale-codec = { version = "3", default-features = false }
 scale-info = { version = "2", default-features = false }
 ```
@@ -93,12 +93,6 @@ extern "C" fn state() {
     };
     msg::reply(escrow, 0).expect("Failed to share state");
 }
-
-#[no_mangle]
-extern "C" fn metahash() {
-    let metahash: [u8; 32] = include!(“../.metahash”);
-    msg::reply(metahash, 0).expect("Failed to share metahash");
-}
 ```
 
 Then add dependencies to `Cargo.toml` of the escrow program:
@@ -110,17 +104,17 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-gstd = { git = "https://github.com/gear-tech/gear.git", branch = "testnet", features = ["debug"] }
+gstd = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47", features = ["debug"] }
 parity-scale-codec = { version = "3", default-features = false }
 scale-info = { version = "2", default-features = false }
 escrow-io = { path = "io" }
 
 [build-dependencies]
-gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", branch = "testnet", features = ["wasm-opt"] }
+gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47", features = ["wasm-opt"] }
 escrow-io = { path = "io" }
 
 [dev-dependencies]
-gtest = { git = "https://github.com/gear-tech/gear.git", branch = "testnet" }
+gtest = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47" }
 ```
 
 We'll change the `build.rs` file:
@@ -146,14 +140,14 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-gmeta = {  git = "https://github.com/gear-tech/gear.git", branch = "testnet", features = ["codegen"] }
-gstd = { git = "https://github.com/gear-tech/gear.git", branch = "testnet" }
+gmeta = {  git = "https://github.com/gear-tech/gear.git", rev = "946ac47", features = ["codegen"] }
+gstd = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47" }
 parity-scale-codec = { version = "3", default-features = false }
 scale-info = { version = "2", default-features = false }
 escrow-io = { path = "../io" }
 
 [build-dependencies]
-gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", branch = "testnet", features = ["metawasm", "wasm-opt"] }
+gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47", features = ["metawasm", "wasm-opt"] }
 ```
 
 In the `lib.rs` file, we should define the `metafns` module as follows:

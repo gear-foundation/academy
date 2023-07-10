@@ -4,7 +4,7 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-In this lesson, you'll learn how to create a simple smart contract program on the Gear platform. The program will promptly respond with a friendly "Hello" message upon receiving any incoming message. The lesson describes the step-by-step process of creating a new project, adding dependencies, writing code for the program entry point and building the project. It also explains the purpose and use of the [`msg`](https://docs.gear.rs/gstd/msg/) messaging module from the [`gstd`](https://docs.gear.rs/gstd/) library. We'll conclude with instructions for testing the program. 
+In this lesson, you'll learn how to create a simple smart contract program on the Gear platform. The program will promptly respond with a friendly "Hello" message upon receiving any incoming message. The lesson describes the step-by-step process of creating a new project, adding dependencies, writing code for the program entry point and building the project. It also explains the purpose and use of the [`msg`](https://docs.gear.rs/gstd/msg/) messaging module from the [`gstd`](https://docs.gear.rs/gstd/) library. We'll conclude with instructions for testing the program.
 By the end of this tutorial, you'll have learnt how to create a basic smart contract program and gained an understanding of the libraries and tools of the Gear platform.
 
 To get started, we'll create a new project using the `cargo new` command:
@@ -30,7 +30,7 @@ We'll use:
 - `gtest` — a library for testing smart contracts (it will be added as a dev dependency).
 - `gear-wasm-builder` — a helping module aiding in building programs using Gear (it will be added as a build dependency).
 
-Importantly, we must use a particular version of these libraries. The compatible libraries version is located in the `testnet` branch of the Gear repository. Therefore we are to point it in the `Cargo.toml` file.
+Importantly, we must use a particular version of these libraries. The compatible libraries version is located at the `946ac47` commit of the Gear repository. Therefore we are to point it in the `Cargo.toml` file.
 
 ```toml title="Cargo.toml"
 [package]
@@ -39,13 +39,13 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-gstd = { git = "https://github.com/gear-tech/gear.git", branch = "testnet", features = ["debug"] }
+gstd = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47", features = ["debug"] }
 
 [build-dependencies]
-gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", branch = "testnet", features = ["wasm-opt"] }
+gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47", features = ["wasm-opt"] }
 
 [dev-dependencies]
-gtest = { git = "https://github.com/gear-tech/gear.git", branch = "testnet" }
+gtest = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47" }
 ```
 The `gstd` library's `debug` feature enables the insertion of helpful text messages during program debugging, utilizing the [`debug!`](https://docs.gear.rs/gstd/macro.debug.html) macro. Similarly, the `gear-wasm-builder` library's wasm-opt feature optimizes the output Wasm file, reducing the program's binary size.
 
@@ -78,7 +78,7 @@ targets = ["wasm32-unknown-unknown"]
 profile = "default"
 ```
 
-Let's examine our modified directory structure to ensure it matches the following layout: 
+Let's examine our modified directory structure to ensure it matches the following layout:
 
 ```
 hello-world

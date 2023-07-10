@@ -295,6 +295,7 @@ async fn transfer_tokens(
             },
         },
         0,
+        0,
      )
     .expect("Error in sending a message `FTokenAction::Message`")
     .await;

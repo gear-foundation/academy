@@ -70,6 +70,7 @@ async fn approve_tokens(&mut self, account: &ActorId, amount: u128) {
             },
         },
         0,
+        0,
     )
     .expect("Error in sending a message `FTokenAction::Message`")
     .await;

@@ -10,7 +10,7 @@ One of the key and distinguished features of the Gear Protocol is the Actor mode
 
 If a program sends an asynchronous message to another program, it needs to wait for the reply from that program before it can proceed to the next operation.
 
-To send a message to a Gear program, we use the `send_for_reply(program, payload, value)` function. In this function:
+To send a message to a Gear program, we use the `send_for_reply(program, payload, value, reply_deposit)` function. In this function:
 
 - `program` - the address of the program to send the message for;
 - `payload` - the message to the program;
@@ -20,6 +20,7 @@ To send a message to a Gear program, we use the `send_for_reply(program, payload
 pub fn send_for_reply_as<E: Encode, D: Decode>(
     program: ActorId,
     payload: E,
-    value: u128
+    value: u128,
+    reply_deposit: u64
 ) -> Result<CodecMessageFuture<D>>
 ```
