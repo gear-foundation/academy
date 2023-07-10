@@ -6,7 +6,7 @@ hide_table_of_contents: true
 
 Let's write a smart contract for a Tamagotchi game:
 
-- Create a smart contract Tamagotchi, that will store Tamagotchi’s name and date of birth. The state of your contract should be defined as follows:
+- Create a smart contract for Tamagotchi to store the Tamagotchi's name and date of birth. The contract state should be defined as follows:
 
 ```rust title="tamagotchi-01/io/src/lib.rs"
 #[derive(Default, Encode, Decode, TypeInfo)]
@@ -16,16 +16,17 @@ pub struct Tamagotchi {
 }
 ```
 
-- During initialization, set the name and date of birth of the Tamagotchi and send a reply confirming successful initialization. To set the birth date, use the [`exec::block_timestamp()`](https://docs.gear.rs/gstd/exec/fn.block_timestamp.html) function from `gstd` library. It is a time of block generation. The time is specified in milliseconds that have passed since the beginning of the Unix epoch.
-- Your Tamagochi program should accept the following messages:
+- During initialization, set the Tamagotchi's name and date of birth and send a reply confirming successful initialization. To adjust the birth date, use the [`exec::block_timestamp()`](https://docs.gear.rs/gstd/exec/fn.block_timestamp.html) function from the `gstd` library. It is a time of block generation. The specified time is measured in milliseconds since the start of the Unix epoch.
 
-    - `Name` - the program answers the name of the Tamagochi;
-    - `Age` - the program answers about the age of the Tamagochi.
+- Your Tamagotchi program should accept the following messages:
+
+    - `Name` - the program provides the name of the Tamagotchi.;
+    - `Age` - the program provides information about the Tamagotchi's age.
 
 - Add the state function to your program.
 - Upload your contract to the **Vara Stable Testnet** at the <https://idea.gear-tech.io/>.
 
-To connect your Tamagotchi contract to the frontend application, you need to ensure that the metadata is as follows:
+To connect your Tamagotchi contract to the frontend application, ensure the metadata is as follows:
 
 ```rust title="tamagotchi-01/io/src/lib.rs"
 pub struct ProgramMetadata;
@@ -60,7 +61,7 @@ pub struct Tamagotchi {
 
 Clone the repository: <https://github.com/gear-foundation/dapps-smart-contract-academy>
 
-Install [Node.js](https://nodejs.org/en/download/) and [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Make sure you have the latest version of the Node.js installed.
+Install [Node.js](https://nodejs.org/en/download/) and [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Ensure you have the latest version of Node.js installed.
 
 Then install `yarn`:
 
@@ -75,27 +76,27 @@ yarn
 yarn dev
 ```
 
-There is the [`.env.example`](https://github.com/gear-foundation/dapps-smart-contract-academy/blob/master/frontend/.env.example) file. It contains the following line:
+You'll find the [`.env.example`](https://github.com/gear-foundation/dapps-smart-contract-academy/blob/master/frontend/.env.example) file. Inside, you'll see the following line:
 
 ```
 VITE_NODE_ADDRESS=wss://testnet.vara.rs
 ```
 
-It means that the application is running on the Vara Testnet node. You can also [run a local node](https://wiki.gear-tech.io/docs/node/dev-net), upload a Tamagotchi contract, and work with contracts on a local node by indicating:
+It means the application is running on the Vara Testnet node. You can also [run a local node](https://wiki.gear-tech.io/docs/node/dev-net), upload a Tamagotchi contract and work with contracts on a local node by indicating:
 
 ```
 VITE_NODE_ADDRESS=ws://localhost:9944
 ```
 
-It also contains other variables but we'll need them in the next lessons. For the first lesson, you should edit your own `.env` file and check whether the `VITE_NODE_ADDRESS` variable is set to `wss://testnet.vara.rs` there.
+It also contains other variables, but we'll need them in future lessons. For the first lesson, edit your own `.env` file and check whether the `VITE_NODE_ADDRESS` variable is set to `wss://testnet.vara.rs` there.
 
-After running the `yarn dev` command and opening <http://localhost:3000> in a browser you will see the following window:
+After running the `yarn dev` command and opening <http://localhost:3000> in a browser, you will see the following window:
 
 ![Frontend](/img/08/frontend.jpg)
 
-Select **Lesson 1**, paste your Tamagotchi program address, press the **Create Tamagotchi** button, and you’ll see your Tamagotchi!
+Select **Lesson 1** and paste your Tamagotchi program address. Then, click the **Create Tamagotchi** button to witness your Tamagotchi come to life!
 
-Please attach a link to the pull request (PR) in your repo with your Tamagotchi contract. Also, please paste your Tamagotchi program address.
+Please provide a link to the pull request (PR) in your repository containing your Tamagotchi contract. Also, please paste your Tamagotchi program address.
 
 Example:
 
