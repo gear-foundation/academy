@@ -4,9 +4,9 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-Finally, you can learn how to write tests for a smart contract program using the Rust programming language and the `gtest` library. Specifically, this lesson through how to test an escrow smart contract program by initializing the contract, depositing funds from the buyer's account, and checking for correct contract execution and failure cases.
+You can now learn to write tests for a smart contract program using the Rust programming language and the `gtest` library. This lesson guides you through testing an escrow smart contract program. It covers initializing the contract, depositing funds from the buyer's account and checking for accurate contract execution and failure cases.
 
-Let’s test our method. We’ll first create the `tests` directory and `escrow_test.rs` file:
+Let's test our method. We'll first create the `tests` directory and `escrow_test.rs` file:
 
 ```bash
 mkdir tests
@@ -14,7 +14,7 @@ cd tests
 touch escrow_test.rs
 ```
 
-We’ll import necessary structures from `gtest` library and escrow crate and define constants for Buyer, Seller and product price. Then, we’ll send an init message using the following code:
+We'll import necessary structures from the `gtest` library and escrow crate and define constants for the buyer, seller and product price. Then, we'll send an init message using the following code:
 
 ```rust title="tests/escrow_test.rs"
 use escrow_io::{InitEscrow, EscrowAction, EscrowEvent};
@@ -41,8 +41,8 @@ fn deposit() {
 }
 ```
 
-Next, we’ll send a message from the Buyer’s account using the
-[`Program::send_with_value`](https://docs.gear.rs/gtest/struct.Program.html#method.send_with_value) function instead of [`Program::send`](https://docs.gear.rs/gtest/struct.Program.html#method.send) function since we need to send a message with funds. However, in the test node, the account balance is zero, so we’ll have to change it:
+Next, we'll send a message from the buyer's account using the
+[`Program::send_with_value`](https://docs.gear.rs/gtest/struct.Program.html#method.send_with_value) function instead of [`Program::send`](https://docs.gear.rs/gtest/struct.Program.html#method.send) function since we need to send a message with funds. However, the account balance is zero in the test node, so we need to modify it:
 
 ```rust title="tests/escrow_test.rs"
 sys.mint_to(BUYER, PRICE);
@@ -76,7 +76,7 @@ fn init_escrow(sys: &System) {
 }
 ```
 
-We can use the [`System::get_program`](https://docs.gear.rs/gtest/struct.System.html#method.get_program) function from the `gtest` library to get the program in the test function. As you remember from the first lesson, our program is initialized with the first id. So, the full code of the deposit test function is as follows:
+To obtain the program within the test function, we can utilize the [`System::get_program`](https://docs.gear.rs/gtest/struct.System.html#method.get_program) function provided by the `gtest` library. As discussed in our first lesson, we initialize our program with the first ID. Hence, the complete code for the deposit test function is as follows:
 
 ```rust title="tests/escrow_test.rs"
 const ESCROW_ID: u64 = 1;
@@ -105,15 +105,15 @@ fn deposit() {
 }
 ```
 
-At the end of the test, we’ll also check that the funds are credited to the program using the [`System::balance_of`](https://docs.gear.rs/gtest/struct.System.html#method.balance_of) function.
+At the end of the test, we'll also verify the funds' credit to the program using the [`System::balance_of`](https://docs.gear.rs/gtest/struct.System.html#method.balance_of) function.
 
-It's crucial to test the correct contract execution and the failed cases. We have to check that the contract panics if:
+It's crucial to test the correct contract execution and the failed cases. We have to confirm the contract panics if:
 
 - The message was sent from the wrong account;
-- Buyer attached not enough funds;
+- The buyer attaches inadequate funds;
 - The escrow state is not `AwaitingPayment`.
 
-So, let’s test all panics in the `deposit` function:
+Let's test all panics in the `deposit` function:
 
 ```rust title="tests/escrow_test.rs"
 #[test]
