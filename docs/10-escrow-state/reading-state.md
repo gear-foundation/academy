@@ -6,13 +6,13 @@ hide_table_of_contents: true
 
 This lesson teaches how to use an escrow smart contract in a blockchain transaction to add safety for both parties. It explains the process of using an escrow smart contract, from agreeing to terms to the automatic transfer of funds to the seller's digital wallet.
 
-Let’s extend the functionality of our escrow program by adding program metadata. We’ll start by creating a crate `escrow-io` in the directory of the escrow program:
+Let's extend the functionality of our escrow program by adding program metadata. We'll start by creating a crate `escrow-io` in the directory of the escrow program:
 
 ```bash
 cargo new io --lib
 ```
 
-The `Cargo.toml` file of that crate will contain the following:
+The `Cargo.toml` file of the `escrow-io` crate will contain the following:
 
 ```toml title="io/Cargo.toml"
 [package]
@@ -27,7 +27,7 @@ parity-scale-codec = { version = "3", default-features = false }
 scale-info = { version = "2", default-features = false }
 ```
 
-Now we can move `InitEscrow`, `EscrowAction`, `EscrowEvent`, `EscrowState` and `Escrow` to that crate and define the `ProgramMetadata` as follows:
+Now, we can move `InitEscrow`, `EscrowAction`, `EscrowEvent`, `EscrowState` and `Escrow` to the `escrow-io` crate and define the `ProgramMetadata` as follows:
 
 ```rust title="io/src/lib.rs"
 #![no_std]
@@ -101,7 +101,7 @@ extern "C" fn metahash() {
 }
 ```
 
-Add dependencies to `Cargo.toml` of the escrow program:
+Then add dependencies to `Cargo.toml` of the escrow program:
 
 ```toml title="Cargo.toml"
 [package]
@@ -123,7 +123,7 @@ escrow-io = { path = "io" }
 gtest = { git = "https://github.com/gear-tech/gear.git", branch = "testnet" }
 ```
 
-We’ll change the `build.rs` file:
+We'll change the `build.rs` file:
 
 ```rust title="build.rs"
 fn main() {
@@ -156,7 +156,7 @@ escrow-io = { path = "../io" }
 gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", branch = "testnet", features = ["metawasm", "wasm-opt"] }
 ```
 
-In the `lib.rs` file, we should define `metafns` module as follows:
+In the `lib.rs` file, we should define the `metafns` module as follows:
 
 ```rust title="state/src/lib.rs"
 #![no_std]
@@ -170,7 +170,7 @@ pub mod metafns {
 }
 ```
 
-It’s also necessary to define the type of program state, which is the `Escrow` type in this case. We can do it by adding `type State = Escrow`:
+It's also necessary to define the type of program state, which is the `Escrow` type in this case. We can do it by adding `type State = Escrow`:
 
 ```rust title="state/src/lib.rs"
 #![no_std]
@@ -185,7 +185,7 @@ pub mod metafns {
 }
 ```
 
-Now that we've defined the trait and the state type, we can write any functions we want that concern the `Escrow` state. For example:
+Having defined the trait and the state type, we can write any functions concerning the `Escrow` state. For example:
 
 ```rust title="state/src/lib.rs"
 #![no_std]
@@ -211,7 +211,7 @@ pub mod metafns {
 }
 ```
 
-Finally, we’ll create the `build.rs` file of the state as follows:
+Finally, we'll create the `build.rs` file of the state as follows:
 
 ```rust title="state/build.rs"
 fn main() {
