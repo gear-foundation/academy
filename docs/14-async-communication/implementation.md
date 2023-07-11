@@ -4,55 +4,61 @@ sidebar_position: 3
 hide_table_of_contents: true
 ---
 
-We propose to split the fungible token into three contracts:
+We propose dividing the fungible token into three contracts to improve its functionality and flexibility. Let's take a look at each contract:
 
-1. The **Master** fungible token serves as a proxy program that redirects the message to the logic contract.
-2. The **Token Logic Contract** is responsible for realizing the main standard token functions. We place the logic in a separate contract to add more functions without losing the address of the fungible token and the contract state.
-3. **Storage Contracts**: these contracts store the balances of the users.
+1. The **Master** fungible token acts as a proxy program redirecting messages to the logic contract.
+2. The **Token Logic Contract** handles the main standard token functions. By separating the logic into its own contract, we can easily add more functions without affecting the fungible token's address and contract state.
+3. **Storage Contracts**: These contracts securely store the users' balances.
+
+To help you visualize the interaction between the contracts, take a look at the image below:
 
 ![FT Contracts Interaction](/img/14/ft-contracts-interaction.jpg)
 
 ## Storage contract architecture
 
-The storage contracts state has the following fields:
+The storage contract architecture consists of several crucial components. Let's break them down:
 
-- **The address of the logic contract.** The storage contract must execute messages received only from that address.
+- 1. **The Logic Contract Address**: This field contains the address of the logic contract. The storage contract only processes messages from this specific address. 
 
     ```rust
     ft_logic_id: ActorId
     ```
 
-- **The executed transactions.** In each message, the storage contract receives the hash of the transaction that is being executed and stores its execution results in the field `Executed`. If `Executed` is true, then the message executed successfully, otherwise `Executed` equals false.
+- **Executed Transactions**: When the storage contract receives a message, it stores the hash of the transaction it's executing and keeps the results of the execution in the `Executed` field. If `Executed` is true, it indicates the successful execution of the message. Otherwise, if `Executed` is false, it shows an unsuccessful message execution.
 
     ```rust
     transaction_status: HashMap<H256, (Executed, Locked)>
     ```
 
-- **Balances of accounts.**
+- **Account Balances**: This field stores the balances of different accounts. It tracks the number of tokens held by each account.
 
     ```rust
     balances: HashMap<ActorId, u128>
     ```
 
-- **Approvals of accounts.**
+- **Approvals of accounts**: This field stores approvals accounts make. It enables one account to grant permission to another account to transfer its tokens. The approvals are stored in a nested structure.
 
     ```rust
     approvals: HashMap<ActorId, HashMap<ActorId, u128>>
     ```
 
-The messages that the storage accepts:
+The storage contract can handle the following message types:
 
-- **Increase balance**: the storage raises the balance of the indicated account;
-- **Decrease balance**: The storage reduces the balance of the indicated account;
-- **Approve**: The storage allows the account to give another account permission to transfer his tokens;
-- **Transfer**: Transfer tokens from one account to another. The message is called from the logic contract when the token transfer occurs in one storage.
-- **Clear**: Remove the hash of the executed transaction.
+- *- **Increase Balance**: This message increases the balance of a specific account. It adds tokens to the indicated account.
+
+- **Decrease Balance**: This message reduces the balance of a specific account. It deducts tokens from the indicated account.
+
+- **Approve**: With this message, an account can give another account permission to transfer its tokens. It establishes a trust relationship between the accounts.
+
+- **Transfer**: This message enables the transfer of tokens from one account to another. It is called from the logic contract when a token transfer occurs within the storage. Tokens move between the accounts involved.
+
+- **Clear**: This message removes the hash of an executed transaction. It helps maintain a clean record of transactions.
 
 That storage contract doesn't make any asynchronous calls, so its execution is atomic.
 
 ## The logic contract architecture
 
-The state of the logic contract consists of the following fields:
+**NOTE**: The storage contract's execution is atomic, meaning it doesn't make asynchronous calls.
 
 - **The master token contract address.** The logic contract must execute messages only from that address.
 
