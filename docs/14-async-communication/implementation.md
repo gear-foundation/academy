@@ -58,7 +58,11 @@ That storage contract doesn't make any asynchronous calls, so its execution is a
 
 ## The logic contract architecture
 
-**NOTE**: The storage contract's execution is atomic, meaning it doesn't make asynchronous calls.
+:::note
+
+The storage contract's execution is atomic, meaning it doesn't make asynchronous calls.
+
+:::
 
 - **The master token contract address.** The logic contract must execute messages only from that address.
 
