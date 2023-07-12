@@ -7,24 +7,23 @@ hide_table_of_contents: true
 
 Before we start coding the auction smart contract, we'll discuss smart contract automation.
 
-Smart contracts cannot auto-execute. Their code will not run and make state changes on blockchain until triggered by an on-chain transaction. The external transaction serves as a “poke” to wake the smart contract up and initiate its logic. For example, we can start the auction by sending a message to the auction contract.
+In this lesson, we will explore the concept of smart contract automation to make program execution more efficient. Smart contracts cannot execute automatically. They require an on-chain transaction to trigger their code and initiate any state changes on the blockchain. Essentially, we need to "poke" the smart contract by sending a message to wake it up and activate its logic. For instance, we can start an auction by sending a message to the auction contract.
 
-When the auction time has passed, it's necessary to process the result of the auction. However, the result will not be processed until someone sends an appropriate message to the contract.
-
-In Gear, we solve that problem with delayed messages.
+Once the auction time has elapsed, we need to process the auction's result. However, result processing will only occur once the contract receives the appropriate message.
+In Gear, we tackle this challenge using delayed messages.
 
 ```rust
 msg::send_delayed(program, payload, value, delay)
 msg::send_bytes_delayed(program, payload, value, delay)
 ```
 
-The delayed message is executed after the indicated delay. It's quite convenient in our case: we can start the auction by sending a message to the auction contract. After completing all the necessary logic, the auction contract will send a delayed message to itself, which will settle the auction after the indicated time.
+A delayed message executes after a specified delay, which is practical in our case, as we can initiate the auction by sending a message to the auction contract. Once all the necessary logic is complete, the auction contract will send a delayed message to itself, settling the auction after the specified time.
 
-So, the ability to send delayed messages allows you to automate the contract execution. The contract can self-execute an unlimited block number provided there’s enough gas for execution. But the execution can be interrupted if the gas runs out.
+Therefore, by utilizing delayed messages, we can automate the execution of a contract. As long as there is sufficient gas for execution, the contract can self-execute for an unlimited block number. However, if the gas runs out, the execution may be interrupted.
 
-Gear protocol allows another powerful feature - gas reservation. A developer can reserve gas that can be used to send usual or delayed messages.
+The Gear protocol offers another powerful feature: gas reservation. Developers can reserve gas, which they can later to send regular or delayed messages.
 
-To reserve the amount of gas for further usage use the following function:
+To reserve a specific amount of gas for future usage, you can use the following function:
 
 ```rust
 let reservation_id = ReservationId::reserve(
@@ -33,9 +32,11 @@ let reservation_id = ReservationId::reserve(
 ).expect("reservation across executions");
 ```
 
-That function takes some defined amount of gas from the amount available for this program and reserves it. A reservation gets a unique identifier used by a program to get this reserved gas and use it later.
+This function deducts the specified amount of gas from the available amount for the program and reserves it. Each reservation receives a unique identifier, which the program can use to access and utilize the reserved gas later.
 
-You also have to indicate the block count within which the reserve must be used. Gas reservation is not free: the reservation for one block costs 100 gas. The reserve function returns `ReservationId`, used for sending a message with that gas. To send a message using the reserved gas:
+You also have to indicate the block count within which the reserve must be used. Remember, gas reservation is not free and costs 100 gas. The reserve function returns the `ReservationId`, which is used for sending a message with the gas you reserved. 
+
+To send a message using the reserved gas:
 
 ```rust
 msg::send_from_reservation(
