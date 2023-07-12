@@ -44,7 +44,7 @@ The storage contract architecture consists of several crucial components. Let's 
 
 The storage contract can handle the following message types:
 
-- *- **Increase Balance**: This message increases the balance of a specific account. It adds tokens to the indicated account.
+- **Increase Balance**: This message increases the balance of a specific account. It adds tokens to the indicated account.
 
 - **Decrease Balance**: This message reduces the balance of a specific account. It deducts tokens from the indicated account.
 
