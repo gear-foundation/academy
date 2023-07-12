@@ -279,7 +279,7 @@ async fn buy_attribute(&mut self, attribute_id: AttributeId) {
 
 You must add the `CompletePrevTx` event to `StoreEvent` to ensure accurate event tracking.
 
-Okay, now let's create a function for selling attributes. SSelling attributes is similar to executing the NFT transfer. In this case, we'll assign the attribute ID to the Tamagotchi contract.
+Okay, now let's create a function for selling attributes. Selling attributes is similar to executing the NFT transfer. In this case, we'll assign the attribute ID to the Tamagotchi contract.
 
 First, we'll write the function for the token transfer:
 
