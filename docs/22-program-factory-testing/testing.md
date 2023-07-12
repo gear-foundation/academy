@@ -5,9 +5,9 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-Before testing the Escrow Factory smart contract, we need to set up the environment.
+Let's set up our environment before testing the Escrow Factory smart contract.
 
-Upload the code of the Escrow contract:
+First, we need to upload the code of the Escrow contract. Take a look at the code snippet below:
 
 ```rust
 use gtest::{Program, System};
@@ -23,4 +23,4 @@ fn init_escrow_factory() {
 }
 ```
 
-Continue to test the contract as you learned in previous lessons.
+After uploading the code, continue testing the contract, applying the techniques you learned in previous lessons.
