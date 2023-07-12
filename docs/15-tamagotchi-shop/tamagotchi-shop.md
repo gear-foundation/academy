@@ -153,7 +153,11 @@ extern "C" fn init() {
 }
 ```
 
-**NOTE:** We use the `async fn main()` syntax along with the `#[gstd::async_main]` macros instead of the `handle()` function. When we have asynchronous functions in our contract, the async main function becomes the starting point of our program.
+:::note
+
+We use the `async fn main()` syntax along with the `#[gstd::async_main]` macros instead of the `handle()` function. When we have asynchronous functions in our contract, the async main function becomes the starting point of our program.
+
+:::
 
 The `buy_attribute` function is asynchronous because the store contract needs to send a message to the token contract and wait for a reply.
 
