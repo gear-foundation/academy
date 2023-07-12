@@ -4,7 +4,7 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-The lesson demonstrates the role of metadata as a guide for converting data into a structured format, enabling data exchange between dApp's smart contracts and client-side (JavaScript). The [`gmeta`](https://docs.gear.rs/gmeta/) crate describes the metadata interface, which requires a description for all types. Moreover, the lesson presents an illustrative example of defining metadata for a program and accessing its state. Lastly, we explain the utilization of the `metahash()` function to verify program metadata and generate a metadata file suitable for UI applications.
+The lesson demonstrates the role of metadata as a guide for converting data into a structured format, enabling data exchange between dApp's smart contracts and client-side (JavaScript). The [`gmeta`](https://docs.gear.rs/gmeta/) crate describes the metadata interface, which requires a description for all types. Moreover, the lesson presents an illustrative example of defining metadata for a program and accessing its state.
 
 Metadata acts like an interface map helping transform a set of bytes into an understandable structure. It determines how all incoming and outgoing data will be encoded/decoded.
 
@@ -18,7 +18,7 @@ impl Metadata for ProgramMetadata {
     type Init = InOut<MessageInitIn, MessageInitOut>;
     type Handle = InOut<MessageIn, MessageOut>;
     type Others = InOut<MessageAsyncIn, Option<u8>>;
-    type Reply = InOut<String, Vec<u16>>;
+    type Reply = String;
     type Signal = ();
     type State = Vec<u128>;
 }
@@ -29,7 +29,7 @@ Where:
 - `Init` describes incoming/outgoing types for `init()` function.
 - `Handle` describes incoming/outgoing types for `handle()` function.
 - `Others` describes incoming/outgoing types for `main()` function in case of asynchronous interaction.
-- `Reply` describes incoming/outgoing types of messages performed using the `handle_reply()` function.
+- `Reply` describes an incoming type of messages performed using the `handle_reply()` function.
 - `Signal` describes only the outgoing type from the program while processing the system signal.
 - `State` describes the types for the queried state
 
@@ -51,8 +51,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-gmeta = { git = "https://github.com/gear-tech/gear.git", branch = "testnet" }
-gstd = { git = "https://github.com/gear-tech/gear.git", branch = "testnet" }
+gmeta = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47" }
+gstd = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47" }
 parity-scale-codec = { version = "3", default-features = false }
 scale-info = { version = "2", default-features = false }
 ```
@@ -100,20 +100,6 @@ extern "C" fn state() {
 }
 ```
 
-To make it possible to verify metadata for a program, we'll use the `metahash()` function:
-
-```rust title="hello-world/src/lib.rs"
-#[no_mangle]
-// It returns the hash of metadata.
-// .metahash is generating automatically
-// while you are using build.rs
-extern "C" fn metahash() {
-    let metahash: [u8; 32] = include!("../.metahash");
-    msg::reply(metahash, 0)
-        .expect("Failed to share metahash");
-}
-```
-
 It's necessary to add the `hello-world-io` crate to `build-dependencies` in `Cargo.toml` in the `hello-world` program:
 
 ```toml title="hello-world/Cargo.toml"
@@ -125,7 +111,7 @@ edition = "2021"
 # ...
 
 [build-dependencies]
-gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", features = ["wasm-opt"], branch = "testnet" }
+gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", features = ["wasm-opt"], rev = "946ac47" }
 hello-world-io = { path = "io" }
 ```
 
@@ -139,4 +125,4 @@ fn main() {
 }
 ```
 
-Once you have constructed the program, it will generate a `hello_world.meta.txt` file upon compiling the smart contract. This metadata file is valuable for UI applications for engagement with the smart contract. 
+Once you have constructed the program, it will generate a `hello_world.meta.txt` file upon compiling the smart contract. This metadata file is valuable for UI applications for engagement with the smart contract.

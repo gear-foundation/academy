@@ -10,7 +10,7 @@ In this lesson, our Tamagotchi will be interacting with 2 other contracts: `tama
 # ...
 
 [dependencies]
-gstd = { git = "https://github.com/gear-tech/gear.git", rev = "78dfa07", features = ["debug"] }
+gstd = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47", features = ["debug"] }
 scale-info = { version = "2", default-features = false }
 parity-scale-codec = { version = "3", default-features = false }
 ft-main-io = { git = "https://github.com/gear-foundation/dapps-sharded-fungible-token.git", tag = "2.1.2" }
@@ -69,6 +69,7 @@ async fn approve_tokens(&mut self, account: &ActorId, amount: u128) {
                 amount,
             },
         },
+        0,
         0,
     )
     .expect("Error in sending a message `FTokenAction::Message`")

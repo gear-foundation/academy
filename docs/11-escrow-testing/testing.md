@@ -37,7 +37,7 @@ fn deposit() {
             price: PRICE,
         },
     );
-    assert!(res.log().is_empty());
+    assert!(!res.main_failed());
 }
 ```
 
@@ -72,7 +72,7 @@ fn init_escrow(sys: &System) {
             price: PRICE,
         },
     );
-    assert!(res.log().is_empty());
+    assert!(!res.main_failed());
 }
 ```
 

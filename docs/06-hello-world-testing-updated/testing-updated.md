@@ -19,7 +19,6 @@ fn hello_test() {
     let program = Program::current(&sys);
     let res = program.send_bytes(2, String::from("Hello"));
     assert!(!res.main_failed());
-    assert!(res.log().is_empty());
 
     // test `SendHelloTo`
     let hello_recipient: u64 = 4;

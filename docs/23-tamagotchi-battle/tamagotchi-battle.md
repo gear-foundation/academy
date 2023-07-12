@@ -121,7 +121,7 @@ The `get_owner` function retrieves the Tamagotchi's owner from the Tamagotchi co
 
 ```rust
 pub async fn get_owner(tmg_id: &ActorId) -> ActorId {
-    let reply: TmgEvent = msg::send_for_reply_as(*tmg_id, TmgAction::Owner, 0)
+    let reply: TmgEvent = msg::send_for_reply_as(*tmg_id, TmgAction::Owner, 0, 0)
         .expect("Error in sending a message `TmgAction::Owner")
         .await
         .expect("Unable to decode TmgEvent");
@@ -145,6 +145,7 @@ async fn get_attributes(
         StoreAction::GetAttributes {
             Tamagotchi_id: *tmg_id,
         },
+        0,
         0,
     )
     .expect("Error in sending a message `StoreAction::GetAttributes")
