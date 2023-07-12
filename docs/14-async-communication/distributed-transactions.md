@@ -6,12 +6,12 @@ hide_table_of_contents: true
 
 This lesson discusses the interactions between programs in the Gear Protocol, which involve distributed transactions across actors with their respective states.
 
-Interactions between programs in the Gear Protocol create distributed transactions that involve operations across actors with their respective states. In our case, operations are performed across actors with their states. The distributed transactions must possess the following features:
+Programs in the Gear Protocol interact and create distributed transactions involving processes across actors and their respective states. In our case, operations occur across actors and their states. The distributed transactions must have the following features:
 
-- **Atomicity**: All data changes are treated as if they were a single operation. That is, either all of the modifications are made or none.
-- **Consistency**: This property implies that when a transaction begins and ends, the state of data is consistent.
+- **Atomicity**: All data changes are treated as a single operations, i.e, either all of the modifications are made or none.
+- **Consistency**: This property implies the state of data is consistent when a transaction begins and ends.
 
-For instance, in Ethereum transactions, global state changes only occur when all executions finish successfully. If an error occurs during execution, all changes to the state are "rolled back," as if the transaction had never been running. Let’s look at the following code:
+In Ethereum transactions, global state changes happen only when all executions complete successfully. If an error occurs, the state changes are rolled back, as if the transaction never happened. Now, consider the code below:
 
 ```rust
 static mut COUNTER: u32 = 0;
@@ -28,7 +28,7 @@ async unsafe fn non_atomic() {
 }
 ```
 
-In the example code provided, the global variable `COUNTER` is set to `10` before the `send_for_reply` function is called. If the transaction fails before `.await`, the state is rolled back, and `COUNTER` returns to `0`. If the transaction fails after `.await`, `COUNTER` retains its value of `10`. Let’s consider an example of a simple marketplace where tokens are transferred to the seller, and then transfers NFT to the buyer.
+The given code example sets the global variable `COUNTER` to `10` before invoking the `send_for_reply` function. If the transaction fails prior to `.await`, the state is rolled back, resetting `COUNTER` to `0`. Conversely, if the transaction fails after `.await`, `COUNTER` maintains its initial value of `10`.
 
 ![Marketplace Diagram](/img/14/marketplace-diagram.jpg)
 
