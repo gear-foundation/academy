@@ -19,7 +19,7 @@ static mut COUNTER: u32 = 0;
 async unsafe fn non_atomic() {
     COUNTER = 10;
 
-    send_for_reply(msg::source(), "PING", 0)
+    send_for_reply(msg::source(), "PING", 0, 0)
         .expect("Error during sending message")
         .await
         .expect("Error during message execution");

@@ -154,7 +154,7 @@ Where the function for getting the owner is:
 async fn get_owner(tamagotchi_id: &TamagotchiId)
     -> Result<ActorId, AuctionError>
 {
-    let reply = msg::send_for_reply_as(*tamagotchi_id, TmgAction::Owner, 0)
+    let reply = msg::send_for_reply_as(*tamagotchi_id, TmgAction::Owner, 0, 0)
         .expect("Error in sending a message `TmgAction::Owner` to Tamagotchi contract")
         .await;
     match reply {
@@ -178,6 +178,7 @@ async fn change_owner(
         TmgAction::ChangeOwner {
             new_owner: *new_owner,
         },
+        0,
         0,
     )
     .expect("Error in sending a message `TmgAction::ChangeOwner` to Tamagotchi contract")
