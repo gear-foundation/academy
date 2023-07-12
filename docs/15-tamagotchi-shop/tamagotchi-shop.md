@@ -248,7 +248,7 @@ async fn buy_attribute(&mut self, attribute_id: AttributeId) {
     let (transaction_id, attribute_id) = if let Some((transaction_id, prev_attribute_id)) =
         self.transactions.get(&msg::source())
     {
-        //If `prev_attribute_id` is not equal to `attribute_id`, it means the transaction wasn't completed
+        // If `prev_attribute_id` is not equal to `attribute_id`, it means the transaction wasn't completed
         // We'll ask the Tamagotchi contract to complete the previous transaction
         if attribute_id != *prev_attribute_id {
             msg::reply(
