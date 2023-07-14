@@ -23,7 +23,11 @@ If there's reserved gas and no system messages occur during the ongoing executio
 
 Using custom async logic involves storing Futures in the program's memory in Gear. The execution context of these Futures can occupy a significant amount of memory, especially when dealing with many Futures.
 
-**Note:** If a program sends a message and waits for a reply but cannot receive it, it may be due to insufficient gas. For instance, when the initial message in the waitlist runs out of gas or the gas amount is inadequate, the program cannot receive a reply.
+:::note
+
+If a program sends a message and waits for a reply but cannot receive it, it may be due to insufficient gas. For instance, when the initial message in the waitlist runs out of gas or the gas amount is inadequate, the program cannot receive a reply.
+
+:::
 
 To handle signals in your program, you can define your own `my_handle_signal` entry point and write custom logic for your program.  
 
