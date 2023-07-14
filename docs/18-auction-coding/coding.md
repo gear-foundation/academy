@@ -478,7 +478,7 @@ async fn settle_auction(&mut self)
         return Err(AuctionError::WrongState);
     }
 
-    //It's possible that there is a pending `MakeBid` transaction
+    // It's possible that there is a pending `MakeBid` transaction
     if let Some(tx) = self.transaction.clone() {
         match tx {
             Transaction::MakeBid { .. } => {
