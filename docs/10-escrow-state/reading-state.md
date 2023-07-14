@@ -215,4 +215,4 @@ fn main() {
 }
 ```
 
-Once we've built the crate, we'll use the`escrow_state.meta.wasm` file in our UI applications to interact with the smart contract.
+Once we've built the crate, we'll use the `escrow_state.meta.wasm` file in our UI applications to interact with the smart contract.
