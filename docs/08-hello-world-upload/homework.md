@@ -16,7 +16,7 @@ pub struct Tamagotchi {
 }
 ```
 
-- During initialization, set the Tamagotchi's name and date of birth and send a reply confirming successful initialization. To adjust the birth date, use the [`exec::block_timestamp()`](https://docs.gear.rs/gstd/exec/fn.block_timestamp.html) function from the `gstd` library. It is a time of block generation. The specified time is measured in milliseconds since the start of the Unix epoch.
+- During initialization, set the Tamagotchi's name and date of birth and send a reply confirming successful initialization. You can modify the birth date by utilizing the [`exec::block_timestamp()`](https://docs.gear.rs/gstd/exec/fn.block_timestamp.html) function from the `gstd` library. This function represents the block generation time in milliseconds measured since the beginning of the Unix epoch.
 
 - Your Tamagotchi program should accept the following messages:
 
@@ -82,23 +82,25 @@ You'll find the [`.env.example`](https://github.com/gear-foundation/dapps-smart-
 VITE_NODE_ADDRESS=wss://testnet.vara.rs
 ```
 
-It means the application is running on the Vara Testnet node. You can also [run a local node](https://wiki.gear-tech.io/docs/node/dev-net), upload a Tamagotchi contract and work with contracts on a local node by indicating:
+It means the application is running on the Vara Testnet node. 
+
+You can also [run a local node](https://wiki.gear-tech.io/docs/node/dev-net), upload a Tamagotchi contract and work with contracts on a local node by indicating:
 
 ```
 VITE_NODE_ADDRESS=ws://localhost:9944
 ```
 
-It also contains other variables, but we'll need them in future lessons. For the first lesson, edit your own `.env` file and check whether the `VITE_NODE_ADDRESS` variable is set to `wss://testnet.vara.rs` there.
+It also contains other variables, but we'll need them in future lessons.
 
-After running the `yarn dev` command and opening <http://localhost:3000> in a browser, you will see the following window:
+For the first lesson, edit your own `.env` file and check whether the `VITE_NODE_ADDRESS` variable is set to `wss://testnet.vara.rs` there.
+
+After running the `yarn dev` command and opening <http://localhost:3000> in a browser, you'll see the following window:
 
 ![Frontend](/img/08/frontend.jpg)
 
 Select **Lesson 1** and paste your Tamagotchi program address. Then, click the **Create Tamagotchi** button to witness your Tamagotchi come to life!
 
-Please provide a link to the pull request (PR) in your repository containing your Tamagotchi contract. Also, please paste your Tamagotchi program address.
-
-Example:
+Please provide a link to the pull request (PR) in your repository containing your Tamagotchi contract. Also, please paste your Tamagotchi program address as shown in the example below:
 
 - PR: <https://github.com/mynick/myname-gear-academy/pull/1>
 - Program address: `0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d`
