@@ -4,7 +4,19 @@ sidebar_position: 2
 hide_table_of_contents: true
 ---
 
-In this assignment, you will add a new feature to your Tamagotchi contract, which will allow it to send a delayed message to itself at a specified interval to check its state. If the Tamagotchi is tired, hungry, or not entertained, it should send a message to the user asking for feeding or playing.
+Let's put our knowledge to the test.
+
+In this assignment, you'll add a new feature to your Tamagotchi contract. Here's what you need to do:
+
+1. Implementing the delayed message feature:
+- Enhance your Tamagotchi contract to include the capability of sending delayed messages, enabling your Tamagotchi to communicate with itself at specific intervals
+2. Checking the Tamagotchi's state:
+- Teach your Tamagotchi to evaluate its own state periodically.
+- If your Tamagotchi is tired, hungry, or lacking entertainment, it will proceed to the next step.
+3. Sending a message to the user:
+- Once the Tamagotchi identifies its needs, it will send a message directly to you, the user.
+- The message will state whether it requires feeding or playtime.
+
 
 To implement this feature, you need to extend the Tamagotchi state with the `reservations` field, as shown below:
 
@@ -61,9 +73,9 @@ pub enum TmgAction {
 }
 ```
 
-You also need to add three new outcoming messages to the `TmgEvent` enum: `FeedMe`, `PlayWithMe`, and `WantToSleep`. If the Tamagotchi runs out of gas, it should send the message `MakeReservation` asking the owner to reserve gas to continue checking the state.
+You must also add three new outcoming messages to the `TmgEvent` enum: `FeedMe`, `PlayWithMe` and `WantToSleep`. If the Tamagotchi runs out of gas, it should send the message `MakeReservation` asking the owner to reserve gas to continue checking the state.
 
-You should also add the outcoming message `GasReserved` to indicate a successful gas reservation, as shown below:
+Additionally, include the outcoming message `GasReserved` to indicate a successful gas reservation in your program, as shown below:
 
 ```rust
 #[derive(Encode, Decode, TypeInfo)]
@@ -79,13 +91,11 @@ pub enum TmgEvent {
 }
 ```
 
-So, the Tamagotchi must send a message to itself once in a certain time interval. Define this interval and determine at what levels of fed, slept or entertained the Tamagotchi will start sending messages.
+So, the Tamagotchi must send a message to itself once in a given time interval. Define this interval and determine at what levels of fed, slept or entertained the Tamagotchi will start sending messages.
 
 Connect your Tamagotchi to the application and see how it communicates with you!
 
-Please attach a link to the pull request (PR) in your repo with your Tamagotchi contract. Also, please paste your Tamagotchi program address.
-
-Example:
+Please attach a link to the pull request (PR) in your repo with your Tamagotchi contract. Also, please paste your Tamagotchi program address as shown in the example below:
 
 - PR: <https://github.com/mynick/myname-gear-academy/pull/7>
 - Program address: `0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d`
