@@ -436,7 +436,7 @@ async fn complete_tx(&mut self, tx: Transaction)
                 return Err(AuctionError::UnableToTransferTokens);
             }
 
-            //If it's not the first bid,
+            // If it's not the first bid,
             // we have to return the tokens to the previous bidder
             // since the tokens are on the auction contract
             //The transaction can fail only due to a lack of gas
