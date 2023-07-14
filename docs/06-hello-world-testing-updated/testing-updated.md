@@ -4,7 +4,9 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-In this lesson, you'll learn how to test the `SendHelloTo` message and confirm its assignment to the correct account in the result log. We'll utilize the `gtest` library, initialize the logger, create a `Program` object and employ the assert function to ensure the program's proper functionality. Lastly, we'll test the `SendHelloTo` message by utilizing the send function and verifying the anticipated log.
+In this lesson, you'll learn how to test the `SendHelloTo` message and confirm its assignment to the correct account in the result log. 
+
+We'll utilize the `gtest` library, initialize the logger, create a `Program` object and employ the assert function to ensure the program's proper functionality. Lastly, we'll test the `SendHelloTo` message by utilizing the send function and verifying the anticipated log.
 
 To begin, we'll test the `SendHelloTo` message. We'll specify the account ID as the message recipient and verify in the result log the assignment of a message to the account.
 
