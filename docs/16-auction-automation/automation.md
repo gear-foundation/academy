@@ -7,7 +7,11 @@ hide_table_of_contents: true
 
 Before we start coding the auction smart contract, we'll discuss smart contract automation.
 
-In this lesson, we will explore the concept of smart contract automation to make program execution more efficient. Smart contracts cannot execute automatically. They require an on-chain transaction to trigger their code and initiate any state changes on the blockchain. Essentially, we need to "poke" the smart contract by sending a message to wake it up and activate its logic. For instance, we can start an auction by sending a message to the auction contract.
+In this lesson, we will explore the concept of smart contract automation to make program execution more efficient. 
+
+Smart contracts cannot execute automatically. They require an on-chain transaction to trigger their code and initiate any state changes on the blockchain.
+
+Essentially, we need to "poke" the smart contract by sending a message to wake it up and activate its logic. For instance, we can start an auction by sending a message to the auction contract.
 
 Once the auction time has elapsed, we need to process the auction's result. However, result processing will only occur once the contract receives the appropriate message.
 In Gear, we tackle this challenge using delayed messages.
@@ -17,7 +21,9 @@ msg::send_delayed(program, payload, value, delay)
 msg::send_bytes_delayed(program, payload, value, delay)
 ```
 
-A delayed message executes after a specified delay, which is practical in our case, as we can initiate the auction by sending a message to the auction contract. Once all the necessary logic is complete, the auction contract will send a delayed message to itself, settling the auction after the specified time.
+A delayed message executes after a specified delay, which is practical in our case, as we can initiate the auction by sending a message to the auction contract.
+
+Once all the necessary logic is complete, the auction contract will send a delayed message to itself, settling the auction after the specified time.
 
 Therefore, by utilizing delayed messages, we can automate the execution of a contract. As long as there is sufficient gas for execution, the contract can self-execute for an unlimited block number. However, if the gas runs out, the execution may be interrupted.
 
