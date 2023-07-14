@@ -45,7 +45,9 @@ We also need a dynamic global variable to undergo changes during the contract ex
 static mut ESCROW: Option<Escrow> = None;
 ```
 
-The `ESCROW` value remains `None` until we initialize the program. Once we initialize the program, we fill the `Escrow` structure with information, causing `ESCROW` to transition to `Some(Escrow)`.
+The `ESCROW` value remains `None` until we initialize the program.
+
+Once we initialize the program, we fill the `Escrow` structure with information, causing `ESCROW` to transition to `Some(Escrow)`.
 
 Here's the full code with a minimal Gear smart contract structure:
 
@@ -89,7 +91,11 @@ pub struct InitEscrow {
     pub price: u128,
 }
 ```
-In the `init` function, we'll define the addresses of the Buyer and Seller, along with the product price. We'll then load the message by utilizing `msg::load()` and decode it using the `InitEscrow` structure. Next, we'll create a new `Escrow` structure with the provided information and assign the `state` as `EscrowState::AwaitingPayment`. Finally, we'll set `ESCROW` as `Some(escrow)`.
+In the `init` function, we'll define the addresses of the Buyer and Seller, along with the product price. 
+
+We'll then load the message by utilizing `msg::load()` and decode it using the `InitEscrow` structure. 
+
+Next, we'll create a new `Escrow` structure with the provided information and assign the `state` as `EscrowState::AwaitingPayment`. Finally, we'll set `ESCROW` as `Some(escrow)`.
 
 Let's load the message in the `init` function and define the contract state:
 
