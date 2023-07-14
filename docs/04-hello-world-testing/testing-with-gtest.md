@@ -102,7 +102,11 @@ fn hello_test() {
 }
 ```
 
-**NOTE:** We added `sys.init_logger()` to initialize printing logs into stdout and sent a message from the user with id 2 (id 2 transforms to `ActorId` equal to `0x020000…00` ).
+:::note
+
+We added `sys.init_logger()` to initialize printing logs into stdout and sent a message from the user with id 2 (id 2 transforms to `ActorId` equal to `0x020000…00` ).
+
+:::
 
 We can then run our test using `cargo test`:
 
