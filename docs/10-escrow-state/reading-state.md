@@ -4,7 +4,9 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-This lesson teaches how to use an escrow smart contract in a blockchain transaction to add safety for both parties. It explains the process of using an escrow smart contract, from agreeing to terms to the automatic transfer of funds to the seller's digital wallet.
+In this lesson, you'll learn how to use an escrow smart contract in a blockchain transaction to add safety for both parties. 
+
+You'll understand the process of using an escrow smart contract, from agreeing to terms to the automatic transfer of funds to the seller's digital wallet.
 
 Let's extend the functionality of our escrow program by adding program metadata. We'll start by creating a crate `escrow-io` in the directory of the escrow program:
 
@@ -213,4 +215,4 @@ fn main() {
 }
 ```
 
-Once we've built the crate, we'll have a file called `escrow_state.meta.wasm` that we can use in our UI applications to interact with the smart contract.
+Once we've built the crate, we'll use the`escrow_state.meta.wasm` file in our UI applications to interact with the smart contract.
