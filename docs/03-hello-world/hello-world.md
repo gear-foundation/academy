@@ -4,10 +4,19 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-In this lesson, you'll learn how to create a simple smart contract program on the Gear platform. The program will promptly respond with a friendly "Hello" message upon receiving any incoming message. The lesson describes the step-by-step process of creating a new project, adding dependencies, writing code for the program entry point and building the project. It also explains the purpose and use of the [`msg`](https://docs.gear.rs/gstd/msg/) messaging module from the [`gstd`](https://docs.gear.rs/gstd/) library. We'll conclude with instructions for testing the program.
-By the end of this tutorial, you'll have learnt how to create a basic smart contract program and gained an understanding of the libraries and tools of the Gear platform.
+In this lesson, you'll learn how to create a simple smart contract program on the Gear platform. The program will promptly respond with a friendly "Hello" message upon receiving any incoming message. 
 
-To get started, we'll create a new project using the `cargo new` command:
+Here's the breakdown: 
+- The lesson describes the step-by-step process of creating a new project, adding dependencies, writing code for the program entry point and building the project. 
+- It also explains the purpose and use of the [`msg`](https://docs.gear.rs/gstd/msg/) messaging module from the [`gstd`](https://docs.gear.rs/gstd/) library.
+
+We'll conclude with instructions for testing the program in the next lesson. 
+
+By the end of this tutorial, you'll have learned how to create a basic smart contract program and gained an understanding of the libraries and tools of the Gear platform.
+
+Let's get started. 
+
+We'll create a new project using the `cargo new` command:
 
 ```
 cargo new hello-world --lib
@@ -30,7 +39,7 @@ We'll use:
 - `gtest` — a library for testing smart contracts (it will be added as a dev dependency).
 - `gear-wasm-builder` — a helping module aiding in building programs using Gear (it will be added as a build dependency).
 
-Importantly, we must use a particular version of these libraries. The compatible libraries version is located at the `946ac47` commit of the Gear repository. Therefore we are to point it in the `Cargo.toml` file.
+Importantly, we must use a particular version of these libraries. The compatible libraries version is located at the `946ac47` commit of the Gear repository. Therefore, we'll point it in the `Cargo.toml` file.
 
 ```toml title="Cargo.toml"
 [package]
@@ -69,7 +78,7 @@ fn main() {
 
 This build script uses the `gear-wasm-builder` library to build an output Wasm binary with all required flags and settings.
 
-The last file we'll add is the Rust toolchain override, as we require a specific toolchain version. We need to create `rust-toolchain.toml` file with the following lines:
+We'll add the last file we'll add is the Rust toolchain override, as we require a specific toolchain version. We need to create `rust-toolchain.toml` file with the following lines:
 
 ```toml title="rust-toolchain.toml"
 [toolchain]
@@ -116,7 +125,7 @@ Let's rebuild our project:
 cargo build  --release
 ```
 
-If everything goes well, your working directory should now have a `target` directory resembling this:
+If everything goes well, your working directory should have a `target` directory resembling this:
 
 ```
 target
@@ -126,7 +135,7 @@ target
        └── release
            ├── ...
            ├── hello_world.wasm     <---- this is our built .wasm file
-           └── hello_world.opt.wasm <---- this is optimized .wasm file
+           └── hello_world.opt.wasm <---- this is the optimized .wasm file
 ```
 
 The `target/wasm32-unknown-unknown/release` directory should contain two Wasm binaries:
@@ -134,6 +143,6 @@ The `target/wasm32-unknown-unknown/release` directory should contain two Wasm bi
 - `hello_world.wasm` - the output Wasm binary built from source files;
 - `hello_world.opt.wasm` - the optimized Wasm aimed to be uploaded to the blockchain.
 
-We've learned how to create a simple smart contract program responding with a "Hello" message to any incoming message.
+We've now learned how to create a simple smart contract program responding with a "Hello" message to any incoming message.
 
 Let's test our program.
