@@ -4,8 +4,13 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-In this lesson, you'll learn about the buying process in a smart contract. 
-We'll also cover how to code a smart contract to define the structure of a store contract state. We'll explore the creation of new attributes and how to sell them to Tamagotchi contracts. Additionally, you'll learn about receiving messages from Tamagotchi contracts. Lastly, we'll explore using the async main function and creating a new attribute in the store contract.
+In this lesson, you'll learn about the buying process in a smart contract. We'll cover the following concepts: 
+
+- How to code a smart contract to define the structure of a store contract state.
+- The creation of new attributes and how to sell them to Tamagotchi contracts.
+- Receiving messages from Tamagotchi contracts.
+- Using the async main function
+- Creating a new attribute in the store contract.
 
 Let's get started.
 
@@ -56,7 +61,9 @@ Let's define the actions the store contract must execute:
 - Create new attributes and sell them to the Tamagotchi contracts;
 - Receive messages from the Tamagotchi contracts.
 
-But before implementing these functions, we'll define the `store-io` crate for the contract store. This crate will help us handle the store's input and output. We'll then write the `lib.rs` file for the contract.
+But before implementing these functions, we'll define the `store-io` crate for the contract store. This crate will help us handle the store's input and output.
+
+We'll then write the `lib.rs` file for the contract.
 
 ```rust title="io/src/lib.rs"
 #![no_std]
@@ -99,7 +106,9 @@ pub enum StoreEvent {
 }
 ```
 
-The store contract will accept two types of messages: `CreateAttribute` and `BuyAttribute`. On successful message execution, it'll reply with `AttributeCreated` or `AttributeSold`.
+The store contract will accept two types of messages: `CreateAttribute` and `BuyAttribute`.
+
+On successful message execution, it'll reply with `AttributeCreated` or `AttributeSold`.
 
 We'll then write the basic structure of the program as follows:
 
@@ -193,7 +202,11 @@ fn create_attribute(
 }
 ```
 
-Next, let's explore how we can implement the `buy_attribute` function. As we mentioned before, this function's role is to start a transfer of tokens from the Tamagotchi contract to the store contract. Additionally, it needs to keep track of the transaction's ID in the fungible token contract. To accomplish this, we will introduce a new field called `transaction_id` to the state of the store contract.
+Next, let's explore how we can implement the `buy_attribute` function.
+
+As we mentioned before, this function's role is to start a transfer of tokens from the Tamagotchi contract to the store contract.
+
+Additionally, it needs to keep track of the transaction's ID in the fungible token contract. To accomplish this, we will introduce a new field called `transaction_id` to the state of the store contract.
 
 So, the store contract is responsible for tracking the transactions in the fungible token and has to consider the ID of the current transaction in it.
 
@@ -223,7 +236,9 @@ Next, let's consider the following situation:
 2. The store contract sends a message to the fungible token contract and receives a reply about the successful token transfer;
 3. The store contract begins changing its state. It adds the indicated attribute to the Tamagotchi ownership but runs out of gas.
 
-In the scenario we've described above, the tokens were transferred to the store contracts, but the Tamagotchi didn't receive its attribute. To prevent this, the store contract must detect when a transaction is incomplete and continue its execution accordingly.
+In the scenario we've described above, the tokens were transferred to the store contracts, but the Tamagotchi didn't receive its attribute.
+
+To prevent this, the store contract must detect when a transaction is incomplete and continue its execution accordingly.
 
 Let's add another field to the `AttributeStore` struct:
 
@@ -237,9 +252,11 @@ pub struct AttributeStore {
 
 When a Tamagotchi sends a purchase message to the store contract, the contract checks if the Tamagotchi is currently involved in any incomplete transactions. If there is an unfinished transaction, the store contract retrieves the transaction number and attribute ID associated with the transaction and resumes it.
 
-If the previous message wasn't completed, the Tamagotchi has to send another identical message to complete the transaction. However, the Tamagotchi might send multiple purchase messages without realizing select messages were not delivered. To handle this, the store contract checks the attribute ID specified in the current message and compares it with the attribute ID stored in transactions.
+If the previous message wasn't completed, the Tamagotchi has to send another identical message to complete the transaction. However, the Tamagotchi might send multiple purchase messages without realizing select messages were not delivered. 
 
-If the saved identification (id) does not match the indicated one, the store contract instructs the Tamagotchi to finish the previous transaction. Otherwise, it continues the pending transaction.
+To handle this, the store contract checks the attribute ID specified in the current message and compares it with the attribute ID stored in transactions.
+
+The store contract instructs the Tamagotchi to finish the previous transaction if the saved identification (id) does not match the indicated one. Otherwise, it continues the pending transaction.
 
 If the Tamagotchi has no pending transactions, the store contract increases the value of the `transaction_id` and saves the transaction.
 
@@ -279,7 +296,9 @@ async fn buy_attribute(&mut self, attribute_id: AttributeId) {
 
 You must add the `CompletePrevTx` event to `StoreEvent` to ensure accurate event tracking.
 
-Okay, now let's create a function for selling attributes. Selling attributes is similar to executing the NFT transfer. In this case, we'll assign the attribute ID to the Tamagotchi contract.
+Okay, now let's create a function for selling attributes.
+
+Selling attributes is similar to executing the NFT transfer. In this case, we'll assign the attribute ID to the Tamagotchi contract.
 
 First, we'll write the function for the token transfer:
 
