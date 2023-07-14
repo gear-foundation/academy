@@ -7,7 +7,7 @@ hide_table_of_contents: true
 In Gear programs, there are three common entry points: 
 - `init`
 - `handle`
-`handle_reply`
+- `handle_reply`
 
 The Gear Protocol also introduces the `handle_signal` entry point, enabling the system to communicate with programs and notify them (signal) of events related to the program's messages. Only the system (Gear node runtime) can send signal messages to a program.
 
