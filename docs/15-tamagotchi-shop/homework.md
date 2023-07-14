@@ -4,7 +4,9 @@ sidebar_position: 2
 hide_table_of_contents: true
 ---
 
-In this lesson, our Tamagotchi will be interacting with 2 other contracts: `tamagotchi-store` and `fungible-token`. Reference these contracts from your Tamagotchi `Cargo.toml` like this:
+In this assignment, our Tamagotchi will be interacting with 2 other contracts: `tamagotchi-store` and `fungible-token`.
+
+Reference these contracts from your Tamagotchi `Cargo.toml` as shown below:
 
 ```toml title="Cargo.toml"
 # ...
@@ -19,7 +21,7 @@ store-io = { git = "https://github.com/gear-foundation/dapps-smart-contract-acad
 # ...
 ```
 
-Add a field to the Tamagotchi contract that stores the address of the fungible token. Accordingly, add the input message:
+Add a field to the Tamagotchi contract the address of the fungible token. Accordingly, add the following input message to set the fungible token address:
 
 ```rust
 #[derive(Encode, Decode, TypeInfo)]
@@ -31,9 +33,8 @@ pub enum TmgAction {
 }
 ```
 
-that will set the fungible token address.
 
-Add the input message:
+Add the input message to allow Tamagotchi to approve to transfer of its tokens (and accordingly the field `transaction_id` for communication with the fungible token contract):
 
 ```rust
 #[derive(Encode, Decode, TypeInfo)]
@@ -49,7 +50,6 @@ pub enum TmgAction {
 }
 ```
 
-that will allow Tamagotchi to approve to transfer of its tokens (and accordingly the field `transaction_id` for communication with the fungible token contract).
 
 To approve tokens you should send the fungible token the Approve message:
 
@@ -78,7 +78,7 @@ async fn approve_tokens(&mut self, account: &ActorId, amount: u128) {
 }
 ```
 
-Add the ability to your Tamagotchi contract to buy attributes. Add the input message:
+Add the ability to your Tamagotchi contract to buy attributes using the input message below:
 
 ```rust
 #[derive(Encode, Decode, TypeInfo)]
@@ -188,9 +188,7 @@ pub enum TmgEvent {
 }
 ```
 
-Please attach a link to the pull request (PR) in your repo with your Tamagotchi contract. Also, please paste your Tamagotchi program address.
-
-Example:
+Please attach a link to the pull request (PR) in your repo with your Tamagotchi contract. Also, please paste your Tamagotchi program address as shown in the example below:
 
 - PR: <https://github.com/mynick/myname-gear-academy/pull/6>
 - Program address: `0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d`
