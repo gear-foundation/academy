@@ -3,31 +3,33 @@ title: 4. Homework "Escrow & Tamagotchi Interaction"
 sidebar_position: 2
 hide_table_of_contents: true
 ---
+In this assignment, we'll practice the knowledge from previous lessons to handle the set tasks. 
+
 
 1. Implement the `confirm_delivery` function. The function should:
 
-    - Check that [`msg::source()`](https://docs.gear.rs/gstd/msg/fn.source.html) is a buyer;
-    - Check that the escrow state is `AwaitingDelivery`;
-    - Sends the funds to the seller (use [`msg::send()`](https://docs.gear.rs/gstd/msg/fn.send.html) function);
-    - Set the escrow state to `Closed`;
-    - Send a reply message about successful delivery confirmation.
+    - Verify if the source of the message is a buyer by using [`msg::source()`](https://docs.gear.rs/gstd/msg/fn.source.html) is a buyer.
+    - Confirm the escrow state is `AwaitingDelivery`.
+    - Utilize the [`msg::send()`](https://docs.gear.rs/gstd/msg/fn.send.html) function to transfer funds to the seller.
+    - Set the escrow state to `Closed`.
+    - Send a reply message confirming successful delivery.
 
 2. Write tests for the written function:
 
-    - `confirm_delivery` test that tests the successful contract execution;
+    - `confirm_delivery` test to validate the successful contract execution;
 
-    Note that the contract sends a message with value to a seller and the user messages are stored in their individual mailbox. To get the value from these messages, it's necessary to claim the value from the mailbox.
-
+    **NOTE:** The contract sends a message with value to a seller, and the user mailbox stores the messages, requiring the user to claim the value from the mailbox.
+   
     In `gtest`, you can use the function [`System::claim_value_from_mailbox`](https://docs.gear.rs/gtest/struct.System.html#method.claim_value_from_mailbox). After claiming the value, check the seller's balance and make sure that funds were transferred to his account.
 
-    - `confirm_delivery_failures` test that tests all panics in the escrow contract.
+    - `confirm_delivery_failures` test to validate all panics in the escrow contract.
 
-3. Next, we return to the Tamagotchi contract you started writing in the previous lesson.
+4. Next, we return to the Tamagotchi contract you started writing in the previous lesson.
 
-Let’s expand the Tamagochi state by adding the following field to its structure:
+Let's expand the Tamagochi state by adding the following field to its structure:
 
-- The Tamagotchi owner (it can be an account that initializes the Tamagotchi contract);
-- `Mood`: `Fed` (from 1 to 10000), `Happy` (from 1 to 10000) and `Rested` (from 1 to 10000). These values must be set to non-zero when initializing the Tamagotchi contract. Also, you should define the following constants:
+- The Tamagotchi owner (it can be an account to initialize the Tamagotchi contract);
+- `Mood`: `Fed` (from 1 to 10000), `Happy` (from 1 to 10000), and `Rested` (from 1 to 10000). These values must be set to non-zero when initializing the Tamagotchi contract. Also, define the following constants:
 - `HUNGER_PER_BLOCK = 1`: how much Tamagotchi becomes hungry for the block;
 - `ENERGY_PER_BLOCK = 2` - how much Tamagotchi loses energy per block;
 - `BOREDOM_PER_BLOCK = 2` - how bored Tamagotchi gets per block;
@@ -35,11 +37,11 @@ Let’s expand the Tamagochi state by adding the following field to its structur
 - `FILL_PER_FEED = 1000` - how much Tamagotchi becomes full during feeding;
 - `FILL_PER_ENTERTAINMENT = 1000` - how much Tamagotchi becomes happy during feeding;
 - The Tamagotchi also has to accept messages: `Sleep`, `Feed` and `Play`;
-- Think of logic for calculating the levels of `Fed`, `Happy` and `Rested`.
+- Think of logic for calculating the `Fed`, `Happy` and `Rested` levels.
 
-You need to take into account the number of blocks in which the Tamagotchi last ate, had fun or slept. For this, you can use the function [`exec::block_height()`](https://docs.gear.rs/gstd/exec/fn.block_height.html) from the module exec of `gstd` library.
+To determine the number of blocks when the Tamagotchi last ate, had fun or slept, utilize the [`exec::block_height()`](https://docs.gear.rs/gstd/exec/fn.block_height.html) from the module exec of `gstd` library.
 
-4. Now upload your contract to the blockchain and run the frontend application. Choose **Lesson 2**.
+4. Now, upload your contract to the blockchain and run the frontend application. Choose **Lesson 2**.
 
 Now you can feed your Tamagotchi, play with it and send it to sleep.
 
@@ -89,9 +91,7 @@ pub struct Tamagotchi {
 }
 ```
 
-Please attach a link to the pull request (PR) in your repo with your Tamagotchi contract. Also, please paste your Tamagotchi program address.
-
-Example:
+Please attach a link to the pull request (PR) in your repo with your Tamagotchi contract. Also, please paste your Tamagotchi program address as shown in the example below:
 
 - PR: <https://github.com/mynick/myname-gear-academy/pull/2>
 - Program address: `0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d`

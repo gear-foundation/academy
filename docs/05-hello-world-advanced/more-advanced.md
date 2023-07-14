@@ -4,18 +4,21 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-In this lesson, you will learn to enhance your program with additional functionality by introducing two new messages: `SendHelloTo` and `SendHelloReply`. When the program receives the SendHelloTo message, it will send a "hello" message to the specified account. Similarly, upon receiving the SendHelloReply message, the program will respond with a "hello" message to the account from which the message originated. 
+In this lesson, you'll learn to enhance your program with additional functionality by introducing two new messages: `SendHelloTo` and `SendHelloReply`.
 
-To further enrich our program, we'll utilize the send function. Upon receiving the `SendHelloTo message`, it will send a hello message to the specified account and upon receiving the `SendHelloReply` message, it will reply with a greeting message.
+When the program receives the SendHelloTo message, it will send a "hello" message to the specified account. Similarly, upon receiving the SendHelloReply message, the program will respond with a "hello" message to the account from which the message originated. 
+
+To enhance our program, we'll use the send function. When the program receives the `SendHelloTo` message, it'll send a hello message to the specified account. 
+Similarly, when it receives the `SendHelloReply` message, it'll respond with a greeting message.
 
 Let's add more functionality to our program by introducing two new messages: `SendHelloTo` and `SendHelloReply`.
 
-Our program will receive 2 messages:
+Our program will receive two messages:
 
-- `SendHelloTo`: having received this message, the program will send “hello” to the specified address;
+- `SendHelloTo`: having received this message, the program will send "hello" to the specified address;
 - `SendHelloReply`: the program responds with a friendly "hello" message to the account sending the message.
 
-In the previous lesson, we observed the need to decode the message received by the program. To accomplish this, we will create an enum called `InputMessages`. This enum will serve the purpose of decoding the incoming message.
+In the last lesson, we learned the importance of decoding program messages. We'll introduce an enum named `InputMessages` to decode incoming messages. 
 
 ```rust title="src/lib.rs"
 #[derive(Encode, Decode, TypeInfo)]
@@ -33,13 +36,13 @@ We'll also add derive macros `#[derive(Encode, Decode, TypeInfo)]` to the enum f
 parity-scale-codec = { version = "3", default-features = false }
 scale-info = { version = "2", default-features = false }
 ```
-We'll define a static mutable variable `GREETING` as an `Option<String>` to initialize our program.
+We'll define a static mutable variable called `GREETING` to initialize the program. It is of type `Option<String>`.
 
 ```rust title="src/lib.rs"
 static mut GREETING: Option<String> = None;
 ```
 
-Until the program is initialized, the `GREETING` equals `None`. After the initialization, the `GREETING` will become `Some(String)`.
+The program's initialization sets the `GREETING` to `None` before changing it to `Some(String)` after initialization.
 
 ```rust title="src/lib.rs"
 #[no_mangle]
@@ -79,4 +82,6 @@ extern "C" fn handle() {
 }
 ```
 
-When the program receives `SendHelloTo` message, it sends a hello message to the specified account through the send function. Conversely, when the contract receives a `SendHelloReply` message, it replies with a greeting message.
+When the program receives the `SendHelloTo` message, it sends a hello message to the specified account through the send function. 
+
+Conversely, when the contract receives a `SendHelloReply` message, it replies with a greeting message.

@@ -5,7 +5,13 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-Our Escrow Factory will store the number of created escrow contracts, the mapping from the escrow id to its program address, and also the `CodeId` of the escrow smart contract.
+In this tutorial, we'll create an Escrow Factory to handle:
+
+- The storage of created escrow contracts
+- Mapping from the escrow id to its program address
+- The `CodeId` of the escrow smart contract
+
+Below is the code implementation: 
 
 ```rust
 #![no_std]
@@ -36,7 +42,7 @@ extern "C" fn init() {
 }
 ```
 
-The `CodeId` is a hash of the escrow program uploaded into the chain. That hash will be used to create instances of escrow smart contracts.
+To create instances of escrow smart contracts, we use the `CodeId`, a hash of the uploaded escrow program in the chain.
 
 Let's define the functionality of our loan factory program. It will deploy an escrow contract and send messages about deposit and delivery confirmation to the escrow.
 
@@ -63,11 +69,15 @@ pub enum FactoryEvent {
 }
 ```
 
-As you can see, the Escrow contract will interact with Buyer and Seller through Escrow Factory contract, meaning the Escrow Factory contract will send messages to the Escrow contract.
+From our code above, the Escrow contract will interact with the buyer and seller through the Escrow Factory contract, meaning the Escrow Factory contract will send messages to the Escrow contract.
 
-Firstly, we have to define an `io` crate for the Escrow contract. Then we’ll modify the structure of incoming messages and Escrow methods. Try to change it yourself and then compare it with the correct implementation.
+Here's how we'll go about it. 
 
-After that, we’ll define Loan Factory methods and write the `handle` function:
+First, we'll define an `io` crate for the Escrow contract. Then we'll modify the structure of incoming messages and Escrow methods. 
+
+Try to change it yourself and then compare it with the correct implementation.
+
+After, we'll define Loan Factory methods and write the `handle` function:
 
 ```rust
 impl EscrowFactory {
@@ -95,18 +105,18 @@ async fn main() {
 }
 ```
 
-Let’s implement the `create_escrow` function.
+Let's implement the `create_escrow` function.
 
-For the program deployment, we should import `ProgramGenerator` from the `prog` module in `gstd` library:
+For the program deployment, we should import `ProgramGenerator` from the `prog` module in the `gstd` library:
 
 ```rust
 use gstd::{msg, prelude::*, ActorId, prog::ProgramGenerator, CodeHash};
 ```
 
-To create a new contract instance, we will use the `create_program_with_gas_for_reply` function. Here are the required parameters:
+We'll use the `create_program_with_gas_for_reply` function to create a new contract instance. Here are the required parameters:
 
 - The code hash of the uploaded program code;
-- The payload for initialization message;
+- The payload for the initialization message;
 - Gas for the program creation (calculate in advance how much the initialization of the program loaded on the network requires);
 - The value attached to the init message.
 
@@ -144,10 +154,9 @@ async fn create_escrow(
     .expect("Error during a reply `FactoryEvent::ProgramCreated`");
 }
 ```
+Our Escrow Factory smart contract utilizes asynchronous program creation to ensure error-free initialization. The program incorporates a reply message, allowing it to wait for a reply.
 
-In our Escrow factory smart contract, we use asynchronous program creation to ensure the program is initialized without errors. Since the factory program waits for a reply, we add a reply message to the program initialization.
-
-Other methods are implemented easily since all logic and all checks are included in the Escrow contract:
+Other methods are implemented easily due to the inclusion of all logic and checks in the Escrow contract:
 
 ```rust
 async fn deposit(&self, escrow_id: EscrowId) {
@@ -192,4 +201,4 @@ async fn send_message(
 }
 ```
 
-With the factory loan contract finished, we’ll now test our factory contract.
+With the factory loan contract finished, we'll test our factory contract in the next lesson. 

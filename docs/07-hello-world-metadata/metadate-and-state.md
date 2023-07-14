@@ -4,11 +4,18 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-The lesson demonstrates the role of metadata as a guide for converting data into a structured format, enabling data exchange between dApp's smart contracts and client-side (JavaScript). The [`gmeta`](https://docs.gear.rs/gmeta/) crate describes the metadata interface, which requires a description for all types. Moreover, the lesson presents an illustrative example of defining metadata for a program and accessing its state.
+In this lesson, we'll demonstrate the role of metadata in: 
 
-Metadata acts like an interface map helping transform a set of bytes into an understandable structure. It determines how all incoming and outgoing data will be encoded/decoded.
+- Converting data into a structured format
+- Enabling data exchange between dApp's smart contracts
+- Client-side (JavaScript)
 
-Metadata allows dApp's parts - the smart contract and the client side (JavaScript), to understand each other and exchange data.
+The [`gmeta`](https://docs.gear.rs/gmeta/) crate describes the metadata interface, which requires a description for all types. Moreover, the lesson presents an illustrative example of defining metadata for a program and accessing its state.
+
+Metadata serves as an interface map, enabling the transformation of a set of bytes into an understandable structure. It plays a crucial role in encoding and decoding all incoming and outgoing data.
+
+By facilitating communication and data exchange, metadata allows the smart contract and the client-side (JavaScript) of a dApp to understand each other effectively.
+
 To describe the metadata interface, we use [`gmeta`](https://docs.gear.rs/gmeta/) crate:
 
 ```rust
@@ -29,13 +36,14 @@ Where:
 - `Init` describes incoming/outgoing types for `init()` function.
 - `Handle` describes incoming/outgoing types for `handle()` function.
 - `Others` describes incoming/outgoing types for `main()` function in case of asynchronous interaction.
-- `Reply` describes an incoming type of messages performed using the `handle_reply()` function.
+- `Reply` describes an incoming type of message performed using the `handle_reply()` function.
 - `Signal` describes only the outgoing type from the program while processing the system signal.
 - `State` describes the types for the queried state
 
 It is necessary to describe all the types. If any endpoints are missing in your program, you can use `()` instead.
 
-Let's define metadata for our example. We'll create a crate
+Let's define metadata for our example. We'll start by creating a crate:
+
 `hello-world-io` in the directory of our `hello-world` program:
 
 ```bash
@@ -84,9 +92,9 @@ pub enum InputMessages {
 }
 ```
 
-The `init` function requires a `String` input, while the handle function expects an `InputMessage` enum as input. The output of the handle function is a `String`. The `String` variable represents the program state, which stores a set greeting.
+The `init` function takes a `String` input. On the other hand, the handle function needs an `InputMessage` enum as input. Its output is a `String` representing the program state, which stores a set greeting.
 
-You can read the program state by using the state function. Reading the program state costs zero gas fees. We can define this function in the lib.rs file of the hello-world program:
+You can read the program state using the state function, paying zero gas fees. We can define this function in the lib.rs file of the hello-world program:
 
 ```rust title="hello-world/src/lib.rs"
 #[no_mangle]
@@ -125,4 +133,4 @@ fn main() {
 }
 ```
 
-Once you have constructed the program, it will generate a `hello_world.meta.txt` file upon compiling the smart contract. This metadata file is valuable for UI applications for engagement with the smart contract.
+Once you've built the program, it'll generate a `hello_world.meta.txt` file upon compiling the smart contract. This metadata file is valuable for UI applications for engagement with the smart contract.

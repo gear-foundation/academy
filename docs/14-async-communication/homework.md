@@ -4,7 +4,9 @@ sidebar_position: 4
 hide_table_of_contents: true
 ---
 
-In this assignment, you will enhance your Tamagotchi smart contract by incorporating the ability to change ownership and granting approval to other accounts for ownership changes. To achieve this, you need to implement the following functions:
+In this assignment, you'll enhance your Tamagotchi smart contract by incorporating the ability to change ownership and granting approval to other accounts for ownership changes.
+
+To achieve this, you need to implement the following functions:
 
 - `Transfer(new_owner)` - the action changes the field owner to the indicated account;
 - `Approve(allowed_account)` - use this function to fill the field `approved_account` for the indicated account;
@@ -13,7 +15,7 @@ In this assignment, you will enhance your Tamagotchi smart contract by incorpora
 
 Upload your contract to the blockchain and run the frontend application. Choose **Lesson 3**.
 
-To ensure your contract is compatible with the frontend application, please make sure the metadata configuration is as follows:
+To ensure your contract is compatible with the frontend application, configure the metadata as follows:
 
 ```rust
 pub struct ProgramMetadata;
@@ -66,7 +68,7 @@ pub struct Tamagotchi {
 }
 ```
 
-Please attach a link to the pull request (PR) in your repo with your Tamagotchi contract. Also, please paste your Tamagotchi program address, as shown in the example below.
+Please attach a link to the pull request (PR) in your repo with your Tamagotchi contract. Also, please paste your Tamagotchi program address, as shown in the example below:
 
 - PR: <https://github.com/mynick/myname-gear-academy/pull/5>
 - Program address: `0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d`

@@ -4,9 +4,16 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-You can now learn to write tests for a smart contract program using the Rust programming language and the `gtest` library. This lesson guides you through testing an escrow smart contract program. It covers initializing the contract, depositing funds from the buyer's account and checking for accurate contract execution and failure cases.
+You can now learn to write tests for a smart contract program using the Rust programming language and the `gtest` library.
 
-Let's test our method. We'll first create the `tests` directory and `escrow_test.rs` file:
+This lesson guides you through testing an escrow smart contract program, covering the following areas
+- Initializing the contract
+- Depositing funds from the buyer's account
+- Checking for accurate contract execution and failure cases
+
+Let's test our method. 
+
+We'll first create the `tests` directory and `escrow_test.rs` file:
 
 ```bash
 mkdir tests
@@ -14,7 +21,9 @@ cd tests
 touch escrow_test.rs
 ```
 
-We'll import necessary structures from the `gtest` library and escrow crate and define constants for the buyer, seller and product price. Then, we'll send an init message using the following code:
+We'll import necessary structures from the `gtest` library and escrow crate and define constants for the buyer, seller and product price. 
+
+Then, we'll send an init message using the following code:
 
 ```rust title="tests/escrow_test.rs"
 use escrow_io::{InitEscrow, EscrowAction, EscrowEvent};
@@ -42,7 +51,7 @@ fn deposit() {
 ```
 
 Next, we'll send a message from the buyer's account using the
-[`Program::send_with_value`](https://docs.gear.rs/gtest/struct.Program.html#method.send_with_value) function instead of [`Program::send`](https://docs.gear.rs/gtest/struct.Program.html#method.send) function since we need to send a message with funds. However, the account balance is zero in the test node, so we need to modify it:
+[`Program::send_with_value`](https://docs.gear.rs/gtest/struct.Program.html#method.send_with_value) function instead of [`Program::send`](https://docs.gear.rs/gtest/struct.Program.html#method.send) function since we need to send a message with funds. However, the account balance is zero in the test node, so we'll modify it:
 
 ```rust title="tests/escrow_test.rs"
 sys.mint_to(BUYER, PRICE);
@@ -76,7 +85,9 @@ fn init_escrow(sys: &System) {
 }
 ```
 
-To obtain the program within the test function, we can utilize the [`System::get_program`](https://docs.gear.rs/gtest/struct.System.html#method.get_program) function provided by the `gtest` library. As discussed in our first lesson, we initialize our program with the first ID. Hence, the complete code for the deposit test function is as follows:
+We can utilize the [`System::get_program`](https://docs.gear.rs/gtest/struct.System.html#method.get_program) function provided by the `gtest` library to obtain the program within the test function.
+
+As discussed in our first lesson, we initialize our program with the first ID. Hence, the complete code for the deposit test function is as follows:
 
 ```rust title="tests/escrow_test.rs"
 const ESCROW_ID: u64 = 1;
@@ -154,4 +165,4 @@ fn deposit_failures() {
 }
 ```
 
-Great, we have written half of our program. Now it's time for you to code.
+Great, we've written half of our program. Now it's time for you to code.

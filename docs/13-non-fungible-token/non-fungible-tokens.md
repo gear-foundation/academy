@@ -14,7 +14,7 @@ $$
 
 The main functions of the contract of such tokens are similar to fungible tokens:
 
-- `transfer(to, token_id)` is a function that allows you to transfer a token with the `token_id` number to the `to` account. Unlike the fungible token contract, this contract does not require a from the account, since each token has its own owner.
-- `approve(approved_account, token_id)` is a function that allows you to give the right to dispose of the token to the specified `approved_account`. This functionality can be useful on marketplaces for auctions. When the owner wants to sell his token, they can put it on a marketplace/auction, so the contract sends this token to the new owner.
-- `mint(to, token_id, metadata)` is a function that creates a new token. Metadata can include any information about the token: it can be a link to a specific resource, a description of the token, etc.
-- `burn(from, token_id)`: This function removes the token with the mentioned `token_id` from the contract.
+1. `transfer(to, token_id)` - Use the `transfer` function to send a token (`token_id`) to the designated recipient (`to`) without requiring a sender account since each token has its owner.
+2. `approve(approved_account, token_id)` - Utilize the `approve` function to grant disposal rights of a token (`token_id`) to a specified account (`approved_account`). This is particularly useful in marketplaces or auctions, where owners can sell their tokens by transferring ownership to a new buyer.
+3. `mint(to, token_id, metadata)` - Generate a new token using the `mint` function, specifying the recipient (`to`), token identifier (`token_id`), and associated metadata. Metadata can encompass various details about the token, such as resource links or descriptions.
+4. `burn(from, token_id)` - Remove a token (`token_id`) from the contract by invoking the `burn` function with the account (`from`) holding the token.

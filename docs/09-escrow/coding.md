@@ -39,13 +39,15 @@ pub struct Escrow {
 }
 ```
 
-We also need a dynamic global variable to undergo changes during the contract execution. We'll use the `static mut` construct for this:
+We also need a dynamic global variable to change during the contract execution. We'll use the `static mut` construct for this:
 
 ```rust
 static mut ESCROW: Option<Escrow> = None;
 ```
 
-The `ESCROW` value remains `None` until we initialize the program. Once we initialize the program, we fill the `Escrow` structure with information, causing `ESCROW` to transition to `Some(Escrow)`.
+The `ESCROW` value remains `None` until we initialize the program.
+
+Once we initialize the program, we'll fill the `Escrow` structure with information, causing `ESCROW` to transition to `Some(Escrow)`.
 
 Here's the full code with a minimal Gear smart contract structure:
 
@@ -89,7 +91,11 @@ pub struct InitEscrow {
     pub price: u128,
 }
 ```
-In the `init` function, we'll define the addresses of the Buyer and Seller, along with the product price. We'll then load the message by utilizing `msg::load()` and decode it using the `InitEscrow` structure. Next, we'll create a new `Escrow` structure with the provided information and assign the `state` as `EscrowState::AwaitingPayment`. Finally, we'll set `ESCROW` as `Some(escrow)`.
+In the `init` function, we'll define the addresses of the Buyer and Seller, along with the product price. 
+
+We'll then load the message by utilizing `msg::load()` and decode it using the `InitEscrow` structure. 
+
+Next, we'll create a new `Escrow` structure with the provided information and assign the `state` as `EscrowState::AwaitingPayment`. Finally, we'll set `ESCROW` as `Some(escrow)`.
 
 Let's load the message in the `init` function and define the contract state:
 
@@ -108,24 +114,24 @@ extern "C" fn init() {
 }
 ```
 
-Now, we'll write the escrow contract logic. Our contract will handle the following messages:
+Next, we'll implement the escrow contract logic to handle the following messages:
 
-- Message from the buyer with attached funds. The escrow contract confirms:
+1. Upon receiving funds from the buyer, the escrow contract validates the following:
 
-    - The escrow state is `AwaitingPayment`;
-    - The sender's address is equal to buyer's address;
-    - The attached funds equal the product price.
+   - Escrow state: It must be in the `AwaitingPayment` state.
+   - Sender's address: It must match the buyer's address.
+   - Attached funds: They should be equal to the product price.
 
-Then, the contract sets the escrow state to `AwaitingDelivery` and sends the reply about the successful fund deposit.
+   Once validated, the contract updates the escrow state to `AwaitingDelivery` and sends a confirmation message regarding the successful fund deposit.
 
-- Message from the buyer confirming the receipt of the goods. The escrow contract confirms:
+2. When the buyer confirms the receipt of the goods, the escrow contract verifies the following:
 
-    - The escrow state is `AwaitingDelivery`;
-    - The sender's address is equal to the buyer's address.
+   - Escrow state: It must be in the `AwaitingDelivery` state.
+   - Sender's address: It must match the buyer's address. 
 
-Then, the contract sets the escrow state to `Closed`, sends funds to the seller and sends the reply about successful escrow closure.
+Then, the contract sets the escrow state to `Closed`, sends funds to the seller, and sends the reply about successful escrow closure.
 
-Great! Now, we need to declare the enums for incoming and outgoing messages, methods for Escrow structure and implement the handle function.
+Great! Now, we need to declare the enums for incoming and outgoing messages, methods for Escrow structure, and implement the handle function.
 
 ```rust title="src/lib.rs"
 #[derive(Encode, Decode, TypeInfo)]

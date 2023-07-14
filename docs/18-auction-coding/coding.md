@@ -4,11 +4,9 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-In this tutorial, instead of using `panic!`, we'll return `Result<AuctionEvent, AuctionError>`.
+In this tutorial, we'll learn how to handle asynchronous messages and track the state of a program using the `Result` enum instead of `panic!`. There'll be multiple asynchronous messages between which we must carefully track the program state. In our case, using the `Result` enum is the preferred option.
 
-In our case, there will be quite a few asynchronous messages between which we must carefully track the state of the program. In such a case, using `Result` enum is the preferred option.
-
-We'll create enums `AuctionEvent` and `AuctionError` that we'll expand during the writing of the program.
+We'll focus on creating two enums called `AuctionEvent` and `AuctionError`, which we'll expand as we write the program.
 
 ```rust
 #[gstd::async_main]
@@ -40,7 +38,7 @@ async fn main() {
 }
 ```
 
-Accordingly, the main function:
+We'll modify the main function to use the `Result<AuctionEvent, AuctionError>` return type instead of `panic!`:
 
 ```rust
 async fn start_auction(
@@ -51,7 +49,7 @@ async fn start_auction(
 ) -> Result<AuctionEvent, AuctionError> {}
 ```
 
-Let’s start writing the function `start_auction`:
+Then we'll start writing the function `start_auction`:
 
 ```rust
 async fn start_auction(
@@ -62,7 +60,7 @@ async fn start_auction(
 ) -> Result<AuctionEvent, AuctionError> {}
 ```
 
-We check that auction is in `ReadyToStart` state:
+In the following code block, we'll confirm if the auction is in the `ReadyToStart` state:
 
 ```rust
 if self.status != Status::ReadyToStart {
@@ -70,14 +68,16 @@ if self.status != Status::ReadyToStart {
 }
 ```
 
-Then we check if there is a pending transaction. If there is, we:
+Next, we'll check for a pending transaction. If one exists, we:
 
-- Check that it’s the transaction `StartAuction`;
-- Check the input arguments for the function. If they differ from those stored in the transaction, the contract replies with the error;
-- Get the Tamagotchi owner. If it's already the auction contract, we don’t send the message to the Tamagotchi contract again and just save it in the auction contract. Then we stop the message execution.
+- Check if it's the transaction `StartAuction`;
+- Confirm if the input arguments match those stored in the transaction. If they differ, the contract replies with an error.;
+- Get the Tamagotchi owner. If the owner is already in the auction contract, there's no need to send the message to the Tamagotchi contract again. Instead, we save it within the auction contract and terminate the message execution.
+
+The above steps are in the code below:
 
 ```rust
-// Check if there is already a pending transaction
+// Check if there's already a pending transaction
 if let Some(tx) = self.transaction.clone() {
     match tx {
         Transaction::StartAuction {
@@ -92,7 +92,7 @@ if let Some(tx) = self.transaction.clone() {
                 return Err(AuctionError::WrongParams);
             }
 
-            // get the Tamagotchi owner
+            // Get the Tamagotchi owner
             let tmg_owner = if let Ok(tmg_owner) =
                 get_owner(&self.tamagotchi_id).await
             {
@@ -102,8 +102,8 @@ if let Some(tx) = self.transaction.clone() {
                 return Err(AuctionError::WrongReceivedMessage);
             };
 
-            // if Tamagotchi owner is already the current contract
-            // we just change its state and start the auction
+            // If the Tamagotchi owner is already in the current contract,
+            // we change its state and start the auction
             if tmg_owner == exec::program_id() {
                 self.tamagotchi_id = *tamagotchi_id;
                 self.status = Status::InProcess;
@@ -113,7 +113,7 @@ if let Some(tx) = self.transaction.clone() {
                 return Ok(AuctionEvent::AuctionStarted)
             };
 
-            // check that owner starts the auction
+            // To confirm if the owner starts the auction
             if tmg_owner != msg::source() {
                 return Err(AuctionError::NotOwner);
             }
@@ -147,8 +147,7 @@ if let Some(tx) = self.transaction.clone() {
     }
 }
 ```
-
-Where the function for getting the owner is:
+To get the owner, use the `get_owner` function in the code block below:
 
 ```rust
 async fn get_owner(tamagotchi_id: &TamagotchiId)
@@ -166,7 +165,7 @@ async fn get_owner(tamagotchi_id: &TamagotchiId)
 }
 ```
 
-And the function for changing owner:
+And the function for changing owner is as follows:
 
 ```rust
 async fn change_owner(
@@ -186,7 +185,7 @@ async fn change_owner(
 }
 ```
 
-If there is no a pending transaction, the following logic is simple:
+If there is no pending transaction, the logic is simpler as seen in the code below:
 
 ```rust
 if duration < MIN_DURATION {
@@ -208,7 +207,7 @@ let tmg_owner = if let Ok(tmg_owner) =
     return Err(AuctionError::WrongReceivedMessage);
 };
 
-// check that owner starts the auction
+// To confirm if the owner starts the auction
 if tmg_owner != msg::source() {
     self.transaction = None;
     return Err(AuctionError::NotOwner);
@@ -240,7 +239,7 @@ if change_owner(&self.tamagotchi_id, &exec::program_id())
 
 As you can see, the code is repeated when we continue the previous transaction or execute the current one.
 
-Let’s write the function `complete_tx`:
+Let's write the function `complete_tx`:
 
 ```rust
 async fn complete_tx(&mut self, tx: Transaction)
@@ -256,8 +255,8 @@ async fn complete_tx(&mut self, tx: Transaction)
                 self.transaction = None;
                 return Err(AuctionError::WrongReceivedMessage);
             };
-            // if Tamagotchi owner is already the current contract
-            // we just change its state and start the auction
+            // If the Tamagotchi owner is already in the current contract,
+            // we change its state and start the auction
             if tmg_owner == exec::program_id()
                 self.status = Status::InProcess;
                 self.current_bid = bid;
@@ -266,7 +265,7 @@ async fn complete_tx(&mut self, tx: Transaction)
                 return Ok(AuctionEvent::AuctionStarted);
             };
 
-            // check that owner starts the auction
+            // To confirm if the owner starts the auction
             if tmg_owner != msg::source() {
                 return Err(AuctionError::NotOwner);
             }
@@ -303,7 +302,7 @@ async fn complete_tx(&mut self, tx: Transaction)
 }
 ```
 
-Then the function `start_auction` will be rewritten as follows:
+Then, we'll rewrite the function `start_auction` as follows:
 
 ```rust
 async fn start_auction(
@@ -355,11 +354,13 @@ async fn start_auction(
 }
 ```
 
-Great, we're done with this function and now we'll start writing the function for making bids:
+Great! We're done with the `complete_tx` and rewritten `start_auction` function. 
 
-1. First, we check if there is no pending transaction MakeBid;
-2. Next, we check the input arguments. If they differ from those saved in transactions, we complete the previous transaction and execute the current one. If they are the same, we complete the pending transaction and stop the function execution.
-3. If there is no pending transaction, we execute the current transaction.
+Let's start writing the function for making bids (`make_bid`):
+
+- First, we'll check if there is a pending transaction for MakeBid
+- Next, we'll compare the input arguments with those stored in the transactions. If they differ, complete the previous transaction and execute the current one. If they match, complete the pending transaction and stop the function execution.
+- If there is no pending transaction, we execute the current transaction.
 
 ```rust
 async fn make_bid(&mut self, bid: u128)
@@ -396,7 +397,7 @@ async fn make_bid(&mut self, bid: u128)
     let transaction_id = self.transaction_id;
     let bidder = msg::source();
 
-    // We reserve 2 transaction ids since there will be 2 messages to the token contract
+    // We reserve two transaction ids since there will be two messages to the token contract
     self.transaction_id = self.transaction_id.wrapping_add(2);
     let tx = Transaction::MakeBid {
         transaction_id,
@@ -408,7 +409,7 @@ async fn make_bid(&mut self, bid: u128)
 }
 ```
 
-Let’s expand the function `complete_tx`:
+Let's expand the function `complete_tx`:
 
 ```rust
 async fn complete_tx(&mut self, tx: Transaction)
@@ -435,11 +436,11 @@ async fn complete_tx(&mut self, tx: Transaction)
                 return Err(AuctionError::UnableToTransferTokens);
             }
 
-            // if it's not the first bid
+            // If it's not the first bid,
             // we have to return the tokens to the previous bidder
             // since the tokens are on the auction contract
-            // the transaction can fail only due to lack of gas
-            // it's necessary to rerun the transaction
+            // The transaction can fail only due to a lack of gas
+            // It's necessary to rerun the transaction
             if !self.current_bidder.is_zero()
                 && transfer_tokens(
                     transaction_id + 1,
@@ -463,9 +464,9 @@ async fn complete_tx(&mut self, tx: Transaction)
 }
 ```
 
-So, the next step is writing the function `settle_auction`.
+Our next step is writing the function `settle_auction`.
 
-But it's possible that there is a transaction `MakeBid` left from the state when users were making bids.
+But there may be a transaction `MakeBid` left from the state when users were making bids.
 
 In this case, we must first complete this transaction and then execute the transaction `SettleAuction`:
 
@@ -477,7 +478,7 @@ async fn settle_auction(&mut self)
         return Err(AuctionError::WrongState);
     }
 
-    // it's possible that there is a pending transaction `MakeBid`
+    // It's possible that there is a pending `MakeBid` transaction
     if let Some(tx) = self.transaction.clone() {
         match tx {
             Transaction::MakeBid { .. } => {
@@ -500,7 +501,7 @@ async fn settle_auction(&mut self)
 }
 ```
 
-And accordingly, the `complete_tx` function:
+And proceed to complete the transaction using the `complete_tx` function:
 
 ```rust
 async fn complete_tx(&mut self, tx: Transaction)
