@@ -21,7 +21,7 @@ store-io = { git = "https://github.com/gear-foundation/dapps-smart-contract-acad
 # ...
 ```
 
-Add a field to the Tamagotchi contract  the address of the fungible token. Accordingly, add the following input message to set the fungible token address:
+Add a field to the Tamagotchi contract the address of the fungible token. Accordingly, add the following input message to set the fungible token address:
 
 ```rust
 #[derive(Encode, Decode, TypeInfo)]
