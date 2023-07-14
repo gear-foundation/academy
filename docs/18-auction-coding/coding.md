@@ -439,8 +439,8 @@ async fn complete_tx(&mut self, tx: Transaction)
             // If it's not the first bid,
             // we have to return the tokens to the previous bidder
             // since the tokens are on the auction contract
-            //The transaction can fail only due to a lack of gas
-            //It's necessary to rerun the transaction
+            // The transaction can fail only due to a lack of gas
+            // It's necessary to rerun the transaction
             if !self.current_bidder.is_zero()
                 && transfer_tokens(
                     transaction_id + 1,
