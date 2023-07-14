@@ -4,12 +4,16 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-The battle contract can be in 3 states:
+Time to put your army to the test. 
 
-- `Registration`: the battle contract is waiting for the Tamagotchi owner to register them;
-- `Move`: the Tamagotchi owners are making the move in turns;
-- `Waiting`: after the Tamagotchi owners made their moves, the battle contract gives them time to equip their Tamagotchi.
-- `GameIsOver`: the battle is over, it’s necessary to send a message `StartNewGame`.
+The battle contract operates in three states: Registration, Move and Waiting. Let's break down each state and explain their functionalities:
+
+- `Registration`: In this state, the battle contract awaits the registration of Tamagotchis by their owners. Once registered, the contract moves to the next state.;
+- `Move`: The registered Tamagotchi owners take turns making their moves in the battle;
+- `Waiting`: After the Tamagotchi owners made their moAfter all the Tamagotchi owners have made their moves, the battle contract allows them  time to equip their Tamagotchis;
+- `GameIsOver`: When the battle is over, the battle contract sends a message `StartNewGame`.
+
+Here's the code implementing the battle contract:
 
 ```rust
 #[derive(Default)]
@@ -61,13 +65,13 @@ To which it will respond with information about the Tamagotchi owner:
 TmgEvent::Owner(ActorId)
 ```
 
-We’ll also add the message:
+We'll also add the message below:
 
 ```rust
 StoreAction::GetAttributes
 ```
 
-To the store contract that allows us to get attributes of Tamagotchi:
+To the store contract allowing us to get attributes of Tamagotchi:
 
 ```rust
 StoreEvent::Attributes {
@@ -75,14 +79,14 @@ StoreEvent::Attributes {
 }
 ```
 
-The register function:
+Let's review the register function:
 
 It allows the registration of two Tamagotchi for battle.
 
 ![Battle Diagram](/img/23/battle-diagram.png)
 
-1. Before you register a Tamagotchi, the Battle contract must receive the Tamagotchi’s owner and its attributes from the shop;
-2. After receiving the details, the Battle contract randomly generates the Tamagorchi’s power and energy;
+1. Before you register a Tamagotchi, the Battle contract must receive the Tamagotchi's owner and its attributes from the shop;
+2. After receiving the details, the Battle contract randomly generates the Tamagotchi's power and energy;
 3. If one Tamagotchi is registered, it remains in the `Registration` state;
 4. If two Tamagotchi are registered, the battle contract randomly
 determines who starts playing first and goes to the `Moves` state.
@@ -186,25 +190,25 @@ pub fn genetate_power() -> u16 {
 }
 ```
 
-There are also two constants, `MAX_POWER` and `MIN_POWER`, that define the upper and lower bounds of the Tamagotchi's power:
+There are also two constants, `MAX_POWER` and `MIN_POWER`, defining the upper and lower bounds of the Tamagotchi's power:
 
 ```rust
 const MAX_POWER: u16 = 10_000;
 const MIN_POWER: u16 = 3_000;
 ```
 
-Next, as an example, we will define a very simple game mechanic:
+Next, as an example, we'll define a simple game mechanic:
 
-- The Tamagotchi owner makes a move by simply sending a message `BattleAction::Move` to the battle contract. During that move, their Tamagotchi beats the opponent’s Tamagotchi. The opponent’s energy decreases by the force of its strike.
-- Now, there is only one attribute in the Tamagotchi store that can be used in the game - a sword. If the attacking Tamagotchi has a sword, the force of its strike is multiplied by `SWORD_POWER`:
+- The Tamagotchi owner takes action by simply sending a message `BattleAction::Move` to the battle contract. During the move, their Tamagotchi beats the opponent's Tamagotchi. The opponent's energy decreases by the force of its strike.
+- In this game, there's a single attribute available for the Tamagotchi, which is a sword. If the attacking Tamagotchi possesses a sword, the strength of its strike is multiplied by `SWORD_POWER`:
 
     $$
     SWORD\_POWER × power
     $$
 
-    Otherwise, Tamagotchi's strike power is simply their power. In the future, you can expand the logic by adding fighting attributes to the store, as well as adding the movement of the Tamagotchi across the field.
+    Otherwise, Tamagotchi's strike power is determined by their inherent strength. In the future, you can expand the logic by adding fighting attributes to the store and the movement of the Tamagotchi across the field.
 
-3. If both players have made three moves, the game enters a waiting state, and the players can equip their Tamagotchis with items from the shop. After a set delay, the Tamagotchis' states are updated, and the next round begins.
+3. When both players have completed three moves, the game transitions into a waiting state, allowing them to equip their Tamagotchis with items from the shop. After a set delay, the states of the Tamagotchis are updated and the next round begins.
 
 ![Move Diagram](/img/23/move-diagram.png)
 
@@ -265,7 +269,7 @@ fn make_move(&mut self) {
 }
 ```
 
-The `UpdateInfo` action just updates the changes in Tamagotchi states and starts the next round:
+The `UpdateInfo` action updates the changes in Tamagotchi states and starts the next round:
 
 ```rust
 async fn update_info(&mut self) {
@@ -292,8 +296,8 @@ async fn update_info(&mut self) {
 }
 ```
 
-So, we have finished the simple implementation of the battle between Tamagotchi.
+And with that, we've finished the simple implementation of the battle between Tamagotchi.
 
-You can try to take part in the battle with your Tamagotchi or create some Tamagotchi (using the previous lesson) and make them fight (link to the web application).
+If you're up for a challenge, why not engage in battles with your Tamagotchi or create new ones to fight? You can follow the instructions from the previous lesson to make your own Tamagotchi and then let them battle it out. (using the previous lesson) and make them fight (link to the web application).
 
-**Now it’s time for your coursework!**
+**It's now time for your coursework!**
