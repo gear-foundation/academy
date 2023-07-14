@@ -4,9 +4,15 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-Let’s add the entry point `my_handle_signal` to our auction contract. That function will confirm whether there is a pending transaction. If there is, the function takes the gas reserved in advance and sends a message `CompleteTx` using that gas.
+Let's continue from where we left off in our previous tutorial, viewing an example of the `my_handle_signal` function. 
 
-First, we have to add an action for gas reservation by expanding the enums `AuctionAction` and `AuctionEvent`:
+We'll add the entry point `my_handle_signal` to our auction contract. The function will confirm the presence of a pending transaction. 
+
+If there is, the `my_handle_signal` function takes the gas reserved in advance and sends a message `CompleteTx` using the gas.
+
+Let's view the code:
+
+- First, we have to add an action for gas reservation by expanding the enums `AuctionAction` and `AuctionEvent`:
 
 ```rust
 #[derive(Encode, Decode)]
@@ -24,7 +30,7 @@ pub enum AuctionEvent {
 }
 ```
 
-We also need to add field `reservations` to the `Auction` struct to save the ids of gas reservations:
+We also need to add the field `reservations` to the `Auction` struct to save the ids of gas reservations:
 
 ```rust
 #[derive(Default)]
@@ -35,7 +41,7 @@ pub struct Auction {
 }
 ```
 
-Next, we'll define the method `make_reservation` for the `Auction` struct:
+- Next, we'll define the method `make_reservation` for the `Auction` struct:
 
 ```rust
 impl Auction {
@@ -60,9 +66,7 @@ const RESERVATION_AMOUNT: u64 = 50_000_000_000;
 const RESERVATION_DURATION: u32 = 86400;
 ```
 
-Then we have to add the action for completing the transaction.
-
-We’ll add the action to the enum `AuctionAction` using:
+- Then, we have to add the action for completing the transaction. We'll add the action to the enum `AuctionAction` using the code below:
 
 ```rust
 #[derive(Encode, Decode)]
@@ -73,7 +77,7 @@ pub enum AuctionAction {
 }
 ```
 
-Where the transaction is an enum that we have defined before:
+Where the transaction is an enum we've defined before:
 
 ```rust
 #[derive(Clone, Encode, Decode, PartialEq, Eq)]
@@ -94,7 +98,7 @@ pub enum Transaction {
 }
 ```
 
-We’ll also extend the entry point `main()`:
+- We'll also extend the entry point `main()`:
 
 ```rust
 #[gstd::async_main]
@@ -116,7 +120,12 @@ async fn main() {
 }
 ```
 
-Let’s write the function `my_handle_signal`. This function is responsible for checking if there is a pending transaction and if there is a gas reservation available. If so, it sends a message `CompleteTx` using that gas.
+Now, let's write the function `my_handle_signal`, responsible for:
+
+- Checking if there is a pending transaction
+- Confirming the availability of reserved gas
+
+If present, the function sends a message `CompleteTx` using the gas.
 
 ```rust
 #[no_mangle]
@@ -141,7 +150,7 @@ extern "C" fn my_handle_signal() {
 }
 ```
 
-It's also necessary to reserve gas for system messages before every transaction. Here’s how we’ll implement it:
+It's also necessary to reserve gas for system messages before every transaction. Here's how we'll implement it:
 
 ```rust
 #[gstd::async_main]
