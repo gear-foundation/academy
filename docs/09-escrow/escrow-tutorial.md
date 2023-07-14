@@ -4,7 +4,11 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-This tutorial will teach you how to utilize an escrow smart contract in a blockchain transaction, providing safety for all parties involved. It explains the process of an escrow smart contract, from the terms agreement to the automatic transfer of funds to the seller's digital wallet.
+In this tutorial, you'll learn the following about escrow smart contracts: 
+
+- How to utilize an escrow smart contract in a blockchain transaction.
+- Providing safety for all parties involved. 
+- The process of an escrow smart contract (from the terms agreement to the automatic transfer of funds to the seller's digital wallet).
 
 An escrow is a temporary arrangement where a third party holds the transaction's assets. These valuables remain in the third-party account until all parties meet the agreed-upon terms. Both parties benefit from added security by using an escrow model. 
 
