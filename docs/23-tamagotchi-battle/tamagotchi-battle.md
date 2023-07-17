@@ -298,6 +298,8 @@ async fn update_info(&mut self) {
 
 And with that, we've finished the simple implementation of the battle between Tamagotchi.
 
-If you're up for a challenge, why not engage in battles with your Tamagotchi or create new ones to fight? You can follow the instructions from the previous lesson to make your own Tamagotchi and then let them battle it out. (using the previous lesson) and make them fight (link to the web application).
+If you're up for a challenge, why not engage in battles with your Tamagotchi or create new ones to fight?
+
+You can follow the instructions from the previous lesson to make your own Tamagotchi and then let them battle it out (using the previous lesson) and make them fight (link to the web application).
 
 **It's now time for your coursework!**
