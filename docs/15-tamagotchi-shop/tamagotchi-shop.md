@@ -17,7 +17,9 @@ Let's get started.
 The buying process in a smart contract involves three simple steps:
 
 **Step 1: Approval from Tamagotchi** - The Tamagotchi sends a message to the fungible token contract. This message serves to approve the transfer of tokens to the store contract.
+
 **Step 2: Choosing an Attribute** - After the request approval, the Tamagotchi sends a message to the store contract. This message indicates the specific attribute that the Tamagotchi wants to purchase.
+
 **Step 3: Completing the Transaction** - After receiving the message, the store contract takes action. It sends a message to the fungible token contract, requesting the transfer of tokens to itself. If the transfer is successful, the store contract adds the chosen attribute to Tamagotchi's list of attributes.
 
 ![FT Diagram](/img/15/ft-diagram.jpg)
