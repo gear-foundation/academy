@@ -107,7 +107,7 @@ enum Transaction {
 }
 ```
 
-and add the fields to the contract state:
+Then add the fields to the contract state:
 
 ```rust
 #[derive(Default)]
@@ -119,4 +119,4 @@ pub struct Auction {
 }
 ```
 
-where the field `transaction_id` will be used for tracking the transactions in the fungible token contract.
+Where the field `transaction_id` will be used for tracking the transactions in the fungible token contract.
