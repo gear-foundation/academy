@@ -4,7 +4,7 @@ sidebar_position: 2
 hide_table_of_contents: true
 ---
 
-In this assignment, our Tamagotchi will be interacting with 2 other contracts: `tamagotchi-store` and `fungible-token`.
+In this assignment, the Tamagotchi will interact with 2 other contracts: `tamagotchi-store` and `fungible-token`.
 
 Reference these contracts from your Tamagotchi `Cargo.toml` as shown below:
 
@@ -21,7 +21,7 @@ store-io = { git = "https://github.com/gear-foundation/dapps-smart-contract-acad
 # ...
 ```
 
-Add a field to the Tamagotchi contract the address of the fungible token. Accordingly, add the following input message to set the fungible token address:
+Add a field to the Tamagotchi contract with the address of the fungible token then add the following input message to set the fungible token address:
 
 ```rust
 #[derive(Encode, Decode, TypeInfo)]
@@ -99,11 +99,11 @@ While processing this message, the Tamagotchi must send the following message to
 StoreAction::BuyAttribute { attribute_id }
 ```
 
-Next, we’ll deploy the fungible token and the store contract to the chain. Go to the `upload-contracts` folder (`smart-contract-academy` repo) located in the `contracts` folder.
+Next, we’ll deploy the fungible token and the store contract to the chain. Go to the `upload-contracts` folder (`smart-contract-academy` repo) in the `contracts` folder.
 
 The `transactions.yaml` file contains the transactions for uploading the contracts and filling the store contract with attributes.
 
-In this folder make:
+In this folder make the following:
 
 ```bash
 make init
@@ -134,7 +134,7 @@ Open the store. Buy attributes and see how your Tamagotchi is transforming.
 
 ![Tamagotchi Store](/img/15/tamagotchi-store.jpg)
 
-For the contract to be in accordance with the frontend, the metadata must be the following:
+For the contract to align with the frontend, the metadata must match the following:
 
 ```rust
 pub struct ProgramMetadata;
