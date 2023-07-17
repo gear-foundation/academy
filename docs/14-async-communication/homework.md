@@ -4,7 +4,7 @@ sidebar_position: 4
 hide_table_of_contents: true
 ---
 
-In this assignment, you will enhance your Tamagotchi smart contract by incorporating the ability to change ownership and granting approval to other accounts for ownership changes.
+In this assignment, you'll enhance your Tamagotchi smart contract by incorporating the ability to change ownership and granting approval to other accounts for ownership changes.
 
 To achieve this, you need to implement the following functions:
 
