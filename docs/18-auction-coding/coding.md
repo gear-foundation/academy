@@ -60,7 +60,7 @@ async fn start_auction(
 ) -> Result<AuctionEvent, AuctionError> {}
 ```
 
-In the following code block, we confirm if the auction is in the `ReadyToStart` state:
+In the following code block, we'll confirm if the auction is in the `ReadyToStart` state:
 
 ```rust
 if self.status != Status::ReadyToStart {
