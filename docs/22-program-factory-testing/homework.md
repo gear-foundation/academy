@@ -4,6 +4,8 @@ sidebar_position: 2
 hide_table_of_contents: true
 ---
 
+The following are the requirements for this homework: 
+
 - Finish tests for the Escrow factory;
 - Write the contract that will create Tamagotchi from your contract template.
 
