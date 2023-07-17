@@ -4,6 +4,8 @@ sidebar_position: 2
 hide_table_of_contents: true
 ---
 
+Your course work will involve the following task:
+
 - Add more fighting attributes to the store contract;
 - Determine the power of these attributes. You can also add the opportunity to upgrade various attributes (that will also require extending the logic of the store contract);
 - Allow the player to choose which weapon he will fight or defend during the turn;
