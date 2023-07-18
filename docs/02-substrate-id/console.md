@@ -10,4 +10,4 @@ If you have Gear node installed, you can generate a new seed phrase using the co
 ./gear key generate | grep phrase
 ```
 
-And then import the generated seed phrase into any convenient wallet.
+Then import the generated seed phrase into any convenient wallet.
