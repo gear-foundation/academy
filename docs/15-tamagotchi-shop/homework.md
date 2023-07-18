@@ -4,7 +4,7 @@ sidebar_position: 2
 hide_table_of_contents: true
 ---
 
-In this assignment, the Tamagotchi will interact with 2 other contracts: `tamagotchi-store` and `fungible-token`.
+In this assignment, the Tamagotchi will interact with two other contracts: `tamagotchi-store` and `fungible-token`.
 
 Reference these contracts from your Tamagotchi `Cargo.toml` as shown below:
 
@@ -21,7 +21,7 @@ store-io = { git = "https://github.com/gear-foundation/dapps-smart-contract-acad
 # ...
 ```
 
-Add a field to the Tamagotchi contract with the address of the fungible token then add the following input message to set the fungible token address:
+Add a field to the Tamagotchi contract with the address of the fungible token. Then add the following input message to set the fungible token address:
 
 ```rust
 #[derive(Encode, Decode, TypeInfo)]
@@ -51,7 +51,7 @@ pub enum TmgAction {
 ```
 
 
-To approve tokens you should send the fungible token the Approve message:
+To approve tokens, you should send the fungible token the Approve message:
 
 ```rust
 use ft_main_io::{FTokenAction, FTokenEvent, LogicAction};
@@ -99,18 +99,18 @@ While processing this message, the Tamagotchi must send the following message to
 StoreAction::BuyAttribute { attribute_id }
 ```
 
-Next, we’ll deploy the fungible token and the store contract to the chain. Go to the `upload-contracts` folder (`smart-contract-academy` repo) in the `contracts` folder.
+Next, we'll deploy the fungible token and the store contract to the chain. Go to the `upload-contracts` folder (`smart-contract-academy` repo) in the `contracts` folder.
 
 The `transactions.yaml` file contains the transactions for uploading the contracts and filling the store contract with attributes.
 
-In this folder make the following:
+In this folder, make the following:
 
 ```bash
 make init
 make run
 ```
 
-In the console you should see the addresses of the fungible token and store contracts:
+In the console, you should see the addresses of the fungible token and store contracts:
 
 Paste with addresses to your `.env` file in the `frontend` directory:
 
