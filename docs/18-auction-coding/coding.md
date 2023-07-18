@@ -359,7 +359,7 @@ Great! We're done with the `complete_tx` and rewritten `start_auction` function.
 Let's start writing the function for making bids (`make_bid`):
 
 - First, we'll check if there is a pending transaction for MakeBid
-- Next, we compare the input arguments with those stored in the transactions. If they differ, complete the previous transaction and execute the current one. If they match, complete the pending transaction and stop the function execution.
+- Next, we'll compare the input arguments with those stored in the transactions. If they differ, complete the previous transaction and execute the current one. If they match, complete the pending transaction and stop the function execution.
 - If there is no pending transaction, we execute the current transaction.
 
 ```rust
