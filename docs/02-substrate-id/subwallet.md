@@ -14,7 +14,7 @@ SubWallet is another advanced wallet for managing Substrate as well as EVM accou
 
     ![Create Account](/img/02/subwallet-add-account.png)
 
-4. Select the type of account you want to create (SubWallet allows you to create Substrate-like and Ethereum accounts simultaneously). Copy your seed phrase and keep it in the same place:
+4. Select the type of account you want to create (SubWallet allows you to create Substrate-like and Ethereum accounts simultaneously). Copy your seed phrase and keep it in a safe place:
 
     ![Choose Type](/img/02/subwallet-choose-type.png)
 
