@@ -25,4 +25,4 @@ After completing the course, you'll have understood the following concepts:
 - How to build smart contracts and decentralized applications on Gear.
 - The art of effective smart contract testing.
 - Seamless interaction between smart contracts and the client side.
-- Gear's powerful features, including delayed messages, system signals and system and gas reservations.
+- Gear's powerful features, including delayed messages, system signals, and system and gas reservations.
