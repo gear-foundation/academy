@@ -238,7 +238,7 @@ fn make_move(&mut self) {
     opponent.energy = opponent.energy.saturating_sub(sword_power * player.power);
 
     self.players[next_turn] = opponent.clone();
-    //Check if the opponent lost
+    // Check if the opponent lost
     if opponent.energy == 0 {
         self.players = Vec::new();
         self.state = BattleState::GameIsOver;
