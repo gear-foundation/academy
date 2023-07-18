@@ -14,6 +14,6 @@ Creating a Substrate ID is crucial for secure and accurate data transfer among m
 
 The Substrate ID ensures data integrity by enforcing the uniqueness of each account's address across the network. It also identifies the account owner across various services and applications within the Substrate ecosystem.
 
-To begin, select the easiest way to create an account. You can choose between a browser extension or a mobile app. You'll find detailed instructions on creating an account using either method. 
+To begin, select the easiest way to create an account. You can choose between a browser extension or a mobile app. We'll provide detailed instructions on creating an account using either method within this tutorial series. 
 
 **Note:** You can access your account on any device or wallet using your account passphrase or its associated JSON file.
