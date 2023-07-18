@@ -73,7 +73,9 @@ From our code above, the Escrow contract will interact with the buyer and seller
 
 Here's how we'll go about it. 
 
-First, we'll define an `io` crate for the Escrow contract. Then we'll modify the structure of incoming messages and Escrow methods. Try to change it yourself and then compare it with the correct implementation.
+First, we'll define an `io` crate for the Escrow contract. Then we'll modify the structure of incoming messages and Escrow methods. 
+
+Try to change it yourself and then compare it with the correct implementation.
 
 After, we'll define Loan Factory methods and write the `handle` function:
 
@@ -105,7 +107,7 @@ async fn main() {
 
 Let's implement the `create_escrow` function.
 
-For the program deployment, we should import `ProgramGenerator` from the `prog` module in `gstd` library:
+For the program deployment, we should import `ProgramGenerator` from the `prog` module in the `gstd` library:
 
 ```rust
 use gstd::{msg, prelude::*, ActorId, prog::ProgramGenerator, CodeHash};
