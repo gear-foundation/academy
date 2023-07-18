@@ -26,7 +26,7 @@ The buying process in a smart contract involves three simple steps:
 
 ## Coding
 
-Let's start writing the smart contract. First, we’ll define the structure of the store contract state:
+Let's start writing the smart contract. First, we'll define the structure of the store contract state:
 
 ```rust
 pub struct AttributeStore {
@@ -63,7 +63,7 @@ Let's define the actions the store contract must execute:
 - Create new attributes and sell them to the Tamagotchi contracts;
 - Receive messages from the Tamagotchi contracts.
 
-But before implementing these functions, we'll define the `store-io` crate for the contract store. This crate will help us handle the store's input and output.
+Before implementing these functions, we'll define the `store-io` crate for the contract store. This crate will help us handle the store's input and output.
 
 We'll then write the `lib.rs` file for the contract.
 
@@ -208,9 +208,9 @@ Next, let's explore how we can implement the `buy_attribute` function.
 
 As we mentioned before, this function's role is to start a transfer of tokens from the Tamagotchi contract to the store contract.
 
-Additionally, it needs to keep track of the transaction's ID in the fungible token contract. To accomplish this, we will introduce a new field called `transaction_id` to the state of the store contract.
+Additionally, it needs to keep track of the transaction's ID in the fungible token contract. To accomplish this, we'll introduce a new field called `transaction_id` to the state of the store contract.
 
-So, the store contract is responsible for tracking the transactions in the fungible token and has to consider the ID of the current transaction in it.
+The store contract is responsible for tracking the transactions in the fungible token and has to consider the ID of the current transaction in it.
 
 Let's add the field `transaction_id` to the contract state:
 
@@ -224,7 +224,7 @@ pub struct AttributeStore {
 
 This field stores the current transaction id and helps keep track of the status of token transfers. It is essential for the `buy_attribute` function as it allows us to initiate the transfer, monitor the transaction ID and wait for confirmation of a successful transfer from the fungible token contract.
 
-To simplify the process, we declare the type for the transaction `id` in the `store-io` crate:
+To simplify the process, we'll declare the type for the transaction `id` in the `store-io` crate:
 
 ```rust
 pub type TransactionId = u64;
@@ -296,7 +296,7 @@ async fn buy_attribute(&mut self, attribute_id: AttributeId) {
 }
 ```
 
-You must add the `CompletePrevTx` event to `StoreEvent` to ensure accurate event tracking.
+To ensure accurate event tracking, include the `CompletePrevTx` event in the `StoreEvent` function.
 
 Okay, now let's create a function for selling attributes.
 
@@ -372,7 +372,7 @@ async fn sell_attribute(
 }
 ```
 
-First, the contract receives the attribute price, it then calls the function `transfer_tokens`. If the result of the token transfer is successful, it adds the attribute to the Tamagotchi contract.
+First, the contract receives the attribute price. It then calls the function `transfer_tokens`. If the result of the token transfer is successful, it adds the attribute to the Tamagotchi contract.
 
 Great! We're done writing the contract logic.
 
