@@ -8,16 +8,17 @@ In this lesson, you'll learn to enhance your program with additional functionali
 
 When the program receives the SendHelloTo message, it will send a "hello" message to the specified account. Similarly, upon receiving the SendHelloReply message, the program will respond with a "hello" message to the account from which the message originated. 
 
-To further enrich our program, we'll utilize the send function. Upon receiving the `SendHelloTo message`, it will send a hello message to the specified account and upon receiving the `SendHelloReply` message, it will reply with a greeting message.
+To enhance our program, we'll use the send function. When the program receives the `SendHelloTo` message, it'll send a hello message to the specified account. 
+Similarly, when it receives the `SendHelloReply` message, it'll respond with a greeting message.
 
 Let's add more functionality to our program by introducing two new messages: `SendHelloTo` and `SendHelloReply`.
 
-Our program will receive 2 messages:
+Our program will receive two messages:
 
-- `SendHelloTo`: having received this message, the program will send “hello” to the specified address;
+- `SendHelloTo`: having received this message, the program will send "hello" to the specified address;
 - `SendHelloReply`: the program responds with a friendly "hello" message to the account sending the message.
 
-In the previous lesson, we observed the need to decode the message received by the program. To accomplish this, we'll create an enum called `InputMessages` to decode incoming messages. 
+In the last lesson, we learned the importance of decoding program messages. We'll introduce an enum named `InputMessages` to decode incoming messages. 
 
 ```rust title="src/lib.rs"
 #[derive(Encode, Decode, TypeInfo)]
@@ -35,7 +36,7 @@ We'll also add derive macros `#[derive(Encode, Decode, TypeInfo)]` to the enum f
 parity-scale-codec = { version = "3", default-features = false }
 scale-info = { version = "2", default-features = false }
 ```
-We'll define a static mutable variable `GREETING` as an `Option<String>` to initialize our program.
+We'll define a static mutable variable called `GREETING` to initialize the program. It is of type `Option<String>`.
 
 ```rust title="src/lib.rs"
 static mut GREETING: Option<String> = None;
