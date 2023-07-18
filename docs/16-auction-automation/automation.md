@@ -5,7 +5,7 @@ sidebar_position: 2
 hide_table_of_contents: true
 ---
 
-Before we code the auction smart contract, we'll discuss smart contract automation.
+We'll discuss smart contract automation before we code the auction smart contract, 
 
 In this lesson, we'll explore the concept of smart contract automation to make program execution more efficient. 
 
@@ -28,7 +28,7 @@ Once all the necessary logic is complete, the auction contract will send itself 
 
 Therefore, by utilizing delayed messages, we can automate the execution of a contract. As long as there is sufficient gas for execution, the contract can self-execute for an unlimited block number. However, if the gas runs out, the execution may be interrupted.
 
-The Gear protocol offers another powerful feature: gas reservation. Developers can reserve gas, which they can later to send regular or delayed messages.
+The Gear protocol offers another powerful feature: gas reservation. Developers can reserve gas, which they can later use to send regular or delayed messages.
 
 To reserve a specific amount of gas for future usage, you can use the following function:
 
@@ -54,7 +54,7 @@ msg::send_from_reservation(
 ).expect("Failed to send message from reservation");
 ```
 
-If gas is not needed within the reservation period, it can be unreserved and the gas will be returned to the user who made the reservation.
+If gas is not needed within the reservation period, it can be unreserved, and the gas will be returned to the user who made the reservation.
 
 ```rust
 reservation_id
