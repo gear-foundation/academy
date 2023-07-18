@@ -70,7 +70,7 @@ The storage contract's execution is atomic, meaning it doesn't make asynchronous
     ftoken_id: ActorId
     ```
 
-- **The transactions.** As in the storage contract, the logic contract receives the hash of the transaction being executed and stores the result of its execution. But unlike the storage contract, where message executions are atomic, the logic contract has to keep track of the message being executed and its stage.
+- **The transactions.** As in the storage contract, the logic contract receives the hash of the transaction being executed and stores the result of its execution. Unlike the storage contract, where message executions are atomic, the logic contract has to keep track of the message being executed and its stage.
 
     ```rust
     transactions: HashMap<H256, Transaction>
@@ -86,7 +86,7 @@ The storage contract's execution is atomic, meaning it doesn't make asynchronous
     }
     ```
 
-    Where `msg_source` is an account sending a message to the main contract. Operation is the action that the logic contract should process and status is the transaction status. It's the following enum:
+    Where `msg_source` is an account sending a message to the main contract. Operation is the action the logic contract should process, and status is the transaction status. It's the following enum:
 
     ```rust
     pub enum TransactionStatus {
@@ -147,11 +147,11 @@ pub enum Operation {
 }
 ```
 
-When upgrading the logic contract, there may be changes to the enum `Operation`, which means the payload structure may also change. As a result, the master contract does not know the specific type of payload structure and instead sends it as a byte array (`Vec<u8>`).
+When upgrading the logic contract, there may be changes to the enum `Operation`, meaning the payload structure may also change. As a result, the master contract does not know the specific type of payload structure and instead sends it as a byte array (`Vec<u8>`).
 
 The logic contract sends only one message to the storage contract during the message `Mint`, `Burn` or `Transfer` between accounts in the same storage.
 
-Upon receiving the message, the logic contract decodes the payload from a byte array into the expected enum `Operation`. This allows the logic contract to process the message based on the specific operation type (`Mint`, `Burn`, or `Transfer`)
+Upon receiving the message, the logic contract decodes the payload from a byte array into the expected enum `Operation`. This allows the logic contract to process the message based on the specific operation type (`Mint`, `Burn` or `Transfer`)
 
 ![FT Contracts Messages](/img/14/ft-contracts-messages.png)
 
@@ -159,7 +159,7 @@ When the transfer occurs between 2 different storages, the contract acts as foll
 
 1. The logic contract sends the `DecreaseBalance` message to the storage contract.
 2. If the message executes successfully, the logic contract sends the message `IncreaseBalance` to another storage contract.
-3. If the `IncreaseBalance` message executes successfully, the logic contract saves the status and responds to the main contract. The message execution should not fail. If a transaction is unsuccessful, it may be due to contract memory issues. The logic contract traces storage contracts and reruns failed transactions to prevent failure. In case of persistent errors, the system returns the balance.
+3. If the `IncreaseBalance` message executes successfully, the logic contract saves the status and responds to the main contract. The message execution should not fail. If a transaction is unsuccessful, it may be due to contract memory issues. The logic contract traces storage contracts and repeats failed transactions to prevent failure. In case of persistent errors, the system returns the balance.
 
 The transaction must be re-run if the message fails due to the lack of gas.
 
