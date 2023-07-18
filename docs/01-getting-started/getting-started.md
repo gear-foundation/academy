@@ -6,22 +6,22 @@ hide_table_of_contents: true
 
 There are two ways you can configure your development environment. 
 
+## A. Using Gitpod
 The first is to use [Gitpod](https://www.gitpod.io/). **Gitpod** allows developers to launch ready-to-code development environments for their GitHub projects with a single click.
 
-## Using Gitpod
 You have two options when setting up your coding environment with Gitpod. 
 
-1. Here’s the first option:
+1. Here's the first option:
 
 - In a browser, navigate to your project in GitHub or GitLab;
-- In the browser’s address bar, prefix the entire URL with `gitpod.io/#` and press <kbd>Enter</kbd>. It will create a cloud development environment and open up a workspace in VS code;
-- Install the tools required to build smart contracts in Rust. Gitpod always comes with the latest Rust toolchain pre-installed using Rust compiler `rustup`. Let’s install a nightly version of the toolchain with `rustup`:
+- In the browser's address bar, prefix the entire URL with `gitpod.io/#` and press <kbd>Enter</kbd>. It will create a cloud development environment and open up a workspace in VS code;
+- Install the tools required to build smart contracts in Rust. Gitpod always comes with the latest Rust toolchain pre-installed using Rust compiler `rustup`. Let's install a nightly version of the toolchain with `rustup`:
 
     ```
     rustup toolchain add nightly
     ```
 
-    We’ll need a Wasm compiler to compile our Rust smart contract to Wasm. Let’s add it to the toolchain:
+    We'll need a Wasm compiler to compile our Rust smart contract to Wasm. Let's add it to the toolchain:
 
     ```bash
     rustup target add wasm32-unknown-unknown --toolchain nightly
@@ -38,13 +38,13 @@ You have two options when setting up your coding environment with Gitpod.
 
     ![Gitpod Button](/img/01/gitpod-button.png)
 
-## Setting up the local environment
+## B. Setting up the local environment
 
-macOS and Linux are the most user-friendly operating systems for this course. While Windows might pose more difficulties, you can use any operating system you’re comfortable with. 
+macOS and Linux are the most user-friendly operating systems for this course. While Windows might pose more difficulties, you can use any operating system you're comfortable with. 
 
-1. Linux users should generally install `GCC` and `Clang`, according to their distribution’s documentation.
+1. Linux users should generally install `GCC` and `Clang` according to their distribution documentation.
 
-    For example, if you’re using Ubuntu:
+    For example, if you're using Ubuntu:
 
     ```
     sudo apt install -y build-essential clang cmake
@@ -57,13 +57,13 @@ macOS and Linux are the most user-friendly operating systems for this course. Wh
     brew install cmake
     ```
 
-2. Install the tools required to build smart contracts in Rust. We’ll use `rustup` to get the Rust compiler ready:
+2. Install the tools required to build smart contracts in Rust. We'll use `rustup` to get the Rust compiler ready:
 
     ```
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     ```
 
-    Let’s install a nightly version of the toolchain and a Wasm target with `rustup`:
+    Let's install a nightly version of the toolchain and a Wasm target with `rustup`:
 
     ```bash
     rustup toolchain add nightly
