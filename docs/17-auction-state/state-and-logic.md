@@ -37,11 +37,11 @@ pub enum Status {
 }
 ```
 
-Let's define the messages that the contract will receive:
+Let's define the messages the contract will receive:
 
 - `StartAuction { tamagotchi_id, minimum_bid, duration }` - message initiating the start of the auction. The Tamagotchi owner must indicate the address of the Tamagotchi contract, the starting price and the duration of the auction;
-- `MakeBid { bid }` - the message from auction participants, to which they must indicate the price (`bid`) they are ready to pay for Tamagotchi;
-- `SettleAuction` - the message that the contract receives after the end of the auction. If there were bids, then the auction contract assigns Tamagotchi to the auction winner. Otherwise, the auction contract assigns Tamagotchi to the previous owner.
+- `MakeBid { bid }` - a message from auction participants, to which they must indicate the price (`bid`) they are ready to pay for Tamagotchi;
+- `SettleAuction` - the message the contract receives after the end of the auction. If there were bids, then the auction contract assigns Tamagotchi to the auction winner. Otherwise, the auction contract assigns Tamagotchi to the previous owner.
 
 ```rust
 pub type TamagotchiId = ActorId;
@@ -61,32 +61,34 @@ pub enum AuctionAction {
 }
 ```
 
-As you can guess, the auction contract will interact with the fungible token contract as well as with the Tamagotchi contract. That is, it'll send messages to these contracts and wait for replies. Therefore, the transactions will not be atomic and we’ll have to consider this to maintain the state of 3 contracts consistent.
+The auction contract interacts with the fungible token and Tamagotchi contracts. It sends messages and awaits replies from these contracts. Thus, the transactions lack atomicity, requiring careful consideration to ensure a consistent state across the three contracts.
 
 Let's look at each action of the contract in detail. The action `StartAuction` has to change the owner of Tamagotchi to the auction contract and set the auction parameters.
 
-We consider all the possible cases that can lead to state inconsistency. The auction contract sends a message to the Tamagotchi contract and the following cases are possible:
+We'll consider all the possible cases that can lead to state inconsistency. The auction contract sends a message to the Tamagotchi contract.
 
-1. The Tamagotchi contract fails during the message execution either from lack of gas or from a logical error. It didn’t save the state and therefore auction and Tamagotchi are in a consistent state, however, the auction contract has no idea what happened in the Tamagotchi contract.
-2. The Tamagotchi executes the messages and saves the state but gas runs out during further operations. Then, the state of the Tamagotchi contract changed, however, this was not reflected in the auction contract.
+The following cases are possible:
+
+1, The Tamagotchi contract fails during message execution due to insufficient gas or a logical error. It fails to save the state, leaving the auction and Tamagotchi state inconsistent. The auction contract remains unaware of the issue in the Tamagotchi contract.
+2. The Tamagotchi carries out messages and stores the state. However, it runs out of gas during subsequent operations. As a result, the Tamagotchi contract changes its state, but the auction contract does not reflect this change.
 
 ![Auction Diagram](/img/17/auction-diagram.jpg)
 
-The workflow of `MakeBid` action is as follows:
+The workflow of the `MakeBid` action is as follows:
 
-1. The user makes a bid, indicating the number of tokens he would like to pay for Tamagotchi.
-2. The contract transfers his tokens to its balance and if that transfer is successful it returns the tokens to the previous bidder. The gas can run out during token contract execution, during a reply to the auction contract or during further execution.
+1. The user places a bid, specifying the desired number of tokens for the Tamagotchi.
+2. Upon receiving the user's bid, the contract adds the tokens to its balance and verifies a successful transfer. If the transfer is successful, the contract returns the tokens to the previous bidder. The gas may deplete during the contract execution, replies, or subsequent actions.
 
 ![Make Bid Diagram](/img/17/make-bid-diagram.jpg)
 
 Having received the `SettleAuction` message, the contract performs the following actions:
 
-1. Change the Tamagotchi owner to the auction winner. The gas can run out during the Tamagotchi contract execution, during a reply or during further auction contract execution.
-2. Transfer tokens to the previous owner. And again, the gas can run out during the fungible contract execution, during a reply or during further auction contract execution.
+1. Change the Tamagotchi owner to the auction winner. The gas may deplete while executing the Tamagotchi contract, replying, or continuing the auction contract.
+2. Transfer tokens to the previous owner. And again, the gas can run out during the execution of the fungible contract, replying, or continuing the auction contract.
 
 ![Settle Auction Diagram](/img/17/settle-auction-diagram.jpg)
 
-So, let’s create the following enum for tracking transactions:
+So, let's create the following enum for tracking transactions:
 
 ```rust
 #[derive(Clone)]
@@ -106,8 +108,7 @@ enum Transaction {
     },
 }
 ```
-
-Then add the fields to the contract state:
+In the contract state, we need to add the following fields:
 
 ```rust
 #[derive(Default)]
@@ -119,4 +120,4 @@ pub struct Auction {
 }
 ```
 
-Where the field `transaction_id` will be used for tracking the transactions in the fungible token contract.
+The `transaction_id` field will track transactions within the fungible token contract.
