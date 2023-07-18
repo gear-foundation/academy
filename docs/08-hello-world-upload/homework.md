@@ -61,7 +61,7 @@ pub struct Tamagotchi {
 
 Clone the repository: <https://github.com/gear-foundation/dapps-smart-contract-academy>
 
-Install [Node.js](https://nodejs.org/en/download/) and [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Ensure you have the latest version of Node.js installed.
+Install [Node.js](https://nodejs.org/en/download/) and [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Ensure you've installed the latest version of Node.js.
 
 Then install `yarn`:
 
@@ -76,13 +76,13 @@ yarn
 yarn dev
 ```
 
-You'll find the [`.env.example`](https://github.com/gear-foundation/dapps-smart-contract-academy/blob/master/frontend/.env.example) file. Inside, you'll see the following line:
+You'll find the [`.env.example`](https://github.com/gear-foundation/dapps-smart-contract-academy/blob/master/frontend/.env.example) file. Within the file, observe the line:
 
 ```
 VITE_NODE_ADDRESS=wss://testnet.vara.rs
 ```
 
-It means the application is running on the Vara Testnet node. 
+This line signifies the application operates on the Vara Testnet node.
 
 You can also [run a local node](https://wiki.gear-tech.io/docs/node/dev-net), upload a Tamagotchi contract and work with contracts on a local node by indicating:
 
@@ -90,7 +90,7 @@ You can also [run a local node](https://wiki.gear-tech.io/docs/node/dev-net), up
 VITE_NODE_ADDRESS=ws://localhost:9944
 ```
 
-It also contains other variables, but we'll need them in future lessons.
+It also contains other variables which we'll explore in upcoming lessons.
 
 For the first lesson, edit your own `.env` file and check whether the `VITE_NODE_ADDRESS` variable is set to `wss://testnet.vara.rs` there.
 
