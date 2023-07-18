@@ -18,7 +18,7 @@ SubWallet is another advanced wallet for managing Substrate as well as EVM accou
 
     ![Choose Type](/img/02/subwallet-choose-type.png)
 
-5. Provide your password in the next step. And click "Add the account with the generated seed":
+5. Provide your password in the next step and click "Add the account with the generated seed":
 
     ![Final Step](/img/02/subwallet-final-step.png)
 
