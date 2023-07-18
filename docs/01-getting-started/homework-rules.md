@@ -20,4 +20,4 @@ Guidelines for assignments:
 - Each PR **should** be merged to the `master` after the homework is accepted.
 - **Do not** include any scaffolding code, private keys, or passwords in the PR.
 - Ensure the tests and build process **pass** successfully;
-- You **may** use `git` from the command line instead of relying on the GitHub web interfac.
+- You **may** use `git` from the command line instead of relying on the GitHub web interface.
