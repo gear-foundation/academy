@@ -6,12 +6,12 @@ hide_table_of_contents: true
 
 Let's put our knowledge to the test.
 
-In this assignment, you'll add a new feature to your Tamagotchi contract. Here's what you need to do:
+You'll add a new feature to your Tamagotchi contract in this assignment. Here's what you need to do:
 
 1. Implementing the delayed message feature:
-- Enhance your Tamagotchi contract to include the capability of sending delayed messages, enabling your Tamagotchi to communicate with itself at specific intervals
+- Revise the Tamagotchi contract to add a feature for sending delayed messages, allowing periodic self-communication for your Tamagotchi.
 2. Checking the Tamagotchi's state:
-- Teach your Tamagotchi to evaluate its own state periodically.
+- Teach your Tamagotchi to evaluate its state periodically.
 - If your Tamagotchi is tired, hungry, or lacking entertainment, it will proceed to the next step.
 3. Sending a message to the user:
 - Once the Tamagotchi identifies its needs, it will send a message directly to you, the user.
@@ -41,7 +41,7 @@ pub struct Tamagotchi {
 }
 ```
 
-Next, you need to add two new incoming messages to the `TmgAction` enum: `CheckState` and `ReserveGas`, as shown below:
+Next, you need to add two new incoming messages to the `TmgAction` enum: `CheckState` and `ReserveGas` as shown below:
 
 ```rust
 #[derive(Encode, Decode, TypeInfo)]
@@ -73,7 +73,7 @@ pub enum TmgAction {
 }
 ```
 
-You must also add three new outcoming messages to the `TmgEvent` enum: `FeedMe`, `PlayWithMe` and `WantToSleep`. If the Tamagotchi runs out of gas, it should send the message `MakeReservation` asking the owner to reserve gas to continue checking the state.
+You'll add three new outcoming messages to the `TmgEvent` enum: `FeedMe`, `PlayWithMe` and `WantToSleep`. If the Tamagotchi runs out of gas, it should send the message `MakeReservation` asking the owner to reserve gas to continue checking the state.
 
 Additionally, include the outcoming message `GasReserved` to indicate a successful gas reservation in your program, as shown below:
 
