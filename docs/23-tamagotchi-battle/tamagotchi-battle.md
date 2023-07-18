@@ -238,7 +238,7 @@ fn make_move(&mut self) {
     opponent.energy = opponent.energy.saturating_sub(sword_power * player.power);
 
     self.players[next_turn] = opponent.clone();
-    // check if opponent lost
+    // Check if the opponent lost
     if opponent.energy == 0 {
         self.players = Vec::new();
         self.state = BattleState::GameIsOver;
@@ -276,7 +276,7 @@ async fn update_info(&mut self) {
     assert_eq!(
         msg::source(),
         exec::program_id(),
-        "Only contract itself can call that action"
+        "Only the contract itself can call that action"
     );
     assert_eq!(
         self.state,
