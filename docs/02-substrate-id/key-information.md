@@ -21,7 +21,7 @@ Your seed or mnemonic phrase is the key to your account. If you lose seed, you w
 
 :::note JSON
 
-JSON file is a backup of your account encrypted with a password. You can import/ restore your account in any wallet using JSON. Without a password, you cannot regain access to your account. If you use JSON, store the file and passwords in a safe place.
+The JSON file is a backup of your account encrypted with a password. You can import/restore your account in any wallet using JSON. Without a password, you cannot regain access to your account. If you use JSON, store the file and passwords in a safe place.
 
 :::
 
