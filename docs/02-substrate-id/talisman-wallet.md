@@ -21,6 +21,6 @@ Talisman is a popular and user-friendly wallet for creating and managing Substra
 
     ![Choose a Passord](/img/02/talisman-choose-password.png)
 
-And that's it. Your wallet has been created:
+And that's it. You've finished creating your account:
 
 ![Dashboard](/img/02/talisman-dashboard.png)
