@@ -63,6 +63,6 @@ You can also read the program state (click on the **Read full state** button):
 
 ![Read State](/img/08/read-state.jpg)
 
-It's our greeting string that was set during the program initialization.
+It's the greeting string set during the program initialization.
 
 ![State](/img/08/state.jpg)
