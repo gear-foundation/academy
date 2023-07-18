@@ -10,7 +10,7 @@ To begin, create an account and connect to Gear Idea.
 
 Next, choose the network where you want to upload the program. 
 
-Once you've selected the testnet node, follow these steps to upload the program:
+After selecting the testnet node, follow these steps to upload the program:
 
   1. Select the file you'd like to upload.
   2. Add a *.meta.txt file.
