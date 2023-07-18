@@ -11,13 +11,13 @@ For each completed assignment, you'll receive points and a chance to own a disti
 The programming assignments adhere to specific guidelines, as highlighted below, for GitHub repositories, names, pull requests (PR), reviews and regular homework.
 
 Guidelines for assignments: 
-- **SHOULD** be one repo for every homework;
-- Repo name **SHOULD** contain the `-gear-academy` suffix, e.g. `myname-gear-academy`;
-- Repo **SHOULD** exclude build artifacts like `node_modules`, `target`, editor files, etc.;
-- Each homework **SHOULD** be inside the folder named as a block (`hello-world`, `escrow`, `tamagotchi`, `state`, etc);
-- Each homework **SHOULD** be a separate PR (helps to review, and add comments) from the feature branch (branched from the `master` or any other working branch) with a block name and a lesson number (`helloworld-1`, `lone-state-2`, `auction-3`, `nft-marketplace-4`, etc.) to the `master`;
-- If any changes were requested, updates **SHOULD** be done inside the existing branch and PR;
-- Each PR **SHOULD** be merged to the `master` after the homework is accepted;
-- Every scaffolding code **SHOULD NOT** be included in PR - private keys, passwords **SHOULD NOT** be included in PR;
-- Test & build **SHOULD** pass;
-- **MAY** work with `git` from the command line without using the GitHub web interface.
+- You **should** have one repository for each homework.
+- The repository name **should** include the `-gear-academy` suffix, for example, `myname-gear-academy`.
+- Exclude **build artifacts** such as `node_modules`, `target`, and editor files from the repository.
+- Place each homework inside a folder named after the corresponding block, such as `hello-world`, `escrow`, `tamagotchi`, `state`, etc.
+- **Submit** each homework as a separate pull request (PR) from a feature branch derived from the `master` or another working branch. Use the block name and lesson number (e.g., `helloworld-1`, `lone-state-2`, `auction-3`, `nft-marketplace-4`) in the PR title.
+- If any changes are requested, make updates **within the existing branch and PR**.
+- Each PR **should** be merged to the `master` after the homework is accepted.
+- **Do not** include any scaffolding code, private keys, or passwords in the PR.
+- Ensure the tests and build process **pass** successfully;
+- You **may** use `git` from the command line instead of relying on the GitHub web interface.
