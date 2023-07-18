@@ -18,18 +18,18 @@ In this assignment, we'll practice the knowledge from previous lessons to handle
 
     - `confirm_delivery` test to validate the successful contract execution;
 
-    **NOTE:** The contract sends a message with value to a seller and the user mailbox stores their messages. To get the value from these messages, it's necessary to claim the value from the mailbox.
-
+    **NOTE:** The contract sends a message with value to a seller, and the user mailbox stores the messages, requiring the user to claim the value from the mailbox.
+   
     In `gtest`, you can use the function [`System::claim_value_from_mailbox`](https://docs.gear.rs/gtest/struct.System.html#method.claim_value_from_mailbox). After claiming the value, check the seller's balance and make sure that funds were transferred to his account.
 
     - `confirm_delivery_failures` test to validate all panics in the escrow contract.
 
-3. Next, we return to the Tamagotchi contract you started writing in the previous lesson.
+4. Next, we return to the Tamagotchi contract you started writing in the previous lesson.
 
 Let's expand the Tamagochi state by adding the following field to its structure:
 
 - The Tamagotchi owner (it can be an account to initialize the Tamagotchi contract);
-- `Mood`: `Fed` (from 1 to 10000), `Happy` (from 1 to 10000) and `Rested` (from 1 to 10000). These values must be set to non-zero when initializing the Tamagotchi contract. Also, define the following constants:
+- `Mood`: `Fed` (from 1 to 10000), `Happy` (from 1 to 10000), and `Rested` (from 1 to 10000). These values must be set to non-zero when initializing the Tamagotchi contract. Also, define the following constants:
 - `HUNGER_PER_BLOCK = 1`: how much Tamagotchi becomes hungry for the block;
 - `ENERGY_PER_BLOCK = 2` - how much Tamagotchi loses energy per block;
 - `BOREDOM_PER_BLOCK = 2` - how bored Tamagotchi gets per block;
