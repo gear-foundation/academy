@@ -158,6 +158,7 @@ assert!(res.contains(&expected_log));
 ```
 
 In this case:
+
 - `dest` represents the account where the program sends a message
 - `payload` contains the content of the message
 
