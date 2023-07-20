@@ -4,9 +4,9 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-In this part of our course, you'll learn how to test smart contracts in the Rust programming language using the Gear [`gtest`](https://docs.gear.rs/gtest/) library. 
+In this part of our course, you'll learn how to test smart contracts in the Rust programming language using the Gear [`gtest`](https://docs.gear.rs/gtest/) library.
 
-Here's what we'll cover: 
+Here's what we'll cover:
 
 - Creating a test file
 - Defining a test function
@@ -16,7 +16,7 @@ Here's what we'll cover:
 
 Testing smart contracts is crucial when developing decentralized applications. We'll use the Gear [`gtest`](https://docs.gear.rs/gtest/) library for our program's logic testing.
 
-Let's start by create a new directory called `tests` at the top level of our project directory, next to the `src` directory. 
+Let's start by creating a new directory called `tests` at the top level of our project directory, next to the `src` directory.
 
 We'll create the `hello_world_test.rs` file to write tests for our contract in the directory.
 
@@ -26,7 +26,7 @@ cd tests
 touch hello_world_test.rs
 ```
 
-In our test file, we'll import the necessary types from the [`gtest`](https://docs.gear.rs/gtest/) library, such as [`Log`](https://docs.gear.rs/gtest/struct.Log.html), [`Program`](https://docs.gear.rs/gtest/struct.Program.html) and [`System`](https://docs.gear.rs/gtest/struct.System.html). 
+In our test file, we'll import the necessary types from the [`gtest`](https://docs.gear.rs/gtest/) library, such as [`Log`](https://docs.gear.rs/gtest/struct.Log.html), [`Program`](https://docs.gear.rs/gtest/struct.Program.html) and [`System`](https://docs.gear.rs/gtest/struct.System.html).
 
 We'll also define a test function:
 
@@ -43,7 +43,7 @@ Before testing our smart contract, we'll create an environment for running progr
 let sys = System::new();
 ```
 
-Next, we'll create a mockup of our program using the [`Program`](https://docs.gear.rs/gtest/struct.Program.html) structure from `gtest`. There are two ways to create a program mockup: 
+Next, we'll create a mockup of our program using the [`Program`](https://docs.gear.rs/gtest/struct.Program.html) structure from `gtest`. There are two ways to create a program mockup:
 - From a file by its path
 - By pointing to the program itself (current program)
 
@@ -123,7 +123,7 @@ test hello_test ... ok
 
 Sending functions in the `gtest` library will return [`RunResult`](https://docs.gear.rs/gtest/struct.RunResult.html) structure. It contains the final result of the processing message and other messages created during the execution.
 
-For example, we can check the init message processing result by ensuring the log is empty and the program doesn't reply or send any messages. 
+For example, we can check the init message processing result by ensuring the log is empty and the program doesn't reply or send any messages.
 
 To do this, we can use the `assert!(res.log().is_empty())` command.
 
@@ -144,7 +144,7 @@ After confirming the successful initialization message, we process the next mess
 let res = program.send(2, String::from("Hello"));
 ```
 
-Here, we'll confirm if the program replied with the expected hello message. We can accomplish this by utilizing the `Log` structure from the `gtest` library and constructing the anticipated log. 
+Here, we'll confirm if the program replied with the expected hello message. We can accomplish this by utilizing the `Log` structure from the `gtest` library and constructing the anticipated log.
 
 To create the expected log, we'll use the command `Log::builder().dest(2).payload(String::from("Hello"))`.
 
@@ -157,9 +157,9 @@ let expected_log = Log::builder()
 assert!(res.contains(&expected_log));
 ```
 
-In this case: 
-- dest` represents the account where the program sends a message
+In this case:
+- `dest` represents the account where the program sends a message
 - `payload` contains the content of the message
 
 
-Run the test to ensure everything works correctly. 
+Run the test to ensure everything works correctly.

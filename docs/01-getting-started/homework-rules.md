@@ -10,7 +10,8 @@ For each completed assignment, you'll receive points and a chance to own a disti
 
 The programming assignments adhere to specific guidelines, as highlighted below, for GitHub repositories, names, pull requests (PR), reviews and regular homework.
 
-Guidelines for assignments: 
+Guidelines for assignments:
+
 - You **should** have one repository for each homework.
 - The repository name **should** include the `-gear-academy` suffix, for example, `myname-gear-academy`.
 - Exclude **build artifacts** such as `node_modules`, `target`, and editor files from the repository.

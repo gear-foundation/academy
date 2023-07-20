@@ -91,9 +91,9 @@ pub struct InitEscrow {
     pub price: u128,
 }
 ```
-In the `init` function, we'll define the addresses of the Buyer and Seller, along with the product price. 
+In the `init` function, we'll define the addresses of the Buyer and Seller, along with the product price.
 
-We'll then load the message by utilizing `msg::load()` and decode it using the `InitEscrow` structure. 
+We'll then load the message by utilizing `msg::load()` and decode it using the `InitEscrow` structure.
 
 Next, we'll create a new `Escrow` structure with the provided information and assign the `state` as `EscrowState::AwaitingPayment`. Finally, we'll set `ESCROW` as `Some(escrow)`.
 
@@ -127,7 +127,7 @@ Next, we'll implement the escrow contract logic to handle the following messages
 2. When the buyer confirms the receipt of the goods, the escrow contract verifies the following:
 
    - Escrow state: It must be in the `AwaitingDelivery` state.
-   - Sender's address: It must match the buyer's address. 
+   - Sender's address: It must match the buyer's address.
 
 Then, the contract sets the escrow state to `Closed`, sends funds to the seller, and sends the reply about successful escrow closure.
 
@@ -160,19 +160,6 @@ extern "C" fn handle() {
     }
 }
 ```
-
-<!-- Removed as unnecessary, use `#[default]` attribute instead.
-
-We must implement the `Default` trait for the `Escrow` structure. Let's add the `#[derive(Default)]` above the `Escrow` structure and implement that trait for the `EscrowState` enum:
-
-```rust
-impl Default for EscrowState {
-    fn default() -> Self {
-        Self::AwaitingPayment
-    }
-}
-```
--->
 
 Let's implement the deposit method:
 

@@ -4,7 +4,7 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-Time to put your army to the test. 
+Time to put your army to the test.
 
 The battle contract operates in three states: Registration, Move and Waiting. Let's break down each state and explain their functionalities:
 

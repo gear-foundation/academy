@@ -4,9 +4,9 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-Let's continue from where we left off in our previous tutorial, viewing an example of the `my_handle_signal` function. 
+Let's continue from where we left off in our previous tutorial, viewing an example of the `my_handle_signal` function.
 
-We'll add the entry point `my_handle_signal` to our auction contract. The function will confirm the presence of a pending transaction. 
+We'll add the entry point `my_handle_signal` to our auction contract. The function will confirm the presence of a pending transaction.
 
 If there is, the `my_handle_signal` function takes the gas reserved in advance and sends a message `CompleteTx` using the gas.
 

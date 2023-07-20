@@ -18,7 +18,7 @@ To help you visualize the interaction between the contracts, take a look at the 
 
 The storage contract architecture consists of several crucial components. Let's break them down:
 
-- 1. **The Logic Contract Address**: This field contains the address of the logic contract. The storage contract only processes messages from this specific address. 
+- **The Logic Contract Address**: This field contains the address of the logic contract. The storage contract only processes messages from this specific address.
 
     ```rust
     ft_logic_id: ActorId

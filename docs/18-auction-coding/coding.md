@@ -354,7 +354,7 @@ async fn start_auction(
 }
 ```
 
-Great! We're done with the `complete_tx` and rewritten `start_auction` function. 
+Great! We're done with the `complete_tx` and rewritten `start_auction` function.
 
 Let's start writing the function for making bids (`make_bid`):
 

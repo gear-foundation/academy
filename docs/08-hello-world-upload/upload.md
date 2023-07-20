@@ -6,9 +6,9 @@ hide_table_of_contents: true
 
 In this lesson, you'll learn how to upload a program using the "Upload program" option in the Gear Idea portal.
 
-To begin, create an account and connect to Gear Idea. 
+To begin, create an account and connect to Gear Idea.
 
-Next, choose the network where you want to upload the program. 
+Next, choose the network where you want to upload the program.
 
 After selecting the testnet node, follow these steps to upload the program:
 
@@ -23,7 +23,7 @@ The easiest way to upload the program is to use the "Upload program" option in t
 
 First, you need to create an account and connect to Gear Idea. Follow the instructions provided at <https://wiki.gear-tech.io/docs/idea/account/create-account> to create your account.
 
-After logging in, you can choose the network where you wish to upload the program. Click the gear icon located in the bottom-left corner of the screen. 
+After logging in, you can choose the network where you wish to upload the program. Click the gear icon located in the bottom-left corner of the screen.
 
 To access the Gear Academy, opt for the Vara Stable Testnet node (`wss://testnet.vara.rs`) and click the **Switch** button.
 

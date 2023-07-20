@@ -10,7 +10,7 @@ Fungible tokens are digital smart contracts offering the same value and exchange
 
 They enable users to trade tokenized assets of equal worth between accounts. Technologically, smart contracts implement fungible tokens by storing a mapping of account addresses to token quantities.
 
-Fungible tokens offer the same value and exchangeability as fiat currency. 
+Fungible tokens offer the same value and exchangeability as fiat currency.
 
 Much like exchanging one paper dollar for another, these digital smart contracts allow users to trade tokenized assets of equal worth between accounts.
 
