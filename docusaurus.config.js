@@ -27,7 +27,7 @@ module.exports = async function config() {
             editUrl: 'https://github.com/gear-foundation/academy/edit/master/',
             showLastUpdateTime: true,
             editLocalizedFiles: true,
-            remarkPlugins: [math, { strict: false }],
+            remarkPlugins: [math],
             rehypePlugins: [katex],
             lastVersion: 'current',
             versions: {
