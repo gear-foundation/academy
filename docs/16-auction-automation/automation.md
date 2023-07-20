@@ -5,9 +5,9 @@ sidebar_position: 2
 hide_table_of_contents: true
 ---
 
-We'll discuss smart contract automation before we code the auction smart contract, 
+We'll discuss smart contract automation before we code the auction smart contract,
 
-In this lesson, we'll explore the concept of smart contract automation to make program execution more efficient. 
+In this lesson, we'll explore the concept of smart contract automation to make program execution more efficient.
 
 Smart contracts cannot execute automatically. They require an on-chain transaction to trigger their code and initiate any state changes on the blockchain.
 
@@ -41,7 +41,7 @@ let reservation_id = ReservationId::reserve(
 
 This function deducts the specified amount of gas from the available amount for the program and reserves it. Each reservation receives a unique identifier to access and utilize the reserved gas.
 
-You'll also indicate the block count within which the reserve must be used. Remember, gas reservation is not free and costs 100 gas. The reserve function returns the `ReservationId` for sending a message with the gas you reserved. 
+You'll also indicate the block count within which the reserve must be used. Remember, gas reservation is not free and costs 100 gas. The reserve function returns the `ReservationId` for sending a message with the gas you reserved.
 
 To send a message using the reserved gas:
 

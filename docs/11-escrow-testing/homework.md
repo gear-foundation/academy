@@ -3,7 +3,7 @@ title: 4. Homework "Escrow & Tamagotchi Interaction"
 sidebar_position: 2
 hide_table_of_contents: true
 ---
-In this assignment, we'll practice the knowledge from previous lessons to handle the set tasks. 
+In this assignment, we'll practice the knowledge from previous lessons to handle the set tasks.
 
 
 1. Implement the `confirm_delivery` function. The function should:
@@ -18,8 +18,12 @@ In this assignment, we'll practice the knowledge from previous lessons to handle
 
     - `confirm_delivery` test to validate the successful contract execution;
 
-    **NOTE:** The contract sends a message with value to a seller, and the user mailbox stores the messages, requiring the user to claim the value from the mailbox.
-   
+    :::note
+
+    The contract sends a message with value to a seller, and the user mailbox stores the messages, requiring the user to claim the value from the mailbox.
+
+    :::
+
     In `gtest`, you can use the function [`System::claim_value_from_mailbox`](https://docs.gear.rs/gtest/struct.System.html#method.claim_value_from_mailbox). After claiming the value, check the seller's balance and make sure that funds were transferred to his account.
 
     - `confirm_delivery_failures` test to validate all panics in the escrow contract.

@@ -4,7 +4,7 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-We'll guide you through developing smart contracts on Gear in this section. You'll learn how to:  
+We'll guide you through developing smart contracts on Gear in this section. You'll learn how to:
 
 - Set up coding-ready environments for your GitHub projects on Gear.
 - Explore alternative methods, like Gitpod, to start working with Gear.

@@ -6,9 +6,9 @@ hide_table_of_contents: true
 
 In this lesson, you'll learn to enhance your program with additional functionality by introducing two new messages: `SendHelloTo` and `SendHelloReply`.
 
-When the program receives the SendHelloTo message, it will send a "hello" message to the specified account. Similarly, upon receiving the SendHelloReply message, the program will respond with a "hello" message to the account from which the message originated. 
+When the program receives the SendHelloTo message, it will send a "hello" message to the specified account. Similarly, upon receiving the SendHelloReply message, the program will respond with a "hello" message to the account from which the message originated.
 
-To enhance our program, we'll use the send function. When the program receives the `SendHelloTo` message, it'll send a hello message to the specified account. 
+To enhance our program, we'll use the send function. When the program receives the `SendHelloTo` message, it'll send a hello message to the specified account.
 Similarly, when it receives the `SendHelloReply` message, it'll respond with a greeting message.
 
 Let's add more functionality to our program by introducing two new messages: `SendHelloTo` and `SendHelloReply`.
@@ -18,7 +18,7 @@ Our program will receive two messages:
 - `SendHelloTo`: having received this message, the program will send "hello" to the specified address;
 - `SendHelloReply`: the program responds with a friendly "hello" message to the account sending the message.
 
-In the last lesson, we learned the importance of decoding program messages. We'll introduce an enum named `InputMessages` to decode incoming messages. 
+In the last lesson, we learned the importance of decoding program messages. We'll introduce an enum named `InputMessages` to decode incoming messages.
 
 ```rust title="src/lib.rs"
 #[derive(Encode, Decode, TypeInfo)]
@@ -82,6 +82,6 @@ extern "C" fn handle() {
 }
 ```
 
-When the program receives the `SendHelloTo` message, it sends a hello message to the specified account through the send function. 
+When the program receives the `SendHelloTo` message, it sends a hello message to the specified account through the send function.
 
 Conversely, when the contract receives a `SendHelloReply` message, it replies with a greeting message.

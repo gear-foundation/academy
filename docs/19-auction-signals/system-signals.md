@@ -4,7 +4,8 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-In Gear programs, there are three common entry points: 
+In Gear programs, there are three common entry points:
+
 - `init`
 - `handle`
 - `handle_reply`
@@ -24,7 +25,7 @@ The function cannot send other regular cross-actor messages. Although signals al
 
 Signal messages utilize gas reserved exclusively for them. If there is no reserved gas for system messages, the system skips them, and the program does not receive them.
 
-If there's reserved gas and no system messages occur during the ongoing execution, the gas will return to its source. 
+If there's reserved gas and no system messages occur during the ongoing execution, the gas will return to its source.
 
 When your program uses asynchronous messages and expands the `handle_signal` entry point with the `#[gstd::async_main]` macro, it frees up the resources that the program occupies.
 
@@ -32,12 +33,12 @@ Using custom async logic involves storing Futures in the program's memory in Gea
 
 :::note
 
-If a program sends a message and waits for a reply but cannot receive it, it may be due to insufficient gas. 
+If a program sends a message and waits for a reply but cannot receive it, it may be due to insufficient gas.
 
 For instance, when the initial message in the waitlist runs out of gas or the gas amount is inadequate, the program cannot receive a reply.
 
 :::
 
-To handle signals in your program, you can define your own `my_handle_signal` entry point and write custom logic for your program.  
+To handle signals in your program, you can define your own `my_handle_signal` entry point and write custom logic for your program.
 
 In the next section, we'll explore how to write the `my_handle_signal` function in the auction contract.

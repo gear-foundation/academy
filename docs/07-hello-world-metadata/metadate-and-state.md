@@ -4,7 +4,7 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-In this lesson, we'll demonstrate the role of metadata in: 
+In this lesson, we'll demonstrate the role of metadata in:
 
 - Converting data into a structured format
 - Enabling data exchange between dApp's smart contracts

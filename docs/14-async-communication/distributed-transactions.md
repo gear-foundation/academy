@@ -11,7 +11,7 @@ Programs in the Gear Protocol interact and create distributed transactions invol
 - **Atomicity**: All data changes are treated as a single operation, i.e., all the modifications are made or none.
 - **Consistency**: This property implies the data state is consistent when a transaction begins and ends.
 
-In Ethereum transactions, global state changes happen only when all executions are completed successfully. If an error occurs, the state changes are rolled back as if the transaction never happened. 
+In Ethereum transactions, global state changes happen only when all executions are completed successfully. If an error occurs, the state changes are rolled back as if the transaction never happened.
 
 Now, consider the code below:
 

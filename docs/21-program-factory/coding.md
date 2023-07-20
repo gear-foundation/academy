@@ -11,7 +11,7 @@ In this tutorial, we'll create an Escrow Factory to handle:
 - Mapping from the escrow id to its program address
 - The `CodeId` of the escrow smart contract
 
-Below is the code implementation: 
+Below is the code implementation:
 
 ```rust
 #![no_std]
@@ -71,9 +71,9 @@ pub enum FactoryEvent {
 
 From our code above, the Escrow contract will interact with the buyer and seller through the Escrow Factory contract, meaning the Escrow Factory contract will send messages to the Escrow contract.
 
-Here's how we'll go about it. 
+Here's how we'll go about it.
 
-First, we'll define an `io` crate for the Escrow contract. Then we'll modify the structure of incoming messages and Escrow methods. 
+First, we'll define an `io` crate for the Escrow contract. Then we'll modify the structure of incoming messages and Escrow methods.
 
 Try to change it yourself and then compare it with the correct implementation.
 
@@ -201,4 +201,4 @@ async fn send_message(
 }
 ```
 
-With the factory loan contract finished, we'll test our factory contract in the next lesson. 
+With the factory loan contract finished, we'll test our factory contract in the next lesson.

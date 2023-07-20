@@ -4,7 +4,7 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-In this lesson, you'll learn how to use an escrow smart contract in a blockchain transaction to add safety for both parties. 
+In this lesson, you'll learn how to use an escrow smart contract in a blockchain transaction to add safety for both parties.
 
 You'll understand the process of using an escrow smart contract, from agreeing to terms to the automatic transfer of funds to the seller's digital wallet.
 

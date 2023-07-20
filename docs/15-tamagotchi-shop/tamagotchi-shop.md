@@ -4,7 +4,7 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-In this lesson, you'll learn about the buying process in a smart contract. We'll cover the following concepts: 
+In this lesson, you'll learn about the buying process in a smart contract. We'll cover the following concepts:
 
 - How to code a smart contract to define the structure of a store contract state.
 - The creation of new attributes and how to sell them to Tamagotchi contracts.
@@ -254,7 +254,7 @@ pub struct AttributeStore {
 
 When a Tamagotchi sends a purchase message to the store contract, the contract checks if the Tamagotchi is currently involved in any incomplete transactions. If there is an unfinished transaction, the store contract retrieves the transaction number and attribute ID associated with the transaction and resumes it.
 
-If the previous message wasn't completed, the Tamagotchi has to send another identical message to complete the transaction. However, the Tamagotchi might send multiple purchase messages without realizing select messages were not delivered. 
+If the previous message wasn't completed, the Tamagotchi has to send another identical message to complete the transaction. However, the Tamagotchi might send multiple purchase messages without realizing select messages were not delivered.
 
 To handle this, the store contract checks the attribute ID specified in the current message and compares it with the attribute ID stored in transactions.
 

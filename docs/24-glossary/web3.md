@@ -15,4 +15,3 @@ An analogy to help understand web3 is to think of the current internet as a city
 In contrast, Web3 resembles a city without a central authority. Instead, it relies on a decentralized network of citizens collectively maintaining roads, power grids, and communication systems. In this city, information flow remains free from any singular entity's control, enabling unrestricted creation and sharing.
 
 Web3 is the next version of the internet, where users have more control over their digital identities, data, and online interactions. It's a decentralized version of the internet where users manage their data, identity, and digital assets.
-

@@ -4,17 +4,18 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-In this lesson, you'll learn how to create a simple smart contract program on the Gear platform. The program will promptly respond with a friendly "Hello" message upon receiving any incoming message. 
+In this lesson, you'll learn how to create a simple smart contract program on the Gear platform. The program will promptly respond with a friendly "Hello" message upon receiving any incoming message.
 
-Here's the breakdown: 
-- The lesson describes the step-by-step process of creating a new project, adding dependencies, writing code for the program entry point and building the project. 
+Here's the breakdown:
+
+- The lesson describes the step-by-step process of creating a new project, adding dependencies, writing code for the program entry point and building the project.
 - It also explains the purpose and use of the [`msg`](https://docs.gear.rs/gstd/msg/) messaging module from the [`gstd`](https://docs.gear.rs/gstd/) library.
 
-We'll conclude with instructions for testing the program in the next lesson. 
+We'll conclude with instructions for testing the program in the next lesson.
 
 By the end of this tutorial, you'll have learned how to create a basic smart contract program and gained an understanding of the libraries and tools of the Gear platform.
 
-Let's get started. 
+Let's get started.
 
 We'll create a new project using the `cargo new` command:
 

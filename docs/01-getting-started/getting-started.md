@@ -4,12 +4,13 @@ sidebar_position: 2
 hide_table_of_contents: true
 ---
 
-There are two ways you can configure your development environment. 
+There are two ways you can configure your development environment.
 
 ## A. Using Gitpod
+
 The first is to use [Gitpod](https://www.gitpod.io/). **Gitpod** allows developers to launch ready-to-code development environments for their GitHub projects with a single click.
 
-You have two options when setting up your coding environment with Gitpod. 
+You have two options when setting up your coding environment with Gitpod.
 
 1. Here's the first option:
 
@@ -40,7 +41,7 @@ You have two options when setting up your coding environment with Gitpod.
 
 ## B. Setting up the local environment
 
-macOS and Linux are the most user-friendly operating systems for this course. While Windows might pose more difficulties, you can use any operating system you're comfortable with. 
+macOS and Linux are the most user-friendly operating systems for this course. While Windows might pose more difficulties, you can use any operating system you're comfortable with.
 
 1. Linux users should generally install `GCC` and `Clang` according to their distribution documentation.
 
@@ -70,4 +71,4 @@ macOS and Linux are the most user-friendly operating systems for this course. Wh
     rustup target add wasm32-unknown-unknown --toolchain nightly
     ```
 
-  You can now complete your environment configuration. 
+  You can now complete your environment configuration.
