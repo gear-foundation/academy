@@ -93,7 +93,7 @@ module.exports = async function config() {
 
     i18n: {
       defaultLocale: 'en',
-      locales: ['en', 'zh-cn'],
+      locales: ['en', 'es', 'zh-cn'],
       localeConfigs: {
         'en': {
           label: 'English',
