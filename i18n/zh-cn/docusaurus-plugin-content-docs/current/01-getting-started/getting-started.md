@@ -1,7 +1,7 @@
 ---
 title: 开始之前
 sidebar_position: 2
-no_table_of_contents: true
+hide_table_of_contents: true
 ---
 
 在Gear上开发智能合约之前，您需要配置开发环境。

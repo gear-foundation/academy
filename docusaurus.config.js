@@ -98,6 +98,9 @@ module.exports = async function config() {
         'en': {
           label: 'English',
         },
+        'es': {
+          label: 'Español'
+        },
         'zh-cn': {
           label: '简体中文'
         }

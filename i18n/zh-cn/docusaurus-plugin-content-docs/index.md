@@ -4,20 +4,26 @@ slug: /
 hide_table_of_contents: true
 ---
 
-# Gear Smart Contract Developer
+# Gear 智能合约开发者
 
-Our academy will begin with the simplest hello world example. Already from the first lesson, you will start writing a Tamagotchi contract, which will be expanded and acquire new functionality as you progress through the academy. In the next lessons, we will explore various popular standards as well as decentralized applications.
+欢迎来到智能合约开发 Gear 学院！
 
-We will also learn the Gear distinctive features that are not found on any other blockchains. Your Tamagotchi contract will be able to check its status itself and communicate with the owner by sending him various messages.
+在课程中，您将学习基本的区块链开发概念、构建智能合约并探索 Gear 的强大功能。
 
-We will also write a shop contract where you can equip your Tamagotchi with various attributes.
+学院课程从一个简单的 "Hello World！"示例开始，然后转向创建 Tamagotchi 合约。在随后的教程中，您将使用新技能逐步完善您的 Tamagotchi。
 
-The final contract will be a Tamagotchi battle contract in which your Tamagotchi will fight with each other. The course will be interesting, informative and interactive.
+在制作 Tamagotchi 的过程中，您需要了解的功能包括：它可以独立检查自己的状态，并使用各种信息与主人交流。
 
-## What will you learn?
+课程中还有一个商店契约，可以为你的 Tamagotchi 装备独特的特质，以便战斗。此外，还有专门的 Tamagotchi 战斗准备课程，因为您将让您的 Tamagotchi 与其他参与者进行激动人心的比赛。
 
-- How blockchain work
-- How to build smart contracts and decentralized applications on Gear
-- How to test smart contract
-- Smart contracts interact with the client side
-- A powerful feature of Gear protocol (delayed messages, system signals, system and gas reservation)
+准备好在齿轮学院获得引人入胜、内容丰富的互动体验吧！
+
+## 学习成果
+
+完成课程后，您将了解以下概念：
+
+- 区块链技术机制。
+- 如何在 Gear 上构建智能合约和去中心化应用程序。
+- 有效智能合约测试的艺术。
+- 智能合约与客户端之间的无缝交互。
+- Gear 的强大功能，包括延迟消息、系统信号以及系统和气体预订。
