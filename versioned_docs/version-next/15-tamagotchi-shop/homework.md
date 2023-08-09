@@ -145,7 +145,7 @@ The `transactions.yaml` file contains the transactions for uploading the contrac
 
 - Set the fungible token address to your Tamagotchi contract.
 
-- Run the application and choose **Lesson 4**;
+- Run the application and choose **Lesson 4**.
 
 - Get the test fungible tokens:
 
