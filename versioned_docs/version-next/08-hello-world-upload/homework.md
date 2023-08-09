@@ -4,7 +4,9 @@ sidebar_position: 2
 hide_table_of_contents: true
 ---
 
-Let's write a smart contract for a Tamagotchi game that will store the Tamagotchi's name and date of birth. :
+Let's write a smart contract for a Tamagotchi game that will store the Tamagotchi's name and date of birth.
+
+## Smart contract
 
 0️⃣ Don't forget to fork the [template repository](https://github.com/gear-foundation/dapps-template-gear-academy) and create a new branch for your homework. All changes should be made in the `01-tamagotchi` folder.
 
@@ -108,9 +110,9 @@ fn smoke_test() {
 }
 ```
 
-And the final steps:
+Then upload your contract to the **Vara Stable Testnet** at the <https://idea.gear-tech.io/>.
 
-- Upload your contract to the **Vara Stable Testnet** at the <https://idea.gear-tech.io/>.
+## Frontend
 
 - Install [Node.js](https://nodejs.org/en/download/) and [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Ensure you've installed the latest version of Node.js.
 

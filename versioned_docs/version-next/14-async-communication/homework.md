@@ -6,6 +6,8 @@ hide_table_of_contents: true
 
 In this assignment, you'll enhance your Tamagotchi smart contract by incorporating the ability to change ownership and granting approval to other accounts for ownership changes.
 
+## Smart contract
+
 0️⃣ Don't forget [to sync your fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) with the [template repository](https://github.com/gear-foundation/dapps-template-gear-academy) upstream. Then copy all changes from `02-tamagotchi-interaction` folder that you made in the previous lesson to the `03-tamagotchi-nft` folder and push them to the `master` branch. Create a new branch for your current homework. All new changes should be made in the `03-tamagotchi-nft` folder.
 
 1️⃣ Let's expand the Tamagotchi state by adding the `approved_account` field to its structure:
@@ -58,6 +60,8 @@ pub enum TmgEvent {
 - `RevokeApproval` - the function removes the current `approved_account`. The function should be available only to the current owner of the Tamagotchi. The function should emit the `ApprovalRevoked` event.
 
 5️⃣ Cover the new actions with tests.
+
+## Frontend
 
 Upload your contract to the blockchain and run the frontend application. Choose **Lesson 3**.
 
