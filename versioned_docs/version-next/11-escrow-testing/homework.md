@@ -6,7 +6,7 @@ hide_table_of_contents: true
 
 In this assignment, we'll practice the knowledge from previous lessons to handle the set tasks.
 
-0️⃣ Don't forget to sync your repository with the [template repository](https://github.com/gear-foundation/dapps-template-gear-academy) upstream. Then copy all changes from `01-tamagotchi` folder that you made in the previous lesson to the `02-tamagotchi-interaction` folder and push them to the `master` branch. Create a new branch for your current homework. All new changes should be made in the `02-tamagotchi-interaction` folder.
+0️⃣ Don't forget [to sync your fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) with the [template repository](https://github.com/gear-foundation/dapps-template-gear-academy) upstream. Then copy all changes from `01-tamagotchi` folder that you made in the previous lesson to the `02-tamagotchi-interaction` folder and push them to the `master` branch. Create a new branch for your current homework. All new changes should be made in the `02-tamagotchi-interaction` folder.
 
 1️⃣ Let's expand the Tamagochi state by adding the following field to its structure:
 
