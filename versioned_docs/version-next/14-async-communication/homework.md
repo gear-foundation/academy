@@ -8,7 +8,7 @@ In this assignment, you'll enhance your Tamagotchi smart contract by incorporati
 
 0️⃣ Don't forget [to sync your fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) with the [template repository](https://github.com/gear-foundation/dapps-template-gear-academy) upstream. Then copy all changes from `02-tamagotchi-interaction` folder that you made in the previous lesson to the `03-tamagotchi-nft` folder and push them to the `master` branch. Create a new branch for your current homework. All new changes should be made in the `03-tamagotchi-nft` folder.
 
-1️⃣ Let's expand the Tamagotchi state by adding the `allowed_account` field to its structure:
+1️⃣ Let's expand the Tamagotchi state by adding the `approved_account` field to its structure:
 
 ```rust title="03-tamagotchi-nft/io/src/lib.rs"
 #[derive(Default, Encode, Decode, TypeInfo)]
