@@ -159,5 +159,5 @@ The `transactions.yaml` file contains the transactions for uploading the contrac
 
 Please attach a link to the pull request (PR) in your repo with your Tamagotchi contract. Also, please paste your Tamagotchi program address as shown in the example below:
 
-- PR: <https://github.com/mynick/myname-gear-academy/pull/6>
+- PR: <https://github.com/mynick/myname-gear-academy/pull/4>
 - Program address: `0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d`
