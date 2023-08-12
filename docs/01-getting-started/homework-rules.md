@@ -12,11 +12,15 @@ The programming assignments adhere to specific guidelines, as highlighted below,
 
 Guidelines for assignments:
 
-- You **should** have one repository for each homework.
-- The repository name **should** include the `-gear-academy` suffix, for example, `myname-gear-academy`.
+- Before completing the first homework you **should** fork the template repository: <https://github.com/gear-foundation/dapps-template-gear-academy>
+- Configure the repository to **allow** GitHub Pages from Actions: <https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow>
+- Your repository name **should** include the `-gear-academy` suffix, for example, `myname-gear-academy`.
 - Exclude **build artifacts** such as `node_modules`, `target`, and editor files from the repository.
-- Place each homework inside a folder named after the corresponding block, such as `hello-world`, `escrow`, `tamagotchi`, `state`, etc.
-- **Submit** each homework as a separate pull request (PR) from a feature branch derived from the `master` or another working branch. Use the block name and lesson number (e.g., `helloworld-1`, `lone-state-2`, `auction-3`, `nft-marketplace-4`) in the PR title.
+- Sync your fork with the upstream repository before starting each homework.
+- Place each homework inside a folder named after the corresponding block, such as `01-tamagotchi`, `02-tamagotchi-interaction`, `03-tamagotchi-nft`, etc.
+- **Submit** each homework as a separate pull request (PR) from a feature branch derived from the `master` or another working branch.
+- **Don't** submit multiple homework assignments in a single PR.
+- **Don't include** any unrelated changes in the PR.
 - If any changes are requested, make updates **within the existing branch and PR**.
 - Each PR **should** be merged to the `master` after the homework is accepted.
 - **Do not** include any scaffolding code, private keys, or passwords in the PR.
