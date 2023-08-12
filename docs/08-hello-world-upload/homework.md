@@ -149,7 +149,7 @@ For the first lesson, edit your own `.env` file and check whether the `VITE_NODE
 
 After running the `yarn dev` command and opening <http://localhost:3000> in a browser, you'll see the following window:
 
-![Frontend](/img/08/frontend.png)
+![Frontend](/img/08/frontend.jpg)
 
 Also, you'll find the frontend deployed in your GitHub Pages at the corresponding address (something similar to <https://mynick.github.io/myname-gear-academy/>).
 
