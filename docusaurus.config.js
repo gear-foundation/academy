@@ -11,7 +11,7 @@ module.exports = async function config() {
     url: 'https://academy.gear.rs',
     baseUrl: '/',
     onBrokenLinks: 'throw',
-    onBrokenMarkdownLinks: 'warn',
+    onBrokenMarkdownLinks: 'throw',
     favicon: 'img/favicon.ico',
     organizationName: 'gear-foundation',
     projectName: 'academy',
@@ -61,6 +61,27 @@ module.exports = async function config() {
             srcDark: "img/logo-inverted.svg"
           },
           items: [
+            {
+              type: 'dropdown',
+              label: 'Courses',
+              position: 'left',
+              items: [
+                {
+                  type: 'doc',
+                  docId: 'basic/index',
+                  label: '🚧 Basic (in-progress)',
+                },
+                {
+                  type: 'html',
+                  value: '<hr style="margin: 0.3rem 0;">',
+                },
+                {
+                  type: 'doc',
+                  docId: 'scd/index',
+                  label: 'Gear Smart Contract Developer',
+                },
+              ],
+            },
             {
               type: 'docsVersionDropdown',
               position: 'right',
