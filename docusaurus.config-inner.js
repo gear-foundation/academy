@@ -11,7 +11,7 @@ module.exports = async function config() {
     url: 'https://academy.gear.rs',
     baseUrl: '/inner/',
     onBrokenLinks: 'throw',
-    onBrokenMarkdownLinks: 'warn',
+    onBrokenMarkdownLinks: 'throw',
     favicon: 'img/favicon.ico',
     organizationName: 'gear-foundation',
     projectName: 'academy',
