@@ -68,18 +68,24 @@ module.exports = async function config() {
               items: [
                 {
                   type: 'doc',
-                  docId: 'basic/index',
-                  label: '🚧 Basic (in-progress)',
-                },
-                {
-                  type: 'html',
-                  value: '<hr style="margin: 0.3rem 0;">',
-                },
-                {
-                  type: 'doc',
                   docId: 'scd/index',
                   label: 'Gear Smart Contract Developer',
                 },
+                // TODO: Uncomment when ready
+                // {
+                //   type: 'html',
+                //   value: '<hr style="margin: 0.3rem 0;">',
+                // },
+                // {
+                //   type: 'doc',
+                //   docId: 'starter/index',
+                //   label: '🚧 Starter (in-progress)',
+                // },
+                // {
+                //   type: 'doc',
+                //   docId: 'basic/index',
+                //   label: '🚧 Basic (in-progress)',
+                // },
               ],
             },
             {
@@ -96,6 +102,12 @@ module.exports = async function config() {
               position: 'right',
             },
           ],
+        },
+        docs: {
+          sidebar: {
+            hideable: true,
+            autoCollapseCategories: true,
+          },
         },
         prism: {
           theme: lightCodeTheme,
