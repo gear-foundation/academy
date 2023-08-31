@@ -103,7 +103,7 @@ extern "C" fn state() {
     let greeting = unsafe {
         GREETING
             .as_ref()
-            .expect(“The contract is not initialized”)
+            .expect("The contract is not initialized")
     };
     msg::reply(greeting, 0).expect("Failed to share state");
 }
