@@ -153,7 +153,7 @@ extern "C" fn handle() {
     let escrow: &mut Escrow = unsafe {
         ESCROW
             .as_mut()
-            .expect(“The contract is not initialized”)
+            .expect("The contract is not initialized")
     };
     match action {
         EscrowAction::Deposit => escrow.deposit(),
