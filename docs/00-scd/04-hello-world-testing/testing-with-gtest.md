@@ -139,6 +139,7 @@ To do this, we can use the `assert!(res.log().is_empty())` command.
     ```rust
     assert!(!res.main_failed());
     ```
+
 After confirming the successful initialization message, we process the next messages through the `handle` function. To test this, we can send the next message using the `program.send(2, String::from("Hello"))` command.
 
 ```rust
