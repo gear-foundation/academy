@@ -18,7 +18,7 @@
     "build:inner": "yarn build --config=docusaurus.config-inner.js --out-dir=build/inner"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.4.1",
+    "@docusaurus/core": "^2.4.3",
     "@docusaurus/plugin-content-docs": "^2.4.1",
     "@docusaurus/preset-classic": "^2.4.1",
     "@mdx-js/react": "^1.6.21",
