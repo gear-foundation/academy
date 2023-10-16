@@ -32,5 +32,5 @@ After executing a program that generates new messages using functions above, the
 There are three types of messages in the Gear Protocol:
 
 - **Initialization message** — a message that is sent to a program when it is created. It is used to initialize the program's state. Initialization messages are sent only once per program.
-- **Message** — a message that is sent to a program or user. It is used to trigger a program's execution on `handle` entry point or to transfer tokens to a user.
+- **Message** — a message that is sent to a program or user. It is used to trigger a program's execution on `handle` entry point or to transfer tokens to a user. This is the most common type of message.
 - **Reply** — a message that is sent to a program or user as a response to an incoming message. Note that an actor can send only one reply to a message.
