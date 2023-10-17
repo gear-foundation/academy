@@ -71,21 +71,21 @@ module.exports = async function config() {
                   docId: 'scd/index',
                   label: 'Gear Smart Contract Developer',
                 },
+                {
+                  type: 'html',
+                  value: '<hr style="margin: 0.3rem 0;">',
+                },
                 // TODO: Uncomment when ready
-                // {
-                //   type: 'html',
-                //   value: '<hr style="margin: 0.3rem 0;">',
-                // },
                 // {
                 //   type: 'doc',
                 //   docId: 'starter/index',
                 //   label: '🚧 Starter (in-progress)',
                 // },
-                // {
-                //   type: 'doc',
-                //   docId: 'basic/index',
-                //   label: '🚧 Basic (in-progress)',
-                // },
+                {
+                  type: 'doc',
+                  docId: 'basic/index',
+                  label: '🚧 Basic (in-progress)',
+                },
               ],
             },
             {
