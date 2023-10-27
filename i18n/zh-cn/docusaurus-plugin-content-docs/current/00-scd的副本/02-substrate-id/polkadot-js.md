@@ -5,7 +5,7 @@ slug: /substrate-id/polkadot-js
 hide_table_of_contents: true
 ---
 
-Polkadot.js 插件是由 Parity Technologies 创建的原始应用程序，用于管理 Substrate 账户。此方法涉及安装 Polkadot.js 插件，并将其用作与浏览器脱离的“虚拟保险库”，用于存储私钥和签署交易。
+Polkadot.js 插件是由 Parity Technologies 创建的原始应用程序，用于管理 Substrate 账户。此方法涉及安装 Polkadot.js 插件，并将其作为与浏览器脱离的“虚拟保险库”，用于存储私钥和签署交易。
 
 1. 你可以通过以下链接安装插件：
 
@@ -28,8 +28,8 @@ Polkadot.js 插件是由 Parity Technologies 创建的原始应用程序，用�
 
 :::注意
 
-你在此处设置的密码用于加密你的账户信息。为了进行交易或在通过密码签名交易，你需要再次输入你设置的密码。密码会本地存储在插件扩展中。
+你在此处设置的密码将用于加密你的账户信息。为了进行交易或在通过密码签名交易，你需要再次输入你设置的密码。密码会存储在本地插件中。
 
 :::
 
-现在你已成功使用 Polkadot.js 插件扩展创建了新账户。
+现在你已成功使用 Polkadot.js 插件创建了新账户。
