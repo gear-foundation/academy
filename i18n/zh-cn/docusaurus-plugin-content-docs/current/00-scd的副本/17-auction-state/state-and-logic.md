@@ -70,22 +70,22 @@ pub enum AuctionAction {
 
 可能出现以下情况：
 
-1，Tamagotchi 合约在消息执行期间由于g a s不足或逻辑错误而失败。它未能保存状态，导致拍卖和 Tamagotchi 状态不一致。拍卖合约不知道 Tamagotchi 合约的问题。
-2，Tamagotchi 执行消息并保存状态。然而，在随后的操作期间，它的gas耗尽。因此，Tamagotchi 合约更改其状态，但拍卖合约不反映此更改。
+1，Tamagotchi 合约在消息执行期间由于 gas 不足或逻辑错误而失败。它未能保存状态，导致拍卖和 Tamagotchi 状态不一致。拍卖合约不知道 Tamagotchi 合约的问题。
+2，Tamagotchi 执行消息并保存状态。然而，在随后的操作期间，它的 gas 耗尽。因此，Tamagotchi 合约更改其状态，但拍卖合约不反映此更改。
 
 ![Auction Diagram](/img/17/auction-diagram.jpg)
 
 `MakeBid` 操作流程如下：
 
 1. 用户出价，指定用于购买 Tamagotchi 的代币数量。
-2. 在收到用户的出价后，合约将代币添加到其余额，并验证成功的转账。如果转账成功，合约会将代币退还给前一个出价者。在合约执行、回复或随后的操作期间，gas 可能会耗尽。
+2. 在收到用户的出价后，合约将代币添加到其余额，并验证成功的转账。如果转账成功，合约会将代币退还给前一个出价者。在合约执行、回复或后续的操作期间，gas 可能会耗尽。
 
 ![Make Bid Diagram](/img/17/make-bid-diagram.jpg)
 
 收到 `SettleAuction` 消息后，合约执行以下操作：
 
-1. 将 Tamagotchi 的所有者更改为拍卖获胜者。在执行 Tamagotchi 合约、回复或继续拍卖合约期间，gas 
-2. 将代币转给前任所有者。同样，gas 可能会在同质化代币合约的执行、回复或拍卖合约的继续期间耗尽。
+1. 将 Tamagotchi 的所有者更改为拍卖获胜者。在执行 Tamagotchi 合约、回复或继续拍卖合约期间，gas 可能会耗尽。
+2. 将代币转给前任所有者。同样，gas 可能会在同质化代币合约的执行、回复或继续拍卖合约的期间耗尽。
 
 ![Settle Auction Diagram](/img/17/settle-auction-diagram.jpg)
 
