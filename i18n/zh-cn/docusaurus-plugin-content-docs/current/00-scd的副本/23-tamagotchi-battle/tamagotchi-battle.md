@@ -198,7 +198,7 @@ const MIN_POWER: u16 = 3_000;
 接下来，作为示例，我们将定义一个简单的游戏机制：
 
 - Tamagotchi 的所有者通过向 Battle 合约发送消息 `BattleAction::Move` 来采取行动。在行动期间，他们的 Tamagotchi 击败对手的 Tamagotchi，对手的能量减少了其攻击力的力量。
-- 在这个游戏中，Tamagotchi 只有一个可用的属性，即剑。如果进攻的 Tamagotchi 拥有一把剑，其打击力会乘以 `SWORD_POWER`：
+- 在这个游戏中，Tamagotchi 只有一个可用的属性，即剑。如果进攻的 Tamagotchi 拥有一把剑，其攻击力会乘以 `SWORD_POWER`：
 
     $$
     SWORD\_POWER × power
@@ -298,6 +298,6 @@ async fn update_info(&mut self) {
 
 如果你想要挑战更多内容，可以让你的 Tamagotchi 参加战斗或者创建新的 Tamagotchi 进行战斗。
 
-你可以按照之前的课程中的说明来制作你自己的 Tamagotchi，然后让它们进行战斗（使用之前的课程）并让它们战斗（链接到 Web 应用程序）。
+你可以按照之前的课程中的说明来制作你自己的 Tamagotchi，然后让它们（使用之前的课程）进行战斗（链接到 Web 应用程序）。
 
 **现在是时候开始你的课程作业了！**
