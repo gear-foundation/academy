@@ -118,7 +118,7 @@ use gstd::{msg, prelude::*, ActorId, prog::ProgramGenerator, CodeHash};
 
 - 已上传程序代码的代码哈希；
 - 用于初始化消息的有效载荷；
-- 用于程序创建的燃料（预先计算已加载到网络上的程序初始化需要多少燃料）；
+- 用于程序创建的 gas（预先计算已加载到网络上的程序初始化需要多少 gas）；
 - 附加到初始化消息的价值。
 
 ```rust
@@ -157,7 +157,7 @@ async fn create_escrow(
 ```
 我们的 Escrow Factory 智能合约利用了异步程序创建，以确保初始化无误。该程序包括一个回复消息，允许它等待回复。
 
-其他方法易于实现，因为所有逻辑和检查都在 Escrow 合约中已经包括了：
+其他方法易于实现，因为所有逻辑和检查都包括在 Escrow 合约中：
 
 ```rust
 async fn deposit(&self, escrow_id: EscrowId) {
