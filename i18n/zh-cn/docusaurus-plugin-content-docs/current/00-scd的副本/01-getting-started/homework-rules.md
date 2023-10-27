@@ -7,13 +7,13 @@ hide_table_of_contents: true
 
 我们会设置各种作业任务。你将从刺激有趣的答题开始，循序渐进，逐渐开启激动人心的编程任务。
 
-你将完成每个作业后获得积分，并有机会拥有独家 NFT。
+完成每个作业后你将获得积分，并有机会拥有独家 NFT。
 
 编程作业需要遵循以下指南，适用于 GitHub 存储库、名称、PR、review 和常规作业。
 
 作业指南：
 
-- 在完成第一个作业之前，你**应该** fork 模板存储库： <https://github.com/gear-foundation/dapps-template-gear-academy>
+- 在完成第一个作业之前，你 **应该** fork 模板存储库： <https://github.com/gear-foundation/dapps-template-gear-academy>
 - 配置存储库以从操作中允许访问**GitHub**页面： <https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow>
 - 你的存储库名称**应该**包括 `-gear-academy` 后缀，例如， `myname-gear-academy`。
 - 从存储库中删除**编译产物**，例如 `node_modules`、`target` 和编辑器文件。
