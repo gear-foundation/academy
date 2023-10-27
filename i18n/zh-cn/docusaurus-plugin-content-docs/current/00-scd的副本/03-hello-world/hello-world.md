@@ -58,7 +58,7 @@ gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", rev = "946a
 [dev-dependencies]
 gtest = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47" }
 ```
-`gstd` 库的 `debug` 特性允许在程序调试期间插入有用的文本消息，利用 [`debug!`](https://docs.gear.rs/gstd/macro.debug.html) 宏。同样， `gear-wasm-builder` 库的 wasm-opt 特性优化输出的Wasm文件，减小了程序的二进制大小。
+`gstd` 库的 `debug` 特性允许在程序调试期间插入有用的文本消息，利用 [`debug!`](https://docs.gear.rs/gstd/macro.debug.html) 宏。同样， `gear-wasm-builder` 库的 wasm-opt 特性优化输出的 Wasm 文件，减小了程序的二进制大小。
 
 现在，让我们在 `lib.rs` 文件中编写 Gear 程序的最小结构。handle 函数是程序的入口点。每当程序接收到传入消息时，都会调用它。
 
