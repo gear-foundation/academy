@@ -70,7 +70,7 @@ let program = Program::current(&sys);
 - 要向程序发送消息，请调用 `Program` 的两个方法之一： [`send`](https://docs.gear.rs/gtest/struct.Program.html#method.send) 或 [`send_bytes`](https://docs.gear.rs/gtest/struct.Program.html#method.send_bytes)。它们之间的区别类似于 `gstd` 函数 [`msg::send`](https://docs.gear.rs/gstd/msg/fn.send.html) 和 [`msg::send_bytes`](https://docs.gear.rs/gstd/msg/fn.send_bytes.html)。
 - 这些函数的第一个参数是一个 sender ID，第二个是消息负载。
 - 你可以将 sender ID 指定为十六进制、字节数组（`[u8; 32]`）、字符串或 `u64`。但是，你不能从程序已使用的 ID 发送消息！
-- 发送到 `Program` 结构的第一条消息始终是初始化消息，无论程序是否具有 `init` 函数。在我们的情况下，我们可以使用任何消息。但是在这里，让我们在程序中中包括 `init` 函数，以观察该消息是否到达程序。
+- 发送到 `Program` 结构的第一条消息始终是初始化消息，无论程序是否具有 `init` 函数。在我们的情况下，我们可以使用任何消息。但是在这里，让我们在程序中包括 `init` 函数，以观察该消息是否到达程序。
 
 ```rust title="src/lib.rs"
 #![no_std]
