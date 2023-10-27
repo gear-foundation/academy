@@ -65,12 +65,12 @@ pub enum TmgEvent {
 
 - `HUNGER_PER_BLOCK = 1`：Tamagotchi 每个区块变得饥饿的程度（减少 `fed`）；
 - `BOREDOM_PER_BLOCK = 2` - Tamagotchi 每个区块变得无聊的程度（减少 `entertained`）；
-- `ENERGY_PER_BLOCK = 2` - Tamagotchi每个区块失去的能量（减少 `slept`）；
+- `ENERGY_PER_BLOCK = 2` - Tamagotchi 每个区块失去的能量（减少 `slept`）；
 - `FILL_PER_FEED = 1000` - 喂食时 Tamagotchi 的饱腹感增加量；
 - `FILL_PER_ENTERTAINMENT = 1000` - 娱乐时 Tamagotchi 的快乐感增加量；
 - `FILL_PER_SLEEP = 1000` - 睡觉时 Tamagotchi 的能量增加量。
 
-5️⃣ 想出计算 `fed`， `entertained` 和 `slept` 水平的逻辑。利用 `gstd` 库的 [`exec::block_height()`](https://docs.gear.rs/gstd/exec/fn.block_height.html) .block_height.html）来确定 Tamagotchi 上次进食、娱乐或睡觉的区块数，。
+5️⃣ 想出计算 `fed`， `entertained` 和 `slept` 水平的逻辑。利用 `gstd` 库的 [`exec::block_height()`](https://docs.gear.rs/gstd/exec/fn.block_height.html) .block_height.html）来确定 Tamagotchi 上次进食、娱乐或睡觉的区块数。
 
 6️⃣ 不要忘记用测试来覆盖新功能。
 
