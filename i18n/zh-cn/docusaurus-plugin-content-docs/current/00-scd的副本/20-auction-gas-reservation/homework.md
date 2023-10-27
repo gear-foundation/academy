@@ -73,9 +73,9 @@ pub enum TmgAction {
 }
 ```
 
-你将向 `TmgEvent` 枚举添加三个新的传出消息： `FeedMe`， `PlayWithMe` 和 `WantToSleep`。如果 Tamagotchi 燃气用尽，它应该发送消息`MakeReservation` ，请求所有者保留燃气以继续检查状态。
+你将向 `TmgEvent` 枚举添加三个新的传出消息： `FeedMe`， `PlayWithMe` 和 `WantToSleep`。如果 Tamagotchi gas 用尽，它应该发送消息`MakeReservation` ，请求所有者保留 gas 以继续检查状态。
 
-此外，还包括传出消息 `GasReserved` ，以指示程序成功保留燃气，如下所示：
+此外，还包括传出消息 `GasReserved` ，以指示程序成功保留 gas ，如下所示：
 
 ```rust
 #[derive(Encode, Decode, TypeInfo)]
