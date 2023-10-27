@@ -28,7 +28,7 @@ exec::system_reserve_gas(1_000_000_000)
 
 如果保留了 gas 并且在持续执行期间没有发生系统消息，gas 将返回到其来源。
 
-当您的程序使用异步消息并通过 `#[gstd::async_main]` 宏扩展 `handle_signal` 入口点时，它会释放程序占用的资源。
+当你的程序使用异步消息并通过 `#[gstd::async_main]` 宏扩展 `handle_signal` 入口点时，它会释放程序占用的资源。
 
 使用自定义异步逻辑涉及在 Gear 中将 Futures 存储在程序的内存中。这些 Futures 的执行上下文可能占用大量内存，特别是在处理多个 Futures 时。
 
@@ -40,6 +40,6 @@ exec::system_reserve_gas(1_000_000_000)
 
 :::
 
-要处理程序中的信号，您可以定义自己的 `my_handle_signal` 入口点并为您的程序编写自定义逻辑。
+要处理程序中的信号，您可以定义自己的 `my_handle_signal` 入口点并为你的程序编写自定义逻辑。
 
 在下一节中，我们将探讨如何在拍卖合约中编写 `my_handle_signal` 函数。
