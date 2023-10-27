@@ -7,7 +7,7 @@ hide_table_of_contents: true
 
 本页面提供逐步说明，以帮助你在 Gear 平台上创建一个背景 ID。该指南将帮助你设置密码，输入个人信息，并验证你的电子邮件地址。你可以根据一些提示和技巧增强你的账户安全性。
 
-## 创建Substrate ID
+## 创建 Substrate ID
 
 **Substrate ID** （或 SS58）是 Substrate 生态系统中代表账户地址的唯一标识符。
 
