@@ -11,7 +11,7 @@ hide_table_of_contents: true
 - 探索替代方法，例如 Gitpod，用于使用 Gear 进行开发。
 - 获取有价值的信息，以提升你的智能合约开发过程。
 
-请查看我们的词汇表或访问我们的网站了解不熟悉的术语：https://wiki.gear-tech.io/
+请查看我们的词汇表或访问我们的网站了解你不太熟悉的术语：https://wiki.gear-tech.io/
 
 如果你有问题，请在以下平台与我们的开发人员联系：
 
