@@ -9,7 +9,7 @@ hide_table_of_contents: true
 
 本课程将指导你测试一个托管智能合约程序，涵盖以下方面：
 
-- 初始化合同
+- 初始化合约
 - 从买家账户存款
 - 检查正确的合约执行和失败情况
 让我们来测试我们的方法。
@@ -67,7 +67,7 @@ let log = Log::builder()
 assert!(res.contains(&log));
 ```
 
-为了保持事情井然有序，让我们将合同初始化移入名为 `init_escrow()`的单独函数中：
+为了保持事情井然有序，让我们将合约初始化移入名为 `init_escrow()`的单独函数中：
 
 ```rust title="tests/escrow_test.rs"
 fn init_escrow(sys: &System) {
