@@ -42,7 +42,7 @@ let reservation_id = ReservationId::reserve(
 
 此函数从可用程序数量中扣除指定数量的 gas 并将其保留。每个预留都会收到一个唯一的标识符，以访问和使用所保留的 gas。
 
-你还需要指定预留必须在其中使用的区块计数。请记住，gas 预留并不是免费的，它的成本是 100 gas。reserve 函数返回用于发送带有您预留的 gas 的 `ReservationId` 。
+你还需要指定预留必须在其中使用的区块计数。请记住，gas 预留并不是免费的，它的成本是 100 gas。reserve 函数返回用于发送带有你预留的 gas 的 `ReservationId` 。
 
 要使用预留的 gas 发送消息：
 
