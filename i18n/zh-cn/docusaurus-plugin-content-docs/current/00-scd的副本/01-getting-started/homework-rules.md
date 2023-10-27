@@ -13,13 +13,13 @@ hide_table_of_contents: true
 
 作业指南：
 
-- 在完成第一个作业之前，你 **应该** fork 模板存储库： <https://github.com/gear-foundation/dapps-template-gear-academy>
+- 在完成第一个作业之前，你**应该** fork 模板存储库： <https://github.com/gear-foundation/dapps-template-gear-academy>
 - 配置存储库以从操作中允许访问**GitHub**页面： <https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow>
 - 你的存储库名称**应该**包括 `-gear-academy` 后缀，例如， `myname-gear-academy`。
 - 从存储库中删除**编译产物**，例如 `node_modules`、`target` 和编辑器文件。
 - 在开始每个作业之前，请将你的 fork 与上游存储库同步。
 - 将每个作业放在与相应模块的名称相同的文件夹中，例如 `01-tamagotchi`、`02-tamagotchi-interaction`、`03-tamagotchi-nft` 等。
-- 每个作业应作为独立的 PR **提交**，请注意从基于 master 分支或其他工作分支提交。
+- 每个作业应作为独立的 PR **提交**，请注意从基于 master 的分支或其他工作分支提交。
 - **不要**在单个 PR 中提交多个作业任务。
 - PR 中**不要**包含与任务无关的更改。
 - 如果需要进行更改，请在**现有分支和 PR 内**进行更新。
