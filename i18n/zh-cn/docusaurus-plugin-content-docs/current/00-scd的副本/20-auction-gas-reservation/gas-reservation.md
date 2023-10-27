@@ -151,7 +151,7 @@ extern "C" fn my_handle_signal() {
 }
 ```
 
-在每次交易之前，也需要为系统消息保留 g a s。以下是我们将如何实现它的方式：
+在每次交易之前，也需要为系统消息保留 gas。以下是我们将如何实现它的方式：
 
 ```rust
 #[gstd::async_main]
