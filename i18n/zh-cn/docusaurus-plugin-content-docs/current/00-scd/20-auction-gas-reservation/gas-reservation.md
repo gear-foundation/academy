@@ -1,5 +1,5 @@
 ---
-title: Adding gas reservation and system signals
+title: 添加 gas 预留和系统信号
 sidebar_position: 1
 slug: /auction-gas-reservation/gas-reservation
 hide_table_of_contents: true
