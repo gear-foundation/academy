@@ -1,5 +1,5 @@
 ---
-title: Homework rules
+title: 作业规则
 sidebar_position: 3
 slug: /getting-started/homework-rules
 hide_table_of_contents: true
