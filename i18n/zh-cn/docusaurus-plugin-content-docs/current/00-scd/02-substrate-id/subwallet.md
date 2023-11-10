@@ -1,5 +1,5 @@
 ---
-title: How to create an account via SubWallet
+title: 如何通过 Subwallet 创建账户
 sidebar_position: 4
 slug: /substrate-id/subwallet
 hide_table_of_contents: true
