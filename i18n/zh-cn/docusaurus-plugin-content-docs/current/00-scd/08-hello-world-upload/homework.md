@@ -1,5 +1,5 @@
 ---
-title: 3. Homework "Tamagotchi"
+title: 3. 课后作业 “Tamagotchi”
 sidebar_position: 2
 slug: /hello-world-upload/homework
 hide_table_of_contents: true
