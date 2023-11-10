@@ -1,6 +1,6 @@
 ---
 title: 智能合约自动化执行
-sidebar_label: Smart contract automation
+sidebar_label: 智能合约自动化
 sidebar_position: 2
 slug: /auction-automation/automation
 hide_table_of_contents: true
