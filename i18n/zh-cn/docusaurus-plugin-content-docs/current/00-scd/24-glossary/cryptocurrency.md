@@ -1,5 +1,5 @@
 ---
-title: Cryptocurrency
+title: 加密货币
 sidebar_position: 4
 slug: /glossary/cryptocurrency
 hide_table_of_contents: true
