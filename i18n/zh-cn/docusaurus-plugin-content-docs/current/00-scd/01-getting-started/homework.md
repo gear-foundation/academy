@@ -1,5 +1,5 @@
 ---
-title: 1. Our first homework
+title: 1. 课后作业
 sidebar_position: 4
 slug: /getting-started/homework
 hide_table_of_contents: true
