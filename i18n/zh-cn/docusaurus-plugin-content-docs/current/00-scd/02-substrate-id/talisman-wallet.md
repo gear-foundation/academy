@@ -1,5 +1,5 @@
 ---
-title: How to create an account via Talisman Wallet
+title: 如何通过 Talisman 钱包创建账户
 sidebar_position: 3
 slug: /substrate-id/talisman-wallet
 hide_table_of_contents: true
