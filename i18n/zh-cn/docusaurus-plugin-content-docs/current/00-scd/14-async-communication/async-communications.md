@@ -1,5 +1,5 @@
 ---
-title: Asynchronous communication between programs
+title: 程序之间的异步通信
 sidebar_position: 1
 slug: /async-communication/async-communications
 hide_table_of_contents: true
