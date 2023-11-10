@@ -1,5 +1,5 @@
 ---
-title: Distributed transactions
+title: 分布式交易
 sidebar_position: 2
 slug: /async-communication/distributed-transactions
 hide_table_of_contents: true
