@@ -20,9 +20,9 @@ After selecting the testnet node, follow these steps to upload the program:
 
 Once the upload is successful, you'll interact with your program by sending messages and accessing its current state, including the greeting message you set during initialization.
 
-The easiest way to upload the program is to use the "Upload program" option in the Gear Idea portal: <https://idea.gear-tech.io/>.
+The easiest way to upload the program is to use the "Upload program" option in the Gear Idea portal: [https://idea.gear-tech.io](https://idea.gear-tech.io).
 
-First, you need to create an account and connect to Gear Idea. Follow the instructions provided at <https://wiki.gear-tech.io/docs/idea/account/create-account> to create your account.
+First, you need to create an account and connect to Gear Idea. Follow the instructions provided at [https://wiki.gear-tech.io/docs/idea/account/create-account](https://wiki.gear-tech.io/docs/idea/account/create-account) to create your account.
 
 After logging in, you can choose the network where you wish to upload the program. Click the gear icon located in the bottom-left corner of the screen.
 

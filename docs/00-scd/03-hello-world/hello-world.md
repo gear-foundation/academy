@@ -106,7 +106,7 @@ We can now run the `cargo build` command to build our project:
 cargo build  --release
 ```
 
-`gstd::msg` is the messaging module from the `gstd` library, allowing users to process incoming messages, obtain the necessary information about the sender or the message content and send replies or new messages to other actors (<https://docs.gear.rs/gstd/msg/>).
+`gstd::msg` is the messaging module from the `gstd` library, allowing users to process incoming messages, obtain the necessary information about the sender or the message content and send replies or new messages to other actors ([https://docs.gear.rs/gstd/msg/](https://docs.gear.rs/gstd/msg/)).
 
 We'll use the [`msg::reply`](https://docs.gear.rs/gstd/msg/fn.reply.html) function, which sends a new message as a reply to the message currently being processed:
 

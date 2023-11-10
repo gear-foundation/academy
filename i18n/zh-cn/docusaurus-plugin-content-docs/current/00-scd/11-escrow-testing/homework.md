@@ -84,5 +84,5 @@ pub enum TmgEvent {
 
 请附上你的存储库中的 PR 链接。此外，请将你的 Tamagotchi 程序地址粘贴如下所示：
 
-- PR： <https://github.com/mynick/myname-gear-academy/pull/2>
+- PR： [https://github.com/mynick/myname-gear-academy/pull/2](https://github.com/mynick/myname-gear-academy/pull/2)
 - 程序地址： `0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d`

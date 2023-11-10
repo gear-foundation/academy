@@ -111,7 +111,7 @@ fn smoke_test() {
 }
 ```
 
-然后将你的合约上传到 **Vara 稳定测试网络**，网址为 <https://idea.gear-tech.io/>。
+然后将你的合约上传到 **Vara 稳定测试网络**，网址为 [https://idea.gear-tech.io](https://idea.gear-tech.io)。
 
 ## 前端
 
@@ -148,7 +148,7 @@ VITE_NODE_ADDRESS=ws://localhost:9944
 
 对于第一课，编辑你自己的 `.env` 文件，检查其中的 `VITE_NODE_ADDRESS` 变量是否设置为 `wss://testnet.vara.rs` 。
 
-运行 `yarn dev` 命令并在浏览器中打开 <http://localhost:3000> ，你将看到以下窗口：
+运行 `yarn dev` 命令并在浏览器中打开 [http://localhost:3000](http://localhost:3000) ，你将看到以下窗口：
 
 ![Frontend](/img/08/frontend.jpg)
 
@@ -158,5 +158,5 @@ VITE_NODE_ADDRESS=ws://localhost:9944
 
 请提供包含 Tamagotchi 合约的存储库中 PR 的链接。此外，请按照以下示例粘你的 Tamagotchi 程序地址：
 
-- PR: <https://github.com/mynick/myname-gear-academy/pull/1>
+- PR: [https://github.com/mynick/myname-gear-academy/pull/1](https://github.com/mynick/myname-gear-academy/pull/1)
 - 程序地址： `0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d`

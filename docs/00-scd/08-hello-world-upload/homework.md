@@ -111,7 +111,7 @@ fn smoke_test() {
 }
 ```
 
-Then upload your contract to the **Vara Stable Testnet** at the <https://idea.gear-tech.io/>.
+Then upload your contract to the **Vara Stable Testnet** at [https://idea.gear-tech.io](https://idea.gear-tech.io).
 
 ## Frontend
 
@@ -148,15 +148,15 @@ It also contains other variables which we'll explore in upcoming lessons.
 
 For the first lesson, edit your own `.env` file and check whether the `VITE_NODE_ADDRESS` variable is set to `wss://testnet.vara.rs` there.
 
-After running the `yarn dev` command and opening <http://localhost:3000> in a browser, you'll see the following window:
+After running the `yarn dev` command and opening [http://localhost:3000](http://localhost:3000) in a browser, you'll see the following window:
 
 ![Frontend](/img/08/frontend.jpg)
 
-Also, you'll find the frontend deployed in your GitHub Pages at the corresponding address (something similar to <https://mynick.github.io/myname-gear-academy/>).
+Also, you'll find the frontend deployed in your GitHub Pages at the corresponding address (something similar to [https://mynick.github.io/myname-gear-academy/](https://mynick.github.io/myname-gear-academy/)).
 
 Select **Lesson 1** and paste your Tamagotchi program address. Then, click the **Create Tamagotchi** button to witness your Tamagotchi come to life!
 
 Please provide a link to the pull request (PR) in your repository containing your Tamagotchi contract. Also, please paste your Tamagotchi program address as shown in the example below:
 
-- PR: <https://github.com/mynick/myname-gear-academy/pull/1>
+- PR: [https://github.com/mynick/myname-gear-academy/pull/1](https://github.com/mynick/myname-gear-academy/pull/1)
 - Program address: `0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d`
