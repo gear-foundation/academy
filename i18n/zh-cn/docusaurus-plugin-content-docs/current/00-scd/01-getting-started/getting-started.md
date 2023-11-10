@@ -1,5 +1,5 @@
 ---
-title: Getting started
+title: 开启课程
 sidebar_position: 2
 slug: /getting-started/getting-started
 hide_table_of_contents: true
