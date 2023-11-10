@@ -1,5 +1,5 @@
 ---
-title: Ethereum
+title: 以太坊
 sidebar_position: 7
 slug: /glossary/ethereum
 hide_table_of_contents: true
