@@ -1,6 +1,6 @@
 ---
 title: 了解合约状态和逻辑
-sidebar_label: Contract state and logic
+sidebar_label: 合约状态和逻辑
 sidebar_position: 1
 slug: /auction-state/state-and-logic
 hide_table_of_contents: true
