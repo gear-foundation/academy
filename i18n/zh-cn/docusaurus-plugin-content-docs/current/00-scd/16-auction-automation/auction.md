@@ -1,5 +1,5 @@
 ---
-title: Implementing auction functions in smart contracts
+title: 在智能合约中实现拍卖函数
 sidebar_label: Auction
 sidebar_position: 1
 slug: /auction-automation/auction
