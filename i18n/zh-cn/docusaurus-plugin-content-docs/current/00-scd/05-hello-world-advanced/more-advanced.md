@@ -1,5 +1,5 @@
 ---
-title: More advanced Hello world
+title: 高级 Hello world
 sidebar_position: 1
 slug: /hello-world-advanced/more-advanced
 hide_table_of_contents: true
