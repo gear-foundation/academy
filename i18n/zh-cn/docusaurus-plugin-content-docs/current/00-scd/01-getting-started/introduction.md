@@ -1,5 +1,5 @@
 ---
-title: Introduction
+title: 课程简介
 sidebar_position: 1
 slug: /getting-started/introduction
 hide_table_of_contents: true
