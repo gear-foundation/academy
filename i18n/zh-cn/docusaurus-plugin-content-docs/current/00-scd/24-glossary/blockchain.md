@@ -1,5 +1,5 @@
 ---
-title: Blockchain
+title: 区块链
 sidebar_position: 2
 slug: /glossary/blockchain
 hide_table_of_contents: true
