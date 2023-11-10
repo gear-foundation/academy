@@ -1,5 +1,5 @@
 ---
-title: How to create an account via Polkadot.js browser extension
+title: 如何通过 Polkadot.js 浏览器插件创建账户
 sidebar_position: 5
 slug: /substrate-id/polkadot-js
 hide_table_of_contents: true
