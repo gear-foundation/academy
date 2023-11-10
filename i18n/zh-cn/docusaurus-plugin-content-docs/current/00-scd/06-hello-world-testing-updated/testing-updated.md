@@ -1,5 +1,5 @@
 ---
-title: Testing the updated smart contract
+title: 测试更新的智能合约
 sidebar_position: 1
 slug: /hello-world-testing-updated/testing-updated
 hide_table_of_contents: true
