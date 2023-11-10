@@ -1,5 +1,5 @@
 ---
-title: Automatic program execution with smart contract automation
+title: 智能合约自动化执行
 sidebar_label: Smart contract automation
 sidebar_position: 2
 slug: /auction-automation/automation
