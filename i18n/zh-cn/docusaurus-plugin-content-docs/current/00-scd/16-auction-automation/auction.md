@@ -1,6 +1,6 @@
 ---
 title: 在智能合约中实现拍卖函数
-sidebar_label: Auction
+sidebar_label: 拍卖
 sidebar_position: 1
 slug: /auction-automation/auction
 hide_table_of_contents: true
