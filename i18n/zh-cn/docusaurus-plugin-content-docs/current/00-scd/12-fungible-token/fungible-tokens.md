@@ -1,5 +1,5 @@
 ---
-title: Fungible tokens
+title: 同质化代币
 sidebar_position: 1
 slug: /fungible-token/fungible-tokens
 hide_table_of_contents: true
