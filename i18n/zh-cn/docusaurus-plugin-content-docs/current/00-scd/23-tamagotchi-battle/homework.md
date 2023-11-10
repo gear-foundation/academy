@@ -1,5 +1,5 @@
 ---
-title: 9. Coursework
+title: 9. 课程作业
 sidebar_position: 2
 slug: /tamagotchi-battle/homework
 hide_table_of_contents: true
