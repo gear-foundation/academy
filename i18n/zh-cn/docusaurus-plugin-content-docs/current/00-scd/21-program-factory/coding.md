@@ -1,6 +1,6 @@
 ---
-title: Coding practice to create Escrow Factory
-sidebar_label: Coding
+title: 编写代码，构建 Escrow 工厂
+sidebar_label: 编写代码
 sidebar_position: 1
 slug: /program-factory/coding
 hide_table_of_contents: true
