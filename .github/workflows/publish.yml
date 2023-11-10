@@ -24,7 +24,7 @@ jobs:
           cache: yarn
 
       - name: Install yarn
-        run: sudo npm i -g yarn
+        run: npm i yarn
 
       - name: Install dependencies
         run: yarn
