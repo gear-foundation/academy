@@ -1,5 +1,5 @@
 ---
-title: Understanding contract state and logic
+title: 了解合约状态和逻辑
 sidebar_label: Contract state and logic
 sidebar_position: 1
 slug: /auction-state/state-and-logic
