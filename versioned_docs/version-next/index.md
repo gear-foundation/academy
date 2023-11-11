@@ -9,6 +9,6 @@ This is the preliminary version of the [Gear Academy](https://academy.gear.rs) w
 
 :::warning Disclaimer
 
-Don't use these materials for education. Use the current version: <https://academy.gear.rs>.
+Don't use these materials for education. Use the current version: [https://academy.gear.rs](https://academy.gear.rs).
 
 :::

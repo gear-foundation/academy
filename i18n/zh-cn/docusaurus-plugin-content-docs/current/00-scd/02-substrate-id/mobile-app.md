@@ -1,4 +1,5 @@
 ---
+
 title: 如何通过移动端应用创建账户
 sidebar_position: 6
 slug: /substrate-id/mobile-app

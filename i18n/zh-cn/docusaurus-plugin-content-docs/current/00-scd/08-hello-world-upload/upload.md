@@ -20,9 +20,9 @@ hide_table_of_contents: true
 
 一旦上传成功，你将能够通过发送消息和访问其当前状态与程序进行交互，包括在初始化期间设置的问候消息。
 
-上传程序的最简单的方法是使用 Gear Idea 门户中的 “上传程序” 选项： <https://idea.gear-tech.io/>。
+上传程序的最简单的方法是使用 Gear Idea 门户中的 “上传程序” 选项： [https://idea.gear-tech.io](https://idea.gear-tech.io)。
 
-首先，你需要创建一个帐户并连接到 Gear Idea。请按照以下链接提供的说明创建你的帐户： <https://wiki.gear-tech.io/docs/idea/account/create-account> 。
+首先，你需要创建一个帐户并连接到 Gear Idea。请按照以下链接提供的说明创建你的帐户： [https://wiki.gear-tech.io/docs/idea/account/create-account](https://wiki.gear-tech.io/docs/idea/account/create-account) 。
 
 登录后，你可以选择要上传程序的网络。单击屏幕左下角的 gear 图标。
 

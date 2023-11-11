@@ -18,6 +18,7 @@ hide_table_of_contents: true
 通过促进通信和数据交换， metadata 使 dApp 的智能合约和客户端（JavaScript）能够有效地相互理解。
 
 为了描述 metadata 接口，我们使用 [`gmeta`](https://docs.gear.rs/gmeta/) crate：
+
 ```rust
 use gmeta::{InOut, Metadata};
 pub struct ProgramMetadata;

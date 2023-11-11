@@ -15,6 +15,5 @@ hide_table_of_contents: true
 
 请在你的 Tamagotchi 合约的存储库中附上 PR 链接。此外，请粘贴你的 Tamagotchi 合约的程序地址，格式如下示例：
 
-- PR: <https://github.com/mynick/myname-gear-academy/pull/9>
+- PR: [https://github.com/mynick/myname-gear-academy/pull/9](https://github.com/mynick/myname-gear-academy/pull/9)
 - 程序地址: `0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d`
-
