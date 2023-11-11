@@ -1,5 +1,5 @@
 ---
-title: Non-fungible tokens
+title: 非同质化代币
 sidebar_position: 1
 slug: /non-fungible-token/non-fungible-tokens
 hide_table_of_contents: true

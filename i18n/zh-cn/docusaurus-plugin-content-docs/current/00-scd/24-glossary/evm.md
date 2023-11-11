@@ -1,5 +1,5 @@
 ---
-title: EVM
+title: 以太坊虚拟机
 sidebar_position: 6
 slug: /glossary/evm
 hide_table_of_contents: true

@@ -1,5 +1,5 @@
 ---
-title: Introduction
+title: 课程简介
 sidebar_position: 1
 slug: /substrate-id/introduction
 hide_table_of_contents: true
@@ -21,4 +21,4 @@ Substrate ID 通过强制网络上每个账户地址的唯一性来确保数据�
 
 你可以使用账户密码或其关联的 JSON 文件在任何设备或钱包上访问你的账户。
 
-:::                                                        
+:::

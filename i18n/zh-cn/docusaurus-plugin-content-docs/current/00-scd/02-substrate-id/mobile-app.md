@@ -1,5 +1,6 @@
 ---
-title: How to create an account via a mobile app
+
+title: 如何通过移动端应用创建账户
 sidebar_position: 6
 slug: /substrate-id/mobile-app
 hide_table_of_contents: true

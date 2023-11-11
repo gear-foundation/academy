@@ -1,23 +1,24 @@
 ---
-title: Understanding the program metadata and state
+title: 了解程序 metadata 和状态
 sidebar_position: 1
 slug: /hello-world-metadata/metadata-and-state
 hide_table_of_contents: true
 ---
 
-在本课程中，我们将展示元数据在以下方面的作用：
+在本课程中，我们将展示 metadata 在以下方面的作用：
 
 - 将数据转换为结构化格式
 - 启用 dApp 智能合约之间的数据交换
 - 客户端（JavaScript）
 
-[`gmeta`](https://docs.gear.rs/gmeta/) crate 描述了元数据接口，它要求为所有类型提供描述。此外，本课程还提供了一个示例，演示了如何为程序定义元数据并访问其状态。
+[`gmeta`](https://docs.gear.rs/gmeta/) crate 描述了 metadata 接口，它要求为所有类型提供描述。此外，本课程还提供了一个示例，演示了如何为程序定义元数据并访问其状态。
 
-元数据充当接口映射，使一组字节可以转换为可理解的结构。它在编码和解码所有传入和传出的数据方面起着至关重要的作用。
+ metadata 充当接口映射，使一组字节可以转换为可理解的结构。它在编码和解码所有传入和传出的数据方面起着至关重要的作用。
 
-通过促进通信和数据交换，元数据使 dApp 的智能合约和客户端（JavaScript）能够有效地相互理解。
+通过促进通信和数据交换， metadata 使 dApp 的智能合约和客户端（JavaScript）能够有效地相互理解。
 
-为了描述元数据接口，我们使用 [`gmeta`](https://docs.gear.rs/gmeta/) crate：
+为了描述 metadata 接口，我们使用 [`gmeta`](https://docs.gear.rs/gmeta/) crate：
+
 ```rust
 use gmeta::{InOut, Metadata};
 pub struct ProgramMetadata;
@@ -42,7 +43,7 @@ impl Metadata for ProgramMetadata {
 
 必须描述所有这些类型。如果你的程序中缺少任何端点，可以使用 `()` 代替。
 
-让我们为我们的示例定义元数据。首先，我们将在我们的 hello-world 程序的目录中创建一个 crate：
+让我们为我们的示例定义 metadata 。首先，我们将在我们的 hello-world 程序的目录中创建一个 crate：
 
 在 `hello-world` 程序的目录中创建`hello-world-io` ：
 
@@ -128,4 +129,4 @@ fn main() {
 }
 ```
 
-构建程序后，编译智能合约时会生成一个 `hello_world.meta.txt` 文件。此元数据文件对于 UI 应用程序与智能合约的交互非常有价值。
+构建程序后，编译智能合约时会生成一个 `hello_world.meta.txt` 文件。此 metadata 文件对于 UI 应用程序与智能合约的交互非常有价值。

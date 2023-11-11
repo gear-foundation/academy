@@ -1,5 +1,5 @@
 ---
-title: Key information and security
+title: 关键信息与安全
 sidebar_position: 2
 slug: /substrate-id/key-information
 hide_table_of_contents: true

@@ -1,5 +1,5 @@
 ---
-title: Upload the program to the blockchain
+title: 上传程序至链上
 sidebar_position: 1
 slug: /hello-world-upload/upload
 hide_table_of_contents: true

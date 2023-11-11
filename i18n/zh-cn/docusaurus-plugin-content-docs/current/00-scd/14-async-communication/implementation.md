@@ -1,5 +1,5 @@
 ---
-title: Implementation of a fungible token on Gear
+title: 在 Gear 上实现同质化代币
 sidebar_position: 3
 slug: /async-communication/implementation
 hide_table_of_contents: true

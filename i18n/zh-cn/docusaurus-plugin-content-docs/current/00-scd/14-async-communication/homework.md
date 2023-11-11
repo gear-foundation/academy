@@ -1,5 +1,5 @@
 ---
-title: 5. Homework "Tamagotchi NFT"
+title: 5. 课后作业 “Tamagotchi NFT”
 sidebar_position: 4
 slug: /async-communication/homework
 hide_table_of_contents: true

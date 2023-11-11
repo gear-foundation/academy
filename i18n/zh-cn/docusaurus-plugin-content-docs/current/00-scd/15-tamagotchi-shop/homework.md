@@ -1,5 +1,5 @@
 ---
-title: 6. Homework "Tamagotchi Shop"
+title: 6. 课后作业 “Tamagotchi 商店”
 sidebar_position: 2
 slug: /tamagotchi-shop/homework
 hide_table_of_contents: true

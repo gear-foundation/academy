@@ -1,5 +1,5 @@
 ---
-title: Contract coding
+title: 合约代码编写
 sidebar_position: 1
 slug: /auction-coding/coding
 hide_table_of_contents: true

@@ -1,5 +1,5 @@
 ---
-title: 7. Homework "Tamagotchi Auto"
+title: 7. 课后作业 “Tamagotchi 自动化”
 sidebar_position: 2
 slug: /auction-gas-reservation/homework
 hide_table_of_contents: true

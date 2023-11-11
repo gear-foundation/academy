@@ -1,5 +1,5 @@
 ---
-title: System signals
+title: 系统信号
 sidebar_position: 1
 slug: /auction-signals/system-signals
 hide_table_of_contents: true

@@ -1,5 +1,5 @@
 ---
-title: 4. Homework "Tamagotchi Interaction"
+title: 4. 课后作业 “Escrow & Tamagotchi 交互”
 sidebar_position: 2
 slug: /escrow-testing/homework
 hide_table_of_contents: true

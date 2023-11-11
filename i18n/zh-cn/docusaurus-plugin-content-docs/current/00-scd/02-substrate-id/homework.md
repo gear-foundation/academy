@@ -1,5 +1,5 @@
 ---
-title: 2. Homework Substrate ID
+title: 2. 课后作业 Substrate ID
 sidebar_position: 8
 slug: /substrate-id/homework
 hide_table_of_contents: true

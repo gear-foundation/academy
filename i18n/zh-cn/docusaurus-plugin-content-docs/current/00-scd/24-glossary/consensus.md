@@ -1,5 +1,5 @@
 ---
-title: Consensus
+title: 共识
 sidebar_position: 3
 slug: /glossary/consensus
 hide_table_of_contents: true

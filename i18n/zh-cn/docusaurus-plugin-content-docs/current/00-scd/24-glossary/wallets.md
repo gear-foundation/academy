@@ -1,5 +1,5 @@
 ---
-title: Wallets
+title: 钱包
 sidebar_position: 9
 slug: /glossary/wallets
 hide_table_of_contents: true

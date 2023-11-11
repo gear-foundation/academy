@@ -1,5 +1,5 @@
 ---
-title: Bitcoin
+title: 比特币
 sidebar_position: 1
 slug: /glossary/bitcoin
 hide_table_of_contents: true

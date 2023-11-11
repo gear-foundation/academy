@@ -1,5 +1,5 @@
 ---
-title: Reading program state using your own function
+title: 使用自己的函数读取程序状态
 sidebar_position: 1
 slug: /escrow-state/reading-state
 hide_table_of_contents: true

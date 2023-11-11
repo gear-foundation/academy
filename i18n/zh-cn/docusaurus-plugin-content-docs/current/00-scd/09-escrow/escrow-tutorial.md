@@ -1,5 +1,5 @@
 ---
-title: Escrow tutorial
+title: Escrow 教程
 sidebar_position: 1
 slug: /escrow/escrow-tutorial
 hide_table_of_contents: true

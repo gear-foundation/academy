@@ -1,5 +1,5 @@
 ---
-title: ETH 2.0
+title: 以太坊 2.0
 sidebar_position: 8
 slug: /glossary/eth-2.0
 hide_table_of_contents: true

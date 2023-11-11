@@ -1,5 +1,5 @@
 ---
-title: Testing the Escrow Factory Functionality
+title: 测试 Escrow 工厂功能
 sidebar_label: Testing
 sidebar_position: 1
 slug: /program-factory-testing/testing

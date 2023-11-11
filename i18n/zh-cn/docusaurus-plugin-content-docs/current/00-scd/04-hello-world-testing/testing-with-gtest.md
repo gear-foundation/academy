@@ -1,5 +1,5 @@
 ---
-title: Testing smart contract with gtest library
+title: 使用 gtest 库测试智能合约
 sidebar_position: 1
 slug: /hello-world-testing/testing-with-gtest
 hide_table_of_contents: true

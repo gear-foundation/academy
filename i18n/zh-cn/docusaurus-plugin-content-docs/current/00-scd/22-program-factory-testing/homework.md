@@ -1,5 +1,5 @@
 ---
-title: 8. Homework "Tamagotchi Army"
+title: 8. 课后作业 “Tamagotchi Army”
 sidebar_position: 2
 slug: /program-factory-testing/homework
 hide_table_of_contents: true

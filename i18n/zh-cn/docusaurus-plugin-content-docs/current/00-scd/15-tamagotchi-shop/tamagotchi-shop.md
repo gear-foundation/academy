@@ -1,5 +1,5 @@
 ---
-title: Tamagotchi shop
+title: Tamagotchi 商店
 sidebar_position: 1
 slug: /tamagotchi-shop/tamagotchi-shop
 hide_table_of_contents: true

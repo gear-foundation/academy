@@ -1,5 +1,5 @@
 ---
-title: How to create an account via a console
+title: 如何通过命令行创建账户
 sidebar_position: 7
 slug: /substrate-id/console
 hide_table_of_contents: true
