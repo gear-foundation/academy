@@ -84,7 +84,7 @@ We'll add the last file we'll add is the Rust toolchain override, as we require 
 
 ```toml title="rust-toolchain.toml"
 [toolchain]
-channel = "nightly-2023-04-25"
+channel = "nightly-2023-09-18"
 targets = ["wasm32-unknown-unknown"]
 profile = "default"
 ```
