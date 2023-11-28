@@ -1,5 +1,4 @@
-import lightCodeTheme from 'prism-react-renderer';
-import darkCodeTheme from 'prism-react-renderer';
+import {themes as prismThemes} from 'prism-react-renderer';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
@@ -108,8 +107,8 @@ export default {
         },
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: prismThemes.github,
+        darkTheme: prismThemes.dracula,
         additionalLanguages: ['rust', 'toml'],
       },
       algolia: {
