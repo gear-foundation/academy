@@ -50,13 +50,13 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-gstd = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47", features = ["debug"] }
+gstd = { git = "https://github.com/gear-tech/gear.git", tag = "v1.0.2", features = ["debug"] }
 
 [build-dependencies]
-gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47", features = ["wasm-opt"] }
+gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", tag = "v1.0.2", features = ["wasm-opt"] }
 
 [dev-dependencies]
-gtest = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47" }
+gtest = { git = "https://github.com/gear-tech/gear.git", tag = "v1.0.2" }
 ```
 `gstd` 库的 `debug` 特性允许在程序调试期间插入有用的文本消息，利用 [`debug!`](https://docs.gear.rs/gstd/macro.debug.html) 宏。同样， `gear-wasm-builder` 库的 wasm-opt 特性优化输出的 Wasm 文件，减小了程序的二进制大小。
 
