@@ -24,8 +24,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-gmeta = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47" }
-gstd = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47" }
+gmeta = { git = "https://github.com/gear-tech/gear.git", tag = "v1.0.2" }
+gstd = { git = "https://github.com/gear-tech/gear.git", tag = "v1.0.2" }
 parity-scale-codec = { version = "3", default-features = false }
 scale-info = { version = "2", default-features = false }
 ```
@@ -107,17 +107,17 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-gstd = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47", features = ["debug"] }
+gstd = { git = "https://github.com/gear-tech/gear.git", tag = "v1.0.2", features = ["debug"] }
 parity-scale-codec = { version = "3", default-features = false }
 scale-info = { version = "2", default-features = false }
 escrow-io = { path = "io" }
 
 [build-dependencies]
-gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47", features = ["wasm-opt"] }
+gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", tag = "v1.0.2", features = ["wasm-opt"] }
 escrow-io = { path = "io" }
 
 [dev-dependencies]
-gtest = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47" }
+gtest = { git = "https://github.com/gear-tech/gear.git", tag = "v1.0.2" }
 ```
 
 We'll change the `build.rs` file:
@@ -143,14 +143,14 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-gmeta = {  git = "https://github.com/gear-tech/gear.git", rev = "946ac47", features = ["codegen"] }
-gstd = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47" }
+gmeta = {  git = "https://github.com/gear-tech/gear.git", tag = "v1.0.2", features = ["codegen"] }
+gstd = { git = "https://github.com/gear-tech/gear.git", tag = "v1.0.2" }
 parity-scale-codec = { version = "3", default-features = false }
 scale-info = { version = "2", default-features = false }
 escrow-io = { path = "../io" }
 
 [build-dependencies]
-gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47", features = ["metawasm", "wasm-opt"] }
+gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", tag = "v1.0.2", features = ["metawasm", "wasm-opt"] }
 ```
 
 In the `lib.rs` file, we should define the `metafns` module as follows:
