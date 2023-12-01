@@ -60,7 +60,7 @@ impl Metadata for ProgramMetadata {
     // highlight-start
     type Init = In<String>;
     type Handle = InOut<TmgAction, TmgEvent>;
-    type State = Tamagotchi;
+    type State = Out<Tamagotchi>;
     // highlight-end
     type Reply = ();
     type Others = ();

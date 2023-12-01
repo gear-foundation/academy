@@ -20,7 +20,7 @@ hide_table_of_contents: true
 为了描述 metadata 接口，我们使用 [`gmeta`](https://docs.gear.rs/gmeta/) crate：
 
 ```rust
-use gmeta::{InOut, Metadata};
+use gmeta::{InOut, Metadata, Out};
 pub struct ProgramMetadata;
 impl Metadata for ProgramMetadata {
     type Init = InOut<MessageInitIn, MessageInitOut>;
@@ -28,7 +28,7 @@ impl Metadata for ProgramMetadata {
     type Others = InOut<MessageAsyncIn, Option<u8>>;
     type Reply = String;
     type Signal = ();
-    type State = Vec<u128>;
+    type State = Out<Vec<u128>>;
 }
 ```
 
@@ -70,7 +70,7 @@ scale-info = { version = "2", default-features = false }
 #![no_std]
 
 use codec::{Decode, Encode};
-use gmeta::{In, InOut, Metadata};
+use gmeta::{In, InOut, Metadata, Out};
 use gstd::{prelude::*, ActorId};
 use scale_info::TypeInfo;
 pub struct ProgramMetadata;
@@ -81,7 +81,7 @@ impl Metadata for ProgramMetadata {
     type Reply = ();
     type Others = ();
     type Signal = ();
-    type State = String;
+    type State = Out<String>;
 }
 
 #[derive(Encode, Decode, TypeInfo)]

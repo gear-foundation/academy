@@ -20,7 +20,7 @@ By facilitating communication and data exchange, metadata allows the smart contr
 To describe the metadata interface, we use [`gmeta`](https://docs.gear.rs/gmeta/) crate:
 
 ```rust
-use gmeta::{InOut, Metadata};
+use gmeta::{InOut, Metadata, Out};
 pub struct ProgramMetadata;
 impl Metadata for ProgramMetadata {
     type Init = InOut<MessageInitIn, MessageInitOut>;
@@ -28,7 +28,7 @@ impl Metadata for ProgramMetadata {
     type Others = InOut<MessageAsyncIn, Option<u8>>;
     type Reply = String;
     type Signal = ();
-    type State = Vec<u128>;
+    type State = Out<Vec<u128>>;
 }
 ```
 
@@ -72,7 +72,7 @@ And in the `lib.rs` file, we'll define an incoming message for the `init` functi
 #![no_std]
 
 use codec::{Decode, Encode};
-use gmeta::{In, InOut, Metadata};
+use gmeta::{In, InOut, Metadata, Out};
 use gstd::{prelude::*, ActorId};
 use scale_info::TypeInfo;
 pub struct ProgramMetadata;
@@ -83,7 +83,7 @@ impl Metadata for ProgramMetadata {
     type Reply = ();
     type Others = ();
     type Signal = ();
-    type State = String;
+    type State = Out<String>;
 }
 
 #[derive(Encode, Decode, TypeInfo)]
