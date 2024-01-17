@@ -35,7 +35,7 @@ scale-info = { version = "2", default-features = false }
 ```rust title="io/src/lib.rs"
 #![no_std]
 
-use gmeta::{In, InOut, Metadata};
+use gmeta::{In, InOut, Metadata, Out};
 use gstd::{prelude::*, ActorId};
 use scale_info::TypeInfo;
 
@@ -47,7 +47,7 @@ impl Metadata for ProgramMetadata {
     type Reply = ();
     type Others = ();
     type Signal = ();
-    type State = Escrow;
+    type State = Out<Escrow>;
 }
 
 #[derive(Encode, Decode, TypeInfo)]
