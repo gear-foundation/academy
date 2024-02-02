@@ -83,6 +83,11 @@ export default {
                 docId: 'basic/index',
                 label: '🚧 Basic (in-progress)',
               },
+              {
+                type: 'doc',
+                docId: 'intermediate/index',
+                label: '🚧 Intermediate (in-progress)',
+              },
             ],
           },
           {
