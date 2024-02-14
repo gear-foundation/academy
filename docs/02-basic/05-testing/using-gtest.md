@@ -7,7 +7,7 @@ hide_table_of_contents: true
 
 `gtest` simulates a real network by providing mockups of the user, program, balances, mailbox, etc. Since it does not include parts of the actual blockchain, it is fast and lightweight. But being a model of the blockchain network, `gtest` cannot be a complete reflection of the latter.
 
-As we said earlier, `gtest` is excellent for unit and integration testing. It is also helpful for debugging Gear program logic. Nothing other than the Rust compiler is required for running tests based on `gtest`. It is predictable and robust when used in continuous integration.
+As we said earlier, `gtest` is excellent for unit and integration testing. It is also helpful for debugging Program on Vara logic. Nothing other than the Rust compiler is required for running tests based on `gtest`. It is predictable and robust when used in continuous integration.
 
 ## Import `gtest` lib
 

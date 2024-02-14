@@ -9,7 +9,7 @@ The Actor Model is an approach to designing and implementing systems for concurr
 
 ## How does the Actor Model work?
 
-Within the Gear Protocol, each actor — whether a smart contract or a user — has its own private internal state, contained within that actor’s “persistent memory”. Actors communicate with each other by sending asynchronous messages.
+Within the Vara network, each actor — whether a smart contract or a user — has its own private internal state, contained within that actor’s “persistent memory”. Actors communicate with each other by sending asynchronous messages.
 
 When messages are sent, they are stored in a message queue after validation being a part of the blockchain state. Once the message criteria have been met (such as available processing time in the current block or a specific block number having passed), a message is dequeued, a target program is loaded and executed with the message on input. The program can send new messages as a result of processing, these messages are enqueued back into the messaeg queue.
 
