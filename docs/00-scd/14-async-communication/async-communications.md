@@ -11,7 +11,7 @@ One of the key and distinguished features of the Vara network is the Actor model
 
 If a program sends an asynchronous message to another program, it needs to wait for the reply from that program before it can proceed to the next operation.
 
-We'll use the `send_for_reply(program, payload, value, reply_deposit)` function to send a message to a Gear program. In this function:
+We'll use the `send_for_reply(program, payload, value, reply_deposit)` function to send a message to a Program on Vara. In this function:
 
 - `program` - the address of the program to send the message for;
 - `payload` - the message to the program;

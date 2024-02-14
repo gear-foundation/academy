@@ -5,13 +5,13 @@ hide_table_of_contents: true
 
 # Program Structure
 
-Gear program is a dynamic library compiled to Wasm with a set of predefined entry points (exported functions) and using a set of API functions (imported functions).
+Program on Vara is a dynamic library compiled to Wasm with a set of predefined entry points (exported functions) and using a set of API functions (imported functions).
 
-In theory it is possible to use any programming language that compiles to Wasm to write a Gear program, but in practice it is more practical to use Rust. The reason is that Rust has a very good support for Wasm compilation and it produces very efficient, secure, and lightweight Wasm code.
+In theory it is possible to use any programming language that compiles to Wasm to write a Program on Vara, but in practice it is more practical to use Rust. The reason is that Rust has a very good support for Wasm compilation and it produces very efficient, secure, and lightweight Wasm code.
 
 ## Entry points (exported functions)
 
-Gear program has a set of predefined entry points (exported functions) that are called by the Gear runtime. The entry points are:
+Program on Vara has a set of predefined entry points (exported functions) that are called by the Gear runtime. The entry points are:
 
 - `init` — called once when the program is deployed;
 - `handle` — called when the program receives a message;
@@ -77,7 +77,7 @@ We will explore part of these functions in the next chapters. For now, let's loo
 
 ## Simple example
 
-Let's look at a simple example of a Gear program. The program is called `counter` and it can increment or devcrent an internal counter depending on the input command.
+Let's look at a simple example of a Program on Vara. The program is called `counter` and it can increment or devcrent an internal counter depending on the input command.
 
 ```rust
 use gstd::{msg, prelude::*};

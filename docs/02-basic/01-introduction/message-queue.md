@@ -5,7 +5,7 @@ hide_table_of_contents: true
 
 # Message Queue
 
-The message queue is a core component of the Gear Protocol. It is a data structure that stores messages sent between actors. Messages are stored in the queue until their criteria have been met, at which point they are dequeued and processed by dedicated smart contracts.
+The message queue is a core component of the Vara network. It is a data structure that stores messages sent between actors. Messages are stored in the queue until their criteria have been met, at which point they are dequeued and processed by dedicated smart contracts.
 
 Actually, the message queue is a first-in, first-out (FIFO) data structure implemented on top of the blockchain database. In addition to payload each message entry stores additional information such as target program address, gas limit (if provided), processing entry point (we will learn about entry points [later](../02-program-basics/program-structure.md)), token amount to be transferred, and so on.
 
@@ -29,7 +29,7 @@ After executing a program that generates new messages using functions above, the
 
 ## Difference between message types
 
-There are three types of messages in the Gear Protocol:
+There are three types of messages in the Vara network:
 
 - **Initialization message** — a message that is sent to a program when it is created. It is used to initialize the program's state. Initialization messages are sent only once per program.
 - **Message** — a message that is sent to a program or user. It is used to trigger a program's execution on `handle` entry point or to transfer tokens to a user. This is the most common type of message.

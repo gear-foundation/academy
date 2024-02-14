@@ -15,7 +15,7 @@ Even when code units work correctly, it is crucial to test if several library pa
 
 ## How to test a program
 
-There are at least two ways how to test and debug Gear programs.
+There are at least two ways how to test and debug Programs on Vara.
 
 The first is the off-chain testing using a low-level [`gtest`](https://docs.gear.rs/gtest/) crate. This approach is recommended for unit and integration tests.
 

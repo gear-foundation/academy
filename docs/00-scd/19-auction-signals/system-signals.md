@@ -5,7 +5,7 @@ slug: /auction-signals/system-signals
 hide_table_of_contents: true
 ---
 
-In Gear programs, there are three common entry points:
+In Programs on Vara, there are three common entry points:
 
 - `init`
 - `handle`

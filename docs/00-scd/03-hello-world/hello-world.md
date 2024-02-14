@@ -60,7 +60,7 @@ gtest = { git = "https://github.com/gear-tech/gear.git", tag = "v1.0.2" }
 ```
 The `gstd` library's `debug` feature enables the insertion of helpful text messages during program debugging, utilizing the [`debug!`](https://docs.gear.rs/gstd/macro.debug.html) macro. Similarly, the `gear-wasm-builder` library's wasm-opt feature optimizes the output Wasm file, reducing the program's binary size.
 
-Now, let's write the minimum structure of our Gear program in the `lib.rs` file. The `handle` function is the program's entry point. It will be called every time the program receives an incoming message.
+Now, let's write the minimum structure of our Program on Vara in the `lib.rs` file. The `handle` function is the program's entry point. It will be called every time the program receives an incoming message.
 
 ```rust title="src/lib.rs"
 #![no_std]
