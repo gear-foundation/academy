@@ -13,7 +13,7 @@ hide_table_of_contents: true
 
     ![Upload program form](../img/04/interface.png)
 
-3. Sign the program uploading the transaction to the Gear network. Also, sign the program and metadata upload to the Gear demo environment so you could work with the program. It is recommended to set the checkbox `Remember my password for the next 15 minutes` for your convenience.
+3. Sign the program uploading the transaction to the Vara network. Also, sign the program and metadata upload to the Gear demo environment so you could work with the program. It is recommended to set the checkbox `Remember my password for the next 15 minutes` for your convenience.
 
     ![Sign transaction](../img/04/sign-transaction.png)
 
