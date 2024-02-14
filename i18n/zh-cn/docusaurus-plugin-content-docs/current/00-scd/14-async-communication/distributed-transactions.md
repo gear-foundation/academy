@@ -5,9 +5,9 @@ slug: /async-communication/distributed-transactions
 hide_table_of_contents: true
 ---
 
-本课讨论了 Gear Protocol 中程序之间的交互，涉及到跨 Actor 及其各自状态的分布式交易。
+本课讨论了 Vara network 中程序之间的交互，涉及到跨 Actor 及其各自状态的分布式交易。
 
-Gear Protocol 中的程序进行交互并创建涉及 Actor 及其各自状态的过程的分布式交易。在我们的案例中，操作发生在 Actor 及其状态之间。这些分布式交易必须具备以下特性：
+Vara network 中的程序进行交互并创建涉及 Actor 及其各自状态的过程的分布式交易。在我们的案例中，操作发生在 Actor 及其状态之间。这些分布式交易必须具备以下特性：
 
 - **原子性**：所有数据更改被视为单个操作，即所有修改要么全部完成，要么都不完成。
 - **一致性**：这一属性意味着交易开始和结束时数据状态是一致的。

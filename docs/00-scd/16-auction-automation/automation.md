@@ -29,7 +29,7 @@ Once all the necessary logic is complete, the auction contract will send itself 
 
 Therefore, by utilizing delayed messages, we can automate the execution of a contract. As long as there is sufficient gas for execution, the contract can self-execute for an unlimited block number. However, if the gas runs out, the execution may be interrupted.
 
-The Gear protocol offers another powerful feature: gas reservation. Developers can reserve gas, which they can later use to send regular or delayed messages.
+The Vara network offers another powerful feature: gas reservation. Developers can reserve gas, which they can later use to send regular or delayed messages.
 
 To reserve a specific amount of gas for future usage, you can use the following function:
 

@@ -5,7 +5,7 @@ hide_table_of_contents: true
 
 # Message Handling
 
-The Gear Protocol allows users and programs to interact with other users and programs via messages. Messages can contain a payload that will be able to be processed during message execution. Interaction with messages is possible thanks to the module [`gstd::msg`](https://docs.gear.rs/gstd/msg/index.html):
+The Vara network allows users and programs to interact with other users and programs via messages. Messages can contain a payload that will be able to be processed during message execution. Interaction with messages is possible thanks to the module [`gstd::msg`](https://docs.gear.rs/gstd/msg/index.html):
 
 ```rust
 use gstd::msg;

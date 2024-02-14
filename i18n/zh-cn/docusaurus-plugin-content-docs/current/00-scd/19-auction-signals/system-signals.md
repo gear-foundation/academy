@@ -11,7 +11,7 @@ hide_table_of_contents: true
 - `handle`
 - `handle_reply`
 
-Gear Protocol 还引入了 `handle_signal` 入口点，使系统能够与程序进行通信并通知它们与程序消息相关的事件。只有系统（Gear 节点运行时）可以向程序发送信号消息。
+Vara network 还引入了 `handle_signal` 入口点，使系统能够与程序进行通信并通知它们与程序消息相关的事件。只有系统（Gear 节点运行时）可以向程序发送信号消息。
 
 系统在程序执行期间出现错误时向程序发送消息。例如，程序可能会出现紧急情况或 gas 用尽。
 
