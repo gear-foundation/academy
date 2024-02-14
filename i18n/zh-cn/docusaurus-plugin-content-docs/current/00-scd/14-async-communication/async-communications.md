@@ -5,9 +5,9 @@ slug: /async-communication/async-communications
 hide_table_of_contents: true
 ---
 
-本课关注消息传递通信的 Actor 模型，这是 Gear Protocol 的一个关键和独特特性。
+本课关注消息传递通信的 Actor 模型，这是 Vara network 的一个关键和独特特性。
 
-Gear Protocol 的一个关键和独特特性是使用 Actor 模型进行消息传递通信。 Gear Protocol 利用 Actor 模型进行消息传递通信，允许并行计算和异步消息传递，以确保更快的处理时间。这种开发结构为开发人员构建复杂的 dApps 提供了极大的灵活性。
+Vara network 的一个关键和独特特性是使用 Actor 模型进行消息传递通信。 Vara network 利用 Actor 模型进行消息传递通信，允许并行计算和异步消息传递，以确保更快的处理时间。这种开发结构为开发人员构建复杂的 dApps 提供了极大的灵活性。
 
 如果一个程序向另一个程序发送异步消息，它需要等待来自该程序的回复，然后才能继续进行下一项操作。
 

@@ -29,7 +29,7 @@ msg::send_bytes_delayed(program, payload, value, delay)
 
 因此，通过利用延迟消息，我们可以自动执行合约。只要有足够的 gas 进行执行，合约就可以自我执行到无限的区块号。但是，如果 gas 用尽，执行可能会中断。
 
-Gear Protocol 提供了另一个强大的功能：gas 预留。开发者可以预留 gas，以供将来发送常规或延迟消息使用。
+Vara network 提供了另一个强大的功能：gas 预留。开发者可以预留 gas，以供将来发送常规或延迟消息使用。
 
 要为将来的使用预留特定数量的 gas，可以使用以下函数：
 

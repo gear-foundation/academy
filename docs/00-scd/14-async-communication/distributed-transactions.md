@@ -5,9 +5,9 @@ slug: /async-communication/distributed-transactions
 hide_table_of_contents: true
 ---
 
-This lesson discusses the interactions between programs in the Gear Protocol, which involve distributed transactions across actors with their respective states.
+This lesson discusses the interactions between programs in the Vara network, which involve distributed transactions across actors with their respective states.
 
-Programs in the Gear Protocol interact and create distributed transactions involving processes across actors and their respective states. In our case, operations occur across actors and their states. The distributed transactions must have the following features:
+Programs in the Vara network interact and create distributed transactions involving processes across actors and their respective states. In our case, operations occur across actors and their states. The distributed transactions must have the following features:
 
 - **Atomicity**: All data changes are treated as a single operation, i.e., all the modifications are made or none.
 - **Consistency**: This property implies the data state is consistent when a transaction begins and ends.
