@@ -90,7 +90,7 @@ Let's explore types used.
     }
     ```
 
-    And the event reflects the game state after the **User's** move: eighter pebbles count removed by the **Program** or the end of game with the information about the winner.
+    And the event reflects the game state after the **User's** move: either pebbles count removed by the **Program** or the end of game with the information about the winner.
 
     ```rust title="io/src/lib.rs"
     #[derive(Debug, Clone, Encode, Decode, TypeInfo)]
@@ -145,7 +145,7 @@ impl Metadata for PebblesMetadata {
     - Processes the **Program** turn and check whether it wins;
     - Send a message to the user with the correspondent `PebblesEvent`;
 
-3. Write the `state()` function that returns the `GameState` structure using the [`msg::reply`](https://docs.gear.rs/gstd/msg/fn.reply.html) funcion.
+3. Write the `state()` function that returns the `GameState` structure using the [`msg::reply`](https://docs.gear.rs/gstd/msg/fn.reply.html) function.
 
 ## Additional Information
 
