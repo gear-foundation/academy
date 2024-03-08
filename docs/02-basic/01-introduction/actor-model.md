@@ -11,7 +11,7 @@ The Actor Model is an approach to designing and implementing systems for concurr
 
 Within the Vara network, each actor — whether a smart contract or a user — has its own private internal state, contained within that actor’s “persistent memory”. Actors communicate with each other by sending asynchronous messages.
 
-When messages are sent, they are stored in a message queue after validation being a part of the blockchain state. Once the message criteria have been met (such as available processing time in the current block or a specific block number having passed), a message is dequeued, a target program is loaded and executed with the message on input. The program can send new messages as a result of processing, these messages are enqueued back into the messaeg queue.
+When messages are sent, they are stored in a message queue after validation being a part of the blockchain state. Once the message criteria have been met (such as available processing time in the current block or a specific block number having passed), a message is dequeued, a target program is loaded and executed with the message on input. The program can send new messages as a result of processing, these messages are enqueued back into the message queue.
 
 Essentially, actors are able to independently receive inputs, perform functions, and send outputs. This is how programs, including smart contracts, can work automatically and in parallel. It’s also worth noting that actors can create other actors, extending the chain within a program and allowing for more flexible and complex functionality.
 
