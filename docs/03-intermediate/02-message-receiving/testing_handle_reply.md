@@ -56,7 +56,7 @@ const USER: u64 = 3;
 const ECHO_ADDRESS: u64 = 2;
 
 #[test]
-fn success_test() {
+fn test() {
     // Create a new testing environment.
     let system = System::new();
 

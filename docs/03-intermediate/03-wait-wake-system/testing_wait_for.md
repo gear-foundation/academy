@@ -1,12 +1,11 @@
 ---
-sidebar_position: 3
+sidebar_position: 5
 hide_table_of_contents: true
 ---
 
-# Testing wait-wake
+# Testing wait_for()
 
-Let's use `system.init_logger()` to start the environment in debug mode and see the debugs written.
-
+Let's use the function `system.spend_blocks()`, which allows to spend blocks and return all results: 
 ```rust
 use gstd::ActorId;
 use gtest::{Log, Program, System};
@@ -30,28 +29,28 @@ fn test() {
 
     let result = program.send(USER, "Hello".to_string());
     assert!(!result.main_failed());
+    
+    let result = system.spend_blocks(3);
     let log = Log::builder()
         .source(1)
         .dest(3)
-        .payload("Hello".to_string());
-    assert!(result.contains(&log));
+        .payload("No response was received".to_string());
+
+    assert!(result[0].contains(&log));
 }
 ```
 
 Upon running the test, you will encounter the following debug messages. Examine them attentively to ensure that the program executed as intended.
 
 ```rust
-[DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: !!!! HANDLE !!!!
+[DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: !!!! START HANDLE !!!!
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: Message ID: MessageId([15, 200, 69, 247, 219, 197, 228, 169, 112, 34, 221, 58, 40, 159, 140, 193, 139, 19, 23, 77, 44, 107, 107, 94, 184, 209, 74, 155, 13, 80, 206, 217])
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: Status != Received
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: Status::Sent
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: WAIT
-[DEBUG test] [handle(0x0547..16ea)] 0x0100..0000: HANDLE_REPLY
-[DEBUG test] [handle(0x0547..16ea)] 0x0100..0000: HANDLE_REPLY: Status::Received
-[DEBUG test] [handle(0x0547..16ea)] 0x0100..0000: HANDLE: WAKE
-[DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: !!!! HANDLE !!!!
+[DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: !!!! START HANDLE !!!!
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: Message ID: MessageId([15, 200, 69, 247, 219, 197, 228, 169, 112, 34, 221, 58, 40, 159, 140, 193, 139, 19, 23, 77, 44, 107, 107, 94, 184, 209, 74, 155, 13, 80, 206, 217])
-[DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: Status::Received
+[DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: No response was received
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: Status::Waiting
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: END
 ```

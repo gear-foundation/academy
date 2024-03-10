@@ -68,6 +68,7 @@ This time let's include debugging in our program to understand the whole process
 #[no_mangle]
 extern "C" fn handle() {
     debug!("!!!! HANDLE !!!!");
+    debug!("Message ID: {:?}", msg::id());
     let message: String = msg::load().expect("Unable to decode ");
     let program = unsafe { PROGRAM.as_mut().expect("The program is not initialized") };
 
