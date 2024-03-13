@@ -3,7 +3,7 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-# wait-wake
+# wait() and wake()
 
 Another way to handle message passing in a Gear program is to use the `exec::wait()` and `exec::wake()` functions:
 

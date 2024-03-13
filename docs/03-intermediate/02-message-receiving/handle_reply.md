@@ -5,15 +5,11 @@ hide_table_of_contents: true
 
 # Message receiving
 
-In this tutorial, you will acquire knowledge on how a program can effectively handle response messages. Illustrate this concept on the example of interaction of two programs: one program will function as an echo, responding with the received message, while the second program will initiate the communication by sending a message to the echo program and subsequently receiving a response.
+In this tutorial, you will acquire knowledge on how a program can effectively handle response messages. Let's illustrate this concept with an example of interaction between two programs: one program will act as an echo, responding with the received message, while the second program will initiate the communication by sending a message to the echo program and then receiving a response.
 
 Before delving into the analysis of program code, it is useful to illustrate the operation of our programs schematically: 
 
-TODO: make a gif in high quality
-![schema part 1](../img/02/handle_reply.png)
-<!-- ![schema part 1](../img/02/handle_reply_3.gif)
-![schema part 1](../img/02/handle_reply_2.gif) -->
-![schema part 1](../img/02/handle_reply_4.gif)
+![gif 1](../img/02/handle_reply.gif)
 
 1. The user sends a "Hello" message to Program №1, which is processed by the handle() function;
 2. This message is then forwarded to Program №2 (the echo program);

@@ -3,13 +3,11 @@ sidebar_position: 2
 hide_table_of_contents: true
 ---
 
-# Handle reply with wait-wake
+# Handle reply with wait() and wake()
 
-Now let's use the knowledge about wait-wake functions and try to improve the program that was shown in the previous lesson. 
+Now let's use the knowledge about `wait()`/`wake()` functions and try to improve the program that was shown in the previous lesson. 
 
-TODO: make a gif
-![schema part 2](../img/03/wait-wake.png)
-![schema part 2](../img/03/wait-wake_2.png)
+![gif 2](../img/03/wait_wake.gif)
 
 As you may observe, the user will no longer receive two separate messages; instead, a single reply will be dispatched once the entire process is finalized.
 
@@ -139,4 +137,7 @@ Now, let's examine this process as a whole:
 
 TODO: make a gif
 
-![Code part 2](../img/03/code.png)
+academy gif 3
+
+![Code part 2](../img/03/wait_wake_code.gif)
+

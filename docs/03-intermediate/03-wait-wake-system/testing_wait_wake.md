@@ -3,7 +3,7 @@ sidebar_position: 3
 hide_table_of_contents: true
 ---
 
-# Testing wait-wake
+# Testing wait() and wake()
 
 Let's use `system.init_logger()` to start the environment in debug mode and see the debugs written.
 
@@ -40,7 +40,7 @@ fn test() {
 
 Upon running the test, you will encounter the following debug messages. Examine them attentively to ensure that the program executed as intended.
 
-```rust
+```console
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: !!!! HANDLE !!!!
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: Message ID: MessageId([15, 200, 69, 247, 219, 197, 228, 169, 112, 34, 221, 58, 40, 159, 140, 193, 139, 19, 23, 77, 44, 107, 107, 94, 184, 209, 74, 155, 13, 80, 206, 217])
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: Status != Received
