@@ -28,8 +28,8 @@ struct Program {
 New fields have been created
 - `msg_ids` — a tuple consisting of two elements: MessageSentId and OriginalMessageId;
     - `MessageSentId` - identifier of the message to be sent to the echo address;
-    - `OriginalMessageId` - identifier of the message to be sent to the main program (required for using the wake() function);
-- `status` - program status (required to track program activity stages);
+    - `OriginalMessageId` - identifier of the message to be sent to the main program (required for using the wake() function).
+- `status` - program status (required to track program activity stages).
 
 ```rust
 enum Status {
@@ -40,8 +40,7 @@ enum Status {
 ```
 - `Waiting` — the program is waiting for a message;
 - `Sent` - the program has sent a message to the "echo" program and has not yet received a response;
-- `Received(String)` - the program received a reply to a message;
-
+- `Received(String)` - the program received a reply to a message.
 
 Considering the new fields in the program structure, initialization appears as follows:
 
@@ -60,7 +59,6 @@ extern fn init() {
 ```
 
 This time let's include debugging in our program to understand the whole process of the program during testing
-
 
 ```rust
 #[no_mangle]
@@ -134,10 +132,6 @@ match &program.status {
 However, this time it will go into the first variant, send a response and set the status to `Status::Waiting`.
 
 Now, let's examine this process as a whole: 
-
-TODO: make a gif
-
-academy gif 3
 
 ![Code part 2](../img/03/wait_wake_code.gif)
 

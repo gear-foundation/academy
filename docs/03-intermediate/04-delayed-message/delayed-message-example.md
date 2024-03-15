@@ -19,7 +19,7 @@ pub enum Action{
 }
 ```
 - `SendMessage(String)` - action to send a message to the echo program;
-- `CheckReply` - action to check for a response;
+- `CheckReply` - action to check for a response.
 
 Add `ActorId` to `msg_ids` to store the address of the sender of the message:
 

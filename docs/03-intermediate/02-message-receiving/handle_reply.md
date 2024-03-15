@@ -23,7 +23,7 @@ Before delving into the analysis of program code, it is useful to illustrate the
 
 The echo program is very simple: 
 - receive the message with the function `msg::load()` and decode it into a String of type;
-- send a reply message using the `msg::reply()`;
+- send a reply message using the `msg::reply()`.
 
 ```rust
 #[no_mangle]
@@ -44,7 +44,7 @@ struct Program {
 }
 ```
 - `echo_address` — echo program address;
-- `msg_id_to_actor` — message identifier tuple and message source address (the following will explain the reason for this);
+- `msg_id_to_actor` — message identifier tuple and message source address (the following will explain the reason for this).
 
 When the program is initialized, an echo address is sent:
 
@@ -66,7 +66,7 @@ Now let's look at sending messages using the `handle()` function:
 1. Receive the message with the function `msg::load()`;
 2. Send a message to the echo address using the `msg::send()`;
 3. An important step is to store the identifier of the message that the `msg::send()` returns, so that the `handle_reply()` function can determine which message was responded to;
-4. At the end send a reply message notifying that the message was sent to the echo address;
+4. At the end send a reply message notifying that the message was sent to the echo address.
 
 ```rust
 #[no_mangle]
@@ -83,7 +83,7 @@ The Gear program processes the reply to the message using the `handle_reply` fun
 
 1. Using the `msg::reply_to()` function to get the identifier of the message for which the `handle_reply` function is called;
 2. Check that the message identifier is the same as the identifier of the message that was sent from the `handle()` function, in order to find out that the response came to that particular message;
-3. At the end a reply message is sent to the sender's address();
+3. At the end a reply message is sent to the sender's address().
 
 It is important to emphasize that calling `msg::reply()` inside the `handle_reply` function is not allowed.
 
@@ -102,8 +102,8 @@ extern "C" fn handle_reply() {
 ```
 
 Just a reminder that the sender of the message will receive two messages: 
-- the first is the message that is sent from the `handle()` function that the message has been sent to the second program
-- the second message will come from `handle_reply` function with the response of the second program
+- the first is the message that is sent from the `handle()` function that the message has been sent to the second program;
+- the second message will come from `handle_reply` function with the response of the second program.
 
 
 

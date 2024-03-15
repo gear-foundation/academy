@@ -12,10 +12,10 @@ The external transaction serves as a "poke" to activate the smart contract and i
 Gear Protocol solves this issue by introducing delayed messaging functionality. The programs in Gear Networks are able to execute themselves an unlimited number of blocks, as long as enough gas for execution is kept available. As a result the need for including centralized components in dApps is eliminated, allowing them to function totally on-chain.
 
 `msg::send_delayed` function allows sending a message after a specified delay. The function takes the following parameters:
-- `program` - the program (or user) to which the message will be sent
-- `payload` - the payload of the message
-- `value` - the amount of tokens to be sent with the message
-- `delay `- the delay in blocks after which the message will be sent
+- `program` - the program (or user) to which the message will be sent;
+- `payload` - the payload of the message;
+- `value` - the amount of tokens to be sent with the message;
+- `delay `- the delay in blocks after which the message will be sent.
 
 The delayed message will be executed after the specified delay measured in blocks. For example, on a network with a block producing time of 3 seconds, a delay of 20 is equal to 1 minute.
 

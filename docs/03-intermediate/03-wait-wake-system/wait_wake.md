@@ -13,7 +13,7 @@ When a message goes into the waiting state using the `exec::wait()` function, al
 When a message is waiting, all gas that hasn't been spent yet is attributed to that message in the waiting queue. If the gas runs out while the message is waiting, it will not be awakened, and the program can be stuck in an intermediate state.
 
 Therefore, Gear also provides the ability to enter a waiting state for a certain number of blocks using the `wait_for` and `wait_up_to` functions:
-- `wait_for(duration)`: The message waits for the specified number of blocks, and after that time, it wakes up itself if it hasn't been woken up before. If the message doesn't have enough gas to pay for the specified number of blocks, then the function panics.
+- `wait_for(duration)`: The message waits for the specified number of blocks, and after that time, it wakes up itself if it hasn't been woken up before. If the message doesn't have enough gas to pay for the specified number of blocks, then the function panics;
 - ` wait_up_to(duration)`: The message waits for the number of blocks that it has enough gas to pay for, and this number of blocks does not exceed the specified duration.
 
 ## Wake

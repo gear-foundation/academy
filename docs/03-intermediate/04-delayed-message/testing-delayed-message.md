@@ -67,4 +67,4 @@ The following debug messages will be displayed in the console:
 [DEBUG test] [handle(0x058e..8c20)] 0x0100..0000: HANDLE: END
 ```
 
-Note that the message identifier is now different, this is distinct from when wake/wait was used.
+Note that the message identifier is now different, this is distinct from when `wake()`/`wait()` was used.
