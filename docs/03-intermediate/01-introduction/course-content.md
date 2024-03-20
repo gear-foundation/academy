@@ -5,6 +5,7 @@ hide_table_of_contents: true
 
 # Course content
 
+This course is a continuation of the basic course. Let's delve deeper into the implementation of programs using Gear technologies, in particular how programs can communicate with each other, receive and process responses, as well as how to handle cases when one of the parties does not respond
 
 The course material is structured into three sections:
 

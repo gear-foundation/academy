@@ -92,7 +92,7 @@ extern "C" fn handle() {
 
 ```
 
-At the beginning, as you may have noticed, the program is in a `Status::Waiting` status, and when a `match` occurs, the code moves to the second variant. Send messages, set the program status to `Status::Sent` and save the identifiers of the current message and the sent message.  After all this call the function `exec::wait()` function, which pauses the code and adds the current message to the waiting list until `exec::wake()` is called or the gas runs out.
+At the beginning, as you may have noticed, the program is in a `Status::Waiting` status, and when a `match` occurs, the code moves to the second variant. The program sends a message, sets the program status to `Status::Sent` and saves the identifiers of the current message and the sent message.  After all this call the function `exec::wait()` function, which pauses the code and adds the current message to the waiting list until `exec::wake(message_id)` is called or the gas runs out. The message identifier is passed to the `exec::wake()` function, which is why `msg::id()` is stored in `program.msg_ids`.
 
 Let's move on to the `handle_reply()` function: 
 
@@ -117,7 +117,8 @@ extern "C" fn handle_reply() {
 Сondition  `if reply_to == program.msg_ids.0 && program.status == Status::Sent` gives a guarantee that the expected message has arrived and arrived at the right moment, i.e. at the correct program status. 
 After that the status is set to `Status::Received(reply_message)` and the response message is saved; get the ID of the original message and call the `exec::wake()` function, which retrieves the message from the waiting list and the suspended message is restarted in `handle()`. 
 
-Important note: the `exec::wake()` function wakes up the message from the very beginning of the function `handle()`, i.e. the program code will get into the `match` again:
+*Important note*:  when `exec::wake()` is called, the message is taken from the waiting list, it returns to the `handle()` entrypoint, and the program starts processing it from the beginning, i.e. the program code will get into the `match` again:
+
 ```rust
 // ...
 match &program.status {

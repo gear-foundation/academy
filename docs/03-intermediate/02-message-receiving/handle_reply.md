@@ -15,7 +15,7 @@ Before delving into the analysis of program code, it is useful to illustrate the
 2. This message is then forwarded to Program №2 (the echo program);
 3. Program №1 sends a confirmation message to the user, indicating that the message has been successfully transmitted to Program №2;
 4. Program №2 receives the message from Program №1 and responds with a reply message;
-5. Program №1 receives the reply message from Program №2 through the handle_reply function;
+5. Program №1 receives the reply message from Program №2 through the handle_reply entrypoint;
 6. Finally, the "Hello" message is relayed from the handle_reply function to the user.
 
 
