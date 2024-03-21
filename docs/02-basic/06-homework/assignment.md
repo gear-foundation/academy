@@ -173,3 +173,4 @@ You are to cover program initialization and all actions by tests using the [`gte
 
 - The homework should be done as the PR in the GitHub repository.
 - You are to upload the Wasm binary to the Vara Network Testnet and send its address.
+- If you encounter challenges in the development of a project, it is advisable to refer to the [Gear Wiki](https://wiki.gear-tech.io/docs/developing-contracts/introduction) for guidance. It provides comprehensive instructions for developing programs on Gear.
