@@ -11,7 +11,7 @@ Add it to the `[build-dependencies]` section in the `Cargo.toml` file:
 
 ```toml
 [build-dependencies]
-gear-wasm-builder = { git = "https://github.io/gear-tech/gear.git", tag = "v1.0.2" }
+gear-wasm-builder = { git = "https://github.io/gear-tech/gear.git", tag = "v1.2.0" }
 ```
 
 And create the `build.rs` file with the following content:
