@@ -98,6 +98,13 @@ Let's explore types used.
         CounterTurn(u32),
         Won(Player),
     }
+
+    #[derive(Debug, Default, Clone, Encode, Decode, TypeInfo)]
+    pub enum Player {
+        #[default]
+        User,
+        Program,
+    }
     ```
 
 - Internal game state should keep all information related to the current state of the game. Some information is set during initialization, the first player is chosen randomly, some data are change during the game.
