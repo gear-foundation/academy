@@ -49,8 +49,8 @@ edition = "2021"
 publish = false
 
 [dependencies]
-gmeta = "1.1.0"
-gstd = "1.1.0"
+gstd = { git = "https://github.com/gear-tech/gear.git", tag = "v1.2.0" }
+gmeta = { git = "https://github.com/gear-tech/gear.git", tag = "v1.2.0" }
 parity-scale-codec = { version = "3", default-features = false }
 scale-info = { version = "2", default-features = false }
 ```
