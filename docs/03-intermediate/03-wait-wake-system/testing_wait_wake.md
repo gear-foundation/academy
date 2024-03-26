@@ -20,7 +20,7 @@ fn test() {
     system.init_logger();
 
     let program = Program::current(&system);
-    let echo_program = Program::from_file(&system, "target/wasm32-unknown-unknown/debug/echo.opt.wasm");
+    let echo_program = Program::from_file(&system, "target/wasm32-unknown-unknown/release/echo.opt.wasm");
 
     let result = echo_program.send_bytes(USER, []);
     assert!(!result.main_failed());

@@ -6,6 +6,7 @@ hide_table_of_contents: true
 # Testing wait_for()
 
 Let's use the function `system.spend_blocks()`, which allows to spend blocks and return all results: 
+
 ```rust
 use gstd::ActorId;
 use gtest::{Log, Program, System};
@@ -19,7 +20,7 @@ fn test() {
     system.init_logger();
 
     let program = Program::current(&system);
-    let echo_program = Program::from_file(&system, "target/wasm32-unknown-unknown/debug/echo.opt.wasm");
+    let echo_program = Program::from_file(&system, "target/wasm32-unknown-unknown/release/echo.opt.wasm");
 
     let result = echo_program.send_bytes(USER, []);
     assert!(!result.main_failed());
@@ -51,6 +52,5 @@ Upon running the test, you will encounter the following debug messages. Examine 
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: !!!! START HANDLE !!!!
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: Message ID: MessageId([15, 200, 69, 247, 219, 197, 228, 169, 112, 34, 221, 58, 40, 159, 140, 193, 139, 19, 23, 77, 44, 107, 107, 94, 184, 209, 74, 155, 13, 80, 206, 217])
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: No response was received
-[DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: Status::Waiting
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: END
 ```

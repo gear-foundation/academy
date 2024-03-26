@@ -5,7 +5,7 @@ hide_table_of_contents: true
 
 # Message receiving
 
-In this tutorial, you will acquire knowledge on how a program can effectively handle response messages. Let's illustrate this concept with an example of interaction between two programs: one program will act as an echo, responding with the received message, while the second program will initiate the communication by sending a message to the echo program and then receiving a response.
+In this tutorial, you will acquire knowledge on how a program can effectively handle request messages. Let's illustrate this concept with an example of interaction between two programs: one program will act as an echo, responding with the received message, while the second program will initiate the communication by sending a message to the echo program and then receiving a response.
 
 Before delving into the analysis of program code, it is useful to illustrate the operation of our programs schematically: 
 
@@ -21,15 +21,13 @@ Before delving into the analysis of program code, it is useful to illustrate the
 
 ## Echo program
 
-The echo program is very simple: 
-- receive the message with the function `msg::load()` and decode it into a String of type;
-- send a reply message using the `msg::reply()`.
+The echo program is very simple, using the `msg::reply_input()` it will reply with the same message that came to it:
 
 ```rust
 #[no_mangle]
 extern "C" fn handle() {
-    let message: String = msg::load().expect("Unable to decode");
-    msg::reply(message, 0).expect("Error in sending a reply");
+    // Reply to the incoming message
+    msg::reply_input(0, 0..msg::size()).expect("Error in sending a reply");
 }
 ```
 
@@ -39,12 +37,10 @@ The structure of the program is as follows:
 
 ```rust
 struct Program {
-    echo_address: ActorId,
-    msg_id_to_actor: (MessageId, ActorId),
+    echo_address: ActorId, // echo program address
+    msg_id_to_actor: (MessageId, ActorId), // tuple of message identifiers and message source address
 }
 ```
-- `echo_address` — echo program address;
-- `msg_id_to_actor` — message identifier tuple and message source address (the following will explain the reason for this).
 
 When the program is initialized, an echo address is sent:
 

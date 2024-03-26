@@ -14,14 +14,15 @@ Reminder: this function itself wakes up the message from the waiting list after 
 
 ## Echo program
 
-Сomment out the reply line in the echo program so that the reply is not received: 
+Let's add `exec::wait()` so that the echo program does not reply to incoming messages:
 
 ```rust
 #[no_mangle]
 extern "C" fn handle() {
-    let message: String = msg::load().expect("Unable to decode");
-    // msg::reply(message, 0).expect("Error in sending a reply");
+    exec::wait();
+    msg::reply_input(0, 0..msg::size()).expect("Error in sending a reply");
 }
+
 ```
 
 ## Main program
@@ -58,8 +59,6 @@ extern "C" fn handle() {
         Status::Sent => {
             debug!("HANDLE: No response was received");
             msg::reply("No response was received", 0).expect("Error in sending a reply");
-            debug!("HANDLE: Status::Waiting");
-            program.status = Status::Waiting;
         }
     }
     debug!("HANDLE: END");

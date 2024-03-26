@@ -15,7 +15,7 @@ In this homework you are to write the Wordle Game. The games rules are the follo
 
 ## Project Structure
 
-Let's divide the game program into two parts: one will handle word generation and indicating the correct positions of the letters, while the other will receive, process responses from the first part, and record the results for the user.
+Let's divide the game program into two parts: one will handle word generation and indicating the correct positions of the letters, while the other will receive, process requests from the first part, and record the results for the user.
 
 ## First program 
 
