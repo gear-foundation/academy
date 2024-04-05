@@ -12,38 +12,41 @@ The first thing to do is to create a testing environment:
 let system = System::new();
 ```
 
-Get program of the root crate with provided `system` and `echo` program instance from wasm file.
+Get first program of the root crate with provided `system` and the second program instance from wasm file.
 ```rust
-let program = Program::current(&system);
-let echo_program = Program::from_file(&system, "target/wasm32-unknown-unknown/debug/echo.opt.wasm");
+let first_program = Program::current(&system);
+let second_program = Program::from_file(&system, "target/wasm32-unknown-unknown/release/second_program.opt.wasm");
 ```
 
-Initialize the "echo" program by sending an empty message and then initialize the main program by passing the address of the echo program to it.
+Initialize the second program by sending an empty message and then initialize the first program by passing the address of the second program to it.
 
 ```rust
-let echo_result = echo.send_bytes(USER, []);
-let echo_address: ActorId = ECHO_ADDRESS.into();
-let res = program.send(USER, echo_address);
+let result = second_program.send_bytes(USER, []);
+let second_program_address: ActorId = SECOND_PROGRAM_ADDRESS.into();
+let res = first_program.send(USER, second_program_address);
 ```
 
-Send the message "Hello" to the main program and check for the response "Sent to echo address", which means that the message was successfully sent to the echo program address; 
+Send the message with `Action::MakeRandomNumber {range: 1}` to the first program and check for the response `Event::MessageSent`, which means that the message was successfully sent to the second program address; 
 
 ```rust
-let result = program.send(USER, "Hello".to_string());
+let result = first_program.send(USER, Action::MakeRandomNumber {range: 1});
 let log = Log::builder()
     .source(1)
     .dest(3)
-    .payload("Sent to echo address".to_string());
+    .payload(Event::MessageSent);
+assert!(result.contains(&log));
+
 ```
 
-Extract the user's mailbox with the specified identifier and check that the "Hello" reply message has been sent back to the user.
+Retrieve the user's mailbox with the specified ID and verify that a reply message has been sent back to the user
 
 ```rust
 let mailbox = system.get_mailbox(USER);
 let log = Log::builder()
     .source(1)
     .dest(3)
-    .payload("HELLO".to_string());
+    .payload(Event::Number(0));
+assert!(mailbox.contains(&log));
 ```
 
 The complete test code looks as follows: 
@@ -51,38 +54,39 @@ The complete test code looks as follows:
 ```rust
 use gstd::ActorId;
 use gtest::{Log, Program, System};
+use handle_reply_io::{Action, Event};
 
 const USER: u64 = 3;
-const ECHO_ADDRESS: u64 = 2;
+const SECOND_PROGRAM_ADDRESS: u64 = 2;
 
 #[test]
-fn test() {
+fn success_test() {
     // Create a new testing environment.
     let system = System::new();
 
-    // Get program of the root crate with provided system.
-    let program = Program::current(&system);
-    // Get "echo" program
-    let echo = Program::from_file(&system, "target/wasm32-unknown-unknown/debug/echo.opt.wasm");
-    // The "echo" program is initialized with an empty payload message
-    let echo_result = echo.send_bytes(USER, []);
-    assert!(!echo_result.main_failed());
+    // Get first program of the root crate with provided system.
+    let first_program = Program::current(&system);
+    // Get second program
+    let second_program = Program::from_file(&system, "target/wasm32-unknown-unknown/release/second_program.opt.wasm");
+    // The second program is initialized with an empty payload message
+    let result = second_program.send_bytes(USER, []);
+    assert!(!result.main_failed());
 
-    let echo_address: ActorId = ECHO_ADDRESS.into();
-    // The program is initialized using echo_address in the payload message
-    let res = program.send(USER, echo_address);
+    let second_program_address: ActorId = SECOND_PROGRAM_ADDRESS.into();
+    // The first program is initialized using second_program in the payload message
+    let res = first_program.send(USER, second_program_address);
     assert!(!res.main_failed());
     
-    // Send the message wanted to receive in reply
-    let result = program.send(USER, "HELLO".to_string());
+    // Send with the message we want to receive back
+    let result = first_program.send(USER, Action::MakeRandomNumber {range: 1});
     assert!(!result.main_failed());
 
     // check that the first message has arrived,
-    // which means that the message was successfully sent to the "echo" program
+    // which means that the message was successfully sent to the second program
     let log = Log::builder()
         .source(1)
         .dest(3)
-        .payload("Sent to echo address".to_string());
+        .payload(Event::MessageSent);
     assert!(result.contains(&log));
 
     // check that the second message has arrived at the mailbox,
@@ -91,8 +95,10 @@ fn test() {
     let log = Log::builder()
         .source(1)
         .dest(3)
-        .payload("HELLO".to_string());
+        .payload(Event::Number(0));
 
     assert!(mailbox.contains(&log));
 }
 ```
+
+It will be good practice if you implement these programmes and test on your own.

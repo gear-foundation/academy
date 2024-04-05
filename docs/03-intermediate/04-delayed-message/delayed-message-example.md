@@ -7,27 +7,49 @@ hide_table_of_contents: true
 
 Let's try to rewrite the program from the previous lesson using the acquired knowledge about delayed messages.
 
-Add enum to distinguish between the two message types
+In this case there will be two types of message:
 
 ```rust
-#[derive(TypeInfo, Encode, Decode)]
+#[derive(TypeInfo, Encode, Decode, Debug)]
 #[codec(crate = gstd::codec)]
 #[scale_info(crate = gstd::scale_info)]
 pub enum Action{
-    SendMessage(String),
-    CheckReply,
+    SendMessage(MessageAction), // action to send a message to the second program
+    CheckReply,                 // action to check for a response
+}
+
+#[derive(TypeInfo, Encode, Decode, Debug)]
+#[codec(crate = gstd::codec)]
+#[scale_info(crate = gstd::scale_info)]
+pub enum MessageAction {
+    Hello,
+    HowAreYou,
+    MakeRandomNumber{
+        range: u8,
+    },
+}
+
+#[derive(TypeInfo, Encode, Decode, Debug, PartialEq)]
+#[codec(crate = gstd::codec)]
+#[scale_info(crate = gstd::scale_info)]
+pub enum Event {
+    Hello, 
+    Fine,
+    Number(u8),
+    MessageSent,
+    MessageAlreadySent,
+    WrongStatus,
+    NoReplyReceived,
 }
 ```
-- `SendMessage(String)` - action to send a message to the echo program;
-- `CheckReply` - action to check for a response.
 
 Add `ActorId` to `msg_ids` to store the address of the sender of the message:
 
 ```rust
-struct Program {
-    echo_address: ActorId,
+struct Session {
+    second_program: ActorId,
     msg_ids: (MessageSentId, OriginalMessageId, ActorId),
-    status: Status,
+    message_status: MessageStatus,
 }
 ```
 
@@ -36,18 +58,18 @@ In this case the initialization will look as follows:
 ```rust
 #[no_mangle]
 extern "C" fn init() {
-    let echo_address = msg::load().expect("Unable to decode Init");
+    let second_program = msg::load().expect("Unable to decode Init");
     unsafe {
-        PROGRAM = Some(Program {
-            echo_address,
+        SESSION = Some(Session {
+            second_program,
             msg_ids: (MessageId::zero(), MessageId::zero(), ActorId::zero()),
-            status: Status::Waiting,
+            message_status: MessageStatus::Waiting,
         });
     }
 }
 ```
 
-After sending an echo message to the program, send a delayed message `msg::send_delayed(exec::program_id(), Action::CheckReply, 0, 3)`, with a delay of three blocks.
+After sending the message to the second program, send a delayed message `msg::send_delayed(exec::program_id(), Action::CheckReply, 0, 3)`, with a delay of three blocks.
 
 ```rust
 #[no_mangle]
@@ -55,35 +77,37 @@ extern "C" fn handle() {
     debug!("!!!! HANDLE !!!!");
     debug!("Message ID: {:?}", msg::id());
     let action: Action = msg::load().expect("Unable to decode ");
-    let program = unsafe { PROGRAM.as_mut().expect("The program is not initialized") };
+    debug!("Message payload: {:?}", action);
+    let session = unsafe { SESSION.as_mut().expect("The session is not initialized") };
 
     match action {
-        Action::SendMessage(message) => {
-            if program.status == Status::Waiting {
-                debug!("HANDLE: Action::SendMessage -> Status::Waiting");
-                let msg_id = msg::send(program.echo_address, message.clone(), 0)
+        Action::SendMessage(message_action) => {
+            if session.message_status == MessageStatus::Waiting {
+                debug!("HANDLE: Action::SendMessage and MessageStatus::Waiting");
+                let msg_id = msg::send(session.second_program, message_action, 0)
                     .expect("Error in sending a message");
     
-                debug!("HANDLE: Status::Sent");
-                program.status = Status::Sent;
-                program.msg_ids = (msg_id, msg::id(), msg::source());
+                debug!("HANDLE: MessageStatus::Sent");
+                session.message_status = MessageStatus::Sent;
+                session.msg_ids = (msg_id, msg::id(), msg::source());
 
                 msg::send_delayed(exec::program_id(), Action::CheckReply, 0, 3)
                     .expect("Error in sending a message");
 
-                msg::reply("Sent to echo address", 0).expect("Error in sending a reply");
+                msg::reply(Event::MessageSent, 0).expect("Error in sending a reply");
 
             } else {
-                panic!("Status is not Waiting");
+                debug!("HANDLE: Event::WrongStatus");
+                msg::reply(Event::WrongStatus, 0).expect("Error in sending a reply");
             }
         }
         Action::CheckReply => {
             debug!("HANDLE: Action::CheckReply");
-            if program.status == Status::Sent {
+            if session.message_status == MessageStatus::Sent && msg::source() == exec::program_id() {
                 debug!("HANDLE: No response was received");
-                msg::send(program.msg_ids.2, "No response was received", 0).expect("Error in sending a message");
-                debug!("HANDLE: Status::Waiting");
-                program.status = Status::Waiting;
+                msg::send(session.msg_ids.2, Event::NoReplyReceived, 0).expect("Error in sending a message");
+                debug!("HANDLE: MessageStatus::Waiting");
+                session.message_status = MessageStatus::Waiting;
             }
 
         }
@@ -91,4 +115,4 @@ extern "C" fn handle() {
     debug!("HANDLE: END");
 }
 ```
-When handle receives the same `Action::CheckReply` message, a check of the program status will be made. If the status is `Status::Sent`, which means that no response message has been received, a notification of this will be sent to the sender.
+Upon receiving the `Action::CheckReply` message, the handler will inspect the session's status. If the message source is the program itself and the status is `Status::Sent`, a notification will be dispatched to the sender indicating the absence of a response message.
