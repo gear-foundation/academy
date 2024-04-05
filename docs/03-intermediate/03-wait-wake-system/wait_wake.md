@@ -5,16 +5,17 @@ hide_table_of_contents: true
 
 # wait() and wake()
 
-In order to improve the handling of messages in the Gear program, the use of the `exec::wait()` and `exec::wake()` functions can be beneficial:
+In order to enhance message handling in the Gear program, utilizing the `exec::wait()` and `exec::wake()` functions can be advantageous:
 
 ## Wait
-`exec::wait()`: pause the current message handling. It completes the current message handle execution with a special result and puts this message into the waiting queue. The message can then be awakened using the corresponding `exec::wake()` function at a later time.
-When a message goes into the waiting state using the `exec::wait()` function, all the changes made by the program before the wait call are saved. These changes are stored in the program's persistent storage, so they are not lost when the current message handling is paused.
-When a message is waiting, all gas that hasn't been spent yet is attributed to that message in the waiting queue. If the gas runs out while the message is waiting, it will not be awakened, and the program can be stuck in an intermediate state. This is very important to realize that each block of a message's presence in the queue is charged for in the form of some amount of gas.
+
+`exec::wait()`: Pauses the current message handling process, completing it with a special result and placing the message into the waiting queue. The message can later be awakened using the corresponding `exec::wake()` function. When a message enters the waiting state with `exec::wait()`, all changes made by the program before the wait call are preserved. These changes are stored in the program's persistent storage, ensuring they are not lost when message handling is paused. While a message is in the waiting state, all remaining gas is allocated to that message in the waiting queue. If the gas is depleted while the message is waiting, it will not be awakened, potentially causing the program to become stuck in an intermediate state. It is crucial to understand that each block of a message's presence in the queue incurs a charge in the form of gas.
 
 Therefore, Gear also provides the ability to enter a waiting state for a certain number of blocks using the `exec::wait_for` and `exec::wait_up_to` functions:
-- `exec::wait_for(duration)`: The message waits for the specified number of blocks, and after that time, it wakes up itself if it hasn't been woken up before. If the message doesn't have enough gas to pay for the specified number of blocks, then the function panics;
-- `exec::wait_up_to(duration)`: The message waits for the number of blocks that it has enough gas to pay for, and this number of blocks does not exceed the specified duration.
+
+- `exec::wait_for(duration)`: With this function, the message pauses and waits for a specific number of blocks to pass. After this time has elapsed, if the message hasn't already been awakened, it will wake up on its own. However, if the message doesn't have enough gas to cover the cost of waiting for the specified number of blocks, the function will cause an panic.
+
+- `exec::wait_up_to(duration)`: This function allows the message to wait for a duration of time, but it only waits for as many blocks as it has enough gas to pay for. It ensures that the waiting time does not exceed the specified duration.
 
 ## Wake
 `exec::exec::wake()`: Resume the execution of a message that was previously paused using the wait function. When the wake function is called with a valid message_id, it will take the message out of the waiting queue and put it back into the processing queue. 
