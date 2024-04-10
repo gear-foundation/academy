@@ -7,7 +7,7 @@ hide_table_of_contents: true
 
 The message queue is a core component of the Vara network. It is a data structure that stores messages sent between actors. Messages are stored in the queue until their criteria have been met, at which point they are dequeued and processed by dedicated smart contracts.
 
-Actually, the message queue is a first-in, first-out (FIFO) data structure implemented on top of the blockchain database. In addition to payload each message entry stores additional information such as target program address, gas limit (if provided), processing entry point (we will learn about entry points [later](../02-program-basics/program-structure.md)), token amount to be transferred, and so on.
+Actually, the message queue is a first-in, first-out (FIFO) data structure implemented on top of the blockchain database. In addition to payload each message entry stores additional information such as target program address, gas limit (if provided), processing entry point (entry points will be discussed [later](../02-program-basics/program-structure.md)), token amount to be transferred, and so on.
 
 ## How does the message queue work?
 

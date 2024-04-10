@@ -5,7 +5,7 @@ hide_table_of_contents: true
 
 # Building
 
-We recommend using the [`gear-wasm-builder`](https://docs.gear.rs/gear_wasm_builder/) crate in a custom build script `build.rs`.
+It is recommended to use the [`gear-wasm-builder`](https://docs.gear.rs/gear_wasm_builder/) crate in a custom build script `build.rs`.
 
 Add it to the `[build-dependencies]` section in the `Cargo.toml` file:
 
@@ -22,4 +22,4 @@ fn main() {
 }
 ```
 
-You can find built Wasm files in the `target/wasm32-unknown-unknown/release` directory.
+The build Wasm files can be found in the `target/wasm32-unknown-unknown/release` directory.

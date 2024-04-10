@@ -30,7 +30,7 @@ impl Metadata for ProgramMetadata {
 }
 ```
 
-As we can see, metadata enables you to determine the expected data at the input/output for the contract at each endpoint. Where:
+As can be seen, metadata enables the determination of the expected data at the input/output for the contract at each endpoint. Where:
 
 - [`Init`](https://docs.gear.rs/gmeta/trait.Metadata.html#associatedtype.Init) — describes incoming/outgoing types for `init()` function.
 - [`Handle`](https://docs.gear.rs/gmeta/trait.Metadata.html#associatedtype.Handle) — describes incoming/outgoing types for `handle()` function.
@@ -41,7 +41,7 @@ As we can see, metadata enables you to determine the expected data at the input/
 
 ## Generate metadata
 
-To generate metadata, the following `build.rs` file in the root of your project folder is required:
+To generate metadata, the following `build.rs` file in the root of the project folder is required:
 
 ```rust
 // build.rs

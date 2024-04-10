@@ -5,7 +5,7 @@ hide_table_of_contents: true
 
 # Upload Program
 
-1. When your account balance is sufficient, click the <kbd>Upload program</kbd> and navigate to the `.opt.wasm` file we have pointed to above.
+1. When your account balance is sufficient, click the <kbd>Upload program</kbd> and navigate to the `.opt.wasm` that was specified above.
 
     ![Upload program button](../img/04/upload.png)
 

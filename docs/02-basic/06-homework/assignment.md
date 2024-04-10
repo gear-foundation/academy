@@ -16,7 +16,7 @@ In this homework you are to write the Pebbles Game. The games rules are the foll
 
 ## Project Structure
 
-We will create two crates: `pebbles-game` for the program and `pebbles-game-io` for data structures.
+It is necessary to make two crates: `pebbles-game` for the program and `pebbles-game-io` for data structures.
 
 The directory structure should be the following:
 
@@ -57,7 +57,7 @@ scale-info = { version = "2", default-features = false }
 
 Let's explore types used.
 
-- We are to pass some initial information when initializing the game. For example, we are to set the pebbles count ($N$), maximum pebbles to be removed per turn ($K$), difficulty level.
+- When initialising the game, it is necessary to pass some initial information. For example, the number of pebbles ($N$), maximum pebbles to be removed per turn ($K$), difficulty level.
 
     ```rust title="io/src/lib.rs"
     #[derive(Debug, Default, Clone, Encode, Decode, TypeInfo)]
@@ -75,7 +75,7 @@ Let's explore types used.
     }
     ```
 
-- We will send actions message for every **User's** move and receive some event from the program. The action can be a turn with some count of pebbles to be removed or the give up. Also, there is a restart action than resets the game state .
+- It needs to send actions message for every **User's** move and receive some event from the program. The action can be a turn with some count of pebbles to be removed or the give up. Also, there is a restart action than resets the game state .
 
     ```rust title="io/src/lib.rs"
     #[derive(Debug, Clone, Encode, Decode, TypeInfo)]
@@ -121,7 +121,7 @@ Let's explore types used.
     }
     ```
 
-And finally we are to define metadata to be used by [IDEA](https://idea.gear-tech.io/programs?node=wss%3A%2F%2Ftestnet.vara.network) portal.
+Finally, the metadata to be used by the [IDEA](https://idea.gear-tech.io/programs?node=wss%3A%2F%2Ftestnet.vara.network) portal.
 
 ```rust title="io/src/lib.rs"
 impl Metadata for PebblesMetadata {
