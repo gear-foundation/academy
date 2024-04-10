@@ -5,7 +5,7 @@ hide_table_of_contents: true
 
 # Testing
 
-Let's verify the functionality of the program discussed in the preceding section:
+Let's verify the functionality of the program discussed in the preceding section.
 
 ```rust
 use gstd::ActorId;
@@ -61,7 +61,7 @@ fn test() {
 }
 ```
 
-The following debug messages will be displayed in the console:
+The following debug messages will appear in the console:
 
 ```console
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: !!!! HANDLE !!!!
@@ -84,4 +84,4 @@ The following debug messages will be displayed in the console:
 [DEBUG test] [handle(0x058e..8c20)] 0x0100..0000: HANDLE: END
 ```
 
-Note that the message identifier is now different, this is distinct from when `wake()`/`wait()` was used.
+Observe that the message identifier has changed; this differs from the behavior observed with `wake()`/`wait()`.

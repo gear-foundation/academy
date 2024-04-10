@@ -3,19 +3,18 @@ sidebar_position: 1
 hide_table_of_contents: true
 ---
 
-# Delayed message
+# Delayed Message
 
-The conventional approach adopted by programs on other blockchains involves dependency on external, centralized resources. Consequently, the execution of code within these programs and any corresponding alterations to the blockchain's state are contingent upon being triggered by an on-chain transaction.
+Conventional approaches by programs on other blockchains rely on external, centralized resources. Thus, the execution of code within these programs and any corresponding changes to the blockchain's state depend on being triggered by an on-chain transaction.
 
-The external transaction functions as a trigger to activate the program and commence its logic. For example, an individual can initiate an auction by dispatching a message to the auction program. Following the expiration of the auction period, the program will require processing the auction's outcome. However, this processing will remain pending until an individual dispatches the appropriate message to the program, thereby initiating this action.
+An external transaction acts as a trigger to activate the program and start its logic. For instance, someone can initiate an auction by sending a message to the auction program. After the auction period expires, the program needs to process the auction's outcome. However, this process awaits until someone sends the correct message to the program, triggering this action.
 
-Gear Protocol solves this issue by introducing delayed messaging functionality. The programs in Gear Networks are able to execute themselves an unlimited number of blocks, as long as enough gas for execution is kept available. As a result the need for including centralized components in dApps is eliminated, allowing them to function totally on-chain.
+The Gear Protocol addresses this challenge by introducing delayed messaging functionality. Programs within the Gear-powered networks can execute autonomously over an unlimited number of blocks, provided there is sufficient gas for execution. This advancement eliminates the need for centralized components in dApps, enabling them to operate entirely on-chain.
 
-`msg::send_delayed` function allows sending a message after a specified delay. The function takes the following parameters:
-- `program` - the program (or user) to which the message will be sent;
-- `payload` - the payload of the message;
+The `msg::send_delayed` function facilitates sending a message after a specified delay, accepting the following parameters:
+- `program` - the program (or user) to which the message will be directed;
+- `payload` - the content of the message;
 - `value` - the amount of tokens to be sent with the message;
-- `delay `- the delay in blocks after which the message will be sent.
+- `delay` - the number of blocks after which the message will be dispatched.
 
-The delayed message will be executed after the specified delay measured in blocks. For example, on a network with a block producing time of 3 seconds, a delay of 20 is equal to 1 minute.
-
+The delayed message executes after the predetermined delay measured in blocks. For example, in a network where blocks are produced every 3 seconds, a delay of 20 equates to 1 minute.

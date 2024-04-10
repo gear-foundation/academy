@@ -3,18 +3,18 @@ sidebar_position: 4
 hide_table_of_contents: true
 ---
 
-# Breakdowns in communication 
+# Breakdowns in Communication
 
-Sometimes the second program may not answer for any reason and it is necessary to be able to handle this case correctly. 
+Sometimes, the second program may not respond for various reasons, and it's crucial to handle such scenarios appropriately.
 
 ## wait_for()
 
-Let's try to solve this problem using `wait_for(DURATION_IN_BLOCK)`.
-*Reminder: this function itself wakes up the message from the waiting list after a certain number of blocks, if `exec::wake()` was not called.*
+To address this issue, let's use `wait_for(DURATION_IN_BLOCKS)`.
+*Reminder: This function automatically wakes up the message from the waiting list after a specified number of blocks if `exec::wake()` has not been called.*
 
-## Second program
+## Second Program
 
-Let's add `exec::wait()` so that the second program does not reply to incoming messages:
+Add `exec::wait()` to the second program so that it does not reply to incoming messages.
 
 ```rust
 #[no_mangle]
@@ -25,9 +25,9 @@ extern "C" fn handle() {
 
 ```
 
-## First program
+## First Program
 
-In the first program, the `handle()` function will be modified. Instead of `exec::wait()`, we will use `exec::wait_for(3)`. This ensures that if `exec::wake()` in `handle_reply()` is not called within 3 blocks, message processing will automatically resume.
+In the first program, the `handle()` function will be modified. Instead of `exec::wait()`, let's use `exec::wait_for(3)`. This ensures that if `exec::wake()` in `handle_reply()` is not called within 3 blocks, message processing will automatically resume.
 
 ```rust
 #[no_mangle]
@@ -73,5 +73,4 @@ extern "C" fn handle() {
 }
 ```
 
-In this case the program will go to `handle()` again, but this time the session status will be `MessageStatus::Sent`, so a message will be sent to the user that there was no response and the status will be set to `MessageStatus::Waiting`.
-
+In such a case, the program will return to `handle()`, but this time with the session status as `MessageStatus::Sent`. Consequently, a message will be sent to the user indicating the absence of a response, and the status will be updated to `MessageStatus::Waiting`.

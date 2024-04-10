@@ -5,7 +5,7 @@ hide_table_of_contents: true
 
 # Testing wait_for()
 
-Let's use the function `system.spend_blocks()`, which allows to spend blocks and return all results: 
+Utilize the function `system.spend_blocks()` to advance through blocks and retrieve all results:
 
 ```rust
 use gstd::ActorId;
@@ -50,7 +50,7 @@ fn test() {
 }
 ```
 
-Upon running the test, you will encounter the following debug messages. Examine them attentively to ensure that the program executed as intended.
+When running the test, observe the following debug messages carefully to verify the program executed as planned.
 
 ```console
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: !!!! HANDLE !!!!

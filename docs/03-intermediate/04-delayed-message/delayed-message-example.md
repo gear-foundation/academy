@@ -3,11 +3,11 @@ sidebar_position: 2
 hide_table_of_contents: true
 ---
 
-# Program with delayed message
+# Program with Delayed Message
 
-Let's try to rewrite the program from the previous lesson using the acquired knowledge about delayed messages.
+Let's revise the program from the previous lesson, incorporating new knowledge about delayed messages.
 
-In this case there will be two types of message:
+In this scenario, there are two types of messages:
 
 ```rust
 #[derive(TypeInfo, Encode, Decode, Debug)]
@@ -43,7 +43,7 @@ pub enum Event {
 }
 ```
 
-Add `ActorId` to `msg_ids` to store the address of the sender of the message:
+Add `ActorId` to `msg_ids` to store the address of the message sender.
 
 ```rust
 struct Session {
@@ -53,7 +53,7 @@ struct Session {
 }
 ```
 
-In this case the initialization will look as follows:
+The initialization will then proceed as follows:
 
 ```rust
 #[no_mangle]
@@ -69,7 +69,7 @@ extern "C" fn init() {
 }
 ```
 
-After sending the message to the second program, send a delayed message `msg::send_delayed(exec::program_id(), Action::CheckReply, 0, 3)`, with a delay of three blocks.
+After sending the message to the second program, send a delayed message using `msg::send_delayed(exec::program_id(), Action::CheckReply, 0, 3)`, setting a delay of three blocks.
 
 ```rust
 #[no_mangle]
@@ -115,4 +115,5 @@ extern "C" fn handle() {
     debug!("HANDLE: END");
 }
 ```
-Upon receiving the `Action::CheckReply` message, the handler will inspect the session's status. If the message source is the program itself and the status is `Status::Sent`, a notification will be dispatched to the sender indicating the absence of a response message.
+
+Upon receiving the `Action::CheckReply` message, the handler will review the session's status. If the message originated from the program itself and the status is `Status::Sent`, a notification will be sent to the sender to report the absence of a response message.

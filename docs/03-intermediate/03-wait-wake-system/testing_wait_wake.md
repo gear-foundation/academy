@@ -5,7 +5,7 @@ hide_table_of_contents: true
 
 # Testing wait() and wake()
 
-Let's use `system.init_logger()` to start the environment in debug mode and see the debugs written.
+To begin, use `system.init_logger()` to initiate the environment in debug mode, enabling you to see the debug messages.
 
 ```rust
 use gstd::ActorId;
@@ -41,7 +41,7 @@ fn test() {
 }
 ```
 
-Upon running the test, you will encounter the following debug messages. Examine them attentively to ensure that the program executed as intended.
+When you run the test, pay close attention to the following debug messages. Carefully review them to verify that the program has executed as expected.
 
 ```console
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: !!!! HANDLE !!!!
