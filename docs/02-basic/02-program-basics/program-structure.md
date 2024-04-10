@@ -39,9 +39,9 @@ extern "C" fn handle() {
 }
 ```
 
-In this function, we are to define the main business logic of our program. For example, we can check the incoming message and perform some actions depending on the message type. Also, we can send a message to another program. Finally, we can send a reply to the message that was received by the program.
+In this function, the main business logic of the program is defined. For example, the incoming message is checked, and actions are performed depending on the message type. Additionally, a message can be sent to another program, and a reply can be sent to the message received by the program.
 
-And the third most important function is `handle_reply()`. It is called when the program receives a reply to the message that was sent by the program. For example, we can check the reply and perform some actions depending on the reply type.
+And the third most important function is `handle_reply()`. It is called when the program receives a reply to the message that was sent by the program. For example, the reply can be checked, and actions can be performed depending on the reply type.
 
 ```rust
 #[no_mangle]
@@ -69,7 +69,7 @@ Also, there is no need to define the `handle_signal()` function if the program d
 
 There are a lot of imported functions that can be used by the Gear smart contract. They are called API functions. These functions are provided by the runtime that executes the Gear smart contract. The most convenient way to use these functions is to use the Gear standard library called [`gstd`](https://docs.gear.rs/gstd/). It is a set of high-level functions that are implemented on top of the low-level API functions.
 
-We will explore part of these functions in the next chapters. For now, let's look at the most important API functions.
+Some of these functions will be discussed in the following chapters. For now, let's look at the most important API functions.
 
 - `msg::load_bytes()` — loads the payload of the message as a byte vector;
 - `msg::send_bytes()` — sends a message to a program or user;

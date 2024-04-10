@@ -32,7 +32,7 @@ extern "C" fn state() {
 }
 ```
 
-Additionally, you can handle incoming payload and return only the necessary part of the state. For example, you can return only the selected wallet:
+Additionally, incoming payloads can be handled, returning only the necessary part of the state. For example, only the selected wallet can be returned:
 
 ```rust
 #[no_mangle]
@@ -53,11 +53,13 @@ The data returned by the `state()` function can be converted to any convenient r
 
 ## Custom program to read the state
 
-Additionally, you can create your own program to read the state. This wrapper will allow you to implement custom functions for the client side, not depending on the main program.
+Additionally, a custom program can be created to read the state. This wrapper allows for the implementation of custom functions on the client side, independent of the main program.
 
-This has a number of advantages, for example, you will always be able to read the state even if the program changes (as long as the incoming or outgoing types have not changed). Or you are creating a service based on an already existing program and you need some of your own functions to get your own chanks of data from the state.
+This has a number of advantages, for example, the state can always be read even if the program changes (as long as the incoming or outgoing types have not changed). Alternatively, when building a service based on an existing program, the need for custom functions arises to retrieve specific data chunks from the state.
 
-To do this, we need to create an independent program and describe the necessary functions inside the `metawasm` trait. For example:
+This approach offers several advantages. For example, the state can always be read, even if the program undergoes changes (provided that the incoming or outgoing types remain unchanged). Alternatively, when building a service based on an existing program, the need for custom functions arises to retrieve specific data chunks from the state.
+
+To do this, it is necessary to create an independent program and describe the necessary functions inside the `metawasm` trait. For example:
 
 ```rust
 // ...
@@ -101,7 +103,7 @@ pub mod metafns {
 }
 ```
 
-To build `*.meta.wasm`, the following `build.rs` file in the root of your project is required:
+To build `*.meta.wasm`, the following `build.rs` file in the project root is required:
 
 ```rust
 fn main() {
