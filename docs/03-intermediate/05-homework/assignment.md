@@ -17,7 +17,7 @@ The game challenges players to guess the word with the fewest attempts, under ti
 
  ## Project Structure
 
-To develop a dynamic and interactive word-guessing game, we propose dividing the game process into two distinct programs. The first program will handle the core functionalities, such as selecting a random word from a list and evaluating guesses. The second program will manage user interactions, keep track of the game state, and enforce time constraints. This division aims to create a modular, flexible system that enhances the gaming experience.
+To develop a dynamic and interactive word-guessing game, divide the game process into two distinct programs. The first program will handle the core functionalities, such as selecting a random word from a list and evaluating guesses. The second program will manage user interactions, keep track of the game state, and enforce time constraints. This division aims to create a modular, flexible system that enhances the gaming experience.
 
 1. **Description of the First Program**:
     - Contains "start the game" and "check the word" functions.
@@ -180,7 +180,7 @@ Finally, if the user correctly guesses the secret word *house*, `correct_positio
 
 ![Example Homework](../img/05/example_hw_3.png)
 
-Through these examples, we see how the program evaluates user guesses and provides feedback based on the positions of correct letters in the secret word.
+Through these examples, one can see how the program evaluates user guesses and provides feedback based on the positions of correct letters in the secret word.
 
 ## The Homework Assignment
 

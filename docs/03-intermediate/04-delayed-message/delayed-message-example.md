@@ -5,7 +5,7 @@ hide_table_of_contents: true
 
 # Program with Delayed Message
 
-Let's revise the program from the previous lesson, incorporating our knowledge about delayed messages.
+Let's revise the program from the previous lesson, incorporating new knowledge about delayed messages.
 
 In this scenario, there are two types of messages:
 

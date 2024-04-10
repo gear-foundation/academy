@@ -5,7 +5,7 @@ hide_table_of_contents: true
 
 # Handle Reply with wait() and wake()
 
-Now, let's apply our understanding of the `exec::wait()`/`exec::wake()` functions to enhance the program introduced in the previous lesson:
+Now, let's apply understanding of the `exec::wait()`/`exec::wake()` functions to enhance the program introduced in the previous lesson:
 
 ![gif 2](../img/03/wait_wake.gif)
 
@@ -60,7 +60,7 @@ extern "C" fn init() {
 }
 ```
 
-To gain a comprehensive understanding of the process, let's incorporate debugging into our program.
+To gain a comprehensive understanding of the process, let's incorporate debugging into the program.
 
 ```rust
 #[no_mangle]

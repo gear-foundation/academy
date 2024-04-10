@@ -7,7 +7,7 @@ hide_table_of_contents: true
 
 In this lesson, you will learn how a program can efficiently handle request messages. This concept will be illustrated through an example of interaction between two programs. 
 
-Before analyzing the program code in detail, it will be helpful to first present a schematic overview of how our programs operate:
+Before analyzing the program code in detail, it will be helpful to first present a schematic overview of how Gear programs operate:
 
 ![gif 1](../img/02/handle_reply.gif)
 
