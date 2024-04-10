@@ -5,20 +5,22 @@ hide_table_of_contents: true
 
 # Message receiving
 
-In this lesson, you will learn how a program can efficiently handle request messages. We will illustrate this concept with an example of interaction between two programs. Before delving into the analysis of the program code, it is useful to illustrate the operation of our programs schematically.
+In this lesson, you will learn how a program can efficiently handle request messages. This concept will be illustrated through an example of interaction between two programs. 
+
+Before analyzing the program code in detail, it will be helpful to first present a schematic overview of how our programs operate:
 
 ![gif 1](../img/02/handle_reply.gif)
 
-1. The user sends some `Action` message to program №1, which is processed by `handle()`;
-2. This message is then passed to programme №2;
-3. Programme №1 sends an `Event` message to the user indicating that the message was successfully passed to Programme №2;
-4. Programme №2 receives the message from Programme №1 processes it and responds;
-5. Programme №1 receives the reply message from Programme №2 via the `handle_reply()` entry point;
-6. Finally, from the `handle_reply()` function, send the message to the user.
+1. The user sends an `Action` message to Program #1, which is processed by the `handle()` function.
+2. This message is then passed to Program #2.
+3. Program #1 sends an `Event` message to the user, indicating that the message was successfully passed to Program #2.
+4. Program #2 receives the message from Program #1, processes it, and responds.
+5. Program #1 receives the reply message from Program #2 via the `handle_reply()` entry point.
+6. Finally, from the `handle_reply()` function, Program #1 sends the response to the user.
 
 ## First program
 
-The task of the first program is to communicate with the second program, so the following structure will be needed:
+The primary task of the first program is to communicate with the second program, requiring the following structure:
 
 ```rust
 struct Session {
@@ -27,7 +29,7 @@ struct Session {
 }
 ```
 
-The following actions and events will also be necessary to simulate a dialogue between programs:
+The following actions and events will be necessary to simulate a dialogue between the programs:
 
 ```rust
 #[derive(TypeInfo, Encode, Decode)]
@@ -52,7 +54,7 @@ pub enum Event {
 }
 ```
 
-During initialization, it is necessary to pass the address of the second program:
+During initialization, it is necessary to pass the address of the second program.
 
 ```rust
 #[no_mangle]
@@ -69,9 +71,9 @@ extern "C" fn init() {
 
 Let's focus on processing requests in the `handle()` function:
 
-1. Receive the message with the function `msg::load()`;
-2. Send a message to the second program using the `msg::send()`;
-3. An important step is to store the identifier of the message returned by `msg::send()`, allowing the `handle_reply()` function to identify which message received a response;
+1. Receive the message with the `msg::load()` function.
+2. Send a message to the second program using `msg::send()`.
+3. An important step is to store the identifier of the message returned by `msg::send()`. This allows the `handle_reply()` function to identify which message received a response.
 4. Finally, send a reply message indicating that the message was sent to the second program.
 
 ```rust
@@ -85,13 +87,13 @@ extern "C" fn handle() {
 }
 ```
 
-The Gear program handles the reply to the message using the `handle_reply()` function. Now, let's examine how to manage the response message from the second program:
+The Gear program utilizes the `handle_reply()` function to handle replies to messages. Let’s delve into managing the response message from the second program:
 
-1. Utilize the `msg::reply_to()` function to obtain the identifier of the message for which the `handle_reply()` function is invoked.
-2. Verify that the message identifier matches the identifier of the message sent from the `handle()` function, ensuring that the response corresponds to that specific message.
-3. Finally, send a reply message to the sender's address.
+1. Use the `msg::reply_to()` function to retrieve the identifier of the message for which the `handle_reply()` function was invoked.
+2. Ensure that the message identifier matches the identifier of the message sent from the `handle()` function. This step verifies that the response corresponds to the specific message sent earlier.
+3. Finally, send a reply message to the original sender’s address.
 
-**It is important to emphasize that calling `msg::reply()` inside the `handle_reply` function is not allowed.**
+**It is crucial to note that calling `msg::reply()` inside the `handle_reply()` function is not permitted.**
 
 ```rust
 #[no_mangle]
@@ -106,14 +108,13 @@ extern "C" fn handle_reply() {
 }
 ```
 
-Just a reminder that the sender of the message will receive two messages:
-- The first message is sent from the `handle()` function to indicate that the message has been sent to the second program.
-- The second message will come from the `handle_reply()` function with the response from the second program.
+Just a reminder: the sender of the message will receive two messages:
+- The first message, originating from the `handle()` function, indicates that the message has been forwarded to the second program.
+- The second message, sent by the `handle_reply()` function, contains the response from the second program.
 
+## Second Program
 
-## Second program
-
-The first program is straightforward; it can accept various variants of actions and respond to them with corresponding events. These responses can range from simple replies such as `Action::HowAreYou` and `Event::Fine` to more complex logic, such as generating a random number.
+The first program is straightforward; it can accept various types of actions and respond with corresponding events. These responses can range from simple replies, such as `Action::HowAreYou` and `Event::Fine`, to more complex logic, such as generating a random number.
 
 ```rust
 #![no_std]

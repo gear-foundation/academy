@@ -5,20 +5,21 @@ hide_table_of_contents: true
 
 # Testing
 
-Let's verify the functionality of the programs discussed in the preceding section by employing the `gtest` library, a subject you should be familiar with from the basic course.
+Let's verify the functionality of the programs discussed in the preceding section by using the `gtest` library, which you should already be familiar with from the basic course.
 
-The first thing to do is to create a testing environment:
+1. Create a testing environment:
 ```rust
 let system = System::new();
 ```
 
-Get first program of the root crate with provided `system` and the second program instance from wasm file.
+2. Retrieve the first program from the root crate using the provided `system` and the second program instance from the wasm file.
+
 ```rust
 let first_program = Program::current(&system);
 let second_program = Program::from_file(&system, "target/wasm32-unknown-unknown/release/second_program.opt.wasm");
 ```
 
-Initialize the second program by sending an empty message and then initialize the first program by passing the address of the second program to it.
+3. Initialize the second program by sending an empty message, and then initialize the first program by passing the address of the second program to it.
 
 ```rust
 let result = second_program.send_bytes(USER, []);
@@ -26,7 +27,7 @@ let second_program_address: ActorId = SECOND_PROGRAM_ADDRESS.into();
 let res = first_program.send(USER, second_program_address);
 ```
 
-Send the message with `Action::MakeRandomNumber {range: 1}` to the first program and check for the response `Event::MessageSent`, which means that the message was successfully sent to the second program address; 
+4. Send a message with `Action::MakeRandomNumber { range: 1 }` to the first program and check for the response `Event::MessageSent`, indicating that the message was successfully sent to the second program's address.
 
 ```rust
 let result = first_program.send(USER, Action::MakeRandomNumber {range: 1});
@@ -38,7 +39,7 @@ assert!(result.contains(&log));
 
 ```
 
-Retrieve the user's mailbox with the specified ID and verify that a reply message has been sent back to the user
+5. Retrieve the user's mailbox with the specified ID and verify that a reply message has been sent back to the user.
 
 ```rust
 let mailbox = system.get_mailbox(USER);
@@ -101,4 +102,4 @@ fn success_test() {
 }
 ```
 
-It will be good practice if you implement these programmes and test on your own.
+It will be beneficial for you to implement these programs and test them on your own.

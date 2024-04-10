@@ -5,4 +5,4 @@ hide_table_of_contents: true
 
 # Intermediate Course
 
-This course is designed to delve deeper into the Program on Vara development. It is recommended to start with this course after completing the basic course.
+This course offers a continuation of studies in the Program on Vara development, building upon the foundational knowledge acquired in the [basic course](https://academy.gear.foundation/courses/basic_course). It is designed for those who have completed the introductory level and are ready to delve deeper into the subject matter.

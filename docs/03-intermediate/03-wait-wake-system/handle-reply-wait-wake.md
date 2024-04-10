@@ -3,17 +3,17 @@ sidebar_position: 2
 hide_table_of_contents: true
 ---
 
-# Handle reply with wait() and wake()
+# Handle Reply with wait() and wake()
 
-Now let's use the knowledge about `exec::wait()`/`exec::wake()` functions and try to improve the program that was shown in the previous lesson.
+Now, let's apply our understanding of the `exec::wait()`/`exec::wake()` functions to enhance the program introduced in the previous lesson:
 
 ![gif 2](../img/03/wait_wake.gif)
 
-As you can see, the user will no longer receive two separate messages; instead, a single reply will be sent at the end of the entire process.
+The user will now receive a single reply at the end of the entire process, instead of two separate messages.
 
-## First program
+## First Program
 
-As the second programme remains unchanged, let's proceed directly to examining the modifications in the first program:
+Since the second program remains unchanged, let's take a closer look at the changes in the first program:
 
 ```rust
 type MessageSentId = MessageId;
@@ -25,11 +25,12 @@ struct Session {
     message_status: MessageStatus,
 }
 ```
-New fields have been created
-- `msg_ids` — a tuple consisting of two elements: MessageSentId and OriginalMessageId;
-    - `MessageSentId` - identifier of the message to be sent to the second program address;
-    - `OriginalMessageId` - identifier of the message to be sent to the first program (required for using the wake() function).
-- `message_status` - session status (required to track session activity stages).
+
+New fields have been introduced:
+- `msg_ids` — a tuple consisting of two elements: `MessageSentId` and `OriginalMessageId`;
+    - `MessageSentId` is the identifier of the message sent to the second program's address.
+    - `OriginalMessageId` is the identifier of the message sent to the first program (required for using the `wake()` function).
+- `message_status` - the session status (required to track the stages of session activity).
 
 ```rust
 enum MessageStatus {
@@ -38,11 +39,12 @@ enum MessageStatus {
     Received(Event),
 }
 ```
-- `Waiting` — the session is in a waiting state;
-- `Sent` - the intermediate state of the session in which the message was sent to the second program, but the response has not yet been received;
-- `Received(String)` - the session state in which the reply message was received.
 
-Considering the new fields in the program structure, initialization appears as follows:
+- `Waiting` — the session is in a waiting state.
+- `Sent` - the intermediate session state in which the message was sent to the second program, but the response has not yet been received.
+- `Received(String)` - the session state when the reply message has been received.
+
+With these new fields in the program structure, initialization is as follows:
 
 ```rust
 #[no_mangle]
@@ -58,7 +60,7 @@ extern "C" fn init() {
 }
 ```
 
-This time, let's incorporate debugging into our program to gain a comprehensive understanding of the entire process.
+To gain a comprehensive understanding of the process, let's incorporate debugging into our program.
 
 ```rust
 #[no_mangle]
@@ -95,9 +97,9 @@ extern "C" fn handle() {
 }
 ```
 
-At the very beginning, as you may have noticed, the session is in `MessageStatus::Waiting` state. When a match occurs, the code switches to the first option. The program sends a message, sets the session status to `MessageStatus::Sent` and records the identifiers of the current and sent message. Then `exec::wait()` is called, which pauses message processing and adds the current message to the waiting list until `exec::wake(message_id)` is called or the gas runs out. Subsequent waking of a message requires its id, so `msg::id()` is stored in `session.msg_ids`.
+Initially, the session is in `MessageStatus::Waiting` state. Upon a match, the code switches to the first option. The program sends a message, sets the session status to `MessageStatus::Sent`, and records the identifiers of the current and sent messages. Then, `exec::wait()` is called, pausing message processing and adding the current message to the waiting list until `exec::wake(message_id)` is called or the gas runs out. The ID of the waking message is crucial, hence `msg::id()` is stored in `session.msg_ids`.
 
-Let's move on to the `handle_reply()` function: 
+Moving to the `handle_reply()` function:
 
 ```rust
 #[no_mangle]
@@ -117,10 +119,9 @@ extern "C" fn handle_reply() {
 }
 ```
 
-Сondition  `if reply_to == session.msg_ids.0 && session.message_status == MessageStatus::Sent` gives a guarantee that the expected message has arrived and arrived at the right moment, i.e. at the correct session status. 
-After that the status is set to `MessageStatus::Received(reply_message)` and the response message is saved. The ID of the original message is retrieved, and the `exec::wake()` function is called. This function retrieves the message from the waiting list, and the suspended message is resumed in the `handle()` function.
+The condition `if reply_to == session.msg_ids.0 && session.message_status == MessageStatus::Sent` ensures the expected message has arrived at the right moment, i.e., when the session is in the correct status. The status is then set to `MessageStatus::Received(reply_message)`, and the reply message is saved. The ID of the original message is retrieved, and the `exec::wake()` function is called. This function takes the message from the waiting list, and the suspended message resumes in the `handle()` function.
 
-*Important note*:  when `exec::wake()` is called, the message is taken from the waiting list, it returns to the `handle()` entrypoint, and message processing will start handling the message from the beginning, i.e. the program code will get into the `match` again:
+*Important note*: When `exec::wake()` is called, and the message returns to the `handle()` entry point, processing starts from the beginning. The program enters the `match` again:
 
 ```rust
 // ...
@@ -133,9 +134,9 @@ match &session.message_status {
     }
     // ...
 ```
-However, this time it will go into the third variant, send a response and set the status to `MessageStatus::Waiting`.
 
-Now, let's examine this process as a whole: 
+However, this time, it proceeds to the third variant, sends a response, and sets the status to `MessageStatus::Waiting`.
+
+Now, let's review this process as a whole:
 
 ![Code part 2](../img/03/wait_wake_code.gif)
-

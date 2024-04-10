@@ -5,7 +5,7 @@ hide_table_of_contents: true
 
 # Course content
 
-This course serves as a continuation of the basic course and delves deeper into the implementation of programs using Gear technologies. Specifically, it focuses on how programs can communicate with each other, receive and process requests, and handle scenarios where one party does not respond.
+This course serves as a continuation of the [basic course](https://academy.gear.foundation/courses/basic_course), delving deeper into the implementation of programs using [Gear](https://gear-tech.io/) technologies. Specifically, it focuses on how programs can communicate with each other, receive and process requests, and handle scenarios where one party does not respond.
 
 The course material is structured into three sections:
 
@@ -22,6 +22,6 @@ The course material is structured into three sections:
 
 3. Handling of Delayed Messages:
 - In-depth exploration of delayed messages;
-- Resolution of issues related to lack of response through the use of delayed messages;
+- Resolution of issues related to the absence of responses through the use of delayed messages;
 - Testing of the program featuring delayed messages.
 
