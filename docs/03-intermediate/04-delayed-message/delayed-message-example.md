@@ -14,7 +14,7 @@ In this scenario, there are two types of messages:
 #[codec(crate = gstd::codec)]
 #[scale_info(crate = gstd::scale_info)]
 pub enum Action{
-    SendMessage(MessageAction), // action to send a message to the second program
+    SendMessage(MessageAction), // action to send a message to the target program
     CheckReply,                 // action to check for a response
 }
 
@@ -47,9 +47,9 @@ Add `ActorId` to `msg_ids` to store the address of the message sender.
 
 ```rust
 struct Session {
-    second_program: ActorId,
+    target_program: ActorId,
     msg_ids: (MessageSentId, OriginalMessageId, ActorId),
-    message_status: MessageStatus,
+    session_status: SessionStatus,
 }
 ```
 
@@ -58,18 +58,18 @@ The initialization will then proceed as follows:
 ```rust
 #[no_mangle]
 extern "C" fn init() {
-    let second_program = msg::load().expect("Unable to decode Init");
+    let target_program = msg::load().expect("Unable to decode Init");
     unsafe {
         SESSION = Some(Session {
-            second_program,
+            target_program,
             msg_ids: (MessageId::zero(), MessageId::zero(), ActorId::zero()),
-            message_status: MessageStatus::Waiting,
+            session_status: SessionStatus::Waiting,
         });
     }
 }
 ```
 
-After sending the message to the second program, send a delayed message using `msg::send_delayed(exec::program_id(), Action::CheckReply, 0, 3)`, setting a delay of three blocks.
+After sending the message to the target program, proxy program sends a delayed message to itself using `msg::send_delayed(exec::program_id(), Action::CheckReply, 0, 3)`, setting a delay of three blocks.
 
 ```rust
 #[no_mangle]
@@ -82,13 +82,13 @@ extern "C" fn handle() {
 
     match action {
         Action::SendMessage(message_action) => {
-            if session.message_status == MessageStatus::Waiting {
-                debug!("HANDLE: Action::SendMessage and MessageStatus::Waiting");
-                let msg_id = msg::send(session.second_program, message_action, 0)
+            if session.session_status == SessionStatus::Waiting {
+                debug!("HANDLE: Action::SendMessage and SessionStatus::Waiting");
+                let msg_id = msg::send(session.target_program, message_action, 0)
                     .expect("Error in sending a message");
     
-                debug!("HANDLE: MessageStatus::Sent");
-                session.message_status = MessageStatus::Sent;
+                debug!("HANDLE: SessionStatus::MessageSent");
+                session.session_status = SessionStatus::MessageSent;
                 session.msg_ids = (msg_id, msg::id(), msg::source());
 
                 msg::send_delayed(exec::program_id(), Action::CheckReply, 0, 3)
@@ -103,13 +103,12 @@ extern "C" fn handle() {
         }
         Action::CheckReply => {
             debug!("HANDLE: Action::CheckReply");
-            if session.message_status == MessageStatus::Sent && msg::source() == exec::program_id() {
+            if session.session_status == SessionStatus::MessageSent && msg::source() == exec::program_id() {
                 debug!("HANDLE: No response was received");
                 msg::send(session.msg_ids.2, Event::NoReplyReceived, 0).expect("Error in sending a message");
-                debug!("HANDLE: MessageStatus::Waiting");
-                session.message_status = MessageStatus::Waiting;
+                debug!("HANDLE: SessionStatus::Waiting");
+                session.session_status = SessionStatus::Waiting;
             }
-
         }
     }
     debug!("HANDLE: END");
@@ -117,3 +116,20 @@ extern "C" fn handle() {
 ```
 
 Upon receiving the `Action::CheckReply` message, the handler will review the session's status. If the message originated from the program itself and the status is `Status::Sent`, a notification will be sent to the sender to report the absence of a response message.
+
+Moving to the `handle_reply()` function:
+
+```rust
+#[no_mangle]
+extern "C" fn handle_reply() {
+    debug!("HANDLE_REPLY");
+    let reply_to = msg::reply_to().expect("Failed to query reply_to data");
+    let session = unsafe { SESSION.as_mut().expect("The session is not initialized") };
+
+    if reply_to == session.msg_ids.0 && session.session_status == SessionStatus::MessageSent {
+        let reply_message: Event = msg::load().expect("Unable to decode `Event`");
+        debug!("HANDLE_REPLY: SessionStatus::ReplyReceived {:?}", reply_message);
+        session.session_status = SessionStatus::ReplyReceived(reply_message);
+    }
+}
+```

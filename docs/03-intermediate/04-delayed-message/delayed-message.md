@@ -9,7 +9,7 @@ Conventional approaches by programs on other blockchains rely on external, centr
 
 An external transaction acts as a trigger to activate the program and start its logic. For instance, someone can initiate an auction by sending a message to the auction program. After the auction period expires, the program needs to process the auction's outcome. However, this process awaits until someone sends the correct message to the program, triggering this action.
 
-The Gear Protocol addresses this challenge by introducing delayed messaging functionality. Programs within the Gear-powered networks can execute autonomously over an unlimited number of blocks, provided there is sufficient gas for execution. This advancement eliminates the need for centralized components in dApps, enabling them to operate entirely on-chain.
+The Gear Protocol enables this logic to be fully onchain and do not rely on external services by introducing delayed messaging functionality. Programs within the Gear-powered networks can execute autonomously over an unlimited number of blocks, provided there is sufficient gas for execution. This advancement eliminates the need for centralized components in dApps, enabling them to operate entirely on-chain.
 
 The `msg::send_delayed` function facilitates sending a message after a specified delay, accepting the following parameters:
 - `program` - the program (or user) to which the message will be directed;

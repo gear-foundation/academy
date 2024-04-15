@@ -11,50 +11,50 @@ Now, let's apply understanding of the `exec::wait()`/`exec::wake()` functions to
 
 The user will now receive a single reply at the end of the entire process, instead of two separate messages.
 
-## First Program
+## Proxy Program
 
-Since the second program remains unchanged, let's take a closer look at the changes in the first program:
+Since the Target program remains unchanged, let's take a closer look at the changes in the Proxy program:
 
 ```rust
-type MessageSentId = MessageId;
+type SentMessageId = MessageId;
 type OriginalMessageId = MessageId;
 
 struct Session {
-    second_program: ActorId,
-    msg_ids: (MessageSentId, OriginalMessageId),
-    message_status: MessageStatus,
+    target_program_id: ActorId,
+    msg_ids: (SentMessageId, OriginalMessageId),
+    session_status: SessionStatus,
 }
 ```
 
 New fields have been introduced:
-- `msg_ids` — a tuple consisting of two elements: `MessageSentId` and `OriginalMessageId`;
-    - `MessageSentId` is the identifier of the message sent to the second program's address.
-    - `OriginalMessageId` is the identifier of the message sent to the first program (required for using the `wake()` function).
-- `message_status` - the session status (required to track the stages of session activity).
+- `msg_ids` — a tuple consisting of two elements: `SentMessageId` and `OriginalMessageId`;
+    - `SentMessageId` is the identifier of the message sent to the target program's address.
+    - `OriginalMessageId` is the identifier of the message sent to the proxy program by user (required for using the `wake()` function).
+- `session_status` - the session status (required to track the stages of session activity).
 
 ```rust
-enum MessageStatus {
+enum SessionStatus {
     Waiting,
-    Sent,
-    Received(Event),
+    MessageSent,
+    ReplyReceived(Event),
 }
 ```
 
 - `Waiting` — the session is in a waiting state.
-- `Sent` - the intermediate session state in which the message was sent to the second program, but the response has not yet been received.
-- `Received(String)` - the session state when the reply message has been received.
+- `MessageSent` - the intermediate session state in which the message was sent to the target program, but the response has not yet been received.
+- `ReplyReceived(String)` - the session state when the reply message has been received.
 
 With these new fields in the program structure, initialization is as follows:
 
 ```rust
 #[no_mangle]
 extern "C" fn init() {
-    let second_program = msg::load().expect("Unable to decode Init");
+    let target_program_id = msg::load().expect("Unable to decode Init");
     unsafe {
         SESSION = Some(Session {
-            second_program,
+            target_program_id,
             msg_ids: (MessageId::zero(), MessageId::zero()),
-            message_status: MessageStatus::Waiting,
+            session_status: SessionStatus::Waiting,
         });
     }
 }
@@ -71,33 +71,33 @@ extern "C" fn handle() {
     debug!("Message payload: {:?}", action);
     let session = unsafe { SESSION.as_mut().expect("The session is not initialized") };
 
-    // match message_status
-    match &session.message_status {
-        MessageStatus::Waiting => {
-            debug!("HANDLE: MessageStatus::Waiting");
-            let msg_id = msg::send(session.second_program, action, 0)
+    // match session_status
+    match &session.session_status {
+        SessionStatus::Waiting => {
+            debug!("HANDLE: SessionStatus::Waiting");
+            let msg_id = msg::send(session.target_program_id, action, 0)
                 .expect("Error in sending a message");
-            debug!("HANDLE: MessageStatus::Sent");
-            session.message_status = MessageStatus::Sent;
+            debug!("HANDLE: SessionStatus::Sent");
+            session.session_status = SessionStatus::MessageSent;
             session.msg_ids = (msg_id, msg::id());
             debug!("HANDLE: WAIT");
             exec::wait();
         }
-        MessageStatus::Sent => {
-            debug!("HANDLE: MessageStatus::Sent");
+        SessionStatus::MessageSent => {
+            debug!("HANDLE: SessionStatus::MessageSent");
             msg::reply(Event::MessageAlreadySent, 0).expect("Error in sending a reply");
         }
-        MessageStatus::Received(reply_message) => {
-            debug!("HANDLE: MessageStatus::Received({:?})", reply_message);
+        SessionStatus::ReplyReceived(reply_message) => {
+            debug!("HANDLE: SessionStatus::ReplyReceived({:?})", reply_message);
             msg::reply(reply_message, 0).expect("Error in sending a reply");
-            session.message_status = MessageStatus::Waiting;
+            session.session_status = SessionStatus::Waiting;
         }
     }
     debug!("HANDLE: END");
 }
 ```
 
-Initially, the session is in `MessageStatus::Waiting` state. Upon a match, the code switches to the first option. The program sends a message, sets the session status to `MessageStatus::Sent`, and records the identifiers of the current and sent messages. Then, `exec::wait()` is called, pausing message processing and adding the current message to the waiting list until `exec::wake(message_id)` is called or the gas runs out. The ID of the waking message is crucial, hence `msg::id()` is stored in `session.msg_ids`.
+Initially, the session is in `SessionStatus::Waiting` state. Upon a match, the code switches to the proxy option. The program sends a message, sets the session status to `SessionStatus::MessageSent`, and records the identifiers of the current message from user being processed and message sent to target program. Then, `exec::wait()` is called, pausing message processing and adding the current message to the waiting list until `exec::wake(message_id)` is called or the gas runs out. The ID of the waking message is crucial, hence `msg::id()` is stored in `session.msg_ids`.
 
 Moving to the `handle_reply()` function:
 
@@ -108,10 +108,10 @@ extern "C" fn handle_reply() {
     let reply_to = msg::reply_to().expect("Failed to query reply_to data");
     let session = unsafe { SESSION.as_mut().expect("The session is not initialized") };
 
-    if reply_to == session.msg_ids.0 && session.message_status == MessageStatus::Sent {
+    if reply_to == session.msg_ids.0 && session.session_status == SessionStatus::MessageSent {
         let reply_message: Event = msg::load().expect("Unable to decode `Event`");
-        debug!("HANDLE_REPLY: MessageStatus::Received {:?}", reply_message);
-        session.message_status = MessageStatus::Received(reply_message);
+        debug!("HANDLE_REPLY: SessionStatus::ReplyReceived {:?}", reply_message);
+        session.session_status = SessionStatus::ReplyReceived(reply_message);
         let original_message_id = session.msg_ids.1;
         debug!("HANDLE: WAKE");
         exec::wake(original_message_id).expect("Failed to wake message");
@@ -119,23 +119,23 @@ extern "C" fn handle_reply() {
 }
 ```
 
-The condition `if reply_to == session.msg_ids.0 && session.message_status == MessageStatus::Sent` ensures the expected message has arrived at the right moment, i.e., when the session is in the correct status. The status is then set to `MessageStatus::Received(reply_message)`, and the reply message is saved. The ID of the original message is retrieved, and the `exec::wake()` function is called. This function takes the message from the waiting list, and the suspended message resumes in the `handle()` function.
+The condition `if reply_to == session.msg_ids.0 && session.session_status == SessionStatus::MessageSent` ensures the expected message has arrived at the right moment, i.e., when the session is in the correct status. The status is then set to `SessionStatus::ReplyReceived(reply_message)`, and the reply message is saved. The ID of the original message is retrieved, and the `exec::wake()` function is called. This function takes the message from the waiting list, and the suspended message resumes processing in the `handle()` function.
 
 *Important note*: When `exec::wake()` is called, and the message returns to the `handle()` entry point, processing starts from the beginning. The program enters the `match` again:
 
 ```rust
 // ...
-match &session.message_status {
+match &session.session_status {
     // ...
-    MessageStatus::Received(reply_message) => {
-        debug!("HANDLE: MessageStatus::Received({:?})", reply_message);
+    SessionStatus::ReplyReceived(reply_message) => {
+        debug!("HANDLE: SessionStatus::ReplyReceived({:?})", reply_message);
         msg::reply(reply_message, 0).expect("Error in sending a reply");
-        session.message_status = MessageStatus::Waiting;
+        session.session_status = SessionStatus::Waiting;
     }
     // ...
 ```
 
-However, this time, it proceeds to the third variant, sends a response, and sets the status to `MessageStatus::Waiting`.
+However, this time, it proceeds to the third option acoordingly to the session state, sends a reply from Target program to user, and sets the status to `SessionStatus::Waiting`.
 
 Now, let's review this process as a whole:
 

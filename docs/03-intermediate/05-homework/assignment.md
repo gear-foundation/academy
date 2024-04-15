@@ -17,33 +17,33 @@ The game challenges players to guess the word with the fewest attempts, under ti
 
  ## Project Structure
 
-To develop a dynamic and interactive word-guessing game, divide the game process into two distinct programs. The first program will handle the core functionalities, such as selecting a random word from a list and evaluating guesses. The second program will manage user interactions, keep track of the game state, and enforce time constraints. This division aims to create a modular, flexible system that enhances the gaming experience.
+To develop a dynamic and interactive word-guessing game, divide the game process into two distinct programs. The Wordle program will handle the core functionalities, such as selecting a random word from a list and evaluating guesses. The Game Session program will manage user interactions, keep track of the game state, and enforce time constraints. This division aims to create a modular, flexible system that enhances the gaming experience.
 
-1. **Description of the First Program**:
+1. **Description of the Wordle program**:
     - Contains "start the game" and "check the word" functions.
     - A word bank exists within the program for selecting a random word at the game's start.
     - "Start the game" function initiates the game and selects a random word.
     - "Check the word" function assesses the player's guess against the hidden word, providing feedback on correct letter positions.
 
-2. **Description of the Second Program**:
-    - Manages interactions with the first program and oversees the gameplay.
+2. **Description of the Game Session program**:
+    - Manages interactions with the Wordle program and oversees the gameplay.
     - Tracks previous responses and the number of attempts.
     - Monitors the elapsed time since the game started to manage time constraints and events.
 
 3. **Interaction Between the Programs**:
-    - The user initiates the game by sending a message to the second program.
-    - The second program invokes the first program's "start the game" function.
-    - The user submitts their guesses to the second program, which forwards them to the first program's "check the word" function.
-    - The first program returns feedback on the guess's accuracy and letter positions.
-    - The second program analyzes the result, tracking attempts and time.
+    - The user initiates the game by sending a message to the Game Session program.
+    - The Game Session program invokes the Wordle program's "start the game" function.
+    - The user submitts their guesses to the Game Session program, which forwards them to the Wordle program's "check the word" function.
+    - The Wordle program returns feedback on the guess's accuracy and letter positions.
+    - The Game Session program analyzes the result, tracking attempts and time.
 
 4. **Key Implementation Aspects**:
-    - The second program requires mechanisms to store data about previous moves and track time.
-    - Efficient interaction with the first program through data exchange and response handling is crucial.
+    - The Game Session program requires mechanisms to store data about previous moves and track time.
+    - Efficient interaction with the Wordle program through data exchange and response handling is crucial.
 
-## First Program
+## Wordle program
 
-The first program is already implemented. Its functionality includes:
+The Wordle program is already implemented. Its functionality includes:
 
 Metadata contains:
 
@@ -65,7 +65,7 @@ Functions:
 - `StartGame` - starts the game, selects a random word and returns the reply as `GameStarted{user: ActorId}`.
 - `CheckWord` - checks the word and returns the reply as `WordChecked { user: ActorId, correct_positions: Vec<u8>,contained_in_word: Vec<u8> }`, where in the `correct_positions` returns the indices of letters that are in their place, and `contained_in_word` returns the indices of letters that are contained in the word but are in the wrong place.
 
-The complete code of the first program looks as follows: 
+The complete code of the Wordle program looks as follows: 
 
 ```rust
 pub enum Action {
@@ -147,9 +147,7 @@ extern "C" fn handle() {
                 user,
                 correct_positions: matched_indices,
                 contained_in_word: key_indices,
-                
             }
-            
         }
     };
 
@@ -184,10 +182,10 @@ Through these examples, one can see how the program evaluates user guesses and p
 
 ## The Homework Assignment
 
-Create a second program that interfaces between the user and the first program.
+Create a Game Session program that interfaces between the user and the Wordle program.
 
 1. **Initialization Function (`init()`):**
-    - Receives and stores the first program's address.
+    - Receives and stores the Wordle program's address.
 
 2. **Handle Function (`handle()`):**
     - Manages actions: `StartGame`, `CheckWord`, `CheckGameStatus`.
@@ -195,7 +193,7 @@ Let's examine the functionality of each action:
 
 - `StartGame`:
     - The program checks if a game already exists for the user;
-    - It sends a "StartGame" message to the first program;
+    - It sends a "StartGame" message to the Wordle program;
     - Utilizes the `exec::wait()` or `exec::wait_for()` function to await a response;
     - Sends a delayed message with action `CheckGameStatus` to monitor the game's progress (its logic will be described below);
     - A reply is sent to notify the user that the game has beeen successfully started.
@@ -203,7 +201,7 @@ Let's examine the functionality of each action:
 - `CheckWord`:
     - Ensures that a game exists and is in the correct status;
     - Validates that the submitted word length is five and is in lowercase;
-    - Sends a "CheckWord" message to the first program;
+    - Sends a "CheckWord" message to the Wordle program;
     - Utilizes the `exec::wait()` or `exec::wait_for()` function to await a reply;
     - Sends a reply to notify the user that the move was successful.
 
@@ -213,6 +211,9 @@ Let's examine the functionality of each action:
     Specify a delay equal to 200 blocks (10 minutes) for the delayed message.
 
 3. **Handle Reply Function (`handle_reply()`)**:
+
+Processes reply messages and updates the game status based on responses from the Wordle program.
+
 - Receives reply messages.
 - Utilizes `msg::reply_to()` to determine the message identifier, i.e., which message was replied to.
 - Processes and stores the result depending on the reply:
@@ -221,10 +222,6 @@ Let's examine the functionality of each action:
   - If the word has been guessed, it switches the game status to `GameOver(Win)`. 
   - If all attempts are used up and the word is not guessed, it switches the game status to `GameOver(Lose)`.
 - Calls `wake()` with the identifier of the received message to acknowledge the response.
-
-
-3. **Handle Reply Function (`handle_reply()`):**
-    - Processes reply messages and updates the game status based on responses from the first program.
 
 4. **State Function (`state()`)**:
 - It is necessary to implement the state() function in order to get all the information about the game.
