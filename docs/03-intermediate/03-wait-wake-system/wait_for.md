@@ -38,15 +38,15 @@ extern "C" fn handle() {
     debug!("Message payload: {:?}", action);
     let session = unsafe { SESSION.as_mut().expect("The session is not initialized") };
 
-    // match message_status
-    match &session.message_status {
+    // match session_status
+    match &session.session_status {
         SessionStatus::Waiting  => {
             debug!("HANDLE: SessionStatus::Waiting");
-            let msg_id = msg::send(session.target_program, action, 0)
+            let msg_id = msg::send(session.target_program_id, action, 0)
                 .expect("Error in sending a message");
 
             debug!("HANDLE: SessionStatus::MessageSent");
-            session.message_status = SessionStatus::MessageSent;
+            session.session_status = SessionStatus::MessageSent;
             session.msg_ids = (msg_id, msg::id());
             debug!("HANDLE: WAIT");
             exec::wait_for(3);
@@ -56,7 +56,7 @@ extern "C" fn handle() {
                 debug!("HANDLE: No response was received");
                 msg::reply(Event::NoReplyReceived, 0).expect("Error in sending a reply");
                 debug!("HANDLE: SessionStatus::Waiting");
-                session.message_status = SessionStatus::Waiting;
+                session.session_status = SessionStatus::Waiting;
             } else {
                 debug!("HANDLE: Event::MessageAlreadySent");
                 msg::reply(Event::MessageAlreadySent, 0).expect("Error in sending a reply");
@@ -66,7 +66,7 @@ extern "C" fn handle() {
             debug!("HANDLE: SessionStatus::ReplyReceived");
             msg::reply(reply_message, 0).expect("Error in sending a reply");
             debug!("HANDLE: SessionStatus::Waiting");
-            session.message_status = SessionStatus::Waiting;
+            session.session_status = SessionStatus::Waiting;
         }
     }
     debug!("HANDLE: END");

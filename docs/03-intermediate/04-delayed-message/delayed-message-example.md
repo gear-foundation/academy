@@ -116,3 +116,20 @@ extern "C" fn handle() {
 ```
 
 Upon receiving the `Action::CheckReply` message, the handler will review the session's status. If the message originated from the program itself and the status is `Status::Sent`, a notification will be sent to the sender to report the absence of a response message.
+
+Moving to the `handle_reply()` function:
+
+```rust
+#[no_mangle]
+extern "C" fn handle_reply() {
+    debug!("HANDLE_REPLY");
+    let reply_to = msg::reply_to().expect("Failed to query reply_to data");
+    let session = unsafe { SESSION.as_mut().expect("The session is not initialized") };
+
+    if reply_to == session.msg_ids.0 && session.session_status == SessionStatus::MessageSent {
+        let reply_message: Event = msg::load().expect("Unable to decode `Event`");
+        debug!("HANDLE_REPLY: SessionStatus::ReplyReceived {:?}", reply_message);
+        session.session_status = SessionStatus::ReplyReceived(reply_message);
+    }
+}
+```

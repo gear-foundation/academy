@@ -47,15 +47,15 @@ When you run the test, pay close attention to the following debug messages. Care
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: !!!! HANDLE !!!!
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: Message ID: MessageId([15, 200, 69, 247, 219, 197, 228, 169, 112, 34, 221, 58, 40, 159, 140, 193, 139, 19, 23, 77, 44, 107, 107, 94, 184, 209, 74, 155, 13, 80, 206, 217])
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: Message payload: MakeRandomNumber { range: 1 }
-[DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: MessageStatus::Waiting
-[DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: MessageStatus::MessageSent
+[DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: SessionStatus::Waiting
+[DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: SessionStatus::Sent
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: WAIT
 [DEBUG test] [handle(0x0547..16ea)] 0x0100..0000: HANDLE_REPLY
-[DEBUG test] [handle(0x0547..16ea)] 0x0100..0000: HANDLE_REPLY: MessageStatus::ReplyReceived Number(0)
+[DEBUG test] [handle(0x0547..16ea)] 0x0100..0000: HANDLE_REPLY: SessionStatus::ReplyReceived Number(0)
 [DEBUG test] [handle(0x0547..16ea)] 0x0100..0000: HANDLE: WAKE
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: !!!! HANDLE !!!!
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: Message ID: MessageId([15, 200, 69, 247, 219, 197, 228, 169, 112, 34, 221, 58, 40, 159, 140, 193, 139, 19, 23, 77, 44, 107, 107, 94, 184, 209, 74, 155, 13, 80, 206, 217])
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: Message payload: MakeRandomNumber { range: 1 }
-[DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: MessageStatus::ReplyReceived(Number(0))
+[DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: SessionStatus::ReplyReceived(Number(0))
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: HANDLE: END
 ```
