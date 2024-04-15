@@ -7,35 +7,37 @@ hide_table_of_contents: true
 
 In this lesson, you will learn how a program can efficiently handle request messages. This concept will be illustrated through an example of interaction between two programs. 
 
-Before analyzing the program code in detail, it will be helpful to first present a schematic overview of how Gear programs operate:
+Imagine you have dApp with specific functionality, and you need to update this application by uploading a new version to the blockchain. Consequently, the application's address on the blockchain will change. To make this transition seamless for users, it's essential to maintain a consistent address that users can interact with. This issue can be addressed by using a Proxy program. The Proxy program will act as an intermediary: it will receive messages from users, forward them to the updated version of the application, and relay responses back to the users. Each time you're updating the Target program, you just nedd to update the Target's program address in the Proxy Program.
+
+Before analyzing program codes in detail, it will be helpful to first present a schematic overview of how Gear programs operate:
 
 ![gif 1](../img/02/handle_reply.gif)
 
-1. The user sends an `Action` message to Program #1, which is processed by the `handle()` function.
-2. This message is then passed to Program #2.
-3. Program #1 sends an `Event` message to the user, indicating that the message was successfully passed to Program #2.
-4. Program #2 receives the message from Program #1, processes it, and responds.
-5. Program #1 receives the reply message from Program #2 via the `handle_reply()` entry point.
-6. Finally, from the `handle_reply()` function, Program #1 sends the response to the user.
+1. The user sends an `Action` message to `Proxy Program`, which is processed by the `handle()` function.
+2. This message is then passed to `Target Program`.
+3. `Proxy Program` sends an `Event:MessageSent` message to the user, indicating that the action message was successfully passed to `Target Program`.
+4. `Target Program` receives the message containing a proxied `Action` from `Proxy Program`, processes it, and replies with event corresponding to desired action.
+5. `Proxy Program` receives the reply message from `Target Program` via the `handle_reply()` entry point.
+6. Finally, from the `handle_reply()` function, `Proxy Program` resends received event from the `Target Program` to the user.
 
-## First program
+## Proxy program
 
-The primary task of the first program is to communicate with the second program, requiring the following structure:
+The primary task of the Proxy program is to proxy user's actions to the Target program and resend replies from the Target program back to the User. Here is the structure in the Proxy program that enables handling of single flow of interaction between user and Target program:
 
 ```rust
 struct Session {
-    second_program: ActorId, // second program address
-    msg_id_to_actor: (MessageId, ActorId), // tuple of message identifiers and message source address
+    target_program_id: ActorId, // target program address
+    msg_id_to_actor_id: (MessageId, ActorId), // tuple containing identifier of a message sent to a Target program and Id of a User initiated the action
 }
 ```
 
-The following actions and events will be necessary to simulate a dialogue between the programs:
+The following actions and events will be necessary to simulate a dialogue between the user and programs:
 
 ```rust
 #[derive(TypeInfo, Encode, Decode)]
 #[codec(crate = gstd::codec)]
 #[scale_info(crate = gstd::scale_info)]
-pub enum Action {
+pub enum Action { // arbitrary actions should be supported in the dApp (defined by dApp author)
     Hello,
     HowAreYou,
     MakeRandomNumber{
@@ -46,24 +48,24 @@ pub enum Action {
 #[derive(TypeInfo, Encode, Decode, Debug)]
 #[codec(crate = gstd::codec)]
 #[scale_info(crate = gstd::scale_info)]
-pub enum Event {
+pub enum Event { // arbitrary replies to the action
     Hello, 
     Fine,
     Number(u8),
-    MessageSent,
+    MessageSent, // event cofirming succesfull message sent from Proxy to Target
 }
 ```
 
-During initialization, it is necessary to pass the address of the second program.
+During initialization of the Proxy program, it is necessary to pass the address of the Target program.
 
 ```rust
 #[no_mangle]
 extern "C" fn init() {
-    let second_program = msg::load().expect("Unable to decode Init");
+    let target_program_id = msg::load().expect("Unable to decode Init");
     unsafe {
         SESSION = Some(Session {
-            second_program,
-            msg_id_to_actor: (MessageId::zero(), ActorId::zero()),
+            target_program_id,
+            msg_id_to_actor_id: (MessageId::zero(), ActorId::zero()),
         });
     }
 }
@@ -72,35 +74,35 @@ extern "C" fn init() {
 Let's focus on processing requests in the `handle()` function:
 
 1. Receive the message with the `msg::load()` function.
-2. Send a message to the second program using `msg::send()`.
+2. Send a message to the Target program using `msg::send()`.
 3. An important step is to store the identifier of the message returned by `msg::send()`. This allows the `handle_reply()` function to identify which message received a response.
-4. Finally, send a reply message indicating that the message was sent to the second program.
+4. Finally, send a reply message indicating that the message was sent to the Target program.
 
 ```rust
 #[no_mangle]
 extern "C" fn handle() {
     let action: Action = msg::load().expect("Unable to decode ");
     let session = unsafe { SESSION.as_mut().expect("The session is not initialized") };
-    let msg_id = msg::send(session.second_program, action, 0).expect("Error in sending a message");
-    session.msg_id_to_actor = (msg_id, msg::source());
+    let msg_id = msg::send(session.target_program_id, action, 0).expect("Error in sending a message");
+    session.msg_id_to_actor_id = (msg_id, msg::source());
     msg::reply(Event::MessageSent, 0).expect("Error in sending a reply");
 }
 ```
 
-The Gear program utilizes the `handle_reply()` function to handle replies to messages. Let’s delve into managing the response message from the second program:
+The Gear program utilizes the `handle_reply()` function to handle replies to messages. Let’s delve into processing the response message from the second program:
 
 1. Use the `msg::reply_to()` function to retrieve the identifier of the message for which the `handle_reply()` function was invoked.
 2. Ensure that the message identifier matches the identifier of the message sent from the `handle()` function. This step verifies that the response corresponds to the specific message sent earlier.
-3. Finally, send a reply message to the original sender’s address.
+3. Finally, resend a message content from the Target program to the original sender’s address.
 
-**It is crucial to note that calling `msg::reply()` inside the `handle_reply()` function is not permitted.**
+**It is crucial to note that calling `msg::reply()` inside the `handle_reply()` function is not permitted. Instead, use `msg::send()` to proxy reply from the Target program to a User**
 
 ```rust
 #[no_mangle]
 extern "C" fn handle_reply() {
     let reply_message_id = msg::reply_to().expect("Failed to query reply_to data");
     let session = unsafe { SESSION.as_mut().expect("The session is not initialized") };
-    let (msg_id, actor) = session.msg_id_to_actor;
+    let (msg_id, actor) = session.msg_id_to_actor_id;
     if reply_message_id == msg_id {
         let reply: Event = msg::load().expect("Unable to decode ");
         msg::send(actor, reply, 0).expect("Error in sending a message");
@@ -109,12 +111,12 @@ extern "C" fn handle_reply() {
 ```
 
 Just a reminder: the sender of the message will receive two messages:
-- The first message, originating from the `handle()` function, indicates that the message has been forwarded to the second program.
-- The second message, sent by the `handle_reply()` function, contains the response from the second program.
+- The first message, originating from the `handle()` function, indicates that the original message with action has been succesfully forwarded to the Target program.
+- The second message, sent by the `handle_reply()` function, contains the response from the Target program.
 
-## Second Program
+## Target Program
 
-The first program is straightforward; it can accept various types of actions and respond with corresponding events. These responses can range from simple replies, such as `Action::HowAreYou` and `Event::Fine`, to more complex logic, such as generating a random number.
+The Target program is straightforward; it can accept various types of actions and respond with corresponding events. These responses can range from simple replies, such as `Action::HowAreYou` and `Event::Fine`, to more complex logic, such as generating a random number.
 
 ```rust
 #![no_std]

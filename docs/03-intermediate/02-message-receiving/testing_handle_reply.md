@@ -12,25 +12,25 @@ Let's verify the functionality of the programs discussed in the preceding sectio
 let system = System::new();
 ```
 
-2. Retrieve the first program from the root crate using the provided `system` and the second program instance from the wasm file.
+2. Retrieve the Proxy program from the root crate using the provided `system` and the Target program instance from the wasm file.
 
 ```rust
-let first_program = Program::current(&system);
-let second_program = Program::from_file(&system, "target/wasm32-unknown-unknown/release/second_program.opt.wasm");
+let proxy_program = Program::current(&system);
+let target_program = Program::from_file(&system, "target/wasm32-unknown-unknown/release/target_program.opt.wasm");
 ```
 
-3. Initialize the second program by sending an empty message, and then initialize the first program by passing the address of the second program to it.
+3. Initialize the Target program by sending an empty message, and then initialize the Proxy program by passing the address of the Target program to it.
 
 ```rust
-let result = second_program.send_bytes(USER, []);
-let second_program_address: ActorId = SECOND_PROGRAM_ADDRESS.into();
-let res = first_program.send(USER, second_program_address);
+let result = target_program.send_bytes(USER, []); // initialize Target program
+let target_program_address: ActorId = TARGET_PROGRAM_ADDRESS.into();
+let res = proxy_program.send(USER, target_program_address); // initialize Proxy program
 ```
 
-4. Send a message with `Action::MakeRandomNumber { range: 1 }` to the first program and check for the response `Event::MessageSent`, indicating that the message was successfully sent to the second program's address.
+4. Send a message with `Action::MakeRandomNumber { range: 1 }` to the Proxy program and check for the response `Event::MessageSent`, indicating that the message was successfully sent to the Target program's address.
 
 ```rust
-let result = first_program.send(USER, Action::MakeRandomNumber {range: 1});
+let result = proxy_program.send(USER, Action::MakeRandomNumber {range: 1});
 let log = Log::builder()
     .source(1)
     .dest(3)
@@ -58,39 +58,39 @@ use gtest::{Log, Program, System};
 use handle_reply_io::{Action, Event};
 
 const USER: u64 = 3;
-const SECOND_PROGRAM_ADDRESS: u64 = 2;
+const TARGET_PROGRAM_ADDRESS: u64 = 2;
 
 #[test]
 fn success_test() {
     // Create a new testing environment.
     let system = System::new();
 
-    // Get first program of the root crate with provided system.
-    let first_program = Program::current(&system);
-    // Get second program
-    let second_program = Program::from_file(&system, "target/wasm32-unknown-unknown/release/second_program.opt.wasm");
-    // The second program is initialized with an empty payload message
-    let result = second_program.send_bytes(USER, []);
+    // Get proxy program of the root crate with provided system.
+    let proxy_program = Program::current(&system);
+    // Get target program
+    let target_program = Program::from_file(&system, "target/wasm32-unknown-unknown/release/target_program.opt.wasm");
+    // The target program is initialized with an empty payload message
+    let result = target_program.send_bytes(USER, []);
     assert!(!result.main_failed());
 
-    let second_program_address: ActorId = SECOND_PROGRAM_ADDRESS.into();
-    // The first program is initialized using second_program in the payload message
-    let res = first_program.send(USER, second_program_address);
+    let target_program_address: ActorId = TARGET_PROGRAM_ADDRESS.into();
+    // The proxy program is initialized using target_program in the payload message
+    let res = proxy_program.send(USER, target_program_address);
     assert!(!res.main_failed());
     
     // Send with the message we want to receive back
-    let result = first_program.send(USER, Action::MakeRandomNumber {range: 1});
+    let result = proxy_program.send(USER, Action::MakeRandomNumber {range: 1});
     assert!(!result.main_failed());
 
-    // check that the first message has arrived,
-    // which means that the message was successfully sent to the second program
+    // check that the proxy message has arrived,
+    // which means that the message was successfully sent to the target program
     let log = Log::builder()
         .source(1)
         .dest(3)
         .payload(Event::MessageSent);
     assert!(result.contains(&log));
 
-    // check that the second message has arrived at the mailbox,
+    // check that the target message has arrived at the mailbox,
     // which means that a reply has been received. 
     let mailbox = system.get_mailbox(USER);
     let log = Log::builder()
