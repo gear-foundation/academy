@@ -41,7 +41,7 @@ fn test() {
 }
 ```
 
-When you run the test, pay close attention to the following debug messages. Carefully review them to verify that the program has executed as expected.
+During testing, monitor the debug messages closely. Verify they align with expected program execution.
 
 ```console
 [DEBUG test] [handle(0x0fc8..ced9)] 0x0100..0000: !!!! HANDLE !!!!
