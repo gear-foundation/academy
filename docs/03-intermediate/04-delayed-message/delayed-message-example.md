@@ -69,7 +69,7 @@ extern "C" fn init() {
 }
 ```
 
-After sending the message to the target program, proxy program sends a delayed message to itself using `msg::send_delayed(exec::program_id(), Action::CheckReply, 0, 3)`, setting a delay of three blocks.
+After sending the message to the target program, the proxy program sends a delayed message to itself using `msg::send_delayed(exec::program_id(), Action::CheckReply, 0, 3)`, setting a delay of three blocks.
 
 ```rust
 #[no_mangle]
