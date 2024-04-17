@@ -5,7 +5,7 @@ hide_table_of_contents: true
 
 # Testing
 
-Let's verify the functionality of the programs discussed in the preceding section by using the `gtest` library, which you should already be familiar with from the basic course.
+Let's verify the functionality of the programs discussed in the previous section by using the `gtest` library, which was discussed in the basic course. 
 
 1. Create a testing environment:
 ```rust
@@ -19,7 +19,7 @@ let proxy_program = Program::current(&system);
 let target_program = Program::from_file(&system, "target/wasm32-unknown-unknown/release/target_program.opt.wasm");
 ```
 
-3. Initialize the Target program by sending an empty message, and then initialize the Proxy program by passing the address of the Target program to it.
+3. Initialize the Target program by sending an empty message. Launch the Proxy program by passing the address of the Target program to it.
 
 ```rust
 let result = target_program.send_bytes(USER, []); // initialize Target program
@@ -39,7 +39,7 @@ assert!(result.contains(&log));
 
 ```
 
-5. Retrieve the user's mailbox with the specified ID and verify that a reply message has been sent back to the user.
+5. Retrieve the user's mailbox with the specified ID. Verify that a reply message has been sent back to the user.
 
 ```rust
 let mailbox = system.get_mailbox(USER);
@@ -50,7 +50,7 @@ let log = Log::builder()
 assert!(mailbox.contains(&log));
 ```
 
-The complete test code looks as follows: 
+Below is the complete test code:
 
 ```rust
 use gstd::ActorId;
@@ -102,4 +102,4 @@ fn success_test() {
 }
 ```
 
-It will be beneficial for you to implement these programs and test them on your own.
+Hands-on experience is essential. Try implementing and testing these programs yourself. 
