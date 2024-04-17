@@ -7,7 +7,7 @@ hide_table_of_contents: true
 
 In this lesson, you will learn how a program can efficiently handle request messages. This concept will be illustrated through an example of interaction between two programs. 
 
-Imagine you have dApp with specific functionality, and you need to update this application by uploading a new version to the blockchain. Consequently, the application's address on the blockchain will change. To make this transition seamless for users, it's essential to maintain a consistent address that users can interact with. This issue can be addressed by using a Proxy program. The Proxy program will act as an intermediary: it will receive messages from users, forward them to the updated version of the application, and relay responses back to the users. Each time you're updating the Target program, you just nedd to update the Target's program address in the Proxy Program.
+Imagine a dApp with specific functionality. To update this application, you'd upload a new version to the blockchain, which would cause the dApp's address to change. For a smooth user transition, you need to maintain a consistent address for interaction. A Proxy program lets you achieve this. The Proxy program will act as an intermediary: it will receive messages from users, forward them to the updated version of the application and relay responses back to the users. Each time you update the Target program, you’d only need to update the program address of the Target in the Proxy Program.
 
 Before analyzing program codes in detail, it will be helpful to first present a schematic overview of how Gear programs operate:
 
@@ -16,22 +16,22 @@ Before analyzing program codes in detail, it will be helpful to first present a 
 1. The user sends an `Action` message to `Proxy Program`, which is processed by the `handle()` function.
 2. This message is then passed to `Target Program`.
 3. `Proxy Program` sends an `Event:MessageSent` message to the user, indicating that the action message was successfully passed to `Target Program`.
-4. `Target Program` receives the message containing a proxied `Action` from `Proxy Program`, processes it, and replies with event corresponding to desired action.
+4. `Target Program` receives the message containing a proxied `Action` from `Proxy Program`, processes it, and replies with an event corresponding to the desired action.
 5. `Proxy Program` receives the reply message from `Target Program` via the `handle_reply()` entry point.
-6. Finally, from the `handle_reply()` function, `Proxy Program` resends received event from the `Target Program` to the user.
+6. Finally, from the `handle_reply()` function, `Proxy Program` resends the received event from the `Target Program` to the user.
 
 ## Proxy program
 
-The primary task of the Proxy program is to proxy user's actions to the Target program and resend replies from the Target program back to the User. Here is the structure in the Proxy program that enables handling of single flow of interaction between user and Target program:
+The primary task of the Proxy program is to proxy the user's actions to the Target program and resend replies from the Target program back to the user. Here is the structure in the Proxy program that enables handling of single flow of interaction between the user and Target program:
 
 ```rust
 struct Session {
     target_program_id: ActorId, // target program address
-    msg_id_to_actor_id: (MessageId, ActorId), // tuple containing identifier of a message sent to a Target program and Id of a User initiated the action
+    msg_id_to_actor_id: (MessageId, ActorId), // tuple containing the identifier of a message sent to a Target program and the Id of a User initiating the action
 }
 ```
 
-The following actions and events will be necessary to simulate a dialogue between the user and programs:
+The following actions and events will simulate a dialogue between the user and programs:
 
 ```rust
 #[derive(TypeInfo, Encode, Decode)]
@@ -52,7 +52,7 @@ pub enum Event { // arbitrary replies to the action
     Hello, 
     Fine,
     Number(u8),
-    MessageSent, // event cofirming succesfull message sent from Proxy to Target
+    MessageSent, // event confirming successful message sent from Proxy to Target
 }
 ```
 
@@ -95,7 +95,7 @@ The Gear program utilizes the `handle_reply()` function to handle replies to mes
 2. Ensure that the message identifier matches the identifier of the message sent from the `handle()` function. This step verifies that the response corresponds to the specific message sent earlier.
 3. Finally, resend a message content from the Target program to the original sender’s address.
 
-**It is crucial to note that calling `msg::reply()` inside the `handle_reply()` function is not permitted. Instead, use `msg::send()` to proxy reply from the Target program to a User**
+**Note: Calling `msg::reply()` inside the `handle_reply()` function is not permitted. Instead, use `msg::send()` to proxy reply from the Target program to a User**
 
 ```rust
 #[no_mangle]
@@ -110,8 +110,10 @@ extern "C" fn handle_reply() {
 }
 ```
 
-Just a reminder: the sender of the message will receive two messages:
-- The first message, originating from the `handle()` function, indicates that the original message with action has been succesfully forwarded to the Target program.
+**Note:** 
+
+The sender of the message will receive two messages:
+- The first message, originating from the `handle()` function, confirms that the original message with the intended action has been successfully forwarded to the Target program.
 - The second message, sent by the `handle_reply()` function, contains the response from the Target program.
 
 ## Target Program

@@ -7,7 +7,7 @@ hide_table_of_contents: true
 
 ## Task Description
 
-For this homework, you are tasked with writing the Wordle game.
+For this assignment, you are tasked with writing the Wordle game.
 
 Wordle is a captivating word-guessing game that has become popular for its simplicity and addictive gameplay. The goal is to guess a hidden word within a limited number of attempts.
 
@@ -17,7 +17,7 @@ The game challenges players to guess the word with the fewest attempts, under ti
 
  ## Project Structure
 
-To develop a dynamic and interactive word-guessing game, divide the game process into two distinct programs. The Wordle program will handle the core functionalities, such as selecting a random word from a list and evaluating guesses. The Game Session program will manage user interactions, keep track of the game state, and enforce time constraints. This division aims to create a modular, flexible system that enhances the gaming experience.
+Break down your Wordle game into two programs for a more engaging and flexible experience. The Wordle program will handle the core functionalities, such as selecting a random word from a list and evaluating guesses. The Game Session program will manage user interactions, keep track of the game state, and enforce time constraints. This division aims to create a modular, flexible system that enhances the gaming experience.
 
 1. **Description of the Wordle program**:
     - Contains "start the game" and "check the word" functions.
@@ -33,7 +33,7 @@ To develop a dynamic and interactive word-guessing game, divide the game process
 3. **Interaction Between the Programs**:
     - The user initiates the game by sending a message to the Game Session program.
     - The Game Session program invokes the Wordle program's "start the game" function.
-    - The user submitts their guesses to the Game Session program, which forwards them to the Wordle program's "check the word" function.
+    - The user submits their guesses to the Game Session program, which forwards them to the Wordle program's "check the word" function.
     - The Wordle program returns feedback on the guess's accuracy and letter positions.
     - The Game Session program analyzes the result, tracking attempts and time.
 
@@ -65,7 +65,7 @@ Functions:
 - `StartGame` - starts the game, selects a random word and returns the reply as `GameStarted{user: ActorId}`.
 - `CheckWord` - checks the word and returns the reply as `WordChecked { user: ActorId, correct_positions: Vec<u8>,contained_in_word: Vec<u8> }`, where in the `correct_positions` returns the indices of letters that are in their place, and `contained_in_word` returns the indices of letters that are contained in the word but are in the wrong place.
 
-The complete code of the Wordle program looks as follows: 
+Below is the comprehensive code for the Wordle program: 
 
 ```rust
 pub enum Action {
@@ -180,7 +180,7 @@ Finally, if the user correctly guesses the secret word *house*, `correct_positio
 
 Through these examples, one can see how the program evaluates user guesses and provides feedback based on the positions of correct letters in the secret word.
 
-## The Homework Assignment
+## The Assignment
 
 Create a Game Session program that interfaces between the user and the Wordle program.
 
@@ -235,4 +235,4 @@ All program actions should be checked in tests using the [`gtest`](https://docs.
 
 ## Afterword
 
-- The homework should be done as the PR in the GitHub repository.
+- The assignment should be done as the PR in the GitHub repository.
