@@ -135,8 +135,8 @@ match &session.session_status {
     // ...
 ```
 
-However, this time, it proceeds to the third option acoordingly to the session state, sends a reply from Target program to user, and sets the status to `SessionStatus::Waiting`.
+However, this time, it proceeds to the third option according to the session state, sends a reply from the Target program to the user, and sets the status to `SessionStatus::Waiting`.
 
-Now, let's review this process as a whole:
+Let's review this process as a whole:
 
 ![Code part 2](../img/03/wait_wake_code.gif)
