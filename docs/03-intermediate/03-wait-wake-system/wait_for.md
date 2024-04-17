@@ -5,7 +5,7 @@ hide_table_of_contents: true
 
 # Breakdowns in Communication
 
-Sometimes, the Target program may not respond for various reasons, and it's crucial to handle such scenarios appropriately.
+Sometimes, the Target program may not respond for various reasons. It's crucial to handle such scenarios appropriately.
 
 ## wait_for()
 
