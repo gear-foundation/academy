@@ -32,7 +32,8 @@ fn test() {
     let result = proxy_program.send(USER, Action::MakeRandomNumber{range: 1});
     assert!(!result.main_failed());
     
-    // user attempts to send another message to a proxy program while it is still processing the first message. It is expected that the proxy program reply with event `MessageAlreadySent`.
+    // user attempts to send another message to a proxy program while it is still processing the first message. It is expected that the proxy program will reply with the event
+`MessageAlreadySent`.
     let result = proxy_program.send(USER, Action::MakeRandomNumber{range: 1});
     let log = Log::builder()
         .source(1)
