@@ -9,7 +9,7 @@ In this lesson, you will learn how a program can efficiently handle request mess
 
 Imagine a dApp with specific functionality. To update this application, you'd upload a new version to the blockchain, which would cause the dApp's address to change. For a smooth user transition, you need to maintain a consistent address for interaction. A Proxy program lets you achieve this. The Proxy program will act as an intermediary: it will receive messages from users, forward them to the updated version of the application and relay responses back to the users. Each time you update the Target program, you’d only need to update the program address of the Target in the Proxy Program.
 
-Before analyzing program codes in detail, it will be helpful to first present a schematic overview of how Gear programs operate:
+Before analyzing program codes in detail, it will be helpful to first present a schematic overview of how programs on Vara operate:
 
 ![gif 1](../img/02/handle_reply.gif)
 
@@ -89,7 +89,7 @@ extern "C" fn handle() {
 }
 ```
 
-The Gear program utilizes the `handle_reply()` function to handle replies to messages. Let’s delve into processing the response message from the second program:
+The program on Vara utilizes the `handle_reply()` function to handle replies to messages. Let’s delve into processing the response message from the second program:
 
 1. Use the `msg::reply_to()` function to retrieve the identifier of the message for which the `handle_reply()` function was invoked.
 2. Ensure that the message identifier matches the identifier of the message sent from the `handle()` function. This step verifies that the response corresponds to the specific message sent earlier.

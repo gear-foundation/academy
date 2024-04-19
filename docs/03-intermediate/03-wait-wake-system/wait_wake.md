@@ -5,7 +5,7 @@ hide_table_of_contents: true
 
 # wait() and wake()
 
-To enhance message handling in Gear programs, the `exec::wait()` and `exec::wake()` functions are invaluable tools:
+To enhance message handling in programs on Vara, the `exec::wait()` and `exec::wake()` functions are invaluable tools:
 
 ## Wait
 
