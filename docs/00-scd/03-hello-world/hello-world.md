@@ -50,13 +50,13 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-gstd = { git = "https://github.com/gear-tech/gear.git", tag = "v1.0.2", features = ["debug"] }
+gstd = { git = "https://github.com/gear-tech/gear.git", tag = "v1.4.1", features = ["debug"] }
 
 [build-dependencies]
-gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", tag = "v1.0.2", features = ["wasm-opt"] }
+gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", tag = "v1.4.1", features = ["wasm-opt"] }
 
 [dev-dependencies]
-gtest = { git = "https://github.com/gear-tech/gear.git", tag = "v1.0.2" }
+gtest = { git = "https://github.com/gear-tech/gear.git", tag = "v1.4.1" }
 ```
 The `gstd` library's `debug` feature enables the insertion of helpful text messages during program debugging, utilizing the [`debug!`](https://docs.gear.rs/gstd/macro.debug.html) macro. Similarly, the `gear-wasm-builder` library's wasm-opt feature optimizes the output Wasm file, reducing the program's binary size.
 

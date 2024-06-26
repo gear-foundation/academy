@@ -21,11 +21,11 @@ authors = ["Your Name"]
 edition = "2021"
 
 [dependencies]
-gstd = { git = "https://github.com/gear-tech/gear.git", tag = "v1.2.0" }
+gstd = { git = "https://github.com/gear-tech/gear.git", tag = "v1.4.1" }
 
 [build-dependencies]
-gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", tag = "v1.2.0" }
+gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", tag = "v1.4.1" }
 
 [dev-dependencies]
-gtest = { git = "https://github.com/gear-tech/gear.git", tag = "v1.2.0" }
+gtest = { git = "https://github.com/gear-tech/gear.git", tag = "v1.4.1" }
 ```
