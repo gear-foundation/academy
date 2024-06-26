@@ -59,8 +59,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-gmeta = { git = "https://github.com/gear-tech/gear.git", tag = "v1.0.2" }
-gstd = { git = "https://github.com/gear-tech/gear.git", tag = "v1.0.2" }
+gmeta = { git = "https://github.com/gear-tech/gear.git", tag = "v1.4.1" }
+gstd = { git = "https://github.com/gear-tech/gear.git", tag = "v1.4.1" }
 parity-scale-codec = { version = "3", default-features = false }
 scale-info = { version = "2", default-features = false }
 ```
@@ -116,7 +116,7 @@ edition = "2021"
 # ...
 
 [build-dependencies]
-gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", features = ["wasm-opt"], tag = "v1.0.2" }
+gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", features = ["wasm-opt"], tag = "v1.4.1" }
 hello-world-io = { path = "io" }
 ```
 
